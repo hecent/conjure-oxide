@@ -169,7 +169,7 @@
  */
 </span><span class="attr">#[register_rule((<span class="string">"CNF"</span>, <span class="number">100</span>))]
 </span><span class="kw">fn </span>distribute_or_over_and(expr: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Result</span>&lt;Expr, RuleApplicationError&gt; {
-    <span class="kw">fn </span>find_and(exprs: <span class="kw-2">&amp;</span>Vec&lt;Expr&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;usize&gt; {
+    <span class="kw">fn </span>find_and(exprs: <span class="kw-2">&amp;</span>[Expr]) -&gt; <span class="prelude-ty">Option</span>&lt;usize&gt; {
         <span class="comment">// ToDo: may be better to move this to some kind of utils module?
         </span><span class="kw">for </span>(i, e) <span class="kw">in </span>exprs.iter().enumerate() {
             <span class="kw">if let </span>Expr::And(<span class="kw">_</span>, <span class="kw">_</span>) = e {

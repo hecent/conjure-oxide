@@ -747,6 +747,7 @@
 <a href="#745" id="745">745</a>
 <a href="#746" id="746">746</a>
 <a href="#747" id="747">747</a>
+<a href="#748" id="748">748</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span>std::{
     collections::HashMap,
     ffi::CString,
@@ -1444,7 +1445,8 @@
             Constant::Integer(n) =&gt; <span class="prelude-val">Ok</span>(<span class="kw-2">*</span>n),
             Constant::Bool(<span class="bool-val">true</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="number">1</span>),
             Constant::Bool(<span class="bool-val">false</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="number">0</span>),
-            x =&gt; <span class="prelude-val">Err</span>(MinionError::NotImplemented(<span class="macro">format!</span>(<span class="string">"{:?}"</span>, x))),
+            <span class="attr">#[allow(unreachable_patterns)] </span><span class="comment">// TODO: can there be other types?
+            </span>x =&gt; <span class="prelude-val">Err</span>(MinionError::NotImplemented(<span class="macro">format!</span>(<span class="string">"{:?}"</span>, x))),
         }<span class="question-mark">?</span>;
 
         ffi::vec_int_push_back(raw_consts.ptr, val);

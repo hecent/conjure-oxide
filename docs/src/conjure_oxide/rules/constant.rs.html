@@ -111,7 +111,6 @@
 <a href="#109" id="109">109</a>
 <a href="#110" id="110">110</a>
 <a href="#111" id="111">111</a>
-<a href="#112" id="112">112</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::{
     ast::Constant <span class="kw">as </span>Const, ast::Expression <span class="kw">as </span>Expr, metadata::Metadata, rule::RuleApplicationError,
 };
@@ -138,7 +137,6 @@
     <span class="kw">match </span>expr {
         Expr::Constant(<span class="kw">_</span>, c) =&gt; <span class="prelude-val">Some</span>(c.clone()),
         Expr::Reference(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>,
-
         Expr::Eq(<span class="kw">_</span>, a, b) =&gt; bin_op::&lt;i32, bool&gt;(|a, b| a == b, a, b)
             .or_else(|| bin_op::&lt;bool, bool&gt;(|a, b| a == b, a, b))
             .map(Const::Bool),
@@ -203,7 +201,7 @@
     <span class="prelude-val">Some</span>(f(a, b, c))
 }
 
-<span class="kw">fn </span>vec_op&lt;T, A&gt;(f: <span class="kw">fn</span>(Vec&lt;T&gt;) -&gt; A, a: <span class="kw-2">&amp;</span>Vec&lt;Expr&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;A&gt;
+<span class="kw">fn </span>vec_op&lt;T, A&gt;(f: <span class="kw">fn</span>(Vec&lt;T&gt;) -&gt; A, a: <span class="kw-2">&amp;</span>[Expr]) -&gt; <span class="prelude-ty">Option</span>&lt;A&gt;
 <span class="kw">where
     </span>T: TryFrom&lt;Const&gt;,
 {
@@ -211,7 +209,7 @@
     <span class="prelude-val">Some</span>(f(a))
 }
 
-<span class="kw">fn </span>flat_op&lt;T, A&gt;(f: <span class="kw">fn</span>(Vec&lt;T&gt;, T) -&gt; A, a: <span class="kw-2">&amp;</span>Vec&lt;Expr&gt;, b: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;A&gt;
+<span class="kw">fn </span>flat_op&lt;T, A&gt;(f: <span class="kw">fn</span>(Vec&lt;T&gt;, T) -&gt; A, a: <span class="kw-2">&amp;</span>[Expr], b: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;A&gt;
 <span class="kw">where
     </span>T: TryFrom&lt;Const&gt;,
 {

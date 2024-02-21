@@ -212,8 +212,6 @@
 <a href="#210" id="210">210</a>
 <a href="#211" id="211">211</a>
 <a href="#212" id="212">212</a>
-<a href="#213" id="213">213</a>
-<a href="#214" id="214">214</a>
 </pre></div><pre class="rust"><code><span class="doccomment">//! ### A decentralised rule registry for Conjure Oxide
 //!
 //! This crate allows registering valid functions as expression-reduction rules.
@@ -350,9 +348,7 @@
 /// use conjure_rules::register_rule_set;
 /// register_rule_set!("MyRuleSet", 10, ("DependencyRuleSet", "AnotherRuleSet"));
 ///
-/// fn main() {
-///  println!("Rule set: {:?}", conjure_rules::get_rule_set_by_name("MyRuleSet"));
-/// }
+/// println!("Rule set: {:?}", conjure_rules::get_rule_set_by_name("MyRuleSet"));
 /// ```
 ///
 /// This will print:

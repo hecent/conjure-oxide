@@ -292,13 +292,13 @@
 /// The latter is not stored in the symbol table, or counted in Minions internal list of all
 /// variables, but is used to allow the use of a constant in the place of a variable in a
 /// constraint.
-</span><span class="attr">#[derive(Debug, Clone)]
+</span><span class="attr">#[derive(Debug, Eq, PartialEq, Clone)]
 </span><span class="kw">pub enum </span>Var {
     NameRef(VarName),
     ConstantAsVar(i32),
 }
 
-<span class="attr">#[derive(Debug, Eq, PartialEq, Clone)]
+<span class="attr">#[derive(Debug, Eq, PartialEq, Clone, Copy)]
 </span><span class="kw">pub enum </span>Constant {
     Bool(bool),
     Integer(i32),

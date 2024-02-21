@@ -125,6 +125,7 @@
 <a href="#123" id="123">123</a>
 <a href="#124" id="124">124</a>
 <a href="#125" id="125">125</a>
+<a href="#126" id="126">126</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::rule_engine::resolve_rules::{
     get_rule_priorities, get_rules_vec, ResolveRulesError <span class="kw">as </span>ResolveError,
 };
@@ -154,7 +155,8 @@
 }
 
 <span class="kw">struct </span>RuleResult&lt;<span class="lifetime">'a</span>&gt; {
-    rule: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>Rule&lt;<span class="lifetime">'a</span>&gt;,
+    <span class="attr">#[allow(dead_code)] </span><span class="comment">// Not used yet, but will be useful to have
+    </span>rule: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>Rule&lt;<span class="lifetime">'a</span>&gt;,
     new_expression: Expression,
 }
 

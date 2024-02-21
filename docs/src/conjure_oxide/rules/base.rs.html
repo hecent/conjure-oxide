@@ -493,7 +493,7 @@
             <span class="kw">let </span><span class="kw-2">mut </span>changed = <span class="bool-val">false</span>;
             <span class="kw">for </span>e <span class="kw">in </span>exprs {
                 <span class="kw">match </span>e {
-                    Expr::Constant(<span class="kw">_</span>, Const::Int(i)) =&gt; {
+                    Expr::Constant(_metadata, Const::Int(i)) =&gt; {
                         sum += i;
                         changed = <span class="bool-val">true</span>;
                     }
