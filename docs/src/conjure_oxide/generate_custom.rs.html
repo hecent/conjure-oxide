@@ -106,21 +106,17 @@
 <a href="#104" id="104">104</a>
 <a href="#105" id="105">105</a>
 <a href="#106" id="106">106</a>
-<a href="#107" id="107">107</a>
-<a href="#108" id="108">108</a>
 </pre></div><pre class="rust"><code><span class="comment">// generate_custom.rs with get_example_model function
 
 // dependencies
 </span><span class="kw">use </span><span class="kw">crate</span>::parse::model_from_json;
 <span class="kw">use </span>conjure_core::ast::Model;
 
-<span class="kw">use </span>std::error::Error;
-
 <span class="kw">use </span>std::path::PathBuf;
 <span class="kw">use </span>walkdir::WalkDir;
 
-<span class="doccomment">/// Searches recursively in `../tests/integration` folder for an `.essence` file matching the given filename,
-/// then uses conjure to process it into astjson, and returns the parsed model.
+<span class="doccomment">/// Searches recursively in `../tests/integration` folder for an `.essence` file matching the given
+/// filename, then uses conjure to process it into astjson, and returns the parsed model.
 ///
 /// # Arguments
 ///
@@ -128,8 +124,8 @@
 ///
 /// # Returns
 ///
-/// Function returns a `Result&lt;Value, Box&lt;dyn Error&gt;&gt;`, where `Value` is the parsed model
-</span><span class="kw">pub fn </span>get_example_model(filename: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;Model, Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+/// Function returns a `Result&lt;Value, anyhow::Error&gt;`, where `Value` is the parsed model.
+</span><span class="kw">pub fn </span>get_example_model(filename: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;Model, anyhow::Error&gt; {
     <span class="comment">// define relative path -&gt; integration tests dir
     </span><span class="kw">let </span>base_dir = <span class="string">"tests/integration"</span>;
     <span class="kw">let </span><span class="kw-2">mut </span>essence_path = PathBuf::new();
@@ -146,11 +142,11 @@
         }
     }
 
-    <span class="macro">println!</span>(<span class="string">"PATH TO FILE: {}"</span>, essence_path.display());
+    <span class="comment">//println!("PATH TO FILE: {}", essence_path.display());
 
-    <span class="comment">// return error if file not found
+    // return error if file not found
     </span><span class="kw">if </span>essence_path.as_os_str().is_empty() {
-        <span class="kw">return </span><span class="prelude-val">Err</span>(Box::new(std::io::Error::new(
+        <span class="kw">return </span><span class="prelude-val">Err</span>(anyhow::Error::new(std::io::Error::new(
             std::io::ErrorKind::NotFound,
             <span class="string">"ERROR: File not found in any subdirectory"</span>,
         )));
@@ -167,9 +163,9 @@
     <span class="comment">// convert Conjure's stdout from bytes to string
     </span><span class="kw">let </span>astjson = String::from_utf8(output.stdout)<span class="question-mark">?</span>;
 
-    <span class="macro">println!</span>(<span class="string">"ASTJSON: {}"</span>, astjson);
+    <span class="comment">//println!("ASTJSON: {}", astjson);
 
-    <span class="comment">// parse AST JSON from desired Model format
+    // parse AST JSON from desired Model format
     </span><span class="kw">let </span>generated_mdl = model_from_json(<span class="kw-2">&amp;</span>astjson)<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(generated_mdl)
@@ -184,21 +180,21 @@
 ///
 /// # Returns
 ///
-/// Function returns a `Result&lt;Value, Box&lt;dyn Error&gt;&gt;`, where `Value` is the parsed model
-</span><span class="kw">pub fn </span>get_example_model_by_path(filepath: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;Model, Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+/// Function returns a `Result&lt;Value, anyhow::Error&gt;`, where `Value` is the parsed model
+</span><span class="kw">pub fn </span>get_example_model_by_path(filepath: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;Model, anyhow::Error&gt; {
     <span class="kw">let </span>essence_path = PathBuf::from(filepath);
 
     <span class="comment">// return error if file not found
     </span><span class="kw">if </span>essence_path.as_os_str().is_empty() {
-        <span class="kw">return </span><span class="prelude-val">Err</span>(Box::new(std::io::Error::new(
+        <span class="kw">return </span><span class="prelude-val">Err</span>(anyhow::Error::new(std::io::Error::new(
             std::io::ErrorKind::NotFound,
             <span class="string">"ERROR: File not found in any subdirectory"</span>,
         )));
     }
 
-    <span class="macro">println!</span>(<span class="string">"PATH TO FILE: {}"</span>, essence_path.display());
+    <span class="comment">// println!("PATH TO FILE: {}", essence_path.display());
 
-    <span class="comment">// Command execution using 'conjure' CLI tool with provided path
+    // Command execution using 'conjure' CLI tool with provided path
     </span><span class="kw">let </span><span class="kw-2">mut </span>cmd = std::process::Command::new(<span class="string">"conjure"</span>);
     <span class="kw">let </span>output = cmd
         .arg(<span class="string">"pretty"</span>)
@@ -209,9 +205,9 @@
     <span class="comment">// convert Conjure's stdout from bytes to string
     </span><span class="kw">let </span>astjson = String::from_utf8(output.stdout)<span class="question-mark">?</span>;
 
-    <span class="macro">println!</span>(<span class="string">"ASTJSON: {}"</span>, astjson);
+    <span class="comment">// println!("ASTJSON: {}", astjson);
 
-    <span class="comment">// parse AST JSON into the desired Model format
+    // parse AST JSON into the desired Model format
     </span><span class="kw">let </span>generated_model = model_from_json(<span class="kw-2">&amp;</span>astjson)<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(generated_model)
