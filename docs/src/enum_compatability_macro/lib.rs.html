@@ -194,8 +194,6 @@
 <a href="#192" id="192">192</a>
 <a href="#193" id="193">193</a>
 <a href="#194" id="194">194</a>
-<a href="#195" id="195">195</a>
-<a href="#196" id="196">196</a>
 </pre></div><pre class="rust"><code><span class="doccomment">//! A macro to document enum variants with the things that they are compatible with.
 //!
 //!
@@ -345,11 +343,9 @@
                 <span class="kw">match </span>nodes_supported_by_solver.get_mut(<span class="kw-2">&amp;</span>solver_name) {
                     <span class="prelude-val">None </span>=&gt; {
                         nodes_supported_by_solver.insert(solver_name, <span class="macro">vec!</span>[variant_ident.clone()]);
-                        ()
                     }
                     <span class="prelude-val">Some</span>(a) =&gt; {
                         a.push(variant_ident.clone());
-                        ()
                     }
                 };
             }
@@ -382,7 +378,7 @@
         }
 
         <span class="comment">// end list
-        </span>doc_msg.push_str(<span class="string">"\n"</span>);
+        </span>doc_msg.push(<span class="string">'\n'</span>);
     }
 
     input.attrs.push(<span class="macro">parse_quote!</span>(<span class="attr">#[doc = #doc_msg]</span>));

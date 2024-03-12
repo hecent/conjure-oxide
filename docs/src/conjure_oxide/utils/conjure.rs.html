@@ -96,13 +96,10 @@
 <a href="#94" id="94">94</a>
 <a href="#95" id="95">95</a>
 <a href="#96" id="96">96</a>
-<a href="#97" id="97">97</a>
-<a href="#98" id="98">98</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::parse::model_from_json;
 <span class="kw">use </span><span class="kw">crate</span>::utils::json::sort_json_object;
 <span class="kw">use </span><span class="kw">crate</span>::Error <span class="kw">as </span>ParseErr;
 <span class="kw">use </span>conjure_core::ast::{Constant, Model, Name};
-<span class="kw">use </span>itertools::Either::{Left, Right};
 <span class="kw">use </span>serde_json::{Map, Value <span class="kw">as </span>JsonValue};
 <span class="kw">use </span>std::collections::HashMap;
 <span class="kw">use </span>std::sync::{Arc, Mutex};
@@ -187,7 +184,6 @@
             <span class="kw">let </span>serialized_constant = <span class="kw">match </span>constant {
                 Constant::Int(i) =&gt; JsonValue::Number((<span class="kw-2">*</span>i).into()),
                 Constant::Bool(b) =&gt; JsonValue::Bool(<span class="kw-2">*</span>b),
-                x =&gt; <span class="macro">unimplemented!</span>(<span class="string">"{:#?}"</span>, x),
             };
             json_solution.insert(var_name.to_string(), serialized_constant);
         }

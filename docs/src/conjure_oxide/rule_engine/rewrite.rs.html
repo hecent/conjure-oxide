@@ -116,20 +116,15 @@
 <a href="#114" id="114">114</a>
 <a href="#115" id="115">115</a>
 <a href="#116" id="116">116</a>
-<a href="#117" id="117">117</a>
-<a href="#118" id="118">118</a>
-<a href="#119" id="119">119</a>
-<a href="#120" id="120">120</a>
-<a href="#121" id="121">121</a>
-</pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::Display;
-<span class="kw">use </span>thiserror::Error;
-
-<span class="kw">use </span><span class="kw">crate</span>::rule_engine::resolve_rules::{
+</pre></div><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::rule_engine::resolve_rules::{
     get_rule_priorities, get_rules_vec, ResolveRulesError <span class="kw">as </span>ResolveError,
 };
 <span class="kw">use </span>conjure_core::ast::{Expression, Model};
 <span class="kw">use </span>conjure_core::rule::{Reduction, Rule};
 <span class="kw">use </span>conjure_rules::rule_set::RuleSet;
+<span class="kw">use </span>std::fmt::Display;
+<span class="kw">use </span>thiserror::Error;
+<span class="kw">use </span>uniplate::uniplate::Uniplate;
 
 <span class="attr">#[derive(Debug)]
 </span><span class="kw">struct </span>RuleResult&lt;<span class="lifetime">'a</span>&gt; {
@@ -189,18 +184,13 @@
     <span class="kw">if let </span><span class="prelude-val">Some</span>(new) = choose_rewrite(<span class="kw-2">&amp;</span>rule_results) {
         <span class="kw">return </span><span class="prelude-val">Some</span>(new);
     } <span class="kw">else </span>{
-        <span class="kw">match </span>expression.sub_expressions() {
-            <span class="prelude-val">None </span>=&gt; {}
-            <span class="prelude-val">Some</span>(<span class="kw-2">mut </span>sub) =&gt; {
-                <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..sub.len() {
-                    <span class="kw">if let </span><span class="prelude-val">Some</span>(red) = rewrite_iteration(sub[i], model, rules) {
-                        sub[i] = <span class="kw-2">&amp;</span>red.new_expression;
-                        <span class="kw">return </span><span class="prelude-val">Some</span>(Reduction::new(
-                            expression.clone().with_sub_expressions(sub),
-                            red.new_top,
-                            red.symbols,
-                        ));
-                    }
+        <span class="kw">let </span><span class="kw-2">mut </span>sub = expression.children();
+
+        <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..sub.len() {
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(red) = rewrite_iteration(<span class="kw-2">&amp;</span>sub[i], model, rules) {
+                sub[i] = red.new_expression;
+                <span class="kw">if let </span><span class="prelude-val">Ok</span>(res) = expression.with_children(sub.clone()) {
+                    <span class="kw">return </span><span class="prelude-val">Some</span>(Reduction::new(res, red.new_top, red.symbols));
                 }
             }
         }

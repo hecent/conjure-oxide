@@ -381,7 +381,7 @@
 
 <span class="kw">fn </span>_parse_intdomain_var(
     name: <span class="kw-2">&amp;</span>ConjureName,
-    ranges: <span class="kw-2">&amp;</span>Vec&lt;ConjureRange&lt;i32&gt;&gt;,
+    ranges: <span class="kw-2">&amp;</span>[ConjureRange&lt;i32&gt;],
     minion_model: <span class="kw-2">&amp;mut </span>MinionModel,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;(), SolverError&gt; {
     <span class="kw">let </span>str_name = _name_to_string(name.to_owned());

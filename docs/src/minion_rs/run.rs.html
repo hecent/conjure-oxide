@@ -761,8 +761,8 @@
 </pre></div><pre class="rust"><code><span class="kw">use </span>std::{
     collections::HashMap,
     ffi::CString,
-    sync::{atomic::AtomicBool, Mutex, MutexGuard},
-    sync::{atomic::Ordering, Condvar},
+    sync::Condvar,
+    sync::{Mutex, MutexGuard},
 };
 
 <span class="kw">use </span><span class="kw">crate</span>::ffi::{<span class="self">self</span>};
