@@ -188,14 +188,14 @@ BRH:0
 DA:21,45
 DA:23,45
 DA:24,45
-DA:27,244380
-DA:28,244380
-DA:29,244380
-DA:30,206760
+DA:27,244185
+DA:28,244185
+DA:29,244185
+DA:30,206565
 DA:31,225
 DA:33,30
 DA:34,30
-DA:35,244350
+DA:35,244155
 DA:41,45
 DA:42,15
 DA:43,15
@@ -574,23 +574,23 @@ DA:109,4290
 DA:110,4290
 DA:112,165
 DA:113,165
-DA:128,18900
-DA:129,18900
-DA:130,18900
-DA:131,18900
-DA:132,18900
-DA:133,18900
-DA:134,18900
-DA:135,18900
-DA:136,18900
-DA:137,16605
-DA:138,2295
-DA:139,2295
-DA:140,2295
-DA:141,18900
+DA:128,19305
+DA:129,19305
+DA:130,19305
+DA:131,19305
+DA:132,19305
+DA:133,19305
+DA:134,19305
+DA:135,19305
+DA:136,19305
+DA:137,17160
+DA:138,2145
+DA:139,2145
+DA:140,2145
+DA:141,19305
 DA:150,165
 DA:151,165
-DA:152,18900
+DA:152,19305
 DA:153,165
 DA:154,165
 LF:70
@@ -637,8 +637,8 @@ FNF:18
 FNH:6
 BRF:0
 BRH:0
-DA:7,472
-DA:8,472
+DA:7,468
+DA:8,468
 DA:9,0
 DA:10,0
 DA:11,0
@@ -646,15 +646,15 @@ DA:12,0
 DA:13,0
 DA:14,0
 DA:15,0
-DA:17,108
-DA:18,108
-DA:19,108
-DA:20,108
-DA:21,108
+DA:17,116
+DA:18,116
+DA:19,116
+DA:20,116
+DA:21,116
 DA:22,0
 DA:24,0
-DA:26,364
-DA:28,472
+DA:26,352
+DA:28,468
 DA:32,72
 DA:33,72
 DA:34,72
@@ -2522,14 +2522,14 @@ DA:58,360
 DA:60,495
 DA:65,360
 DA:66,360
-DA:68,120
-DA:69,120
-DA:70,120
-DA:71,120
-DA:72,120
-DA:73,120
-DA:74,120
-DA:76,240
+DA:68,90
+DA:69,90
+DA:70,90
+DA:71,90
+DA:72,90
+DA:73,90
+DA:74,90
+DA:76,270
 DA:78,360
 DA:82,180
 DA:83,180
@@ -2552,27 +2552,27 @@ DA:105,1170
 DA:106,2610
 DA:109,135
 DA:110,135
-DA:114,180
-DA:115,180
-DA:117,240
-DA:118,60
+DA:114,135
+DA:115,135
+DA:117,180
+DA:118,45
 DA:120,0
 DA:121,0
 DA:122,0
-DA:125,60
-DA:126,60
-DA:127,60
-DA:128,60
-DA:129,60
-DA:130,60
-DA:135,180
-DA:136,180
+DA:125,45
+DA:126,45
+DA:127,45
+DA:128,45
+DA:129,45
+DA:130,45
+DA:135,135
+DA:136,135
 DA:140,15
 DA:141,15
 DA:142,15
-DA:148,960
-DA:149,960
-DA:150,960
+DA:148,945
+DA:149,945
+DA:150,945
 DA:154,0
 DA:155,0
 DA:156,0
@@ -3545,105 +3545,105 @@ LF:110
 LH:60
 end_of_record
 SF:crates/conjure_core/src/solver/mod.rs
-FN:254,<conjure_core::solver::Solver<_>>::get_family
-FN:271,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion, conjure_core::solver::states::ModelLoaded>>::solve
+FN:235,<conjure_core::solver::Solver<_>>::get_family
+FN:251,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion, conjure_core::solver::states::ModelLoaded>>::solve
 FN:113,<conjure_core::solver::SolverFamilyIter as core::fmt::Debug>::fmt
-FN:335,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::wall_time_s
+FN:309,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::wall_time_s
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__Visitor as serde::de::Visitor>::visit_enum::<_>
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::visit_str::<_>
 FN:113,<conjure_core::solver::SolverFamilyIter as core::clone::Clone>::clone
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::visit_bytes::<_>
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::iterator::Iterator>::size_hint
 FN:113,<conjure_core::solver::SolverFamily as core::str::traits::FromStr>::from_str
-FN:216,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::init_solver
+FN:199,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::init_solver
 FN:59,rust_out::main::_doctest_main_crates_conjure_core_src_solver_mod_rs_24_0::{closure#0}
 FN:113,<conjure_core::solver::SolverFamily as core::fmt::Display>::fmt
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::iterator::Iterator>::nth
-FN:243,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::new
+FN:225,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::new
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__Visitor as serde::de::Visitor>::expecting
 FN:113,<conjure_core::solver::SolverFamily as core::fmt::Display>::fmt
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::iterator::Iterator>::next
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::iterator::Iterator>::nth
-FN:216,<_ as conjure_core::solver::SolverAdaptor>::init_solver
-FN:335,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::wall_time_s
-FN:216,<_ as conjure_core::solver::SolverAdaptor>::init_solver
-FN:331,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::stats
+FN:199,<_ as conjure_core::solver::SolverAdaptor>::init_solver
+FN:309,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::wall_time_s
+FN:199,<_ as conjure_core::solver::SolverAdaptor>::init_solver
+FN:305,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::stats
 FN:113,<conjure_core::solver::SolverFamily as core::fmt::Display>::fmt
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::visit_u64::<_>
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__Visitor as serde::de::Visitor>::visit_enum::<_>
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::visit_u64::<_>
-FN:260,<conjure_core::solver::Solver<_>>::load_model
-FN:243,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::new
+FN:241,<conjure_core::solver::Solver<_>>::load_model
+FN:225,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::new
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::visit_u64::<_>
 FN:113,<conjure_core::solver::SolverFamily as core::str::traits::FromStr>::from_str
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::iterator::Iterator>::size_hint
 FN:113,<conjure_core::solver::SolverFamily as core::convert::TryFrom<&str>>::try_from
-FN:300,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve_mut
+FN:277,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve_mut
 FN:113,<conjure_core::solver::SolverFamilyIter as core::fmt::Debug>::fmt
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::exact_size::ExactSizeIterator>::len
 FN:113,<conjure_core::solver::SolverFamilyIter as core::fmt::Debug>::fmt
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__Field as serde::de::Deserialize>::deserialize::<_>
-FN:271,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion, conjure_core::solver::states::ModelLoaded>>::solve
+FN:251,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion, conjure_core::solver::states::ModelLoaded>>::solve
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::double_ended::DoubleEndedIterator>::next_back
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__Field as serde::de::Deserialize>::deserialize::<_>
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__Visitor as serde::de::Visitor>::visit_enum::<_>
-FN:335,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::wall_time_s
+FN:309,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::wall_time_s
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::iterator::Iterator>::next
-FN:300,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve_mut
-FN:254,<conjure_core::solver::Solver<_>>::get_family
+FN:277,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve_mut
+FN:235,<conjure_core::solver::Solver<_>>::get_family
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::visit_str::<_>
 FN:25,rust_out::main
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::iterator::Iterator>::nth
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::expecting
-FN:342,<conjure_core::solver::SolverError as core::fmt::Display>::fmt
-FN:342,<conjure_core::solver::SolverError as core::fmt::Display>::fmt
-FN:271,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve
+FN:316,<conjure_core::solver::SolverError as core::fmt::Display>::fmt
+FN:316,<conjure_core::solver::SolverError as core::fmt::Display>::fmt
+FN:251,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__Visitor as serde::de::Visitor>::expecting
 FN:113,<conjure_core::solver::SolverFamily as strum::IntoEnumIterator>::iter
-FN:331,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::stats
-FN:216,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::init_solver
+FN:305,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::stats
+FN:199,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::init_solver
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__Visitor as serde::de::Visitor>::expecting
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::iterator::Iterator>::next
-FN:243,<conjure_core::solver::Solver<_>>::new
+FN:225,<conjure_core::solver::Solver<_>>::new
 FN:113,<conjure_core::solver::SolverFamily as core::str::traits::FromStr>::from_str
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::expecting
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::exact_size::ExactSizeIterator>::len
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::visit_bytes::<_>
 FN:113,<conjure_core::solver::SolverFamilyIter as core::clone::Clone>::clone
-FN:260,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::load_model
+FN:241,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::load_model
 FN:25,rust_out::main::_doctest_main_crates_conjure_core_src_solver_mod_rs_24_0
-FN:260,<conjure_core::solver::Solver<_>>::load_model
-FN:331,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::stats
+FN:241,<conjure_core::solver::Solver<_>>::load_model
+FN:305,<conjure_core::solver::Solver<_, conjure_core::solver::states::ExecutionSuccess>>::stats
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__Field as serde::de::Deserialize>::deserialize::<_>
-FN:271,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion, conjure_core::solver::states::ModelLoaded>>::solve
+FN:251,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion, conjure_core::solver::states::ModelLoaded>>::solve
 FN:113,<conjure_core::solver::SolverFamilyIter as core::clone::Clone>::clone
 FN:113,<conjure_core::solver::SolverFamily as core::convert::TryFrom<&str>>::try_from
 FN:113,<conjure_core::solver::SolverFamily as strum::IntoEnumIterator>::iter
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::visit_str::<_>
 FN:113,<conjure_core::solver::SolverFamilyIter>::get
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::expecting
-FN:260,<conjure_core::solver::Solver<_>>::load_model
+FN:241,<conjure_core::solver::Solver<_>>::load_model
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::exact_size::ExactSizeIterator>::len
-FN:243,<conjure_core::solver::Solver<_>>::new
-FN:271,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve
-FN:271,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve
-FN:243,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::new
+FN:225,<conjure_core::solver::Solver<_>>::new
+FN:251,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve
+FN:251,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve
+FN:225,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::new
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::double_ended::DoubleEndedIterator>::next_back
-FN:243,<conjure_core::solver::Solver<_>>::new
+FN:225,<conjure_core::solver::Solver<_>>::new
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::iterator::Iterator>::size_hint
-FN:300,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve_mut
-FN:216,<_ as conjure_core::solver::SolverAdaptor>::init_solver
-FN:260,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::load_model
+FN:277,<conjure_core::solver::Solver<_, conjure_core::solver::states::ModelLoaded>>::solve_mut
+FN:199,<_ as conjure_core::solver::SolverAdaptor>::init_solver
+FN:241,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::load_model
 FN:113,<conjure_core::solver::SolverFamilyIter>::get
 FN:113,<conjure_core::solver::SolverFamilyIter as core::iter::traits::double_ended::DoubleEndedIterator>::next_back
-FN:254,<conjure_core::solver::Solver<_>>::get_family
+FN:235,<conjure_core::solver::Solver<_>>::get_family
 FN:113,<conjure_core::solver::SolverFamily as core::convert::TryFrom<&str>>::try_from
 FN:113,<conjure_core::solver::SolverFamily as strum::IntoEnumIterator>::iter
 FN:113,<<conjure_core::solver::SolverFamily as serde::de::Deserialize>::deserialize::__FieldVisitor as serde::de::Visitor>::visit_bytes::<_>
-FN:260,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::load_model
+FN:241,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion>>::load_model
 FN:113,<conjure_core::solver::SolverFamilyIter>::get
-FN:342,<conjure_core::solver::SolverError as core::fmt::Display>::fmt
-FN:216,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::init_solver
+FN:316,<conjure_core::solver::SolverError as core::fmt::Display>::fmt
+FN:199,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::init_solver
 FNDA:0,<conjure_core::solver::Solver<_>>::get_family
 FNDA:1,<conjure_core::solver::Solver<conjure_core::solver::adaptors::minion::Minion, conjure_core::solver::states::ModelLoaded>>::solve
 FNDA:0,<conjure_core::solver::SolverFamilyIter as core::fmt::Debug>::fmt
@@ -3791,20 +3791,35 @@ DA:65,1
 DA:66,1
 DA:67,1
 DA:113,0
-DA:216,45
+DA:199,45
+DA:225,45
+DA:226,45
+DA:227,45
+DA:228,45
+DA:229,45
+DA:230,45
+DA:231,45
+DA:232,45
+DA:233,45
+DA:235,0
+DA:236,0
+DA:237,0
+DA:241,45
+DA:242,45
 DA:243,45
 DA:244,45
 DA:245,45
 DA:246,45
 DA:247,45
-DA:248,45
-DA:249,45
-DA:250,45
 DA:251,45
 DA:252,45
-DA:254,0
-DA:255,0
-DA:256,0
+DA:253,45
+DA:254,45
+DA:255,45
+DA:256,45
+DA:257,45
+DA:258,45
+DA:259,45
 DA:260,45
 DA:261,45
 DA:262,45
@@ -3813,69 +3828,46 @@ DA:264,45
 DA:265,45
 DA:266,45
 DA:267,45
+DA:268,45
+DA:269,45
+DA:270,45
 DA:271,45
 DA:272,45
-DA:273,45
-DA:274,45
+DA:273,0
 DA:275,45
-DA:276,45
-DA:277,45
-DA:278,45
-DA:279,45
-DA:280,45
-DA:281,45
-DA:282,45
-DA:283,45
-DA:284,45
-DA:285,45
-DA:286,45
-DA:287,45
-DA:288,45
-DA:289,45
-DA:290,45
-DA:291,45
-DA:292,45
-DA:293,45
-DA:294,45
-DA:295,45
+DA:277,0
+DA:278,0
+DA:279,0
+DA:280,0
+DA:281,0
+DA:282,0
+DA:283,0
+DA:284,0
+DA:285,0
+DA:286,0
+DA:287,0
+DA:288,0
+DA:289,0
+DA:290,0
+DA:291,0
+DA:292,0
+DA:293,0
+DA:294,0
+DA:295,0
 DA:296,0
-DA:298,45
-DA:300,0
+DA:297,0
+DA:298,0
+DA:299,0
 DA:301,0
-DA:302,0
-DA:303,0
-DA:304,0
 DA:305,0
 DA:306,0
 DA:307,0
-DA:308,0
 DA:309,0
 DA:310,0
 DA:311,0
-DA:312,0
-DA:313,0
-DA:314,0
-DA:315,0
 DA:316,0
-DA:317,0
-DA:318,0
-DA:319,0
-DA:320,0
-DA:321,0
-DA:322,0
-DA:323,0
-DA:324,0
-DA:325,0
-DA:327,0
-DA:331,0
-DA:332,0
-DA:333,0
-DA:335,0
-DA:336,0
-DA:337,0
-DA:342,0
-LF:127
-LH:88
+LF:119
+LH:83
 end_of_record
 SF:crates/conjure_core/src/solver/adaptors/sat_common.rs
 FN:37,<conjure_core::solver::adaptors::sat_common::CNFModel>::from_conjure
@@ -3902,8 +3894,8 @@ FN:284,<conjure_core::solver::adaptors::sat_common::CNFModel as core::default::D
 FN:130,<conjure_core::solver::adaptors::sat_common::CNFModel>::add_expression
 FN:141,<conjure_core::solver::adaptors::sat_common::CNFModel>::as_expression
 FN:186,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_reference_index
-FN:154,<conjure_core::solver::adaptors::sat_common::CNFModel>::clause_to_expression
 FN:205,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_not
+FN:154,<conjure_core::solver::adaptors::sat_common::CNFModel>::clause_to_expression
 FN:130,<conjure_core::solver::adaptors::sat_common::CNFModel>::add_expression
 FN:90,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_name
 FN:249,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_and
@@ -3919,14 +3911,14 @@ FN:272,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_expression
 FN:315,<i32 as conjure_core::solver::adaptors::sat_common::HasVariable>::has_variable
 FN:218,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_or
 FN:272,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_expression
-FN:110,<conjure_core::solver::adaptors::sat_common::CNFModel>::has_variable::<i32>
+FN:85,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_index
 FN:154,<conjure_core::solver::adaptors::sat_common::CNFModel>::clause_to_expression
 FN:110,<conjure_core::solver::adaptors::sat_common::CNFModel>::has_variable::<i32>
 FN:186,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_reference_index
 FN:198,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_reference
 FN:29,<conjure_core::solver::adaptors::sat_common::CNFModel>::new
-FN:85,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_index
 FN:29,<conjure_core::solver::adaptors::sat_common::CNFModel>::new
+FN:110,<conjure_core::solver::adaptors::sat_common::CNFModel>::has_variable::<i32>
 FN:117,<conjure_core::solver::adaptors::sat_common::CNFModel>::add_clause
 FN:186,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_reference_index
 FN:321,<&conjure_core::ast::symbol_table::Name as conjure_core::solver::adaptors::sat_common::HasVariable>::has_variable
@@ -3968,8 +3960,8 @@ FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel as core::default::D
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::add_expression
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::as_expression
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_reference_index
-FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::clause_to_expression
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_not
+FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::clause_to_expression
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::add_expression
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_name
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_and
@@ -3985,14 +3977,14 @@ FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_expression
 FNDA:0,<i32 as conjure_core::solver::adaptors::sat_common::HasVariable>::has_variable
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_or
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_expression
-FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::has_variable::<i32>
+FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_index
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::clause_to_expression
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::has_variable::<i32>
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_reference_index
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::handle_reference
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::new
-FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_index
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::new
+FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::has_variable::<i32>
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::add_clause
 FNDA:0,<conjure_core::solver::adaptors::sat_common::CNFModel>::get_reference_index
 FNDA:0,<&conjure_core::ast::symbol_table::Name as conjure_core::solver::adaptors::sat_common::HasVariable>::has_variable
@@ -5435,24 +5427,24 @@ LF:46
 LH:0
 end_of_record
 SF:crates/conjure_core/src/solver/adaptors/kissat.rs
-FN:43,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve
-FN:52,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve_mut
-FN:69,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::get_family
-FN:61,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::load_model
-FN:43,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve
-FN:31,<conjure_core::solver::adaptors::kissat::Kissat as core::default::Default>::default
-FN:43,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve
-FN:69,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::get_family
-FN:61,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::load_model
-FN:69,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::get_family
-FN:52,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve_mut
-FN:23,<conjure_core::solver::adaptors::kissat::Kissat>::new
-FN:31,<conjure_core::solver::adaptors::kissat::Kissat as core::default::Default>::default
-FN:61,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::load_model
-FN:31,<conjure_core::solver::adaptors::kissat::Kissat as core::default::Default>::default
-FN:23,<conjure_core::solver::adaptors::kissat::Kissat>::new
-FN:23,<conjure_core::solver::adaptors::kissat::Kissat>::new
-FN:52,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve_mut
+FN:39,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve
+FN:47,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve_mut
+FN:60,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::get_family
+FN:55,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::load_model
+FN:39,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve
+FN:33,<conjure_core::solver::adaptors::kissat::Kissat as core::default::Default>::default
+FN:39,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve
+FN:60,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::get_family
+FN:55,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::load_model
+FN:60,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::get_family
+FN:47,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve_mut
+FN:24,<conjure_core::solver::adaptors::kissat::Kissat>::new
+FN:33,<conjure_core::solver::adaptors::kissat::Kissat as core::default::Default>::default
+FN:55,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::load_model
+FN:33,<conjure_core::solver::adaptors::kissat::Kissat as core::default::Default>::default
+FN:24,<conjure_core::solver::adaptors::kissat::Kissat>::new
+FN:24,<conjure_core::solver::adaptors::kissat::Kissat>::new
+FN:47,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve_mut
 FNDA:0,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve
 FNDA:0,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve_mut
 FNDA:0,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::get_family
@@ -5475,41 +5467,37 @@ FNF:18
 FNH:0
 BRF:0
 BRH:0
-DA:23,0
 DA:24,0
 DA:25,0
 DA:26,0
 DA:27,0
-DA:31,0
-DA:32,0
+DA:28,0
+DA:29,0
 DA:33,0
+DA:34,0
+DA:35,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
 DA:43,0
 DA:44,0
 DA:45,0
-DA:46,0
 DA:47,0
 DA:48,0
 DA:49,0
 DA:50,0
+DA:51,0
 DA:52,0
 DA:53,0
-DA:54,0
 DA:55,0
 DA:56,0
 DA:57,0
 DA:58,0
-DA:59,0
+DA:60,0
 DA:61,0
 DA:62,0
-DA:63,0
-DA:64,0
-DA:65,0
-DA:66,0
-DA:67,0
-DA:69,0
-DA:70,0
-DA:71,0
-LF:34
+LF:30
 LH:0
 end_of_record
 SF:solvers/kissat/src/lib.rs
@@ -6657,9 +6645,9 @@ DA:160,1
 DA:161,1
 DA:162,1
 DA:163,1
-DA:172,465
-DA:173,465
-DA:174,465
+DA:172,450
+DA:173,450
+DA:174,450
 DA:181,1
 DA:182,1
 DA:183,1
@@ -6668,12 +6656,12 @@ DA:185,1
 DA:186,1
 DA:187,1
 DA:188,1
-DA:193,255
-DA:194,255
-DA:195,255
-DA:196,615
-DA:197,255
-DA:198,255
+DA:193,240
+DA:194,240
+DA:195,240
+DA:196,555
+DA:197,240
+DA:198,240
 DA:206,1
 DA:207,1
 DA:208,1
@@ -7186,84 +7174,84 @@ LF:6
 LH:0
 end_of_record
 SF:crates/conjure_core/src/solver/adaptors/minion.rs
-FN:84,<conjure_core::solver::adaptors::minion::Minion as core::default::Default>::default
-FN:76,<conjure_core::solver::adaptors::minion::Minion>::new
-FN:40,conjure_core::solver::adaptors::minion::minion_rs_callback
-FN:218,conjure_core::solver::adaptors::minion::_parse_booldomain_var
-FN:300,conjure_core::solver::adaptors::minion::read_vars
-FN:333,conjure_core::solver::adaptors::minion::read_const
-FN:154,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::get_family
-FN:154,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::get_family
-FN:320,conjure_core::solver::adaptors::minion::_read_ref
-FN:154,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::get_family
-FN:309,conjure_core::solver::adaptors::minion::read_var
-FN:84,<conjure_core::solver::adaptors::minion::Minion as core::default::Default>::default
-FN:43,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}
-FN:254,conjure_core::solver::adaptors::minion::parse_expr
-FN:115,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#1}
-FN:333,conjure_core::solver::adaptors::minion::read_const
-FN:108,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}::{closure#0}
-FN:320,conjure_core::solver::adaptors::minion::_read_ref
-FN:134,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve_mut
-FN:218,conjure_core::solver::adaptors::minion::_parse_booldomain_var
-FN:159,conjure_core::solver::adaptors::minion::parse_vars
-FN:159,conjure_core::solver::adaptors::minion::parse_vars
-FN:43,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}::{closure#0}
-FN:254,conjure_core::solver::adaptors::minion::parse_expr
+FN:86,<conjure_core::solver::adaptors::minion::Minion as core::default::Default>::default
+FN:77,<conjure_core::solver::adaptors::minion::Minion>::new
+FN:41,conjure_core::solver::adaptors::minion::minion_rs_callback
+FN:215,conjure_core::solver::adaptors::minion::_parse_booldomain_var
+FN:297,conjure_core::solver::adaptors::minion::read_vars
+FN:330,conjure_core::solver::adaptors::minion::read_const
+FN:151,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::get_family
+FN:151,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::get_family
+FN:317,conjure_core::solver::adaptors::minion::_read_ref
+FN:151,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::get_family
+FN:306,conjure_core::solver::adaptors::minion::read_var
+FN:86,<conjure_core::solver::adaptors::minion::Minion as core::default::Default>::default
+FN:44,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}
+FN:251,conjure_core::solver::adaptors::minion::parse_expr
+FN:116,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#1}
+FN:330,conjure_core::solver::adaptors::minion::read_const
+FN:105,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}::{closure#0}
+FN:317,conjure_core::solver::adaptors::minion::_read_ref
+FN:135,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve_mut
+FN:215,conjure_core::solver::adaptors::minion::_parse_booldomain_var
+FN:156,conjure_core::solver::adaptors::minion::parse_vars
+FN:156,conjure_core::solver::adaptors::minion::parse_vars
+FN:44,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}::{closure#0}
+FN:251,conjure_core::solver::adaptors::minion::parse_expr
 FN:143,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::load_model
-FN:333,conjure_core::solver::adaptors::minion::read_const
-FN:134,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve_mut
-FN:76,<conjure_core::solver::adaptors::minion::Minion>::new
-FN:95,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve
-FN:43,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}::{closure#0}
-FN:309,conjure_core::solver::adaptors::minion::read_var
-FN:108,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}
-FN:40,conjure_core::solver::adaptors::minion::minion_rs_callback
-FN:184,conjure_core::solver::adaptors::minion::_parse_intdomain_var
-FN:230,conjure_core::solver::adaptors::minion::_try_add_var
-FN:76,<conjure_core::solver::adaptors::minion::Minion>::new
-FN:262,conjure_core::solver::adaptors::minion::read_expr
-FN:294,conjure_core::solver::adaptors::minion::read_expr::{closure#0}
-FN:95,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve
-FN:294,conjure_core::solver::adaptors::minion::read_expr::{closure#0}
-FN:230,conjure_core::solver::adaptors::minion::_try_add_var
+FN:330,conjure_core::solver::adaptors::minion::read_const
+FN:135,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve_mut
+FN:77,<conjure_core::solver::adaptors::minion::Minion>::new
+FN:93,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve
+FN:44,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}::{closure#0}
+FN:306,conjure_core::solver::adaptors::minion::read_var
+FN:105,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}
+FN:41,conjure_core::solver::adaptors::minion::minion_rs_callback
+FN:181,conjure_core::solver::adaptors::minion::_parse_intdomain_var
+FN:227,conjure_core::solver::adaptors::minion::_try_add_var
+FN:77,<conjure_core::solver::adaptors::minion::Minion>::new
+FN:259,conjure_core::solver::adaptors::minion::read_expr
+FN:291,conjure_core::solver::adaptors::minion::read_expr::{closure#0}
+FN:93,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve
+FN:291,conjure_core::solver::adaptors::minion::read_expr::{closure#0}
+FN:227,conjure_core::solver::adaptors::minion::_try_add_var
 FN:143,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::load_model
-FN:309,conjure_core::solver::adaptors::minion::read_var
-FN:95,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve
-FN:320,conjure_core::solver::adaptors::minion::_read_ref
-FN:43,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}::{closure#0}
-FN:184,conjure_core::solver::adaptors::minion::_parse_intdomain_var
-FN:294,conjure_core::solver::adaptors::minion::read_expr::{closure#0}
-FN:172,conjure_core::solver::adaptors::minion::parse_var
-FN:262,conjure_core::solver::adaptors::minion::read_expr
-FN:300,conjure_core::solver::adaptors::minion::read_vars
-FN:218,conjure_core::solver::adaptors::minion::_parse_booldomain_var
-FN:184,conjure_core::solver::adaptors::minion::_parse_intdomain_var
-FN:108,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}::{closure#0}
-FN:84,<conjure_core::solver::adaptors::minion::Minion as core::default::Default>::default
-FN:244,conjure_core::solver::adaptors::minion::parse_exprs
+FN:306,conjure_core::solver::adaptors::minion::read_var
+FN:93,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve
+FN:317,conjure_core::solver::adaptors::minion::_read_ref
+FN:44,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}::{closure#0}
+FN:181,conjure_core::solver::adaptors::minion::_parse_intdomain_var
+FN:291,conjure_core::solver::adaptors::minion::read_expr::{closure#0}
+FN:169,conjure_core::solver::adaptors::minion::parse_var
+FN:259,conjure_core::solver::adaptors::minion::read_expr
+FN:297,conjure_core::solver::adaptors::minion::read_vars
+FN:215,conjure_core::solver::adaptors::minion::_parse_booldomain_var
+FN:181,conjure_core::solver::adaptors::minion::_parse_intdomain_var
+FN:105,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}::{closure#0}
+FN:86,<conjure_core::solver::adaptors::minion::Minion as core::default::Default>::default
+FN:241,conjure_core::solver::adaptors::minion::parse_exprs
 FN:143,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::load_model
-FN:43,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}
-FN:134,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve_mut
-FN:115,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#1}
-FN:230,conjure_core::solver::adaptors::minion::_try_add_var
-FN:343,conjure_core::solver::adaptors::minion::_name_to_string
-FN:172,conjure_core::solver::adaptors::minion::parse_var
-FN:43,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}
-FN:300,conjure_core::solver::adaptors::minion::read_vars
-FN:115,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#1}
-FN:343,conjure_core::solver::adaptors::minion::_name_to_string
-FN:343,conjure_core::solver::adaptors::minion::_name_to_string
-FN:40,conjure_core::solver::adaptors::minion::minion_rs_callback
-FN:244,conjure_core::solver::adaptors::minion::parse_exprs
-FN:108,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}
-FN:159,conjure_core::solver::adaptors::minion::parse_vars
-FN:254,conjure_core::solver::adaptors::minion::parse_expr
-FN:108,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}
-FN:244,conjure_core::solver::adaptors::minion::parse_exprs
-FN:108,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}::{closure#0}
-FN:262,conjure_core::solver::adaptors::minion::read_expr
-FN:172,conjure_core::solver::adaptors::minion::parse_var
+FN:44,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}
+FN:135,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve_mut
+FN:116,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#1}
+FN:227,conjure_core::solver::adaptors::minion::_try_add_var
+FN:340,conjure_core::solver::adaptors::minion::_name_to_string
+FN:169,conjure_core::solver::adaptors::minion::parse_var
+FN:44,conjure_core::solver::adaptors::minion::minion_rs_callback::{closure#0}
+FN:297,conjure_core::solver::adaptors::minion::read_vars
+FN:116,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#1}
+FN:340,conjure_core::solver::adaptors::minion::_name_to_string
+FN:340,conjure_core::solver::adaptors::minion::_name_to_string
+FN:41,conjure_core::solver::adaptors::minion::minion_rs_callback
+FN:241,conjure_core::solver::adaptors::minion::parse_exprs
+FN:105,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}
+FN:156,conjure_core::solver::adaptors::minion::parse_vars
+FN:251,conjure_core::solver::adaptors::minion::parse_expr
+FN:105,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}
+FN:241,conjure_core::solver::adaptors::minion::parse_exprs
+FN:105,<conjure_core::solver::adaptors::minion::Minion as conjure_core::solver::SolverAdaptor>::solve::{closure#0}::{closure#0}
+FN:259,conjure_core::solver::adaptors::minion::read_expr
+FN:169,conjure_core::solver::adaptors::minion::parse_var
 FNDA:0,<conjure_core::solver::adaptors::minion::Minion as core::default::Default>::default
 FNDA:0,<conjure_core::solver::adaptors::minion::Minion>::new
 FNDA:0,conjure_core::solver::adaptors::minion::minion_rs_callback
@@ -7346,7 +7334,6 @@ FNF:78
 FNH:19
 BRF:0
 BRH:0
-DA:40,585
 DA:41,585
 DA:42,585
 DA:43,585
@@ -7354,30 +7341,34 @@ DA:44,585
 DA:45,585
 DA:46,585
 DA:47,585
-DA:48,1575
+DA:48,585
 DA:49,1575
-DA:50,0
-DA:51,1575
-DA:52,0
-DA:55,1575
+DA:50,1575
+DA:51,0
+DA:52,1575
+DA:53,0
 DA:56,1575
-DA:57,375
-DA:59,1200
-DA:62,1575
-DA:65,585
+DA:57,1575
+DA:58,375
+DA:60,1200
+DA:63,1575
 DA:66,585
-DA:67,0
-DA:68,585
-DA:70,585
+DA:67,585
+DA:68,0
+DA:69,585
 DA:71,585
-DA:76,180
+DA:72,585
 DA:77,180
 DA:78,180
 DA:79,180
 DA:80,180
-DA:84,0
-DA:85,0
+DA:81,180
+DA:82,180
 DA:86,0
+DA:87,0
+DA:88,0
+DA:93,180
+DA:94,180
 DA:95,180
 DA:96,180
 DA:97,180
@@ -7399,15 +7390,15 @@ DA:112,180
 DA:113,180
 DA:114,180
 DA:115,180
-DA:116,0
+DA:116,180
 DA:117,0
 DA:118,0
 DA:119,0
-DA:120,180
-DA:122,180
+DA:120,0
+DA:121,180
 DA:123,180
-DA:124,0
-DA:125,180
+DA:124,180
+DA:125,0
 DA:126,180
 DA:127,180
 DA:128,180
@@ -7415,7 +7406,7 @@ DA:129,180
 DA:130,180
 DA:131,180
 DA:132,180
-DA:134,0
+DA:133,180
 DA:135,0
 DA:136,0
 DA:137,0
@@ -7430,59 +7421,59 @@ DA:146,180
 DA:147,180
 DA:148,180
 DA:149,180
-DA:150,180
-DA:151,180
-DA:152,180
-DA:154,0
-DA:155,0
-DA:156,0
+DA:151,0
+DA:152,0
+DA:153,0
+DA:156,180
+DA:157,180
+DA:158,180
 DA:159,180
-DA:160,180
-DA:161,180
-DA:162,180
-DA:166,465
-DA:167,465
-DA:169,180
-DA:170,180
+DA:163,465
+DA:164,465
+DA:166,180
+DA:167,180
+DA:169,465
+DA:170,465
+DA:171,465
 DA:172,465
 DA:173,465
 DA:174,465
-DA:175,465
-DA:176,465
-DA:177,465
-DA:178,360
-DA:179,105
-DA:180,0
-DA:182,465
+DA:175,360
+DA:176,105
+DA:177,0
+DA:179,465
+DA:181,360
+DA:182,360
+DA:183,360
 DA:184,360
 DA:185,360
 DA:186,360
 DA:187,360
 DA:188,360
-DA:189,360
-DA:190,360
-DA:191,360
+DA:189,0
+DA:190,0
+DA:191,0
 DA:192,0
 DA:193,0
-DA:194,0
-DA:195,0
-DA:196,0
+DA:194,360
+DA:196,360
 DA:197,360
+DA:198,360
 DA:199,360
-DA:200,360
 DA:201,360
 DA:202,360
-DA:204,360
-DA:205,360
+DA:203,0
+DA:205,0
 DA:206,0
-DA:208,0
-DA:209,0
+DA:208,360
+DA:209,360
+DA:210,360
 DA:211,360
 DA:212,360
 DA:213,360
-DA:214,360
-DA:215,360
-DA:216,360
+DA:215,105
+DA:216,105
+DA:217,105
 DA:218,105
 DA:219,105
 DA:220,105
@@ -7491,9 +7482,9 @@ DA:222,105
 DA:223,105
 DA:224,105
 DA:225,105
-DA:226,105
-DA:227,105
-DA:228,105
+DA:227,465
+DA:228,465
+DA:229,465
 DA:230,465
 DA:231,465
 DA:232,465
@@ -7504,89 +7495,86 @@ DA:236,465
 DA:237,465
 DA:238,465
 DA:239,465
-DA:240,465
-DA:241,465
-DA:242,465
+DA:241,180
+DA:242,180
+DA:243,180
 DA:244,180
-DA:245,180
-DA:246,180
-DA:247,180
-DA:248,675
-DA:249,675
-DA:251,180
-DA:252,180
+DA:245,675
+DA:246,675
+DA:248,180
+DA:249,180
+DA:251,675
+DA:252,675
+DA:253,675
 DA:254,675
 DA:255,675
 DA:256,675
 DA:257,675
-DA:258,675
-DA:259,675
-DA:260,675
-DA:262,1275
-DA:263,1275
-DA:264,45
-DA:265,45
-DA:266,45
-DA:268,30
-DA:269,30
-DA:270,30
+DA:259,1275
+DA:260,1275
+DA:261,45
+DA:262,45
+DA:263,45
+DA:265,30
+DA:266,30
+DA:267,30
+DA:269,870
+DA:270,870
+DA:271,870
 DA:272,870
-DA:273,870
-DA:274,870
-DA:275,870
-DA:277,0
-DA:278,0
-DA:279,0
-DA:288,30
-DA:289,30
-DA:291,300
+DA:274,0
+DA:275,0
+DA:276,0
+DA:285,30
+DA:286,30
+DA:288,300
+DA:289,300
+DA:290,300
+DA:291,600
 DA:292,300
-DA:293,300
-DA:294,600
-DA:295,300
-DA:297,0
-DA:299,1275
-DA:300,105
-DA:301,105
-DA:302,390
-DA:303,285
-DA:304,285
-DA:306,105
-DA:307,105
-DA:309,2100
-DA:310,2100
-DA:311,2100
-DA:312,1950
-DA:313,150
-DA:314,150
-DA:315,0
+DA:294,0
+DA:296,1275
+DA:297,105
+DA:298,105
+DA:299,390
+DA:300,285
+DA:301,285
+DA:303,105
+DA:304,105
+DA:306,2100
+DA:307,2100
+DA:308,2100
+DA:309,1950
+DA:310,150
+DA:311,150
+DA:312,0
+DA:315,2100
+DA:317,2100
 DA:318,2100
-DA:320,2100
-DA:321,2100
-DA:322,1950
+DA:319,1950
+DA:320,150
+DA:321,150
+DA:322,150
 DA:323,150
 DA:324,150
-DA:325,150
-DA:326,150
-DA:327,150
-DA:329,1950
-DA:330,1950
-DA:331,2100
-DA:333,1020
-DA:334,1020
-DA:335,1020
+DA:326,1950
+DA:327,1950
+DA:328,2100
+DA:330,1020
+DA:331,1020
+DA:332,1020
+DA:333,0
+DA:334,0
+DA:335,0
 DA:336,0
-DA:337,0
-DA:338,0
-DA:339,0
-DA:341,1020
-DA:343,2415
-DA:344,2415
-DA:345,1515
-DA:346,900
-DA:348,2415
+DA:338,1020
+DA:340,2415
+DA:341,2415
+DA:342,1515
+DA:343,900
+DA:345,2415
 LF:239
-LH:199
+LH:200
 end_of_record
 SF:crates/conjure_core/src/rule_engine/rule.rs
 FN:62,<conjure_core::rule_engine::rule::Reduction>::with_top
@@ -7720,12 +7708,12 @@ DA:121,770670
 DA:125,0
 DA:126,0
 DA:127,0
-DA:131,39120
-DA:132,39120
-DA:133,39120
-DA:139,61125
-DA:140,61125
-DA:141,61125
+DA:131,39870
+DA:132,39870
+DA:133,39870
+DA:139,61935
+DA:140,61935
+DA:141,61935
 LF:67
 LH:34
 end_of_record
@@ -8026,53 +8014,53 @@ DA:35,785
 DA:36,785
 DA:37,785
 DA:38,785
-DA:39,29564
-DA:40,29564
-DA:41,13211
-DA:42,13294
-DA:43,13294
-DA:44,13294
-DA:45,13294
+DA:39,29582
+DA:40,29582
+DA:41,13242
+DA:42,13298
+DA:43,13298
+DA:44,13298
+DA:45,13298
 DA:46,785
-DA:47,28779
+DA:47,28797
 DA:48,785
-DA:49,29564
+DA:49,29582
 DA:50,785
 DA:51,785
 DA:52,785
-DA:53,9756
-DA:54,9746
-DA:55,9746
-DA:56,9746
-DA:57,9746
-DA:58,9746
-DA:59,4306
-DA:60,4453
-DA:61,4443
-DA:62,4443
+DA:53,9954
+DA:54,9944
+DA:55,9944
+DA:56,9944
+DA:57,9944
+DA:58,9944
+DA:59,4517
+DA:60,4455
+DA:61,4445
+DA:62,4445
 DA:63,785
-DA:64,1017
-DA:65,9488
-DA:66,9488
-DA:67,9488
-DA:68,9488
-DA:69,9488
-DA:70,9488
-DA:71,1007
+DA:64,1002
+DA:65,9686
+DA:66,9686
+DA:67,9686
+DA:68,9686
+DA:69,9686
+DA:70,9686
+DA:71,992
 DA:72,785
 DA:73,785
-DA:74,9756
+DA:74,9954
 DA:75,785
 DA:76,785
 DA:77,785
 DA:78,785
 DA:79,785
-DA:82,9883
-DA:83,9883
-DA:84,4451
-DA:85,4417
-DA:86,9625
-DA:88,9883
+DA:82,9793
+DA:83,9793
+DA:84,4361
+DA:85,4418
+DA:86,9535
+DA:88,9793
 DA:93,2
 DA:94,2
 DA:95,2
@@ -8085,7 +8073,7 @@ DA:101,2
 DA:102,5160
 DA:103,2
 DA:104,2
-DA:123,4417
+DA:123,4418
 DA:133,1
 DA:134,1
 DA:135,1
@@ -10712,16 +10700,16 @@ DA:208,840
 DA:209,840
 DA:210,840
 DA:211,840
-DA:212,1545
+DA:212,1455
 DA:213,840
 DA:214,840
 DA:216,120
 DA:217,840
-DA:218,1545
+DA:218,1455
 DA:219,180
 DA:221,150
 DA:222,0
-DA:224,510
+DA:224,375
 DA:225,150
 DA:227,0
 DA:229,510
