@@ -199,7 +199,7 @@
 ///
 </span><span class="attr">#[allow(clippy::mutable_key_type)] </span><span class="comment">// RuleSet is 'static so it's fine
 </span><span class="kw">pub fn </span>rule_sets_by_names&lt;<span class="lifetime">'a</span>&gt;(
-    rule_set_names: <span class="kw-2">&amp;</span>Vec&lt;<span class="kw-2">&amp;</span>str&gt;,
+    rule_set_names: <span class="kw-2">&amp;</span>Vec&lt;String&gt;,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;HashSet&lt;<span class="kw-2">&amp;</span><span class="lifetime">'a </span>RuleSet&lt;<span class="lifetime">'static</span>&gt;&gt;, ResolveRulesError&gt; {
     <span class="kw">let </span><span class="kw-2">mut </span>rs_set: HashSet&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span>RuleSet&lt;<span class="lifetime">'static</span>&gt;&gt; = HashSet::new();
 
@@ -225,7 +225,7 @@
 </span><span class="attr">#[allow(clippy::mutable_key_type)] </span><span class="comment">// RuleSet is 'static so it's fine
 </span><span class="kw">pub fn </span>resolve_rule_sets&lt;<span class="lifetime">'a</span>&gt;(
     target_solver: SolverFamily,
-    extra_rs_names: <span class="kw-2">&amp;</span>Vec&lt;<span class="kw-2">&amp;</span>str&gt;,
+    extra_rs_names: <span class="kw-2">&amp;</span>Vec&lt;String&gt;,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;<span class="kw-2">&amp;</span><span class="lifetime">'a </span>RuleSet&lt;<span class="lifetime">'static</span>&gt;&gt;, ResolveRulesError&gt; {
     <span class="kw">let </span><span class="kw-2">mut </span>ans = HashSet::new();
 
