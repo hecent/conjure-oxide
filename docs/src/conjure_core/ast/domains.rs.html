@@ -80,10 +80,34 @@
 <a href="#80" id="80">80</a>
 <a href="#81" id="81">81</a>
 <a href="#82" id="82">82</a>
+<a href="#83" id="83">83</a>
+<a href="#84" id="84">84</a>
+<a href="#85" id="85">85</a>
+<a href="#86" id="86">86</a>
+<a href="#87" id="87">87</a>
+<a href="#88" id="88">88</a>
+<a href="#89" id="89">89</a>
+<a href="#90" id="90">90</a>
+<a href="#91" id="91">91</a>
+<a href="#92" id="92">92</a>
+<a href="#93" id="93">93</a>
+<a href="#94" id="94">94</a>
+<a href="#95" id="95">95</a>
+<a href="#96" id="96">96</a>
+<a href="#97" id="97">97</a>
+<a href="#98" id="98">98</a>
+<a href="#99" id="99">99</a>
+<a href="#100" id="100">100</a>
+<a href="#101" id="101">101</a>
+<a href="#102" id="102">102</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span>serde::{Deserialize, Serialize};
+<span class="comment">// use std::iter::Ste
 
-<span class="attr">#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-</span><span class="kw">pub enum </span>Range&lt;A&gt; {
+</span><span class="attr">#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+</span><span class="kw">pub enum </span>Range&lt;A&gt;
+<span class="kw">where
+    </span>A: Ord,
+{
     Single(A),
     Bounded(A, A),
 }
@@ -95,70 +119,86 @@
 }
 
 <span class="kw">impl </span>Domain {
-    <span class="doccomment">/// Returns the minimum i32 value a variable of the domain can take, if it is an i32 domain.
-    </span><span class="kw">pub fn </span>min_i32(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;i32&gt; {
+    <span class="doccomment">/// Return a list of all possible i32 values in the domain if it is an IntDomain.
+    </span><span class="kw">pub fn </span>values_i32(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Vec&lt;i32&gt;&gt; {
         <span class="kw">match </span><span class="self">self </span>{
-            Domain::BoolDomain =&gt; <span class="prelude-val">Some</span>(<span class="number">0</span>),
-            Domain::IntDomain(ranges) =&gt; {
-                <span class="kw">if </span>ranges.is_empty() {
-                    <span class="kw">return </span><span class="prelude-val">None</span>;
-                }
-                <span class="kw">let </span><span class="kw-2">mut </span>min = i32::MAX;
-                <span class="kw">for </span>r <span class="kw">in </span>ranges {
-                    <span class="kw">match </span>r {
-                        Range::Single(i) =&gt; min = min.min(<span class="kw-2">*</span>i),
-                        Range::Bounded(i, <span class="kw">_</span>) =&gt; min = min.min(<span class="kw-2">*</span>i),
-                    }
-                }
-                <span class="prelude-val">Some</span>(min)
-            }
+            Domain::IntDomain(ranges) =&gt; <span class="prelude-val">Some</span>(
+                ranges
+                    .iter()
+                    .flat_map(|r| <span class="kw">match </span>r {
+                        Range::Single(i) =&gt; <span class="macro">vec!</span>[<span class="kw-2">*</span>i],
+                        Range::Bounded(i, j) =&gt; (<span class="kw-2">*</span>i..=<span class="kw-2">*</span>j).collect(),
+                    })
+                    .collect(),
+            ),
+            <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
         }
     }
 
-    <span class="doccomment">/// Returns the maximum i32 value a variable of the domain can take, if it is an i32 domain.
-    </span><span class="kw">pub fn </span>max_i32(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;i32&gt; {
-        <span class="kw">match </span><span class="self">self </span>{
-            Domain::BoolDomain =&gt; <span class="prelude-val">Some</span>(<span class="number">1</span>),
-            Domain::IntDomain(ranges) =&gt; {
-                <span class="kw">if </span>ranges.is_empty() {
-                    <span class="kw">return </span><span class="prelude-val">None</span>;
-                }
-                <span class="kw">let </span><span class="kw-2">mut </span>max = i32::MIN;
-                <span class="kw">for </span>r <span class="kw">in </span>ranges {
-                    <span class="kw">match </span>r {
-                        Range::Single(i) =&gt; max = max.max(<span class="kw-2">*</span>i),
-                        Range::Bounded(<span class="kw">_</span>, i) =&gt; max = max.max(<span class="kw-2">*</span>i),
-                    }
-                }
-                <span class="prelude-val">Some</span>(max)
+    <span class="doccomment">/// Return an unoptimised domain that is the result of applying a binary i32 operation to two domains.
+    ///
+    /// The given operator may return None if the operation is not defined for its arguments.
+    /// Undefined values will not be included in the resulting domain.
+    ///
+    /// Returns None if the domains are not valid for i32 operations.
+    </span><span class="kw">pub fn </span>apply_i32(<span class="kw-2">&amp;</span><span class="self">self</span>, op: <span class="kw">fn</span>(i32, i32) -&gt; <span class="prelude-ty">Option</span>&lt;i32&gt;, other: <span class="kw-2">&amp;</span>Domain) -&gt; <span class="prelude-ty">Option</span>&lt;Domain&gt; {
+        <span class="kw">if let </span>(<span class="prelude-val">Some</span>(vs1), <span class="prelude-val">Some</span>(vs2)) = (<span class="self">self</span>.values_i32(), other.values_i32()) {
+            <span class="comment">// TODO: (flm8) Optimise to use smarter, less brute-force methods
+            </span><span class="kw">let </span><span class="kw-2">mut </span>new_ranges = <span class="macro">vec!</span>[];
+            <span class="kw">for </span>(v1, v2) <span class="kw">in </span><span class="macro">itertools::iproduct!</span>(vs1, vs2) {
+                op(v1, v2).map(|v| new_ranges.push(Range::Single(v)));
             }
+            <span class="kw">return </span><span class="prelude-val">Some</span>(Domain::IntDomain(new_ranges));
+        }
+        <span class="prelude-val">None
+    </span>}
+}
+
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_negative_product() {
+        <span class="kw">let </span>d1 = Domain::IntDomain(<span class="macro">vec!</span>[Range::Bounded(-<span class="number">2</span>, <span class="number">1</span>)]);
+        <span class="kw">let </span>d2 = Domain::IntDomain(<span class="macro">vec!</span>[Range::Bounded(-<span class="number">2</span>, <span class="number">1</span>)]);
+        <span class="kw">let </span>res = d1.apply_i32(|a, b| <span class="prelude-val">Some</span>(a * b), <span class="kw-2">&amp;</span>d2).unwrap();
+
+        <span class="kw">if let </span>Domain::IntDomain(ranges) = res {
+            <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">4</span>)));
+            <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">3</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">2</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">1</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">0</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">1</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">2</span>)));
+            <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">3</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">4</span>)));
+        } <span class="kw">else </span>{
+            <span class="macro">panic!</span>();
         }
     }
 
-    <span class="doccomment">/// Returns the minimum and maximum integer values a variable of the domain can take, if it is an integer domain.
-    </span><span class="kw">pub fn </span>min_max_i32(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;(i32, i32)&gt; {
-        <span class="kw">match </span><span class="self">self </span>{
-            Domain::BoolDomain =&gt; <span class="prelude-val">Some</span>((<span class="number">0</span>, <span class="number">1</span>)),
-            Domain::IntDomain(ranges) =&gt; {
-                <span class="kw">if </span>ranges.is_empty() {
-                    <span class="kw">return </span><span class="prelude-val">None</span>;
-                }
-                <span class="kw">let </span><span class="kw-2">mut </span>min = i32::MAX;
-                <span class="kw">let </span><span class="kw-2">mut </span>max = i32::MIN;
-                <span class="kw">for </span>r <span class="kw">in </span>ranges {
-                    <span class="kw">match </span>r {
-                        Range::Single(i) =&gt; {
-                            min = min.min(<span class="kw-2">*</span>i);
-                            max = max.max(<span class="kw-2">*</span>i);
-                        }
-                        Range::Bounded(i, j) =&gt; {
-                            min = min.min(<span class="kw-2">*</span>i);
-                            max = max.max(<span class="kw-2">*</span>j);
-                        }
-                    }
-                }
-                <span class="prelude-val">Some</span>((min, max))
-            }
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_negative_div() {
+        <span class="kw">let </span>d1 = Domain::IntDomain(<span class="macro">vec!</span>[Range::Bounded(-<span class="number">2</span>, <span class="number">1</span>)]);
+        <span class="kw">let </span>d2 = Domain::IntDomain(<span class="macro">vec!</span>[Range::Bounded(-<span class="number">2</span>, <span class="number">1</span>)]);
+        <span class="kw">let </span>res = d1
+            .apply_i32(|a, b| <span class="kw">if </span>b != <span class="number">0 </span>{ <span class="prelude-val">Some</span>(a / b) } <span class="kw">else </span>{ <span class="prelude-val">None </span>}, <span class="kw-2">&amp;</span>d2)
+            .unwrap();
+
+        <span class="kw">if let </span>Domain::IntDomain(ranges) = res {
+            <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">4</span>)));
+            <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">3</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">2</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">1</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">0</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">1</span>)));
+            <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">2</span>)));
+            <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">3</span>)));
+            <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">4</span>)));
+        } <span class="kw">else </span>{
+            <span class="macro">panic!</span>();
         }
     }
 }

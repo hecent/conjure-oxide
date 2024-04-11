@@ -554,9 +554,6 @@
 <a href="#554" id="554">554</a>
 <a href="#555" id="555">555</a>
 <a href="#556" id="556">556</a>
-<a href="#557" id="557">557</a>
-<a href="#558" id="558">558</a>
-<a href="#559" id="559">559</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{
     Constant <span class="kw">as </span>Const, DecisionVariable, Domain, Expression <span class="kw">as </span>Expr, Range, SymbolTable,
 };
@@ -987,13 +984,10 @@
             new_top.push(Expr::Or(Metadata::new(), disjunction));
 
             <span class="kw">let </span><span class="kw-2">mut </span>new_vars = SymbolTable::new();
-            <span class="kw">let </span>bound = expr
-                .bounds(<span class="kw-2">&amp;</span>mdl.variables)
-                .ok_or(ApplicationError::BoundError)<span class="question-mark">?</span>;
-            new_vars.insert(
-                new_name.clone(),
-                DecisionVariable::new(Domain::IntDomain(<span class="macro">vec!</span>[Range::Bounded(bound.<span class="number">0</span>, bound.<span class="number">1</span>)])),
-            );
+            <span class="kw">let </span>domain = expr
+                .domain_of(<span class="kw-2">&amp;</span>mdl.variables)
+                .ok_or(ApplicationError::DomainError)<span class="question-mark">?</span>;
+            new_vars.insert(new_name.clone(), DecisionVariable::new(domain));
 
             <span class="prelude-val">Ok</span>(Reduction::new(
                 Expr::Reference(Metadata::new(), new_name),
