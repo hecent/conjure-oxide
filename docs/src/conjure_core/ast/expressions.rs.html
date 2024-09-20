@@ -514,12 +514,14 @@
 <a href="#513" id="513">513</a>
 <a href="#514" id="514">514</a>
 <a href="#515" id="515">515</a>
-<a href="#516" id="516">516</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
+<a href="#516" id="516">516</a>
+<a href="#517" id="517">517</a>
+<a href="#518" id="518">518</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
 
-<span class="kw">use </span>derive_is_enum_variant::is_enum_variant;
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 
 <span class="kw">use </span>enum_compatability_macro::document_compatibility;
+<span class="kw">use </span>uniplate::Uniplate;
 
 <span class="kw">use </span><span class="kw">crate</span>::ast::constants::Constant;
 <span class="kw">use </span><span class="kw">crate</span>::ast::symbol_table::{Name, SymbolTable};
@@ -529,7 +531,9 @@
 <span class="kw">use super</span>::{Domain, Range};
 
 <span class="attr">#[document_compatibility]
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, is_enum_variant)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, Uniplate)]
+#[uniplate(walk_into=[]</span>)]
+<span class="attr">#[biplate(to=Constant)]
 #[non_exhaustive]
 </span><span class="kw">pub enum </span>Expression {
     <span class="doccomment">/**

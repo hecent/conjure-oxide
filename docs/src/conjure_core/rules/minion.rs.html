@@ -371,7 +371,23 @@
 <a href="#370" id="370">370</a>
 <a href="#371" id="371">371</a>
 <a href="#372" id="372">372</a>
-<a href="#373" id="373">373</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
+<a href="#373" id="373">373</a>
+<a href="#374" id="374">374</a>
+<a href="#375" id="375">375</a>
+<a href="#376" id="376">376</a>
+<a href="#377" id="377">377</a>
+<a href="#378" id="378">378</a>
+<a href="#379" id="379">379</a>
+<a href="#380" id="380">380</a>
+<a href="#381" id="381">381</a>
+<a href="#382" id="382">382</a>
+<a href="#383" id="383">383</a>
+<a href="#384" id="384">384</a>
+<a href="#385" id="385">385</a>
+<a href="#386" id="386">386</a>
+<a href="#387" id="387">387</a>
+<a href="#388" id="388">388</a>
+<a href="#389" id="389">389</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
@@ -635,38 +651,47 @@
 */
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">101</span>))]
 </span><span class="kw">fn </span>flatten_safediv(expr: <span class="kw-2">&amp;</span>Expr, mdl: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">if </span>expr.is_eq() || expr.is_leq() || expr.is_geq() || expr.is_neq() {
-        <span class="kw">let </span><span class="kw-2">mut </span>sub = expr.children();
-
-        <span class="kw">let </span><span class="kw-2">mut </span>new_vars = SymbolTable::new();
-        <span class="kw">let </span><span class="kw-2">mut </span>new_top = <span class="macro">vec!</span>[];
-
-        <span class="comment">// replace every safe div child with a reference to a new variable
-        </span><span class="kw">for </span>c <span class="kw">in </span>sub.iter_mut() {
-            <span class="kw">if let </span>Expr::SafeDiv(<span class="kw">_</span>, a, b) = c.clone() {
-                <span class="kw">let </span>new_name = mdl.gensym();
-                <span class="kw">let </span>domain = c
-                    .domain_of(<span class="kw-2">&amp;</span>mdl.variables)
-                    .ok_or(ApplicationError::DomainError)<span class="question-mark">?</span>;
-                new_vars.insert(new_name.clone(), DecisionVariable::new(domain));
-
-                new_top.push(Expr::DivEq(
-                    Metadata::new(),
-                    a.clone(),
-                    b.clone(),
-                    Box::new(Expr::Reference(Metadata::new(), new_name.clone())),
-                ));
-
-                <span class="kw-2">*</span>c = Expr::Reference(Metadata::new(), new_name.clone());
-            }
+    <span class="kw">use </span>Expr::<span class="kw-2">*</span>;
+    <span class="kw">match </span>expr {
+        Eq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; {}
+        Leq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; {}
+        Geq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; {}
+        Neq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; {}
+        <span class="kw">_ </span>=&gt; {
+            <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
         }
-        <span class="kw">if </span>!new_top.is_empty() {
-            <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::new(
-                expr.with_children(sub),
-                Expr::And(Metadata::new(), new_top),
-                new_vars,
+    }
+
+    <span class="kw">let </span><span class="kw-2">mut </span>sub = expr.children();
+
+    <span class="kw">let </span><span class="kw-2">mut </span>new_vars = SymbolTable::new();
+    <span class="kw">let </span><span class="kw-2">mut </span>new_top = <span class="macro">vec!</span>[];
+
+    <span class="comment">// replace every safe div child with a reference to a new variable
+    </span><span class="kw">for </span>c <span class="kw">in </span>sub.iter_mut() {
+        <span class="kw">if let </span>Expr::SafeDiv(<span class="kw">_</span>, a, b) = c.clone() {
+            <span class="kw">let </span>new_name = mdl.gensym();
+            <span class="kw">let </span>domain = c
+                .domain_of(<span class="kw-2">&amp;</span>mdl.variables)
+                .ok_or(ApplicationError::DomainError)<span class="question-mark">?</span>;
+            new_vars.insert(new_name.clone(), DecisionVariable::new(domain));
+
+            new_top.push(Expr::DivEq(
+                Metadata::new(),
+                a.clone(),
+                b.clone(),
+                Box::new(Expr::Reference(Metadata::new(), new_name.clone())),
             ));
+
+            <span class="kw-2">*</span>c = Expr::Reference(Metadata::new(), new_name.clone());
         }
+    }
+    <span class="kw">if </span>!new_top.is_empty() {
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::new(
+            expr.with_children(sub),
+            Expr::And(Metadata::new(), new_top),
+            new_vars,
+        ));
     }
     <span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable)
 }
@@ -676,9 +701,13 @@
     <span class="kw">match </span>expr {
         Expr::Eq(metadata, a, b) =&gt; {
             <span class="kw">if let </span>Expr::SafeDiv(<span class="kw">_</span>, x, y) = a.as_ref() {
-                <span class="kw">if </span>!(b.is_reference() || b.is_constant()) {
-                    <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
-                }
+                <span class="kw">match </span><span class="kw-2">**</span>b {
+                    Expr::Reference(<span class="kw">_</span>, <span class="kw">_</span>) | Expr::Constant(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; {}
+                    <span class="kw">_ </span>=&gt; {
+                        <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
+                    }
+                };
+
                 <span class="prelude-val">Ok</span>(Reduction::pure(Expr::DivEq(
                     metadata.clone_dirty(),
                     x.clone(),
@@ -686,9 +715,12 @@
                     b.clone(),
                 )))
             } <span class="kw">else if let </span>Expr::SafeDiv(<span class="kw">_</span>, x, y) = b.as_ref() {
-                <span class="kw">if </span>!(a.is_reference() || a.is_constant()) {
-                    <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
-                }
+                <span class="kw">match </span><span class="kw-2">**</span>a {
+                    Expr::Reference(<span class="kw">_</span>, <span class="kw">_</span>) | Expr::Constant(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; {}
+                    <span class="kw">_ </span>=&gt; {
+                        <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
+                    }
+                };
                 <span class="prelude-val">Ok</span>(Reduction::pure(Expr::DivEq(
                     metadata.clone_dirty(),
                     x.clone(),

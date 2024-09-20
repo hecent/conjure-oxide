@@ -212,7 +212,7 @@
     <span class="comment">// Apply side-effects (e.g. symbol table updates
     </span><span class="kw">pub fn </span>apply(<span class="self">self</span>, model: <span class="kw-2">&amp;mut </span>Model) {
         model.variables.extend(<span class="self">self</span>.symbols); <span class="comment">// Add new assignments to the symbol table
-        </span><span class="kw">if </span><span class="self">self</span>.new_top.is_nothing() {
+        </span><span class="kw">if let </span>Expression::Nothing = <span class="self">self</span>.new_top {
             model.constraints = <span class="self">self</span>.new_expression.clone();
         } <span class="kw">else </span>{
             model.constraints = <span class="kw">match </span><span class="self">self</span>.new_expression {

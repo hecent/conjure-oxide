@@ -169,7 +169,7 @@
 
 <span class="attr">#[register_rule((<span class="string">"Constant"</span>, <span class="number">255</span>))]
 </span><span class="kw">fn </span>apply_eval_constant(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">if </span>expr.is_constant() {
+    <span class="kw">if let </span>Expr::Constant(<span class="kw">_</span>, <span class="kw">_</span>) = expr {
         <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
     }
     eval_constant(expr)
