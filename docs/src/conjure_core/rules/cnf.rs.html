@@ -6,20 +6,12 @@
 <a href="#5" id="5">5</a>
 <a href="#6" id="6">6</a>
 <a href="#7" id="7">7</a>
-<a href="#8" id="8">8</a>
-<a href="#9" id="9">9</a>
-<a href="#10" id="10">10</a>
-<a href="#11" id="11">11</a>
-<a href="#12" id="12">12</a></pre></div><pre class="rust"><code><span class="comment">/***********************************************************************************/
+<a href="#8" id="8">8</a></pre></div><pre class="rust"><code><span class="comment">/***********************************************************************************/
 /*        This file contains rules for converting logic expressions to CNF         */
 /***********************************************************************************/
 
-</span><span class="kw">use </span>conjure_core::ast::Expression <span class="kw">as </span>Expr;
-<span class="kw">use </span>conjure_core::rule_engine::{
-    register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
-};
+</span><span class="kw">use </span>conjure_core::rule_engine::register_rule_set;
 <span class="kw">use </span>conjure_core::solver::SolverFamily;
-<span class="kw">use </span>conjure_core::Model;
 
 <span class="macro">register_rule_set!</span>(<span class="string">"CNF"</span>, <span class="number">100</span>, (<span class="string">"Base"</span>), (SolverFamily::SAT));
 </code></pre></div></section></main></body></html>

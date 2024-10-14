@@ -520,13 +520,25 @@
 <a href="#519" id="519">519</a>
 <a href="#520" id="520">520</a>
 <a href="#521" id="521">521</a>
-<a href="#522" id="522">522</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
+<a href="#522" id="522">522</a>
+<a href="#523" id="523">523</a>
+<a href="#524" id="524">524</a>
+<a href="#525" id="525">525</a>
+<a href="#526" id="526">526</a>
+<a href="#527" id="527">527</a>
+<a href="#528" id="528">528</a>
+<a href="#529" id="529">529</a>
+<a href="#530" id="530">530</a>
+<a href="#531" id="531">531</a>
+<a href="#532" id="532">532</a>
+<a href="#533" id="533">533</a>
+<a href="#534" id="534">534</a>
+<a href="#535" id="535">535</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
 
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 
 <span class="kw">use </span>enum_compatability_macro::document_compatibility;
 <span class="kw">use </span>uniplate::derive::Uniplate;
-<span class="kw">use </span>uniplate::{Biplate, Uniplate};
 
 <span class="kw">use </span><span class="kw">crate</span>::ast::constants::Constant;
 <span class="kw">use </span><span class="kw">crate</span>::ast::symbol_table::{Name, SymbolTable};
@@ -571,6 +583,9 @@
     // Div(Metadata, Box&lt;Expression&gt;, Box&lt;Expression&gt;),
     </span><span class="attr">#[compatible(JsonInput)]
     </span>Min(Metadata, Vec&lt;Expression&gt;),
+
+    <span class="attr">#[compatible(JsonInput)]
+    </span>Max(Metadata, Vec&lt;Expression&gt;),
 
     <span class="attr">#[compatible(JsonInput, SAT)]
     </span>Not(Metadata, Box&lt;Expression&gt;),
@@ -683,6 +698,9 @@
             Expression::Min(<span class="kw">_</span>, exprs) =&gt; {
                 expr_vec_to_domain_i32(exprs, |x, y| <span class="prelude-val">Some</span>(<span class="kw">if </span>x &lt; y { x } <span class="kw">else </span>{ y }), vars)
             }
+            Expression::Max(<span class="kw">_</span>, exprs) =&gt; {
+                expr_vec_to_domain_i32(exprs, |x, y| <span class="prelude-val">Some</span>(<span class="kw">if </span>x &gt; y { x } <span class="kw">else </span>{ y }), vars)
+            }
             Expression::UnsafeDiv(<span class="kw">_</span>, a, b) | Expression::SafeDiv(<span class="kw">_</span>, a, b) =&gt; {
                 a.domain_of(vars)<span class="question-mark">?</span>.apply_i32(
                     |x, y| <span class="kw">if </span>y != <span class="number">0 </span>{ <span class="prelude-val">Some</span>(x / y) } <span class="kw">else </span>{ <span class="prelude-val">None </span>},
@@ -720,6 +738,7 @@
             Expression::Reference(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>,
             Expression::Sum(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Int),
             Expression::Min(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Int),
+            Expression::Max(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Int),
             Expression::Not(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::Or(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::And(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
@@ -749,6 +768,7 @@
             Expression::Reference(metadata, <span class="kw">_</span>) =&gt; metadata.clean,
             Expression::Sum(metadata, exprs) =&gt; metadata.clean,
             Expression::Min(metadata, exprs) =&gt; metadata.clean,
+            Expression::Max(metadata, exprs) =&gt; metadata.clean,
             Expression::Not(metadata, expr) =&gt; metadata.clean,
             Expression::Or(metadata, exprs) =&gt; metadata.clean,
             Expression::And(metadata, exprs) =&gt; metadata.clean,
@@ -776,6 +796,9 @@
                 metadata.clean = bool_value;
             }
             Expression::Min(metadata, <span class="kw">_</span>) =&gt; {
+                metadata.clean = bool_value;
+            }
+            Expression::Max(metadata, <span class="kw">_</span>) =&gt; {
                 metadata.clean = bool_value;
             }
             Expression::Not(metadata, <span class="kw">_</span>) =&gt; {
@@ -885,6 +908,9 @@
             }
             Expression::Min(<span class="kw">_</span>, expressions) =&gt; {
                 <span class="macro">write!</span>(f, <span class="string">"Min({})"</span>, display_expressions(expressions))
+            }
+            Expression::Max(<span class="kw">_</span>, expressions) =&gt; {
+                <span class="macro">write!</span>(f, <span class="string">"Max({})"</span>, display_expressions(expressions))
             }
             Expression::Not(<span class="kw">_</span>, expr_box) =&gt; {
                 <span class="macro">write!</span>(f, <span class="string">"Not({})"</span>, expr_box.clone())

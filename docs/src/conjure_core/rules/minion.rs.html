@@ -385,15 +385,11 @@
 <a href="#384" id="384">384</a>
 <a href="#385" id="385">385</a>
 <a href="#386" id="386">386</a>
-<a href="#387" id="387">387</a>
-<a href="#388" id="388">388</a>
-<a href="#389" id="389">389</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
+<a href="#387" id="387">387</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
-</span><span class="kw">use </span><span class="kw">crate</span>::ast::{
-    Constant <span class="kw">as </span>Const, DecisionVariable, Domain, Expression <span class="kw">as </span>Expr, Range, SymbolTable,
-};
+</span><span class="kw">use </span><span class="kw">crate</span>::ast::{Constant <span class="kw">as </span>Const, DecisionVariable, Expression <span class="kw">as </span>Expr, SymbolTable};
 <span class="kw">use </span><span class="kw">crate</span>::metadata::Metadata;
 <span class="kw">use </span><span class="kw">crate</span>::rule_engine::{
     register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
