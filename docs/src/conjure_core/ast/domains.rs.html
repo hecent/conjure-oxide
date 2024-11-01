@@ -98,9 +98,7 @@
 <a href="#97" id="97">97</a>
 <a href="#98" id="98">98</a>
 <a href="#99" id="99">99</a>
-<a href="#100" id="100">100</a>
-<a href="#101" id="101">101</a>
-<a href="#102" id="102">102</a></pre></div><pre class="rust"><code><span class="kw">use </span>serde::{Deserialize, Serialize};
+<a href="#100" id="100">100</a></pre></div><pre class="rust"><code><span class="kw">use </span>serde::{Deserialize, Serialize};
 <span class="comment">// use std::iter::Ste
 
 </span><span class="attr">#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -164,6 +162,7 @@
         <span class="kw">let </span>d2 = Domain::IntDomain(<span class="macro">vec!</span>[Range::Bounded(-<span class="number">2</span>, <span class="number">1</span>)]);
         <span class="kw">let </span>res = d1.apply_i32(|a, b| <span class="prelude-val">Some</span>(a * b), <span class="kw-2">&amp;</span>d2).unwrap();
 
+        <span class="macro">assert!</span>(<span class="macro">matches!</span>(res, Domain::IntDomain(<span class="kw">_</span>)));
         <span class="kw">if let </span>Domain::IntDomain(ranges) = res {
             <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">4</span>)));
             <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">3</span>)));
@@ -174,8 +173,6 @@
             <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">2</span>)));
             <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">3</span>)));
             <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">4</span>)));
-        } <span class="kw">else </span>{
-            <span class="macro">panic!</span>();
         }
     }
 
@@ -187,6 +184,7 @@
             .apply_i32(|a, b| <span class="kw">if </span>b != <span class="number">0 </span>{ <span class="prelude-val">Some</span>(a / b) } <span class="kw">else </span>{ <span class="prelude-val">None </span>}, <span class="kw-2">&amp;</span>d2)
             .unwrap();
 
+        <span class="macro">assert!</span>(<span class="macro">matches!</span>(res, Domain::IntDomain(<span class="kw">_</span>)));
         <span class="kw">if let </span>Domain::IntDomain(ranges) = res {
             <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">4</span>)));
             <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(-<span class="number">3</span>)));
@@ -197,8 +195,6 @@
             <span class="macro">assert!</span>(ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">2</span>)));
             <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">3</span>)));
             <span class="macro">assert!</span>(!ranges.contains(<span class="kw-2">&amp;</span>Range::Single(<span class="number">4</span>)));
-        } <span class="kw">else </span>{
-            <span class="macro">panic!</span>();
         }
     }
 }

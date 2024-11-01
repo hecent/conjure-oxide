@@ -633,7 +633,7 @@
             Value::Object(vec_op) <span class="kw">if </span>vec_operator_names.any(|key| vec_op.contains_key(<span class="kw-2">*</span>key)) =&gt; {
                 parse_vec_op(vec_op, vec_operators)
             }
-            otherwise =&gt; <span class="macro">panic!</span>(<span class="string">"Unhandled Op {:#?}"</span>, otherwise),
+            otherwise =&gt; <span class="macro">bug!</span>(<span class="string">"Unhandled Op {:#?}"</span>, otherwise),
         },
         Value::Object(refe) <span class="kw">if </span>refe.contains_key(<span class="string">"Reference"</span>) =&gt; {
             <span class="kw">let </span>name = refe[<span class="string">"Reference"</span>].as_array()<span class="question-mark">?</span>[<span class="number">0</span>].as_object()<span class="question-mark">?</span>[<span class="string">"Name"</span>].as_str()<span class="question-mark">?</span>;
@@ -647,7 +647,7 @@
         Value::Object(constant) <span class="kw">if </span>constant.contains_key(<span class="string">"ConstantBool"</span>) =&gt; {
             parse_constant(constant)
         }
-        otherwise =&gt; <span class="macro">panic!</span>(<span class="string">"Unhandled Expression {:#?}"</span>, otherwise),
+        otherwise =&gt; <span class="macro">bug!</span>(<span class="string">"Unhandled Expression {:#?}"</span>, otherwise),
     }
 }
 
@@ -667,7 +667,7 @@
             <span class="kw">let </span>arg2 = parse_expression(<span class="kw-2">&amp;</span>bin_op_args[<span class="number">1</span>])<span class="question-mark">?</span>;
             <span class="prelude-val">Some</span>(constructor(Metadata::new(), Box::new(arg1), Box::new(arg2)))
         }
-        otherwise =&gt; <span class="macro">panic!</span>(<span class="string">"Unhandled parse_bin_op {:#?}"</span>, otherwise),
+        otherwise =&gt; <span class="macro">bug!</span>(<span class="string">"Unhandled parse_bin_op {:#?}"</span>, otherwise),
     }
 }
 
@@ -769,9 +769,9 @@
                 <span class="kw">return </span>e;
             }
 
-            <span class="macro">panic!</span>(<span class="string">"Unhandled parse_constant {:#?}"</span>, constant);
+            <span class="macro">bug!</span>(<span class="string">"Unhandled parse_constant {:#?}"</span>, constant);
         }
-        otherwise =&gt; <span class="macro">panic!</span>(<span class="string">"Unhandled parse_constant {:#?}"</span>, otherwise),
+        otherwise =&gt; <span class="macro">bug!</span>(<span class="string">"Unhandled parse_constant {:#?}"</span>, otherwise),
     }
 }
 </code></pre></div></section></main></body></html>
