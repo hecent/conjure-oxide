@@ -54,6 +54,7 @@
 | ..._core/src/rule_engine/rewrite.rs |          2 |      66.7% |          0 |       0.0% |
 | ...ure_core/src/rule_engine/rule.rs |          3 |      25.0% |          1 |     100.0% |
 | ...core/src/rule_engine/rule_set.rs |          4 |     100.0% |          0 |       0.0% |
+| ...conjure_core/src/rules/checks.rs |          1 |      50.0% |          0 |       0.0% |
 | ...njure_core/src/rules/constant.rs |          1 |     100.0% |          0 |       0.0% |
 | ...es/conjure_core/src/rules/mod.rs |          1 |     100.0% |          0 |       0.0% |
 | ...re/src/solver/adaptors/kissat.rs |          1 |     100.0% |          0 |       0.0% |
@@ -66,7 +67,7 @@
 | ...core/src/stats/rewriter_stats.rs |          1 |      20.0% |          0 |       0.0% |
 | ...e_core/src/stats/solver_stats.rs |          3 |      37.5% |          0 |       0.0% |
 +-------------------------------------+------------+------------+------------+------------+
-| Total                               |         87 |      41.4% |          8 |       9.9% |
+| Total                               |         88 |      41.5% |          8 |       9.6% |
 +-------------------------------------+------------+------------+------------+------------+
 +-------------------------------------+------------+------------+------------+------------+
 | File                                | Documented | Percentage |   Examples | Percentage |
