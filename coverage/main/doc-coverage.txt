@@ -33,9 +33,10 @@
 +-------------------------------------+------------+------------+------------+------------+
 | File                                | Documented | Percentage |   Examples | Percentage |
 +-------------------------------------+------------+------------+------------+------------+
-| ...onjure_core/src/ast/constants.rs |          0 |       0.0% |          0 |       0.0% |
 | .../conjure_core/src/ast/domains.rs |          0 |       0.0% |          0 |       0.0% |
-| ...jure_core/src/ast/expressions.rs |         26 |      96.3% |          0 |       0.0% |
+| ...jure_core/src/ast/expressions.rs |         24 |      92.3% |          0 |       0.0% |
+| ...s/conjure_core/src/ast/factor.rs |          1 |      33.3% |          0 |       0.0% |
+| ...conjure_core/src/ast/literals.rs |          1 |      33.3% |          0 |       0.0% |
 | crates/conjure_core/src/ast/mod.rs  |          0 |       0.0% |          0 |       0.0% |
 | ...ure_core/src/ast/symbol_table.rs |          0 |       0.0% |          0 |       0.0% |
 | ...es/conjure_core/src/ast/types.rs |          0 |       0.0% |          0 |       0.0% |
@@ -67,7 +68,7 @@
 | ...core/src/stats/rewriter_stats.rs |          1 |      20.0% |          0 |       0.0% |
 | ...e_core/src/stats/solver_stats.rs |          3 |      37.5% |          0 |       0.0% |
 +-------------------------------------+------------+------------+------------+------------+
-| Total                               |         88 |      41.5% |          8 |       9.6% |
+| Total                               |         88 |      41.1% |          8 |       9.6% |
 +-------------------------------------+------------+------------+------------+------------+
 +-------------------------------------+------------+------------+------------+------------+
 | File                                | Documented | Percentage |   Examples | Percentage |
