@@ -171,7 +171,11 @@
 <a href="#170" id="170">170</a>
 <a href="#171" id="171">171</a>
 <a href="#172" id="172">172</a>
-<a href="#173" id="173">173</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{<span class="self">self</span>, Display, Formatter};
+<a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
+<a href="#176" id="176">176</a>
+<a href="#177" id="177">177</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{<span class="self">self</span>, Display, Formatter};
 <span class="kw">use </span>std::hash::Hash;
 
 <span class="kw">use </span>thiserror::Error;
@@ -248,7 +252,7 @@
     </span><span class="kw">pub fn </span>pure(new_expression: Expression) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             new_expression,
-            new_top: Expression::Nothing,
+            new_top: Expression::And(Metadata::new(), Vec::new()),
             symbols: SymbolTable::new(),
         }
     }
@@ -257,7 +261,7 @@
     </span><span class="kw">pub fn </span>with_symbols(new_expression: Expression, symbols: SymbolTable) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             new_expression,
-            new_top: Expression::Nothing,
+            new_top: Expression::And(Metadata::new(), Vec::new()),
             symbols,
         }
     }
@@ -274,21 +278,25 @@
     <span class="comment">// Apply side-effects (e.g. symbol table updates
     </span><span class="kw">pub fn </span>apply(<span class="self">self</span>, model: <span class="kw-2">&amp;mut </span>Model) {
         model.variables.extend(<span class="self">self</span>.symbols); <span class="comment">// Add new assignments to the symbol table
-        </span><span class="kw">if let </span>Expression::Nothing = <span class="self">self</span>.new_top {
-            model.constraints = <span class="self">self</span>.new_expression.clone();
-        } <span class="kw">else </span>{
-            model.constraints = <span class="kw">match </span><span class="self">self</span>.new_expression {
-                Expression::And(metadata, <span class="kw-2">mut </span>exprs) =&gt; {
-                    <span class="comment">// Avoid creating a nested conjunction
-                    </span>exprs.push(<span class="self">self</span>.new_top.clone());
-                    Expression::And(metadata.clone_dirty(), exprs)
-                }
-                <span class="kw">_ </span>=&gt; Expression::And(
-                    Metadata::new(),
-                    <span class="macro">vec!</span>[<span class="self">self</span>.new_expression.clone(), <span class="self">self</span>.new_top],
-                ),
-            };
+                                              // TODO: (yb33) Remove it when we change constraints to a vector
+        </span><span class="kw">if let </span>Expression::And(<span class="kw">_</span>, exprs) = <span class="kw-2">&amp;</span><span class="self">self</span>.new_top {
+            <span class="kw">if </span>exprs.is_empty() {
+                model.constraints = <span class="self">self</span>.new_expression.clone();
+                <span class="kw">return</span>;
+            }
         }
+
+        model.constraints = <span class="kw">match </span><span class="self">self</span>.new_expression {
+            Expression::And(metadata, <span class="kw-2">mut </span>exprs) =&gt; {
+                <span class="comment">// Avoid creating a nested conjunction
+                </span>exprs.push(<span class="self">self</span>.new_top.clone());
+                Expression::And(metadata.clone_dirty(), exprs)
+            }
+            <span class="kw">_ </span>=&gt; Expression::And(
+                Metadata::new(),
+                <span class="macro">vec!</span>[<span class="self">self</span>.new_expression.clone(), <span class="self">self</span>.new_top],
+            ),
+        };
     }
 }
 

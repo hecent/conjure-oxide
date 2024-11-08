@@ -129,7 +129,10 @@
 <a href="#128" id="128">128</a>
 <a href="#129" id="129">129</a>
 <a href="#130" id="130">130</a>
-<a href="#131" id="131">131</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::cell::RefCell;
+<a href="#131" id="131">131</a>
+<a href="#132" id="132">132</a>
+<a href="#133" id="133">133</a>
+<a href="#134" id="134">134</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::cell::RefCell;
 <span class="kw">use </span>std::fmt::Debug;
 <span class="kw">use </span>std::sync::{Arc, RwLock};
 
@@ -199,7 +202,11 @@
     }
 
     <span class="kw">pub fn </span>new_empty(context: Arc&lt;RwLock&lt;Context&lt;<span class="lifetime">'static</span>&gt;&gt;&gt;) -&gt; Model {
-        Model::new(Default::default(), Expression::Nothing, context)
+        Model::new(
+            Default::default(),
+            Expression::And(Metadata::new(), Vec::new()),
+            context,
+        )
     }
     <span class="comment">// Function to update a DecisionVariable based on its Name
     </span><span class="kw">pub fn </span>update_domain(<span class="kw-2">&amp;mut </span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>Name, new_domain: Domain) {
@@ -220,14 +227,13 @@
     <span class="kw">pub fn </span>get_constraints_vec(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;Expression&gt; {
         <span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self</span>.constraints {
             Expression::And(<span class="kw">_</span>, constraints) =&gt; constraints.clone(),
-            Expression::Nothing =&gt; <span class="macro">vec!</span>[],
             <span class="kw">_ </span>=&gt; <span class="macro">vec!</span>[<span class="self">self</span>.constraints.clone()],
         }
     }
 
     <span class="kw">pub fn </span>set_constraints(<span class="kw-2">&amp;mut </span><span class="self">self</span>, constraints: Vec&lt;Expression&gt;) {
         <span class="kw">if </span>constraints.is_empty() {
-            <span class="self">self</span>.constraints = Expression::Nothing;
+            <span class="self">self</span>.constraints = Expression::And(Metadata::new(), Vec::new());
         } <span class="kw">else if </span>constraints.len() == <span class="number">1 </span>{
             <span class="self">self</span>.constraints = constraints[<span class="number">0</span>].clone();
         } <span class="kw">else </span>{

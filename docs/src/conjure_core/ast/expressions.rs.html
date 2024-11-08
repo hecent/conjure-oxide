@@ -468,15 +468,7 @@
 <a href="#467" id="467">467</a>
 <a href="#468" id="468">468</a>
 <a href="#469" id="469">469</a>
-<a href="#470" id="470">470</a>
-<a href="#471" id="471">471</a>
-<a href="#472" id="472">472</a>
-<a href="#473" id="473">473</a>
-<a href="#474" id="474">474</a>
-<a href="#475" id="475">475</a>
-<a href="#476" id="476">476</a>
-<a href="#477" id="477">477</a>
-<a href="#478" id="478">478</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
+<a href="#470" id="470">470</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
 <span class="kw">use </span>std::sync::Arc;
 
 <span class="kw">use </span>serde::{Deserialize, Serialize};
@@ -505,12 +497,6 @@
 #[biplate(to=Factor)]
 #[biplate(to=Name)]
 </span><span class="kw">pub enum </span>Expression {
-    <span class="doccomment">/**
-     * Represents an empty expression
-     * NB: we only expect this at the top level of a model (if there is no constraints)
-     */
-    </span>Nothing,
-
     <span class="doccomment">/// An expression representing "A is valid as long as B is true"
     /// Turns into a conjunction when it reaches a boolean context
     </span>Bubble(Metadata, Box&lt;Expression&gt;, Box&lt;Expression&gt;),
@@ -723,8 +709,7 @@
             Expression::Ineq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::AllDiff(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::Bubble(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>, <span class="comment">// TODO: (flm8) should this be a bool?
-            </span>Expression::Nothing =&gt; <span class="prelude-val">None</span>,
-            Expression::WatchedLiteral(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
+            </span>Expression::WatchedLiteral(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::Reify(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
         }
     }
@@ -784,7 +769,6 @@
                 Name::MachineName(n) =&gt; <span class="macro">write!</span>(f, <span class="string">"_{}"</span>, n),
                 Name::UserName(s) =&gt; <span class="macro">write!</span>(f, <span class="string">"{}"</span>, s),
             },
-            Expression::Nothing =&gt; <span class="macro">write!</span>(f, <span class="string">"Nothing"</span>),
             Expression::Sum(<span class="kw">_</span>, expressions) =&gt; {
                 <span class="macro">write!</span>(f, <span class="string">"Sum({})"</span>, display_expressions(expressions))
             }
