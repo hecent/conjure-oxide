@@ -328,6 +328,36 @@ DA:8,0
 LF:1
 LH:0
 end_of_record
+SF:crates/tree_morph/src/helpers.rs
+FN:5,tree_morph::helpers::select_first::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>
+FN:5,tree_morph::helpers::select_first::<rust_out::Expr, (), rust_out::ReductionRule>
+FN:13,tree_morph::helpers::select_first::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>::{closure#0}
+FN:5,tree_morph::helpers::select_first::<_, _, _>
+FN:13,tree_morph::helpers::select_first::<_, _, _>::{closure#0}
+FN:13,tree_morph::helpers::select_first::<rust_out::Expr, (), rust_out::ReductionRule>::{closure#0}
+FNDA:1,tree_morph::helpers::select_first::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>
+FNDA:1,tree_morph::helpers::select_first::<rust_out::Expr, (), rust_out::ReductionRule>
+FNDA:1,tree_morph::helpers::select_first::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>::{closure#0}
+FNDA:0,tree_morph::helpers::select_first::<_, _, _>
+FNDA:0,tree_morph::helpers::select_first::<_, _, _>::{closure#0}
+FNDA:1,tree_morph::helpers::select_first::<rust_out::Expr, (), rust_out::ReductionRule>::{closure#0}
+FNF:6
+FNH:4
+BRF:0
+BRH:0
+DA:5,37
+DA:6,37
+DA:7,37
+DA:8,37
+DA:9,37
+DA:10,37
+DA:11,37
+DA:12,37
+DA:13,37
+DA:14,37
+LF:10
+LH:10
+end_of_record
 SF:solvers/minion/src/run.rs
 FN:742,minion_rs::run::read_constraint
 FN:225,minion_rs::run::convert_model_to_raw::{closure#0}
@@ -1963,8 +1993,8 @@ FNF:12
 FNH:6
 BRF:0
 BRH:0
-DA:7,7510
-DA:8,7510
+DA:7,6825
+DA:8,6825
 DA:9,0
 DA:10,0
 DA:11,0
@@ -1972,15 +2002,15 @@ DA:12,0
 DA:13,0
 DA:14,0
 DA:15,0
-DA:17,625
-DA:18,625
-DA:19,625
-DA:20,625
-DA:21,625
+DA:17,595
+DA:18,595
+DA:19,595
+DA:20,595
+DA:21,595
 DA:22,0
 DA:24,0
-DA:26,6885
-DA:28,7510
+DA:26,6230
+DA:28,6825
 DA:32,350
 DA:33,350
 DA:34,350
@@ -2086,91 +2116,146 @@ FNF:16
 FNH:8
 BRF:0
 BRH:0
-DA:38,126
-DA:39,126
-DA:40,126
-DA:41,126
-DA:42,126
-DA:43,126
-DA:44,126
-DA:45,173
-DA:46,173
-DA:47,65
-DA:48,108
-DA:49,108
-DA:50,108
-DA:51,108
-DA:52,237
-DA:53,129
-DA:54,129
-DA:55,129
-DA:56,129
-DA:59,126
-DA:60,106
-DA:61,106
-DA:62,106
-DA:63,106
-DA:64,106
-DA:66,279
-DA:67,126
+DA:38,102
+DA:39,102
+DA:40,102
+DA:41,102
+DA:42,102
+DA:43,102
+DA:44,102
+DA:45,140
+DA:46,140
+DA:47,52
+DA:48,88
+DA:49,88
+DA:50,88
+DA:51,88
+DA:52,193
+DA:53,105
+DA:54,105
+DA:55,105
+DA:56,105
+DA:59,102
+DA:60,86
+DA:61,86
+DA:62,86
+DA:63,86
+DA:64,86
+DA:66,226
+DA:67,102
 DA:75,1
 DA:87,1
 DA:104,1
 DA:116,1
 DA:118,1
 DA:129,1
-DA:131,8
-DA:133,8
-DA:134,8
-DA:137,126
-DA:138,126
-DA:139,173
-DA:140,173
-DA:141,65
-DA:142,108
-DA:143,108
-DA:144,108
-DA:145,108
-DA:146,108
-DA:147,237
-DA:148,129
-DA:149,129
-DA:150,129
-DA:151,21
-DA:152,21
-DA:153,21
-DA:154,108
-DA:155,108
-DA:156,108
-DA:164,8
-DA:165,8
-DA:166,8
-DA:167,8
-DA:168,8
-DA:169,8
-DA:170,8
-DA:171,8
-DA:172,21
-DA:174,21
-DA:177,129
-DA:178,21
-DA:179,21
-DA:180,21
-DA:181,129
-DA:182,21
-DA:183,129
-DA:184,129
-DA:185,129
-DA:188,21
-DA:191,8
-DA:192,8
-DA:193,8
-DA:194,8
-DA:195,8
-DA:196,8
-DA:197,8
+DA:131,7
+DA:133,7
+DA:134,7
+DA:137,102
+DA:138,102
+DA:139,140
+DA:140,140
+DA:141,52
+DA:142,88
+DA:143,88
+DA:144,88
+DA:145,88
+DA:146,88
+DA:147,193
+DA:148,105
+DA:149,105
+DA:150,105
+DA:151,18
+DA:152,18
+DA:153,18
+DA:154,87
+DA:155,87
+DA:156,87
+DA:164,7
+DA:165,7
+DA:166,7
+DA:167,7
+DA:168,7
+DA:169,7
+DA:170,7
+DA:171,7
+DA:172,18
+DA:174,18
+DA:177,105
+DA:178,18
+DA:179,18
+DA:180,18
+DA:181,105
+DA:182,18
+DA:183,105
+DA:184,105
+DA:185,105
+DA:188,18
+DA:191,7
+DA:192,7
+DA:193,7
+DA:194,7
+DA:195,7
+DA:196,7
+DA:197,7
 LF:83
 LH:83
+end_of_record
+SF:crates/tree_morph/src/commands.rs
+FN:48,<tree_morph::commands::Commands<lambda_calc::Expr, u32>>::apply
+FN:43,<tree_morph::commands::Commands<_, _>>::clear
+FN:48,<tree_morph::commands::Commands<_, _>>::apply
+FN:38,<tree_morph::commands::Commands<add_mul::Expr, add_mul::Meta>>::mut_meta
+FN:24,<tree_morph::commands::Commands<_, _>>::new
+FN:24,<tree_morph::commands::Commands<add_mul::Expr, add_mul::Meta>>::new
+FN:48,<tree_morph::commands::Commands<add_mul::Expr, add_mul::Meta>>::apply
+FN:24,<tree_morph::commands::Commands<rust_out::Expr, ()>>::new
+FN:38,<tree_morph::commands::Commands<_, _>>::mut_meta
+FN:32,<tree_morph::commands::Commands<_, _>>::transform
+FN:38,<tree_morph::commands::Commands<lambda_calc::Expr, u32>>::mut_meta
+FN:24,<tree_morph::commands::Commands<lambda_calc::Expr, u32>>::new
+FN:48,<tree_morph::commands::Commands<rust_out::Expr, ()>>::apply
+FNDA:1,<tree_morph::commands::Commands<lambda_calc::Expr, u32>>::apply
+FNDA:0,<tree_morph::commands::Commands<_, _>>::clear
+FNDA:0,<tree_morph::commands::Commands<_, _>>::apply
+FNDA:1,<tree_morph::commands::Commands<add_mul::Expr, add_mul::Meta>>::mut_meta
+FNDA:0,<tree_morph::commands::Commands<_, _>>::new
+FNDA:1,<tree_morph::commands::Commands<add_mul::Expr, add_mul::Meta>>::new
+FNDA:1,<tree_morph::commands::Commands<add_mul::Expr, add_mul::Meta>>::apply
+FNDA:1,<tree_morph::commands::Commands<rust_out::Expr, ()>>::new
+FNDA:0,<tree_morph::commands::Commands<_, _>>::mut_meta
+FNDA:0,<tree_morph::commands::Commands<_, _>>::transform
+FNDA:1,<tree_morph::commands::Commands<lambda_calc::Expr, u32>>::mut_meta
+FNDA:1,<tree_morph::commands::Commands<lambda_calc::Expr, u32>>::new
+FNDA:1,<tree_morph::commands::Commands<rust_out::Expr, ()>>::apply
+FNF:13
+FNH:8
+BRF:0
+BRH:0
+DA:24,222
+DA:25,222
+DA:26,222
+DA:27,222
+DA:28,222
+DA:32,0
+DA:33,0
+DA:34,0
+DA:38,13
+DA:39,13
+DA:40,13
+DA:43,0
+DA:44,0
+DA:45,0
+DA:48,22
+DA:49,35
+DA:50,13
+DA:51,0
+DA:52,13
+DA:55,22
+DA:56,22
+LF:21
+LH:14
 end_of_record
 SF:crates/conjure_core/src/solver/adaptors/kissat.rs
 FN:39,<conjure_core::solver::adaptors::kissat::Kissat as conjure_core::solver::SolverAdaptor>::solve
@@ -2374,14 +2459,14 @@ DA:60,0
 DA:61,0
 DA:65,2550
 DA:66,2550
-DA:68,165
-DA:69,165
-DA:70,165
-DA:71,165
-DA:72,165
-DA:73,165
-DA:74,165
-DA:76,2385
+DA:68,180
+DA:69,180
+DA:70,180
+DA:71,180
+DA:72,180
+DA:73,180
+DA:74,180
+DA:76,2370
 DA:78,2550
 DA:83,2220
 DA:84,2220
@@ -2399,22 +2484,22 @@ DA:101,585
 DA:102,585
 DA:103,585
 DA:104,585
-DA:107,165
-DA:108,165
-DA:110,6105
-DA:111,5940
-DA:112,5940
-DA:114,10065
-DA:115,5940
-DA:116,1815
-DA:117,1815
-DA:118,1815
-DA:119,4125
-DA:122,5940
-DA:123,1815
-DA:124,4125
-DA:127,165
-DA:128,165
+DA:107,180
+DA:108,180
+DA:110,6660
+DA:111,6480
+DA:112,6480
+DA:114,10950
+DA:115,6480
+DA:116,2010
+DA:117,2010
+DA:118,2010
+DA:119,4470
+DA:122,6480
+DA:123,2010
+DA:124,4470
+DA:127,180
+DA:128,180
 DA:132,210
 DA:133,210
 DA:135,285
@@ -2430,9 +2515,9 @@ DA:147,75
 DA:148,75
 DA:153,210
 DA:154,210
-DA:158,1125
-DA:159,1125
-DA:160,1125
+DA:158,1050
+DA:159,1050
+DA:160,1050
 DA:166,8250
 DA:167,8250
 DA:168,8250
@@ -2897,12 +2982,12 @@ DA:156,239501850
 DA:160,0
 DA:161,0
 DA:162,0
-DA:166,292770
-DA:167,292770
-DA:168,292770
-DA:174,432150
-DA:175,432150
-DA:176,432150
+DA:166,288615
+DA:167,288615
+DA:168,288615
+DA:174,427365
+DA:175,427365
+DA:176,427365
 LF:72
 LH:43
 end_of_record
@@ -2994,23 +3079,23 @@ DA:109,23850
 DA:110,23850
 DA:112,675
 DA:113,675
-DA:128,143685
-DA:129,143685
-DA:130,143685
-DA:131,143685
-DA:132,143685
-DA:133,143685
-DA:134,143685
-DA:135,143685
-DA:136,143685
-DA:137,36705
-DA:138,106980
-DA:139,106980
-DA:140,106980
-DA:141,143685
+DA:128,141120
+DA:129,141120
+DA:130,141120
+DA:131,141120
+DA:132,141120
+DA:133,141120
+DA:134,141120
+DA:135,141120
+DA:136,141120
+DA:137,37185
+DA:138,103935
+DA:139,103935
+DA:140,103935
+DA:141,141120
 DA:150,675
 DA:151,675
-DA:152,143685
+DA:152,141120
 DA:153,675
 DA:154,675
 LF:70
@@ -3077,14 +3162,14 @@ BRH:0
 DA:21,45
 DA:23,45
 DA:24,45
-DA:27,150255
-DA:28,150255
-DA:29,150255
-DA:30,128760
+DA:27,152025
+DA:28,152025
+DA:29,152025
+DA:30,130170
 DA:31,555
 DA:33,30
 DA:34,30
-DA:35,150225
+DA:35,151995
 DA:41,45
 DA:42,15
 DA:43,15
@@ -3420,16 +3505,16 @@ DA:229,3480
 DA:230,3480
 DA:231,3480
 DA:232,3480
-DA:233,7845
+DA:233,7725
 DA:234,3480
 DA:235,3480
 DA:237,0
 DA:238,3480
-DA:239,7845
+DA:239,7725
 DA:240,660
 DA:242,735
 DA:243,30
-DA:245,2580
+DA:245,2475
 DA:246,705
 DA:250,2085
 DA:251,1365
@@ -4191,6 +4276,126 @@ DA:101,1
 LF:64
 LH:62
 end_of_record
+SF:crates/tree_morph/src/reduce.rs
+FN:106,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}::{closure#1}
+FN:106,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#1}
+FN:47,tree_morph::reduce::reduce_iteration::<add_mul::Expr, add_mul::Meta, tree_morph::reduce::reduce_with_rules<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}>
+FN:102,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#0}
+FN:91,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>
+FN:34,tree_morph::reduce::reduce::<lambda_calc::Expr, u32, lambda_calc::transform_beta_reduce>
+FN:103,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#1}
+FN:34,tree_morph::reduce::reduce::<add_mul::Expr, add_mul::Meta, tree_morph::reduce::reduce_with_rules<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}>
+FN:102,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}::{closure#0}::{closure#0}
+FN:91,tree_morph::reduce::reduce_with_rules::<_, _, _, _>
+FN:47,tree_morph::reduce::reduce_iteration::<_, _, _>
+FN:102,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}::{closure#0}::{closure#0}
+FN:103,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}::{closure#0}::{closure#1}
+FN:34,tree_morph::reduce::reduce::<rust_out::Expr, (), tree_morph::reduce::reduce_with_rules<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}>
+FN:98,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}
+FN:47,tree_morph::reduce::reduce_iteration::<rust_out::Expr, (), tree_morph::reduce::reduce_with_rules<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}>
+FN:98,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}
+FN:101,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}::{closure#0}
+FN:103,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}::{closure#0}::{closure#1}
+FN:106,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}::{closure#1}
+FN:101,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}::{closure#0}
+FN:98,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}
+FN:34,tree_morph::reduce::reduce::<_, _, _>
+FN:91,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>
+FN:101,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}
+FN:47,tree_morph::reduce::reduce_iteration::<lambda_calc::Expr, u32, lambda_calc::transform_beta_reduce>
+FNDA:1,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}::{closure#1}
+FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#1}
+FNDA:1,tree_morph::reduce::reduce_iteration::<add_mul::Expr, add_mul::Meta, tree_morph::reduce::reduce_with_rules<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}>
+FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#0}
+FNDA:1,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>
+FNDA:1,tree_morph::reduce::reduce::<lambda_calc::Expr, u32, lambda_calc::transform_beta_reduce>
+FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#1}
+FNDA:1,tree_morph::reduce::reduce::<add_mul::Expr, add_mul::Meta, tree_morph::reduce::reduce_with_rules<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}>
+FNDA:1,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}::{closure#0}::{closure#0}
+FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>
+FNDA:0,tree_morph::reduce::reduce_iteration::<_, _, _>
+FNDA:1,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}::{closure#0}::{closure#0}
+FNDA:1,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}::{closure#0}::{closure#1}
+FNDA:1,tree_morph::reduce::reduce::<rust_out::Expr, (), tree_morph::reduce::reduce_with_rules<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}>
+FNDA:1,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}
+FNDA:1,tree_morph::reduce::reduce_iteration::<rust_out::Expr, (), tree_morph::reduce::reduce_with_rules<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}>
+FNDA:1,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}
+FNDA:1,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}::{closure#0}
+FNDA:1,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}::{closure#0}::{closure#1}
+FNDA:1,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}::{closure#1}
+FNDA:1,tree_morph::reduce::reduce_with_rules::<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}::{closure#0}
+FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}
+FNDA:0,tree_morph::reduce::reduce::<_, _, _>
+FNDA:1,tree_morph::reduce::reduce_with_rules::<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>
+FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}
+FNDA:1,tree_morph::reduce::reduce_iteration::<lambda_calc::Expr, u32, lambda_calc::transform_beta_reduce>
+FNF:26
+FNH:18
+BRF:0
+BRH:0
+DA:34,13
+DA:35,13
+DA:36,13
+DA:37,13
+DA:38,13
+DA:40,35
+DA:41,22
+DA:42,22
+DA:43,22
+DA:44,13
+DA:45,13
+DA:47,58
+DA:48,58
+DA:49,58
+DA:50,58
+DA:51,58
+DA:52,58
+DA:53,58
+DA:54,58
+DA:55,22
+DA:56,36
+DA:57,36
+DA:58,36
+DA:59,36
+DA:60,36
+DA:61,36
+DA:62,23
+DA:63,13
+DA:64,13
+DA:65,13
+DA:66,13
+DA:67,13
+DA:68,10
+DA:71,23
+DA:72,58
+DA:91,6
+DA:92,6
+DA:93,6
+DA:94,6
+DA:95,6
+DA:96,6
+DA:97,6
+DA:98,37
+DA:99,37
+DA:100,37
+DA:101,164
+DA:102,164
+DA:103,164
+DA:104,164
+DA:105,37
+DA:106,37
+DA:107,14
+DA:108,14
+DA:109,14
+DA:110,37
+DA:111,37
+DA:112,6
+DA:113,6
+DA:114,6
+DA:115,6
+LF:60
+LH:60
+end_of_record
 SF:solvers/minion/src/ffi.rs
 FN:26,minion_rs::ffi::tests::xyz_raw
 FN:16,hello_from_rust
@@ -4496,6 +4701,34 @@ DA:33,0
 LF:16
 LH:13
 end_of_record
+SF:crates/tree_morph/src/reduction.rs
+FN:16,<tree_morph::reduction::Reduction<rust_out::Expr, ()>>::apply_transform::<tree_morph::reduce::reduce_with_rules<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}::{closure#0}::{closure#0}>
+FN:16,<tree_morph::reduction::Reduction<_, _>>::apply_transform::<_>
+FN:16,<tree_morph::reduction::Reduction<add_mul::Expr, add_mul::Meta>>::apply_transform::<&tree_morph::reduce::reduce_with_rules<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}>
+FN:16,<tree_morph::reduction::Reduction<rust_out::Expr, ()>>::apply_transform::<&tree_morph::reduce::reduce_with_rules<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}>
+FN:16,<tree_morph::reduction::Reduction<add_mul::Expr, add_mul::Meta>>::apply_transform::<tree_morph::reduce::reduce_with_rules<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}::{closure#0}::{closure#0}>
+FN:16,<tree_morph::reduction::Reduction<lambda_calc::Expr, u32>>::apply_transform::<&lambda_calc::transform_beta_reduce>
+FNDA:1,<tree_morph::reduction::Reduction<rust_out::Expr, ()>>::apply_transform::<tree_morph::reduce::reduce_with_rules<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}::{closure#0}::{closure#0}>
+FNDA:0,<tree_morph::reduction::Reduction<_, _>>::apply_transform::<_>
+FNDA:1,<tree_morph::reduction::Reduction<add_mul::Expr, add_mul::Meta>>::apply_transform::<&tree_morph::reduce::reduce_with_rules<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}>
+FNDA:1,<tree_morph::reduction::Reduction<rust_out::Expr, ()>>::apply_transform::<&tree_morph::reduce::reduce_with_rules<rust_out::Expr, (), rust_out::ReductionRule, tree_morph::helpers::select_first<rust_out::Expr, (), rust_out::ReductionRule>>::{closure#0}>
+FNDA:1,<tree_morph::reduction::Reduction<add_mul::Expr, add_mul::Meta>>::apply_transform::<tree_morph::reduce::reduce_with_rules<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule, tree_morph::helpers::select_first<add_mul::Expr, add_mul::Meta, add_mul::ReductionRule>>::{closure#0}::{closure#0}::{closure#0}>
+FNDA:1,<tree_morph::reduction::Reduction<lambda_calc::Expr, u32>>::apply_transform::<&lambda_calc::transform_beta_reduce>
+FNF:6
+FNH:5
+BRF:0
+BRH:0
+DA:16,222
+DA:17,222
+DA:18,222
+DA:19,222
+DA:20,222
+DA:21,222
+DA:22,36
+DA:23,222
+LF:8
+LH:8
+end_of_record
 SF:crates/conjure_macros/src/lib.rs
 FN:47,conjure_macros::register_rule
 FN:35,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
@@ -4553,125 +4786,125 @@ FNF:26
 FNH:11
 BRF:0
 BRH:0
-DA:19,181
-DA:20,181
-DA:21,181
-DA:22,181
-DA:23,181
-DA:24,181
-DA:25,181
-DA:26,181
-DA:35,183
-DA:36,183
-DA:37,183
-DA:38,183
-DA:39,183
-DA:40,183
-DA:47,183
-DA:48,183
-DA:49,183
-DA:50,183
-DA:51,183
-DA:53,183
-DA:54,183
-DA:55,183
-DA:56,183
-DA:57,183
-DA:58,181
-DA:59,181
-DA:60,181
-DA:61,181
-DA:62,181
-DA:63,183
-DA:64,183
-DA:66,183
-DA:67,183
-DA:68,183
-DA:69,183
-DA:70,183
-DA:71,183
-DA:72,183
-DA:73,183
-DA:74,183
-DA:75,183
-DA:76,183
-DA:77,183
-DA:79,183
-DA:80,183
-DA:82,39
-DA:83,39
-DA:84,39
-DA:86,39
-DA:87,41
-DA:88,30
-DA:89,30
-DA:90,30
-DA:91,28
+DA:19,145
+DA:20,145
+DA:21,145
+DA:22,145
+DA:23,145
+DA:24,145
+DA:25,145
+DA:26,145
+DA:35,147
+DA:36,147
+DA:37,147
+DA:38,147
+DA:39,147
+DA:40,147
+DA:47,147
+DA:48,147
+DA:49,147
+DA:50,147
+DA:51,147
+DA:53,147
+DA:54,147
+DA:55,147
+DA:56,147
+DA:57,147
+DA:58,145
+DA:59,145
+DA:60,145
+DA:61,145
+DA:62,145
+DA:63,147
+DA:64,147
+DA:66,147
+DA:67,147
+DA:68,147
+DA:69,147
+DA:70,147
+DA:71,147
+DA:72,147
+DA:73,147
+DA:74,147
+DA:75,147
+DA:76,147
+DA:77,147
+DA:79,147
+DA:80,147
+DA:82,32
+DA:83,32
+DA:84,32
+DA:86,32
+DA:87,34
+DA:88,25
+DA:89,25
+DA:90,25
+DA:91,23
 DA:92,2
 DA:93,2
-DA:96,39
-DA:97,39
-DA:107,29
-DA:108,29
-DA:109,29
-DA:110,29
-DA:112,29
+DA:96,32
+DA:97,32
+DA:107,24
+DA:108,24
+DA:109,24
+DA:110,24
+DA:112,24
 DA:113,0
 DA:114,0
 DA:115,0
 DA:116,0
 DA:117,0
 DA:118,0
-DA:119,29
-DA:120,29
-DA:121,29
-DA:122,29
-DA:124,29
-DA:125,19
-DA:126,19
-DA:127,19
-DA:128,19
-DA:129,19
-DA:130,19
-DA:131,10
-DA:132,10
-DA:133,10
-DA:134,10
-DA:136,10
-DA:137,10
-DA:138,10
-DA:139,10
-DA:140,10
-DA:141,10
-DA:142,29
+DA:119,24
+DA:120,24
+DA:121,24
+DA:122,24
+DA:124,24
+DA:125,16
+DA:126,16
+DA:127,16
+DA:128,16
+DA:129,16
+DA:130,16
+DA:131,8
+DA:132,8
+DA:133,8
+DA:134,8
+DA:136,8
+DA:137,8
+DA:138,8
+DA:139,8
+DA:140,8
+DA:141,8
+DA:142,24
 DA:148,1
 DA:149,1
 DA:150,1
 DA:151,1
 DA:152,1
 DA:153,1
-DA:155,29
-DA:157,29
-DA:158,29
-DA:159,29
-DA:160,29
-DA:161,29
-DA:163,29
-DA:164,29
-DA:166,29
-DA:167,29
-DA:168,29
-DA:170,29
-DA:171,29
-DA:172,29
-DA:174,29
-DA:175,29
-DA:176,29
-DA:177,29
-DA:178,29
-DA:179,29
-DA:180,29
-DA:181,29
+DA:155,24
+DA:157,24
+DA:158,24
+DA:159,24
+DA:160,24
+DA:161,24
+DA:163,24
+DA:164,24
+DA:166,24
+DA:167,24
+DA:168,24
+DA:170,24
+DA:171,24
+DA:172,24
+DA:174,24
+DA:175,24
+DA:176,24
+DA:177,24
+DA:178,24
+DA:179,24
+DA:180,24
+DA:181,24
 LF:119
 LH:113
 end_of_record
@@ -5671,9 +5904,9 @@ DA:106,0
 DA:108,1
 DA:109,1
 DA:110,1
-DA:117,675
-DA:118,675
-DA:119,675
+DA:117,690
+DA:118,690
+DA:119,690
 DA:132,0
 DA:133,0
 DA:134,0
@@ -7144,4 +7377,94 @@ DA:481,1
 DA:482,1
 LF:270
 LH:129
+end_of_record
+SF:crates/tree_morph/src/lib.rs
+FN:105,rust_out::main
+FN:140,rust_out::bx
+FN:43,<rust_out::ReductionRule as tree_morph::rule::Rule<rust_out::Expr, ()>>::apply
+FNDA:1,rust_out::main
+FNDA:1,rust_out::bx
+FNDA:1,<rust_out::ReductionRule as tree_morph::rule::Rule<rust_out::Expr, ()>>::apply
+FNF:3
+FNH:3
+BRF:0
+BRH:0
+DA:43,153
+DA:47,153
+DA:48,12
+DA:49,12
+DA:50,12
+DA:51,23
+DA:53,11
+DA:54,11
+DA:55,21
+DA:57,6
+DA:58,6
+DA:59,6
+DA:60,20
+DA:62,5
+DA:63,5
+DA:64,5
+DA:65,20
+DA:67,20
+DA:68,1
+DA:69,1
+DA:70,0
+DA:72,19
+DA:74,26
+DA:75,13
+DA:76,1
+DA:77,12
+DA:79,7
+DA:80,1
+DA:81,6
+DA:83,1
+DA:84,0
+DA:85,1
+DA:87,5
+DA:89,19
+DA:90,9
+DA:91,1
+DA:92,8
+DA:94,5
+DA:95,1
+DA:96,4
+DA:98,5
+DA:101,153
+DA:105,1
+DA:109,1
+DA:110,1
+DA:111,1
+DA:112,1
+DA:113,1
+DA:114,1
+DA:115,1
+DA:116,1
+DA:117,1
+DA:118,1
+DA:119,1
+DA:120,1
+DA:121,1
+DA:122,1
+DA:123,1
+DA:124,1
+DA:125,1
+DA:126,1
+DA:127,1
+DA:128,1
+DA:129,1
+DA:130,1
+DA:131,1
+DA:132,1
+DA:133,1
+DA:134,1
+DA:135,1
+DA:136,1
+DA:137,1
+DA:138,1
+DA:140,20
+DA:141,20
+DA:142,20
+LF:76
+LH:74
 end_of_record
