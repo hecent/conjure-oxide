@@ -32,7 +32,8 @@
 <a href="#31" id="31">31</a>
 <a href="#32" id="32">32</a>
 <a href="#33" id="33">33</a>
-<a href="#34" id="34">34</a></pre></div><pre class="rust"><code><span class="doccomment">//! This module contains the rewrite rules for Conjure Oxides and it's solvers.
+<a href="#34" id="34">34</a>
+<a href="#35" id="35">35</a></pre></div><pre class="rust"><code><span class="doccomment">//! This module contains the rewrite rules for Conjure Oxides and it's solvers.
 //!
 //! # Rule Semantics
 //!
@@ -42,11 +43,12 @@
 
 <span class="kw">mod </span>base;
 <span class="kw">mod </span>bubble;
-<span class="kw">pub mod </span>checks;
 <span class="kw">mod </span>cnf;
 <span class="kw">mod </span>constant;
 <span class="kw">mod </span>minion;
 <span class="kw">mod </span>partial_eval;
+
+<span class="kw">mod </span>utils;
 
 <span class="doccomment">/// Denotes a block of code as extra, optional checks for a rule. Primarily, these are checks that
 /// are too expensive to do normally, or are implicit in the rule priorities and application order.

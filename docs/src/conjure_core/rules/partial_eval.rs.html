@@ -288,13 +288,18 @@
 <a href="#287" id="287">287</a>
 <a href="#288" id="288">288</a>
 <a href="#289" id="289">289</a>
-<a href="#290" id="290">290</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashSet;
+<a href="#290" id="290">290</a>
+<a href="#291" id="291">291</a>
+<a href="#292" id="292">292</a>
+<a href="#293" id="293">293</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashSet;
 
 <span class="kw">use </span>conjure_macros::register_rule;
 
 <span class="kw">use </span><span class="kw">crate</span>::ast::{Expression <span class="kw">as </span>Expr, Factor, Literal::<span class="kw-2">*</span>};
 <span class="kw">use </span><span class="kw">crate</span>::rule_engine::{ApplicationResult, Reduction};
 <span class="kw">use </span><span class="kw">crate</span>::Model;
+
+<span class="kw">use </span><span class="kw">super</span>::utils::ToAuxVarOutput;
 
 <span class="attr">#[register_rule((<span class="string">"Base"</span>,<span class="number">9000</span>))]
 </span><span class="kw">fn </span>partial_evaluator(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
@@ -576,6 +581,7 @@
 
         WatchedLiteral(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
         Reify(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
+        AuxDeclaration(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
     }
 }
 </code></pre></div></section></main></body></html>

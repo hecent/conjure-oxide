@@ -481,7 +481,21 @@
 <a href="#480" id="480">480</a>
 <a href="#481" id="481">481</a>
 <a href="#482" id="482">482</a>
-<a href="#483" id="483">483</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
+<a href="#483" id="483">483</a>
+<a href="#484" id="484">484</a>
+<a href="#485" id="485">485</a>
+<a href="#486" id="486">486</a>
+<a href="#487" id="487">487</a>
+<a href="#488" id="488">488</a>
+<a href="#489" id="489">489</a>
+<a href="#490" id="490">490</a>
+<a href="#491" id="491">491</a>
+<a href="#492" id="492">492</a>
+<a href="#493" id="493">493</a>
+<a href="#494" id="494">494</a>
+<a href="#495" id="495">495</a>
+<a href="#496" id="496">496</a>
+<a href="#497" id="497">497</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
 <span class="kw">use </span>std::sync::Arc;
 
 <span class="kw">use </span>serde::{Deserialize, Serialize};
@@ -604,6 +618,12 @@
 
     <span class="attr">#[compatible(Minion)]
     </span>Reify(Metadata, Box&lt;Expression&gt;, Box&lt;Expression&gt;),
+
+    <span class="doccomment">/// Declaration of an auxiliary variable.
+    ///
+    /// As with Savile Row, we semantically distinguish this from `Eq`.
+    </span><span class="attr">#[compatible(Minion)]
+    </span>AuxDeclaration(Metadata, Name, Box&lt;Expression&gt;),
 }
 
 <span class="kw">fn </span>expr_vec_to_domain_i32(
@@ -724,6 +744,7 @@
             Expression::Bubble(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>, <span class="comment">// TODO: (flm8) should this be a bool?
             </span>Expression::WatchedLiteral(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::Reify(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
+            Expression::AuxDeclaration(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
         }
     }
 
@@ -873,8 +894,15 @@
                     box3.clone()
                 )
             }
-            <span class="attr">#[allow(unreachable_patterns)]
-            </span>other =&gt; <span class="macro">todo!</span>(<span class="string">"Implement display for {:?}"</span>, other),
+            Expression::WatchedLiteral(<span class="kw">_</span>, x, l) =&gt; {
+                <span class="macro">write!</span>(f, <span class="string">"WatchedLiteral({},{})"</span>, x, l)
+            }
+            Expression::Reify(<span class="kw">_</span>, box1, box2) =&gt; {
+                <span class="macro">write!</span>(f, <span class="string">"Reify({}, {})"</span>, box1.clone(), box2.clone())
+            }
+            Expression::AuxDeclaration(<span class="kw">_</span>, n, e) =&gt; {
+                <span class="macro">write!</span>(f, <span class="string">"{} =aux {}"</span>, n, e.clone())
+            }
         }
     }
 }
