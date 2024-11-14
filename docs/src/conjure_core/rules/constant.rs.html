@@ -171,12 +171,14 @@
 <a href="#170" id="170">170</a>
 <a href="#171" id="171">171</a>
 <a href="#172" id="172">172</a>
-<a href="#173" id="173">173</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Expression <span class="kw">as </span>Expr, Factor, Literal <span class="kw">as </span>Lit};
+<a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Expression <span class="kw">as </span>Expr, Factor, Literal <span class="kw">as </span>Lit};
 <span class="kw">use </span>conjure_core::metadata::Metadata;
 <span class="kw">use </span>conjure_core::rule_engine::{
     register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
 };
 <span class="kw">use </span>conjure_core::Model;
+<span class="kw">use </span>tracing::warn;
 
 <span class="macro">register_rule_set!</span>(<span class="string">"Constant"</span>, <span class="number">100</span>, ());
 
@@ -245,7 +247,7 @@
 
         Expr::Reify(<span class="kw">_</span>, a, b) =&gt; bin_op::&lt;bool, bool&gt;(|a, b| a == b, a, b).map(Lit::Bool),
         <span class="kw">_ </span>=&gt; {
-            <span class="macro">println!</span>(<span class="string">"WARNING: Unimplemented constant eval: {:?}"</span>, expr);
+            <span class="macro">warn!</span>(%expr,<span class="string">"Unimplemented constant eval"</span>);
             <span class="prelude-val">None
         </span>}
     }
