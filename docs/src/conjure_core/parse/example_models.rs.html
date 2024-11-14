@@ -105,7 +105,9 @@
 <a href="#104" id="104">104</a>
 <a href="#105" id="105">105</a>
 <a href="#106" id="106">106</a>
-<a href="#107" id="107">107</a></pre></div><pre class="rust"><code><span class="comment">// example_models with get_example_model function
+<a href="#107" id="107">107</a>
+<a href="#108" id="108">108</a>
+<a href="#109" id="109">109</a></pre></div><pre class="rust"><code><span class="comment">// example_models with get_example_model function
 
 </span><span class="kw">use </span>std::path::PathBuf;
 
@@ -134,7 +136,9 @@
     </span><span class="kw">for </span>entry <span class="kw">in </span>WalkDir::new(base_dir).into_iter().filter_map(|e| e.ok()) {
         <span class="kw">let </span>path = entry.path();
         <span class="kw">if </span>path.is_file()
-            &amp;&amp; path.extension().map_or(<span class="bool-val">false</span>, |e| e == <span class="string">"essence"</span>)
+            &amp;&amp; path
+                .extension()
+                .map_or(<span class="bool-val">false</span>, |e| e == <span class="string">"essence" </span>|| e == <span class="string">"eprime"</span>)
             &amp;&amp; path.file_stem() == <span class="prelude-val">Some</span>(std::ffi::OsStr::new(filename))
         {
             essence_path = path.to_path_buf();

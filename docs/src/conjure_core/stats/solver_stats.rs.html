@@ -44,7 +44,7 @@
 <span class="kw">use </span><span class="kw">crate</span>::solver::SolverFamily;
 
 <span class="attr">#[skip_serializing_none]
-#[derive(Default, Serialize, Clone, JsonSchema)]
+#[derive(Default, Serialize, Clone, JsonSchema, Debug)]
 #[serde(rename_all = <span class="string">"camelCase"</span>)]
 #[allow(dead_code)]
 </span><span class="comment">// Statistics for a run of a solver.
