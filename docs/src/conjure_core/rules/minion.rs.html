@@ -571,14 +571,14 @@
 <span class="kw">use </span><span class="kw">crate</span>::rules::extra_check;
 <span class="kw">use crate</span>::{
     ast::{
+        Atom::{<span class="self">self</span>, <span class="kw-2">*</span>},
         DecisionVariable, Domain,
         Expression::{<span class="self">self </span><span class="kw">as </span>Expr, <span class="kw-2">*</span>},
-        Factor::{<span class="self">self</span>, <span class="kw-2">*</span>},
         Literal::<span class="kw-2">*</span>,
         SymbolTable,
     },
     bug,
-    rules::utils::{exprs_to_conjunction, is_factor},
+    rules::utils::{exprs_to_conjunction, is_atom},
 };
 
 <span class="kw">use </span><span class="kw">crate</span>::solver::SolverFamily;
@@ -593,18 +593,18 @@
 <span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4200</span>))]
 </span><span class="kw">fn </span>introduce_diveq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="comment">// div = val
-    </span><span class="kw">let </span>val: Factor;
+    </span><span class="kw">let </span>val: Atom;
     <span class="kw">let </span>div: Expr;
     <span class="kw">let </span>meta: Metadata;
 
     <span class="kw">match </span>expr.clone() {
         Expr::Eq(m, a, b) =&gt; {
             meta = m;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = a.as_factor() {
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = a.as_atom() {
                 <span class="comment">// val = div
                 </span>val = f;
                 div = <span class="kw-2">*</span>b;
-            } <span class="kw">else if let </span><span class="prelude-val">Some</span>(f) = b.as_factor() {
+            } <span class="kw">else if let </span><span class="prelude-val">Some</span>(f) = b.as_atom() {
                 <span class="comment">// div = val
                 </span>val = f;
                 div = <span class="kw-2">*</span>a;
@@ -627,8 +627,8 @@
     }
 
     <span class="kw">let </span>children = div.children();
-    <span class="kw">let </span>a = children[<span class="number">0</span>].as_factor().ok_or(RuleNotApplicable)<span class="question-mark">?</span>;
-    <span class="kw">let </span>b = children[<span class="number">1</span>].as_factor().ok_or(RuleNotApplicable)<span class="question-mark">?</span>;
+    <span class="kw">let </span>a = children[<span class="number">0</span>].as_atom().ok_or(RuleNotApplicable)<span class="question-mark">?</span>;
+    <span class="kw">let </span>b = children[<span class="number">1</span>].as_atom().ok_or(RuleNotApplicable)<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(Reduction::pure(DivEq(meta.clone_dirty(), a, b, val)))
 }
@@ -894,7 +894,7 @@
             metadata.clone_dirty(),
             a.clone(),
             b.clone(),
-            Box::new(FactorE(Metadata::new(), Literal(Int(-<span class="number">1</span>)))),
+            Box::new(Atomic(Metadata::new(), Literal(Int(-<span class="number">1</span>)))),
         ))),
         <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
     }
@@ -914,7 +914,7 @@
             metadata.clone_dirty(),
             b.clone(),
             a.clone(),
-            Box::new(FactorE(Metadata::new(), Literal(Int(-<span class="number">1</span>)))),
+            Box::new(Atomic(Metadata::new(), Literal(Int(-<span class="number">1</span>)))),
         ))),
         <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
     }
@@ -934,7 +934,7 @@
             metadata.clone_dirty(),
             b.clone(),
             a.clone(),
-            Box::new(FactorE(Metadata::new(), Literal(Int(<span class="number">0</span>)))),
+            Box::new(Atomic(Metadata::new(), Literal(Int(<span class="number">0</span>)))),
         ))),
         <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
     }
@@ -954,7 +954,7 @@
             metadata.clone_dirty(),
             a.clone(),
             b.clone(),
-            Box::new(FactorE(Metadata::new(), Literal(Int(<span class="number">0</span>)))),
+            Box::new(Atomic(Metadata::new(), Literal(Int(<span class="number">0</span>)))),
         ))),
         <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
     }
@@ -970,7 +970,7 @@
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
-    <span class="kw">let </span>x @ FactorE(<span class="kw">_</span>, Reference(<span class="kw">_</span>)) = <span class="kw-2">*</span>x.to_owned() <span class="kw">else </span>{
+    <span class="kw">let </span>x @ Atomic(<span class="kw">_</span>, Reference(<span class="kw">_</span>)) = <span class="kw-2">*</span>x.to_owned() <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
@@ -978,7 +978,7 @@
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
-    <span class="kw">let </span>[<span class="kw-2">ref </span>y @ FactorE(<span class="kw">_</span>, Reference(<span class="kw">_</span>)), <span class="kw-2">ref </span>k @ FactorE(<span class="kw">_</span>, Literal(<span class="kw">_</span>))] = c[..] <span class="kw">else </span>{
+    <span class="kw">let </span>[<span class="kw-2">ref </span>y @ Atomic(<span class="kw">_</span>, Reference(<span class="kw">_</span>)), <span class="kw-2">ref </span>k @ Atomic(<span class="kw">_</span>, Literal(<span class="kw">_</span>))] = c[..] <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
@@ -1030,7 +1030,7 @@
             <span class="kw">let </span><span class="kw-2">mut </span>new_vec = Vec::new();
             <span class="kw">for </span>expr <span class="kw">in </span>vec {
                 new_vec.push(<span class="kw">match </span>expr {
-                    FactorE(m, Reference(name))
+                    Atomic(m, Reference(name))
                         <span class="kw">if </span>mdl
                             .get_domain(name)
                             .is_some_and(|x| <span class="macro">matches!</span>(x, BoolDomain)) =&gt;
@@ -1053,7 +1053,7 @@
             <span class="kw">let </span><span class="kw-2">mut </span>new_vec = Vec::new();
             <span class="kw">for </span>expr <span class="kw">in </span>vec {
                 new_vec.push(<span class="kw">match </span>expr {
-                    FactorE(m, Reference(name))
+                    Atomic(m, Reference(name))
                         <span class="kw">if </span>mdl
                             .get_domain(name)
                             .is_some_and(|x| <span class="macro">matches!</span>(x, BoolDomain)) =&gt;
@@ -1073,7 +1073,7 @@
         }
 
         Not(m, expr) =&gt; {
-            <span class="kw">if let </span>FactorE(<span class="kw">_</span>, Reference(name)) = (<span class="kw-2">**</span>expr).clone() {
+            <span class="kw">if let </span>Atomic(<span class="kw">_</span>, Reference(name)) = (<span class="kw-2">**</span>expr).clone() {
                 <span class="kw">if </span>mdl
                     .get_domain(<span class="kw-2">&amp;</span>name)
                     .is_some_and(|x| <span class="macro">matches!</span>(x, BoolDomain))
@@ -1102,7 +1102,7 @@
 
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4090</span>))]
 </span><span class="kw">fn </span>not_constraint_to_reify(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">if </span>!<span class="macro">matches!</span>(expr, Not(<span class="kw">_</span>,c) <span class="kw">if </span>!<span class="macro">matches!</span>(<span class="kw-2">**</span>c, FactorE(<span class="kw">_</span>,<span class="kw">_</span>))) {
+    <span class="kw">if </span>!<span class="macro">matches!</span>(expr, Not(<span class="kw">_</span>,c) <span class="kw">if </span>!<span class="macro">matches!</span>(<span class="kw-2">**</span>c, Atomic(<span class="kw">_</span>,<span class="kw">_</span>))) {
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     }
 
@@ -1119,7 +1119,7 @@
     <span class="prelude-val">Ok</span>(Reduction::pure(Reify(
         m.clone(),
         e.clone(),
-        Box::new(FactorE(Metadata::new(), Literal(Bool(<span class="bool-val">false</span>)))),
+        Box::new(Atomic(Metadata::new(), Literal(Bool(<span class="bool-val">false</span>)))),
     )))
 }
 </code></pre></div></section></main></body></html>

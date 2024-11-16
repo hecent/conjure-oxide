@@ -415,9 +415,7 @@
 <a href="#414" id="414">414</a>
 <a href="#415" id="415">415</a>
 <a href="#416" id="416">416</a>
-<a href="#417" id="417">417</a>
-<a href="#418" id="418">418</a>
-<a href="#419" id="419">419</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashMap;
+<a href="#417" id="417">417</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashMap;
 <span class="kw">use </span>std::sync::{Mutex, OnceLock};
 
 <span class="kw">use </span>regex::Regex;
@@ -670,18 +668,18 @@
         <span class="comment">// TODO: top level false / trues should not go to the solver to begin with
         // ... but changing this at this stage would require rewriting the tester
         </span><span class="kw">use </span><span class="kw">crate</span>::metadata::Metadata;
+        <span class="kw">use </span>conjure_ast::Atom;
         <span class="kw">use </span>conjure_ast::Expression <span class="kw">as </span>Expr;
-        <span class="kw">use </span>conjure_ast::Factor;
         <span class="kw">use </span>conjure_ast::Literal::<span class="kw-2">*</span>;
 
         <span class="kw">match </span>expr {
             <span class="comment">// top level false
-            </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Bool(<span class="bool-val">false</span>))) =&gt; {
+            </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Bool(<span class="bool-val">false</span>))) =&gt; {
                 minion_model.constraints.push(minion_ast::Constraint::False);
                 <span class="kw">return </span><span class="prelude-val">Ok</span>(());
             }
             <span class="comment">// top level true
-            </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Bool(<span class="bool-val">true</span>))) =&gt; {
+            </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Bool(<span class="bool-val">true</span>))) =&gt; {
                 minion_model.constraints.push(minion_ast::Constraint::True);
                 <span class="kw">return </span><span class="prelude-val">Ok</span>(());
             }
@@ -755,9 +753,9 @@
 
         conjure_ast::Expression::AuxDeclaration(_metadata, name, expr) =&gt; {
             <span class="prelude-val">Ok</span>(minion_ast::Constraint::Eq(
-                read_var(conjure_ast::Expression::FactorE(
+                read_var(conjure_ast::Expression::Atomic(
                     _metadata,
-                    conjure_ast::Factor::Reference(name),
+                    conjure_ast::Atom::Reference(name),
                 ))<span class="question-mark">?</span>,
                 read_var(<span class="kw-2">*</span>expr)<span class="question-mark">?</span>,
             ))
@@ -787,7 +785,7 @@
 
 <span class="kw">fn </span>_read_ref(e: conjure_ast::Expression) -&gt; <span class="prelude-ty">Result</span>&lt;String, SolverError&gt; {
     <span class="kw">let </span>name = <span class="kw">match </span>e {
-        conjure_ast::Expression::FactorE(_metadata, conjure_ast::Factor::Reference(n)) =&gt; <span class="prelude-val">Ok</span>(n),
+        conjure_ast::Expression::Atomic(_metadata, conjure_ast::Atom::Reference(n)) =&gt; <span class="prelude-val">Ok</span>(n),
         x =&gt; <span class="prelude-val">Err</span>(ModelInvalid(<span class="macro">format!</span>(
             <span class="string">"expected a reference, but got `{0:?}`"</span>,
             x
@@ -800,9 +798,7 @@
 
 <span class="kw">fn </span>read_const(e: conjure_ast::Expression) -&gt; <span class="prelude-ty">Result</span>&lt;i32, SolverError&gt; {
     <span class="kw">match </span>e {
-        conjure_ast::Expression::FactorE(<span class="kw">_</span>, conjure_ast::Factor::Literal(x)) =&gt; {
-            <span class="prelude-val">Ok</span>(read_const_1(x)<span class="question-mark">?</span>)
-        }
+        conjure_ast::Expression::Atomic(<span class="kw">_</span>, conjure_ast::Atom::Literal(x)) =&gt; <span class="prelude-val">Ok</span>(read_const_1(x)<span class="question-mark">?</span>),
         x =&gt; <span class="prelude-val">Err</span>(ModelInvalid(<span class="macro">format!</span>(
             <span class="string">"expected a constant, but got `{0:?}`"</span>,
             x

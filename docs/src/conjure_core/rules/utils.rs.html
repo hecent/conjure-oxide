@@ -151,21 +151,21 @@
 <span class="kw">use </span>uniplate::{Biplate, Uniplate};
 
 <span class="kw">use crate</span>::{
-    ast::{DecisionVariable, Domain, Expression <span class="kw">as </span>Expr, Factor, Name, ReturnType},
+    ast::{Atom, DecisionVariable, Domain, Expression <span class="kw">as </span>Expr, Name, ReturnType},
     bug,
     metadata::Metadata,
     Model,
 };
 
-<span class="doccomment">/// True iff `expr` is a `Factor`.
-</span><span class="kw">pub fn </span>is_factor(expr: <span class="kw-2">&amp;</span>Expr) -&gt; bool {
-    <span class="macro">matches!</span>(expr, Expr::FactorE(<span class="kw">_</span>, <span class="kw">_</span>))
+<span class="doccomment">/// True iff `expr` is an `Atom`.
+</span><span class="kw">pub fn </span>is_atom(expr: <span class="kw-2">&amp;</span>Expr) -&gt; bool {
+    <span class="macro">matches!</span>(expr, Expr::Atomic(<span class="kw">_</span>, <span class="kw">_</span>))
 }
 
-<span class="doccomment">/// True if `expr` is flat; i.e. it only contains factors.
+<span class="doccomment">/// True if `expr` is flat; i.e. it only contains atoms.
 </span><span class="kw">pub fn </span>is_flat(expr: <span class="kw-2">&amp;</span>Expr) -&gt; bool {
     <span class="kw">for </span>e <span class="kw">in </span>expr.children() {
-        <span class="kw">if </span>!is_factor(<span class="kw-2">&amp;</span>e) {
+        <span class="kw">if </span>!is_atom(<span class="kw-2">&amp;</span>e) {
             <span class="kw">return </span><span class="bool-val">false</span>;
         }
     }
@@ -174,10 +174,10 @@
 
 <span class="doccomment">/// True if the entire AST is constants.
 </span><span class="kw">pub fn </span>is_all_constant(expression: <span class="kw-2">&amp;</span>Expr) -&gt; bool {
-    <span class="kw">for </span>factor <span class="kw">in </span>&lt;Expr <span class="kw">as </span>Biplate&lt;Factor&gt;&gt;::universe_bi(expression) {
-        <span class="kw">match </span>factor {
-            Factor::Literal(<span class="kw">_</span>) =&gt; {}
-            Factor::Reference(<span class="kw">_</span>) =&gt; {
+    <span class="kw">for </span>atom <span class="kw">in </span>&lt;Expr <span class="kw">as </span>Biplate&lt;Atom&gt;&gt;::universe_bi(expression) {
+        <span class="kw">match </span>atom {
+            Atom::Literal(<span class="kw">_</span>) =&gt; {}
+            Atom::Reference(<span class="kw">_</span>) =&gt; {
                 <span class="kw">return </span><span class="bool-val">false</span>;
             }
         }
@@ -216,7 +216,7 @@
 ///
 /// # Returns
 ///
-/// * `None` if `Expr` is a `Factor`, or `Expr` does not have a domain (for example, if it is a `Bubble`).
+/// * `None` if `Expr` is a `Atom`, or `Expr` does not have a domain (for example, if it is a `Bubble`).
 ///
 /// * `Some(ToAuxVarOutput)` if successful, containing:
 ///     
@@ -228,8 +228,8 @@
 </span><span class="kw">pub fn </span>to_aux_var(expr: <span class="kw-2">&amp;</span>Expr, m: <span class="kw-2">&amp;</span>Model) -&gt; <span class="prelude-ty">Option</span>&lt;ToAuxVarOutput&gt; {
     <span class="kw">let </span><span class="kw-2">mut </span>m = m.clone();
 
-    <span class="comment">// No need to put a factor in an aux_var
-    </span><span class="kw">if </span>is_factor(expr) {
+    <span class="comment">// No need to put an atom in an aux_var
+    </span><span class="kw">if </span>is_atom(expr) {
         <span class="kw">return </span><span class="prelude-val">None</span>;
     }
 
@@ -266,16 +266,16 @@
 }
 
 <span class="kw">impl </span>ToAuxVarOutput {
-    <span class="doccomment">/// Returns the new auxiliary variable as a `Factor`.
-    </span><span class="kw">pub fn </span>as_factor(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Factor {
-        Factor::Reference(<span class="self">self</span>.aux_name())
+    <span class="doccomment">/// Returns the new auxiliary variable as an `Atom`.
+    </span><span class="kw">pub fn </span>as_atom(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Atom {
+        Atom::Reference(<span class="self">self</span>.aux_name())
     }
 
     <span class="doccomment">/// Returns the new auxiliary variable as an `Expression`.
     ///
     /// This expression will have default `Metadata`.
     </span><span class="kw">pub fn </span>as_expr(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Expr {
-        Expr::FactorE(Metadata::new(), <span class="self">self</span>.as_factor())
+        Expr::Atomic(Metadata::new(), <span class="self">self</span>.as_atom())
     }
 
     <span class="doccomment">/// Returns the top level `Expression` to add to the model.

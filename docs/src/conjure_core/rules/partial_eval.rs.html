@@ -288,14 +288,11 @@
 <a href="#287" id="287">287</a>
 <a href="#288" id="288">288</a>
 <a href="#289" id="289">289</a>
-<a href="#290" id="290">290</a>
-<a href="#291" id="291">291</a>
-<a href="#292" id="292">292</a>
-<a href="#293" id="293">293</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashSet;
+<a href="#290" id="290">290</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashSet;
 
 <span class="kw">use </span>conjure_macros::register_rule;
 
-<span class="kw">use </span><span class="kw">crate</span>::ast::{Expression <span class="kw">as </span>Expr, Factor, Literal::<span class="kw-2">*</span>};
+<span class="kw">use </span><span class="kw">crate</span>::ast::{Atom, Expression <span class="kw">as </span>Expr, Literal::<span class="kw-2">*</span>};
 <span class="kw">use </span><span class="kw">crate</span>::rule_engine::{ApplicationResult, Reduction};
 <span class="kw">use </span><span class="kw">crate</span>::Model;
 
@@ -311,13 +308,13 @@
     // This is why we always check whether we found a constant or not.
     </span><span class="kw">match </span>expr.clone() {
         Bubble(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
-        FactorE(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
+        Atomic(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
         Sum(m, vec) =&gt; {
             <span class="kw">let </span><span class="kw-2">mut </span>acc = <span class="number">0</span>;
             <span class="kw">let </span><span class="kw-2">mut </span>n_consts = <span class="number">0</span>;
             <span class="kw">let </span><span class="kw-2">mut </span>new_vec: Vec&lt;Expr&gt; = Vec::new();
             <span class="kw">for </span>expr <span class="kw">in </span>vec {
-                <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Int(x))) = expr {
+                <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Int(x))) = expr {
                     acc += x;
                     n_consts += <span class="number">1</span>;
                 } <span class="kw">else </span>{
@@ -325,7 +322,7 @@
                 }
             }
             <span class="kw">if </span>acc != <span class="number">0 </span>{
-                new_vec.push(Expr::FactorE(Default::default(), Factor::Literal(Int(acc))));
+                new_vec.push(Expr::Atomic(Default::default(), Atom::Literal(Int(acc))));
             }
 
             <span class="kw">if </span>n_consts &lt;= <span class="number">1 </span>{
@@ -339,7 +336,7 @@
             <span class="kw">let </span><span class="kw-2">mut </span>n_consts = <span class="number">0</span>;
             <span class="kw">let </span><span class="kw-2">mut </span>new_vec: Vec&lt;Expr&gt; = Vec::new();
             <span class="kw">for </span>expr <span class="kw">in </span>vec {
-                <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Int(x))) = expr {
+                <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Int(x))) = expr {
                     n_consts += <span class="number">1</span>;
                     acc = <span class="kw">match </span>acc {
                         <span class="prelude-val">Some</span>(i) =&gt; {
@@ -357,7 +354,7 @@
             }
 
             <span class="kw">if let </span><span class="prelude-val">Some</span>(i) = acc {
-                new_vec.push(Expr::FactorE(Default::default(), Factor::Literal(Int(i))));
+                new_vec.push(Expr::Atomic(Default::default(), Atom::Literal(Int(i))));
             }
 
             <span class="kw">if </span>n_consts &lt;= <span class="number">1 </span>{
@@ -371,7 +368,7 @@
             <span class="kw">let </span><span class="kw-2">mut </span>n_consts = <span class="number">0</span>;
             <span class="kw">let </span><span class="kw-2">mut </span>new_vec: Vec&lt;Expr&gt; = Vec::new();
             <span class="kw">for </span>expr <span class="kw">in </span>vec {
-                <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Int(x))) = expr {
+                <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Int(x))) = expr {
                     n_consts += <span class="number">1</span>;
                     acc = <span class="kw">match </span>acc {
                         <span class="prelude-val">Some</span>(i) =&gt; {
@@ -389,7 +386,7 @@
             }
 
             <span class="kw">if let </span><span class="prelude-val">Some</span>(i) = acc {
-                new_vec.push(Expr::FactorE(Default::default(), Factor::Literal(Int(i))));
+                new_vec.push(Expr::Atomic(Default::default(), Atom::Literal(Int(i))));
             }
 
             <span class="kw">if </span>n_consts &lt;= <span class="number">1 </span>{
@@ -403,12 +400,12 @@
             <span class="kw">let </span><span class="kw-2">mut </span>new_vec: Vec&lt;Expr&gt; = Vec::new();
             <span class="kw">let </span><span class="kw-2">mut </span>has_const: bool = <span class="bool-val">false</span>;
             <span class="kw">for </span>expr <span class="kw">in </span>vec {
-                <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Bool(x))) = expr {
+                <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Bool(x))) = expr {
                     has_const = <span class="bool-val">true</span>;
                     <span class="kw">if </span>x {
-                        <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(FactorE(
+                        <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(Atomic(
                             Default::default(),
-                            Factor::Literal(Bool(<span class="bool-val">true</span>)),
+                            Atom::Literal(Bool(<span class="bool-val">true</span>)),
                         )));
                     }
                 } <span class="kw">else </span>{
@@ -426,12 +423,12 @@
             <span class="kw">let </span><span class="kw-2">mut </span>new_vec: Vec&lt;Expr&gt; = Vec::new();
             <span class="kw">let </span><span class="kw-2">mut </span>has_const: bool = <span class="bool-val">false</span>;
             <span class="kw">for </span>expr <span class="kw">in </span>vec {
-                <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Bool(x))) = expr {
+                <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Bool(x))) = expr {
                     has_const = <span class="bool-val">true</span>;
                     <span class="kw">if </span>!x {
-                        <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(FactorE(
+                        <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(Atomic(
                             Default::default(),
-                            Factor::Literal(Bool(<span class="bool-val">false</span>)),
+                            Atom::Literal(Bool(<span class="bool-val">false</span>)),
                         )));
                     }
                 } <span class="kw">else </span>{
@@ -458,7 +455,7 @@
             <span class="kw">let </span><span class="kw-2">mut </span>new_vec: Vec&lt;Expr&gt; = Vec::new();
             <span class="kw">let </span><span class="kw-2">mut </span>n_consts = <span class="number">0</span>;
             <span class="kw">for </span>expr <span class="kw">in </span>vec {
-                <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Int(x))) = expr {
+                <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Int(x))) = expr {
                     n_consts += <span class="number">1</span>;
                     acc += x;
                 } <span class="kw">else </span>{
@@ -466,20 +463,20 @@
                 }
             }
 
-            <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Int(x))) = <span class="kw-2">*</span>eq {
+            <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Int(x))) = <span class="kw-2">*</span>eq {
                 <span class="kw">if </span>acc != <span class="number">0 </span>{
                     <span class="comment">// when rhs is a constant, move lhs constants to rhs
                     </span><span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(SumEq(
                         m,
                         new_vec,
-                        Box::new(Expr::FactorE(
+                        Box::new(Expr::Atomic(
                             Default::default(),
-                            Factor::Literal(Int(x - acc)),
+                            Atom::Literal(Int(x - acc)),
                         )),
                     )));
                 }
             } <span class="kw">else if </span>acc != <span class="number">0 </span>{
-                new_vec.push(Expr::FactorE(Default::default(), Factor::Literal(Int(acc))));
+                new_vec.push(Expr::Atomic(Default::default(), Atom::Literal(Int(acc))));
             }
 
             <span class="kw">if </span>n_consts &lt;= <span class="number">1 </span>{
@@ -493,7 +490,7 @@
             <span class="kw">let </span><span class="kw-2">mut </span>new_vec: Vec&lt;Expr&gt; = Vec::new();
             <span class="kw">let </span><span class="kw-2">mut </span>n_consts = <span class="number">0</span>;
             <span class="kw">for </span>expr <span class="kw">in </span>vec {
-                <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Int(x))) = expr {
+                <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Int(x))) = expr {
                     n_consts += <span class="number">1</span>;
                     acc += x;
                 } <span class="kw">else </span>{
@@ -501,20 +498,20 @@
                 }
             }
 
-            <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Int(x))) = <span class="kw-2">*</span>geq {
+            <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Int(x))) = <span class="kw-2">*</span>geq {
                 <span class="kw">if </span>acc != <span class="number">0 </span>{
                     <span class="comment">// when rhs is a constant, move lhs constants to rhs
                     </span><span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(SumGeq(
                         m,
                         new_vec,
-                        Box::new(Expr::FactorE(
+                        Box::new(Expr::Atomic(
                             Default::default(),
-                            Factor::Literal(Int(x - acc)),
+                            Atom::Literal(Int(x - acc)),
                         )),
                     )));
                 }
             } <span class="kw">else if </span>acc != <span class="number">0 </span>{
-                new_vec.push(Expr::FactorE(Default::default(), Factor::Literal(Int(acc))));
+                new_vec.push(Expr::Atomic(Default::default(), Atom::Literal(Int(acc))));
             }
 
             <span class="kw">if </span>n_consts &lt;= <span class="number">1 </span>{
@@ -528,7 +525,7 @@
             <span class="kw">let </span><span class="kw-2">mut </span>new_vec: Vec&lt;Expr&gt; = Vec::new();
             <span class="kw">let </span><span class="kw-2">mut </span>n_consts = <span class="number">0</span>;
             <span class="kw">for </span>expr <span class="kw">in </span>vec {
-                <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Int(x))) = expr {
+                <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Int(x))) = expr {
                     n_consts += <span class="number">1</span>;
                     acc += x;
                 } <span class="kw">else </span>{
@@ -536,20 +533,20 @@
                 }
             }
 
-            <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Int(x))) = <span class="kw-2">*</span>leq {
+            <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Int(x))) = <span class="kw-2">*</span>leq {
                 <span class="comment">// when rhs is a constant, move lhs constants to rhs
                 </span><span class="kw">if </span>acc != <span class="number">0 </span>{
                     <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(SumLeq(
                         m,
                         new_vec,
-                        Box::new(Expr::FactorE(
+                        Box::new(Expr::Atomic(
                             Default::default(),
-                            Factor::Literal(Int(x - acc)),
+                            Atom::Literal(Int(x - acc)),
                         )),
                     )));
                 }
             } <span class="kw">else if </span>acc != <span class="number">0 </span>{
-                new_vec.push(Expr::FactorE(Default::default(), Factor::Literal(Int(acc))));
+                new_vec.push(Expr::Atomic(Default::default(), Atom::Literal(Int(acc))));
             }
 
             <span class="kw">if </span>n_consts &lt;= <span class="number">1 </span>{
@@ -565,12 +562,9 @@
 
             <span class="comment">// check for duplicate constant values which would fail the constraint
             </span><span class="kw">for </span>expr <span class="kw">in </span><span class="kw-2">&amp;</span>vec {
-                <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(Int(x))) = expr {
+                <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(Int(x))) = expr {
                     <span class="kw">if </span>!consts.insert(<span class="kw-2">*</span>x) {
-                        <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(Expr::FactorE(
-                            m,
-                            Factor::Literal(Bool(<span class="bool-val">false</span>)),
-                        )));
+                        <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(Expr::Atomic(m, Atom::Literal(Bool(<span class="bool-val">false</span>)))));
                     }
                 }
             }

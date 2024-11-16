@@ -187,7 +187,7 @@
 <a href="#186" id="186">186</a>
 <a href="#187" id="187">187</a>
 <a href="#188" id="188">188</a>
-<a href="#189" id="189">189</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Expression <span class="kw">as </span>Expr, Factor, Literal <span class="kw">as </span>Lit};
+<a href="#189" id="189">189</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Atom, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit};
 <span class="kw">use </span>conjure_core::metadata::Metadata;
 <span class="kw">use </span>conjure_core::rule_engine::{
     register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
@@ -199,11 +199,11 @@
 
 <span class="attr">#[register_rule((<span class="string">"Constant"</span>, <span class="number">9001</span>))]
 </span><span class="kw">fn </span>apply_eval_constant(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">if let </span>Expr::FactorE(<span class="kw">_</span>, Factor::Literal(<span class="kw">_</span>)) = expr {
+    <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(<span class="kw">_</span>)) = expr {
         <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
     }
     eval_constant(expr)
-        .map(|c| Reduction::pure(Expr::FactorE(Metadata::new(), Factor::Literal(c))))
+        .map(|c| Reduction::pure(Expr::Atomic(Metadata::new(), Atom::Literal(c))))
         .ok_or(ApplicationError::RuleNotApplicable)
 }
 
@@ -213,8 +213,8 @@
 /// `Some(Const)` if the expression can be simplified to a constant
 </span><span class="kw">pub fn </span>eval_constant(expr: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;Lit&gt; {
     <span class="kw">match </span>expr {
-        Expr::FactorE(<span class="kw">_</span>, Factor::Literal(c)) =&gt; <span class="prelude-val">Some</span>(c.clone()),
-        Expr::FactorE(<span class="kw">_</span>, Factor::Reference(c)) =&gt; <span class="prelude-val">None</span>,
+        Expr::Atomic(<span class="kw">_</span>, Atom::Literal(c)) =&gt; <span class="prelude-val">Some</span>(c.clone()),
+        Expr::Atomic(<span class="kw">_</span>, Atom::Reference(c)) =&gt; <span class="prelude-val">None</span>,
         Expr::Eq(<span class="kw">_</span>, a, b) =&gt; bin_op::&lt;i32, bool&gt;(|a, b| a == b, a, b)
             .or_else(|| bin_op::&lt;bool, bool&gt;(|a, b| a == b, a, b))
             .map(Lit::Bool),
@@ -256,9 +256,9 @@
             bin_op::&lt;i32, i32&gt;(|a, b| a / b, a, b).map(Lit::Int)
         }
         Expr::DivEq(<span class="kw">_</span>, a, b, c) =&gt; {
-            <span class="kw">let </span>a = unwrap_factor::&lt;i32&gt;(a)<span class="question-mark">?</span>;
-            <span class="kw">let </span>b = unwrap_factor::&lt;i32&gt;(b)<span class="question-mark">?</span>;
-            <span class="kw">let </span>c = unwrap_factor::&lt;i32&gt;(c)<span class="question-mark">?</span>;
+            <span class="kw">let </span>a = unwrap_atom::&lt;i32&gt;(a)<span class="question-mark">?</span>;
+            <span class="kw">let </span>b = unwrap_atom::&lt;i32&gt;(b)<span class="question-mark">?</span>;
+            <span class="kw">let </span>c = unwrap_atom::&lt;i32&gt;(c)<span class="question-mark">?</span>;
 
             <span class="kw">if </span>b == <span class="number">0 </span>{
                 <span class="kw">return </span><span class="prelude-val">None</span>;
@@ -333,8 +333,8 @@
     TryInto::&lt;T&gt;::try_into(c).ok()
 }
 
-<span class="kw">fn </span>unwrap_factor&lt;T: TryFrom&lt;Lit&gt;&gt;(factor: <span class="kw-2">&amp;</span>Factor) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt; {
-    <span class="kw">let </span>Factor::Literal(c) = factor <span class="kw">else </span>{
+<span class="kw">fn </span>unwrap_atom&lt;T: TryFrom&lt;Lit&gt;&gt;(atom: <span class="kw-2">&amp;</span>Atom) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt; {
+    <span class="kw">let </span>Atom::Literal(c) = atom <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">None</span>;
     };
     TryInto::&lt;T&gt;::try_into(c.clone()).ok()
@@ -342,19 +342,19 @@
 
 <span class="attr">#[cfg(test)]
 </span><span class="kw">mod </span>tests {
-    <span class="kw">use </span>conjure_core::ast::{Expression, Factor, Literal};
+    <span class="kw">use </span>conjure_core::ast::{Atom, Expression, Literal};
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>div_by_zero() {
         <span class="kw">let </span>expr = Expression::UnsafeDiv(
             Default::default(),
-            Box::new(Expression::FactorE(
+            Box::new(Expression::Atomic(
                 Default::default(),
-                Factor::Literal(Literal::Int(<span class="number">1</span>)),
+                Atom::Literal(Literal::Int(<span class="number">1</span>)),
             )),
-            Box::new(Expression::FactorE(
+            Box::new(Expression::Atomic(
                 Default::default(),
-                Factor::Literal(Literal::Int(<span class="number">0</span>)),
+                Atom::Literal(Literal::Int(<span class="number">0</span>)),
             )),
         );
         <span class="macro">assert_eq!</span>(<span class="kw">super</span>::eval_constant(<span class="kw-2">&amp;</span>expr), <span class="prelude-val">None</span>);
@@ -364,13 +364,13 @@
     </span><span class="kw">fn </span>safediv_by_zero() {
         <span class="kw">let </span>expr = Expression::SafeDiv(
             Default::default(),
-            Box::new(Expression::FactorE(
+            Box::new(Expression::Atomic(
                 Default::default(),
-                Factor::Literal(Literal::Int(<span class="number">1</span>)),
+                Atom::Literal(Literal::Int(<span class="number">1</span>)),
             )),
-            Box::new(Expression::FactorE(
+            Box::new(Expression::Atomic(
                 Default::default(),
-                Factor::Literal(Literal::Int(<span class="number">0</span>)),
+                Atom::Literal(Literal::Int(<span class="number">0</span>)),
             )),
         );
         <span class="macro">assert_eq!</span>(<span class="kw">super</span>::eval_constant(<span class="kw-2">&amp;</span>expr), <span class="prelude-val">None</span>);

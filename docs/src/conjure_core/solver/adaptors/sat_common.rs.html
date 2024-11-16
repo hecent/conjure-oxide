@@ -487,14 +487,14 @@
                 <span class="prelude-val">None </span>=&gt; <span class="kw">return </span><span class="prelude-val">Err</span>(CNFError::ClauseIndexNotFound(<span class="kw-2">*</span>idx)),
                 <span class="prelude-val">Some</span>(name) =&gt; {
                     <span class="kw">if </span><span class="kw-2">*</span>idx &gt; <span class="number">0 </span>{
-                        ans.push(conjure_ast::Expression::FactorE(
+                        ans.push(conjure_ast::Expression::Atomic(
                             Metadata::new(),
-                            conjure_ast::Factor::Reference(name.clone()),
+                            conjure_ast::Atom::Reference(name.clone()),
                         ));
                     } <span class="kw">else </span>{
-                        <span class="kw">let </span>expression: conjure_ast::Expression = conjure_ast::Expression::FactorE(
+                        <span class="kw">let </span>expression: conjure_ast::Expression = conjure_ast::Expression::Atomic(
                             Metadata::new(),
-                            conjure_ast::Factor::Reference(name.clone()),
+                            conjure_ast::Atom::Reference(name.clone()),
                         );
                         ans.push(conjure_ast::Expression::Not(
                             Metadata::new(),
@@ -535,7 +535,7 @@
     </span><span class="kw">fn </span>handle_not(<span class="kw-2">&amp;</span><span class="self">self</span>, expr: <span class="kw-2">&amp;</span>conjure_ast::Expression) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;i32&gt;, CNFError&gt; {
         <span class="kw">match </span>expr {
             <span class="comment">// Expression inside the Not()
-            </span>conjure_ast::Expression::FactorE(_metadata, conjure_ast::Factor::Reference(name)) =&gt; {
+            </span>conjure_ast::Expression::Atomic(_metadata, conjure_ast::Atom::Reference(name)) =&gt; {
                 <span class="prelude-val">Ok</span>(<span class="macro">vec!</span>[-<span class="self">self</span>.get_reference_index(name)<span class="question-mark">?</span>])
             }
             <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(CNFError::UnexpectedExpressionInsideNot(expr.clone())),
@@ -566,7 +566,7 @@
         expression: <span class="kw-2">&amp;</span>conjure_ast::Expression,
     ) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;i32&gt;, CNFError&gt; {
         <span class="kw">match </span>expression {
-            conjure_ast::Expression::FactorE(_metadata, conjure_ast::Factor::Reference(name)) =&gt; {
+            conjure_ast::Expression::Atomic(_metadata, conjure_ast::Atom::Reference(name)) =&gt; {
                 <span class="self">self</span>.handle_reference(name)
             }
             conjure_ast::Expression::Not(_metadata, var_box) =&gt; <span class="self">self</span>.handle_not(var_box),
