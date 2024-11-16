@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `crates/conjure_core/src/rules/constant.rs`."><title>constant.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="conjure_core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (8adb4b30f 2024-11-13)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">conjure_core/rules/</div>constant.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `crates/conjure_core/src/rules/constant.rs`."><title>constant.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="conjure_core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (917a50a03 2024-11-15)" data-channel="nightly" data-search-js="search-b6b1fcd2.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">conjure_core/rules/</div>constant.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
 <a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
@@ -172,7 +172,22 @@
 <a href="#171" id="171">171</a>
 <a href="#172" id="172">172</a>
 <a href="#173" id="173">173</a>
-<a href="#174" id="174">174</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Expression <span class="kw">as </span>Expr, Factor, Literal <span class="kw">as </span>Lit};
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
+<a href="#176" id="176">176</a>
+<a href="#177" id="177">177</a>
+<a href="#178" id="178">178</a>
+<a href="#179" id="179">179</a>
+<a href="#180" id="180">180</a>
+<a href="#181" id="181">181</a>
+<a href="#182" id="182">182</a>
+<a href="#183" id="183">183</a>
+<a href="#184" id="184">184</a>
+<a href="#185" id="185">185</a>
+<a href="#186" id="186">186</a>
+<a href="#187" id="187">187</a>
+<a href="#188" id="188">188</a>
+<a href="#189" id="189">189</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Expression <span class="kw">as </span>Expr, Factor, Literal <span class="kw">as </span>Lit};
 <span class="kw">use </span>conjure_core::metadata::Metadata;
 <span class="kw">use </span>conjure_core::rule_engine::{
     register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
@@ -241,7 +256,15 @@
             bin_op::&lt;i32, i32&gt;(|a, b| a / b, a, b).map(Lit::Int)
         }
         Expr::DivEq(<span class="kw">_</span>, a, b, c) =&gt; {
-            tern_op::&lt;i32, bool&gt;(|a, b, c| a == b * c, a, b, c).map(Lit::Bool)
+            <span class="kw">let </span>a = unwrap_factor::&lt;i32&gt;(a)<span class="question-mark">?</span>;
+            <span class="kw">let </span>b = unwrap_factor::&lt;i32&gt;(b)<span class="question-mark">?</span>;
+            <span class="kw">let </span>c = unwrap_factor::&lt;i32&gt;(c)<span class="question-mark">?</span>;
+
+            <span class="kw">if </span>b == <span class="number">0 </span>{
+                <span class="kw">return </span><span class="prelude-val">None</span>;
+            }
+
+            <span class="prelude-val">Some</span>(Lit::Bool(a / b == c))
         }
         Expr::Bubble(<span class="kw">_</span>, a, b) =&gt; bin_op::&lt;bool, bool&gt;(|a, b| a &amp;&amp; b, a, b).map(Lit::Bool),
 
@@ -308,6 +331,13 @@
 <span class="kw">fn </span>unwrap_expr&lt;T: TryFrom&lt;Lit&gt;&gt;(expr: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt; {
     <span class="kw">let </span>c = eval_constant(expr)<span class="question-mark">?</span>;
     TryInto::&lt;T&gt;::try_into(c).ok()
+}
+
+<span class="kw">fn </span>unwrap_factor&lt;T: TryFrom&lt;Lit&gt;&gt;(factor: <span class="kw-2">&amp;</span>Factor) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt; {
+    <span class="kw">let </span>Factor::Literal(c) = factor <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">None</span>;
+    };
+    TryInto::&lt;T&gt;::try_into(c.clone()).ok()
 }
 
 <span class="attr">#[cfg(test)]
