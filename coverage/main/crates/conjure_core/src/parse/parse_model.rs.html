@@ -140,7 +140,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">use crate::ast::{DecisionVariable, Domain, Expression, Factor, Literal, Name, Range};</pre>
+                <pre class="has-background-white py-0 px-2">use crate::ast::{Atom, DecisionVariable, Domain, Expression, Literal, Name, Range};</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -3751,8 +3751,8 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="9877">
-                9877
+                role="cell" aria-label="9860">
+                9860
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
@@ -3847,8 +3847,8 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="9877">
-                9877
+                role="cell" aria-label="9860">
+                9860
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
@@ -3943,8 +3943,8 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="2652">
-                2652
+                role="cell" aria-label="2805">
+                2805
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
@@ -4060,7 +4060,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Some(Expression::FactorE(</pre>
+                <pre class="has-background-success-light py-0 px-2">            Some(Expression::Atomic(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -4092,7 +4092,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                Factor::Reference(Name::UserName(name.to_string())),</pre>
+                <pre class="has-background-success-light py-0 px-2">                Atom::Reference(Name::UserName(name.to_string())),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5708,7 +5708,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Some(Expression::FactorE(</pre>
+                <pre class="has-background-success-light py-0 px-2">            Some(Expression::Atomic(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5740,7 +5740,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                Factor::Literal(Literal::Int(int_32)),</pre>
+                <pre class="has-background-success-light py-0 px-2">                Atom::Literal(Literal::Int(int_32)),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5836,7 +5836,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Some(Expression::FactorE(</pre>
+                <pre class="has-background-success-light py-0 px-2">            Some(Expression::Atomic(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5868,7 +5868,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                Factor::Literal(Literal::Bool(b)),</pre>
+                <pre class="has-background-success-light py-0 px-2">                Atom::Literal(Literal::Bool(b)),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6044,7 +6044,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                .map(|x| Expression::FactorE(Metadata::new(), Factor::Literal(Literal::Int(x))));</pre>
+                <pre class="has-background-success-light py-0 px-2">                .map(|x| Expression::Atomic(Metadata::new(), Atom::Literal(Literal::Int(x))));</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6172,7 +6172,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">                .map(|x| Expression::FactorE(Metadata::new(), Factor::Literal(Literal::Bool(x))));</pre>
+                <pre class="has-background-danger-light py-0 px-2">                .map(|x| Expression::Atomic(Metadata::new(), Atom::Literal(Literal::Bool(x))));</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6338,7 +6338,7 @@
 </div>
         <footer class="footer">
             <div class="content has-text-centered">
-                <p class="heading">Date: 2024-11-16 16:14</p>
+                <p class="heading">Date: 2024-11-16 17:47</p>
             </div>
         </footer>
     </body>

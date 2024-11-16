@@ -45,9 +45,9 @@
 +-------------------------------------+------------+------------+------------+------------+
 | File                                | Documented | Percentage |   Examples | Percentage |
 +-------------------------------------+------------+------------+------------+------------+
+| crates/conjure_core/src/ast/atom.rs |          1 |      33.3% |          0 |       0.0% |
 | .../conjure_core/src/ast/domains.rs |          0 |       0.0% |          0 |       0.0% |
 | ...jure_core/src/ast/expressions.rs |         24 |      92.3% |          0 |       0.0% |
-| ...s/conjure_core/src/ast/factor.rs |          1 |      33.3% |          0 |       0.0% |
 | ...conjure_core/src/ast/literals.rs |          1 |      33.3% |          0 |       0.0% |
 | crates/conjure_core/src/ast/mod.rs  |          0 |       0.0% |          0 |       0.0% |
 | ...ure_core/src/ast/symbol_table.rs |          0 |       0.0% |          0 |       0.0% |

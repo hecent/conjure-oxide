@@ -220,7 +220,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">        DecisionVariable, Domain,</pre>
+                <pre class="has-background-white py-0 px-2">        Atom::{self, *},</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -236,7 +236,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">        Expression::{self as Expr, *},</pre>
+                <pre class="has-background-white py-0 px-2">        DecisionVariable, Domain,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -252,7 +252,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">        Factor::{self, *},</pre>
+                <pre class="has-background-white py-0 px-2">        Expression::{self as Expr, *},</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -332,7 +332,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">    rules::utils::{exprs_to_conjunction, is_factor},</pre>
+                <pre class="has-background-white py-0 px-2">    rules::utils::{exprs_to_conjunction, is_atom},</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -572,7 +572,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    let val: Factor;</pre>
+                <pre class="has-background-success-light py-0 px-2">    let val: Atom;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -684,7 +684,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            if let Some(f) = a.as_factor() {</pre>
+                <pre class="has-background-success-light py-0 px-2">            if let Some(f) = a.as_atom() {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -748,7 +748,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            } else if let Some(f) = b.as_factor() {</pre>
+                <pre class="has-background-success-light py-0 px-2">            } else if let Some(f) = b.as_atom() {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -1116,7 +1116,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    let a = children[0].as_factor().ok_or(RuleNotApplicable)?;</pre>
+                <pre class="has-background-success-light py-0 px-2">    let a = children[0].as_atom().ok_or(RuleNotApplicable)?;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -1132,7 +1132,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    let b = children[1].as_factor().ok_or(RuleNotApplicable)?;</pre>
+                <pre class="has-background-success-light py-0 px-2">    let b = children[1].as_atom().ok_or(RuleNotApplicable)?;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5388,7 +5388,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Box::new(FactorE(Metadata::new(), Literal(Int(-1)))),</pre>
+                <pre class="has-background-success-light py-0 px-2">            Box::new(Atomic(Metadata::new(), Literal(Int(-1)))),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5708,7 +5708,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">            Box::new(FactorE(Metadata::new(), Literal(Int(-1)))),</pre>
+                <pre class="has-background-danger-light py-0 px-2">            Box::new(Atomic(Metadata::new(), Literal(Int(-1)))),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6028,7 +6028,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Box::new(FactorE(Metadata::new(), Literal(Int(0)))),</pre>
+                <pre class="has-background-success-light py-0 px-2">            Box::new(Atomic(Metadata::new(), Literal(Int(0)))),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6348,7 +6348,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Box::new(FactorE(Metadata::new(), Literal(Int(0)))),</pre>
+                <pre class="has-background-success-light py-0 px-2">            Box::new(Atomic(Metadata::new(), Literal(Int(0)))),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6604,7 +6604,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    let x @ FactorE(_, Reference(_)) = *x.to_owned() else {</pre>
+                <pre class="has-background-success-light py-0 px-2">    let x @ Atomic(_, Reference(_)) = *x.to_owned() else {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6732,7 +6732,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    let [ref y @ FactorE(_, Reference(_)), ref k @ FactorE(_, Literal(_))] = c[..] else {</pre>
+                <pre class="has-background-success-light py-0 px-2">    let [ref y @ Atomic(_, Reference(_)), ref k @ Atomic(_, Literal(_))] = c[..] else {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -7564,7 +7564,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                    FactorE(m, Reference(name))</pre>
+                <pre class="has-background-success-light py-0 px-2">                    Atomic(m, Reference(name))</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -7932,7 +7932,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                    FactorE(m, Reference(name))</pre>
+                <pre class="has-background-success-light py-0 px-2">                    Atomic(m, Reference(name))</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -8252,7 +8252,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            if let FactorE(_, Reference(name)) = (**expr).clone() {</pre>
+                <pre class="has-background-success-light py-0 px-2">            if let Atomic(_, Reference(name)) = (**expr).clone() {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -8716,7 +8716,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    if !matches!(expr, Not(_,c) if !matches!(**c, FactorE(_,_))) {</pre>
+                <pre class="has-background-success-light py-0 px-2">    if !matches!(expr, Not(_,c) if !matches!(**c, Atomic(_,_))) {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -8988,7 +8988,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        Box::new(FactorE(Metadata::new(), Literal(Bool(false)))),</pre>
+                <pre class="has-background-success-light py-0 px-2">        Box::new(Atomic(Metadata::new(), Literal(Bool(false)))),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -9026,7 +9026,7 @@
 </div>
         <footer class="footer">
             <div class="content has-text-centered">
-                <p class="heading">Date: 2024-11-16 16:14</p>
+                <p class="heading">Date: 2024-11-16 17:47</p>
             </div>
         </footer>
     </body>
