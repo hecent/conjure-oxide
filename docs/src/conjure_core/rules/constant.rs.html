@@ -220,7 +220,7 @@
 </span><span class="kw">pub fn </span>eval_constant(expr: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;Lit&gt; {
     <span class="kw">match </span>expr {
         Expr::Atomic(<span class="kw">_</span>, Atom::Literal(c)) =&gt; <span class="prelude-val">Some</span>(c.clone()),
-        Expr::Atomic(<span class="kw">_</span>, Atom::Reference(c)) =&gt; <span class="prelude-val">None</span>,
+        Expr::Atomic(<span class="kw">_</span>, Atom::Reference(_c)) =&gt; <span class="prelude-val">None</span>,
         Expr::Eq(<span class="kw">_</span>, a, b) =&gt; bin_op::&lt;i32, bool&gt;(|a, b| a == b, a, b)
             .or_else(|| bin_op::&lt;bool, bool&gt;(|a, b| a == b, a, b))
             .map(Lit::Bool),

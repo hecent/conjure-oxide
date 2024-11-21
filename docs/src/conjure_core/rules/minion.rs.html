@@ -615,8 +615,7 @@
 <a href="#614" id="614">614</a>
 <a href="#615" id="615">615</a>
 <a href="#616" id="616">616</a>
-<a href="#617" id="617">617</a>
-<a href="#618" id="618">618</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
+<a href="#617" id="617">617</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
@@ -628,13 +627,12 @@
 <span class="kw">use crate</span>::{
     ast::{
         Atom::{<span class="self">self</span>, <span class="kw-2">*</span>},
-        DecisionVariable, Domain,
+        Domain,
         Expression::{<span class="self">self </span><span class="kw">as </span>Expr, <span class="kw-2">*</span>},
         Literal::<span class="kw-2">*</span>,
-        SymbolTable,
     },
     bug,
-    rules::utils::{exprs_to_conjunction, is_atom},
+    rules::utils::exprs_to_conjunction,
 };
 
 <span class="kw">use </span><span class="kw">crate</span>::solver::SolverFamily;

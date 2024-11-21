@@ -761,7 +761,7 @@
         }
 
         <span class="prelude-val">Some</span>(Value::Object(b)) <span class="kw">if </span>b.contains_key(<span class="string">"ConstantBool"</span>) =&gt; {
-            <span class="kw">let </span>b: bool = b[<span class="string">"ConstantBool"</span>].as_bool().unwrap();
+            <span class="kw">let </span>b: bool = b[<span class="string">"ConstantBool"</span>].as_bool()<span class="question-mark">?</span>;
             <span class="prelude-val">Some</span>(Expression::Atomic(
                 Metadata::new(),
                 Atom::Literal(Literal::Bool(b)),

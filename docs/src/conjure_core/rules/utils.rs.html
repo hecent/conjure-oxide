@@ -152,7 +152,6 @@
 
 <span class="kw">use crate</span>::{
     ast::{Atom, DecisionVariable, Domain, Expression <span class="kw">as </span>Expr, Name, ReturnType},
-    bug,
     metadata::Metadata,
     Model,
 };
@@ -234,7 +233,7 @@
     }
 
     <span class="comment">// Anything that should be bubbled, bubble
-    </span><span class="kw">if </span>(expr.can_be_undefined()) {
+    </span><span class="kw">if </span>expr.can_be_undefined() {
         <span class="kw">return </span><span class="prelude-val">None</span>;
     }
 
@@ -260,7 +259,8 @@
 </span><span class="kw">pub struct </span>ToAuxVarOutput {
     aux_name: Name,
     aux_decl: Expr,
-    aux_domain: Domain,
+    <span class="attr">#[allow(dead_code)] </span><span class="comment">// TODO: aux_domain should be used soon, try removing this pragma
+    </span>aux_domain: Domain,
     new_model: Model,
     _unconstructable: (),
 }
