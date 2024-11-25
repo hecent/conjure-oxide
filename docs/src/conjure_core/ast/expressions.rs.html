@@ -556,7 +556,24 @@
 <a href="#555" id="555">555</a>
 <a href="#556" id="556">556</a>
 <a href="#557" id="557">557</a>
-<a href="#558" id="558">558</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
+<a href="#558" id="558">558</a>
+<a href="#559" id="559">559</a>
+<a href="#560" id="560">560</a>
+<a href="#561" id="561">561</a>
+<a href="#562" id="562">562</a>
+<a href="#563" id="563">563</a>
+<a href="#564" id="564">564</a>
+<a href="#565" id="565">565</a>
+<a href="#566" id="566">566</a>
+<a href="#567" id="567">567</a>
+<a href="#568" id="568">568</a>
+<a href="#569" id="569">569</a>
+<a href="#570" id="570">570</a>
+<a href="#571" id="571">571</a>
+<a href="#572" id="572">572</a>
+<a href="#573" id="573">573</a>
+<a href="#574" id="574">574</a>
+<a href="#575" id="575">575</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
 <span class="kw">use </span>std::sync::Arc;
 
 <span class="kw">use </span>serde::{Deserialize, Serialize};
@@ -569,7 +586,6 @@
 <span class="kw">use </span><span class="kw">crate</span>::ast::symbol_table::{Name, SymbolTable};
 <span class="kw">use </span><span class="kw">crate</span>::ast::Atom;
 <span class="kw">use </span><span class="kw">crate</span>::ast::ReturnType;
-<span class="kw">use </span><span class="kw">crate</span>::bug;
 <span class="kw">use </span><span class="kw">crate</span>::metadata::Metadata;
 
 <span class="kw">use super</span>::{Domain, Range};
@@ -795,11 +811,29 @@
                     <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
                 }
             }
+
             Expression::Bubble(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>,
             Expression::AuxDeclaration(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
             Expression::And(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
-            <span class="kw">_ </span>=&gt; <span class="macro">bug!</span>(<span class="string">"Cannot calculate domain of {:?}"</span>, <span class="self">self</span>),
-            <span class="comment">// TODO: (flm8) Add support for calculating the domains of more expression types
+            Expression::Not(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::Or(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::Eq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::Neq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::Geq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::Leq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::Gt(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::Lt(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::SumEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::SumGeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::SumLeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::DivEqUndefZero(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::ModuloEqUndefZero(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::Ineq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::AllDiff(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::WatchedLiteral(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::Reify(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            <span class="comment">// #[allow(unreachable_patterns)]
+            // _ =&gt; bug!("Cannot calculate domain of {:?}", self),
         </span>};
         <span class="kw">match </span>ret {
             <span class="comment">// TODO: (flm8) the Minion bindings currently only support single ranges for domains, so we use the min/max bounds
