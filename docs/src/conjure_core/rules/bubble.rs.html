@@ -127,19 +127,7 @@
 <a href="#126" id="126">126</a>
 <a href="#127" id="127">127</a>
 <a href="#128" id="128">128</a>
-<a href="#129" id="129">129</a>
-<a href="#130" id="130">130</a>
-<a href="#131" id="131">131</a>
-<a href="#132" id="132">132</a>
-<a href="#133" id="133">133</a>
-<a href="#134" id="134">134</a>
-<a href="#135" id="135">135</a>
-<a href="#136" id="136">136</a>
-<a href="#137" id="137">137</a>
-<a href="#138" id="138">138</a>
-<a href="#139" id="139">139</a>
-<a href="#140" id="140">140</a>
-<a href="#141" id="141">141</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Expression, ReturnType};
+<a href="#129" id="129">129</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Expression, ReturnType};
 <span class="kw">use </span>conjure_core::metadata::Metadata;
 <span class="kw">use </span>conjure_core::rule_engine::{
     register_rule, register_rule_set, ApplicationError, ApplicationError::<span class="kw-2">*</span>, ApplicationResult,
@@ -222,12 +210,6 @@
             <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
         }
 
-        <span class="comment">// either do bubble / bubble or not bubble / not bubble
-        </span><span class="kw">if </span><span class="macro">matches!</span>(<span class="kw-2">**</span>a, Expression::Bubble(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)) != <span class="macro">matches!</span>(<span class="kw-2">**</span>b, Expression::Bubble(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>))
-        {
-            <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
-        }
-
         <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(Expression::Bubble(
             Metadata::new(),
             Box::new(Expression::SafeDiv(Metadata::new(), a.clone(), b.clone())),
@@ -259,12 +241,6 @@
     <span class="kw">if let </span>Expression::UnsafeMod(<span class="kw">_</span>, a, b) = expr {
         <span class="comment">// bubble bottom up
         </span><span class="kw">if </span>a.can_be_undefined() || b.can_be_undefined() {
-            <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
-        }
-
-        <span class="comment">// either do bubble / bubble or not bubble / not bubble
-        </span><span class="kw">if </span><span class="macro">matches!</span>(<span class="kw-2">**</span>a, Expression::Bubble(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)) != <span class="macro">matches!</span>(<span class="kw-2">**</span>b, Expression::Bubble(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>))
-        {
             <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
         }
 
