@@ -36,19 +36,21 @@
 <a href="#35" id="35">35</a>
 <a href="#36" id="36">36</a>
 <a href="#37" id="37">37</a>
-<a href="#38" id="38">38</a></pre></div><pre class="rust"><code><span class="doccomment">//! This module contains the rewrite rules for Conjure Oxides and it's solvers.
+<a href="#38" id="38">38</a>
+<a href="#39" id="39">39</a></pre></div><pre class="rust"><code><span class="doccomment">//! This module contains the rewrite rules for Conjure Oxides and it's solvers.
 //!
 //! # Rule Semantics
 //!
 </span><span class="attr">#![doc = <span class="macro">include_str!</span>(<span class="string">"./rule_semantics.md"</span>)]
 
-</span><span class="kw">pub use </span>constant::eval_constant;
+</span><span class="kw">pub use </span>constant_eval::eval_constant;
 
 <span class="kw">mod </span>base;
 <span class="kw">mod </span>bubble;
 <span class="kw">mod </span>cnf;
-<span class="kw">mod </span>constant;
+<span class="kw">mod </span>constant_eval;
 <span class="kw">mod </span>minion;
+<span class="kw">mod </span>normalisers;
 <span class="kw">mod </span>partial_eval;
 
 <span class="kw">mod </span>utils;
