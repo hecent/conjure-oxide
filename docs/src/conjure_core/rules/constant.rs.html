@@ -193,13 +193,55 @@
 <a href="#192" id="192">192</a>
 <a href="#193" id="193">193</a>
 <a href="#194" id="194">194</a>
-<a href="#195" id="195">195</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Atom, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit};
+<a href="#195" id="195">195</a>
+<a href="#196" id="196">196</a>
+<a href="#197" id="197">197</a>
+<a href="#198" id="198">198</a>
+<a href="#199" id="199">199</a>
+<a href="#200" id="200">200</a>
+<a href="#201" id="201">201</a>
+<a href="#202" id="202">202</a>
+<a href="#203" id="203">203</a>
+<a href="#204" id="204">204</a>
+<a href="#205" id="205">205</a>
+<a href="#206" id="206">206</a>
+<a href="#207" id="207">207</a>
+<a href="#208" id="208">208</a>
+<a href="#209" id="209">209</a>
+<a href="#210" id="210">210</a>
+<a href="#211" id="211">211</a>
+<a href="#212" id="212">212</a>
+<a href="#213" id="213">213</a>
+<a href="#214" id="214">214</a>
+<a href="#215" id="215">215</a>
+<a href="#216" id="216">216</a>
+<a href="#217" id="217">217</a>
+<a href="#218" id="218">218</a>
+<a href="#219" id="219">219</a>
+<a href="#220" id="220">220</a>
+<a href="#221" id="221">221</a>
+<a href="#222" id="222">222</a>
+<a href="#223" id="223">223</a>
+<a href="#224" id="224">224</a>
+<a href="#225" id="225">225</a>
+<a href="#226" id="226">226</a>
+<a href="#227" id="227">227</a>
+<a href="#228" id="228">228</a>
+<a href="#229" id="229">229</a>
+<a href="#230" id="230">230</a>
+<a href="#231" id="231">231</a>
+<a href="#232" id="232">232</a>
+<a href="#233" id="233">233</a>
+<a href="#234" id="234">234</a>
+<a href="#235" id="235">235</a>
+<a href="#236" id="236">236</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashSet;
+
+<span class="kw">use </span>conjure_core::ast::{Atom, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit};
 <span class="kw">use </span>conjure_core::metadata::Metadata;
 <span class="kw">use </span>conjure_core::rule_engine::{
     register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
 };
 <span class="kw">use </span>conjure_core::Model;
-<span class="kw">use </span>tracing::warn;
 
 <span class="macro">register_rule_set!</span>(<span class="string">"Constant"</span>, <span class="number">100</span>, ());
 
@@ -247,9 +289,7 @@
         Expr::SumLeq(<span class="kw">_</span>, exprs, a) =&gt; {
             flat_op::&lt;i32, bool&gt;(|e, a| e.iter().sum::&lt;i32&gt;() &lt;= a, exprs, a).map(Lit::Bool)
         }
-        <span class="comment">// Expr::Div(_, a, b) =&gt; bin_op::&lt;i32, i32&gt;(|a, b| a / b, a, b).map(Lit::Int),
-        // Expr::SafeDiv(_, a, b) =&gt; bin_op::&lt;i32, i32&gt;(|a, b| a / b, a, b).map(Lit::Int),
-        </span>Expr::Min(<span class="kw">_</span>, exprs) =&gt; {
+        Expr::Min(<span class="kw">_</span>, exprs) =&gt; {
             opt_vec_op::&lt;i32, i32&gt;(|e| e.iter().min().copied(), exprs).map(Lit::Int)
         }
         Expr::Max(<span class="kw">_</span>, exprs) =&gt; {
@@ -259,16 +299,18 @@
             <span class="kw">if </span>unwrap_expr::&lt;i32&gt;(b)<span class="question-mark">? </span>== <span class="number">0 </span>{
                 <span class="kw">return </span><span class="prelude-val">None</span>;
             }
-            bin_op::&lt;i32, i32&gt;(|a, b| a / b, a, b).map(Lit::Int)
+            bin_op::&lt;i32, i32&gt;(|a, b| ((a <span class="kw">as </span>f32) / (b <span class="kw">as </span>f32)).floor() <span class="kw">as </span>i32, a, b).map(Lit::Int)
         }
         Expr::UnsafeMod(<span class="kw">_</span>, a, b) | Expr::SafeMod(<span class="kw">_</span>, a, b) =&gt; {
             <span class="kw">if </span>unwrap_expr::&lt;i32&gt;(b)<span class="question-mark">? </span>== <span class="number">0 </span>{
                 <span class="kw">return </span><span class="prelude-val">None</span>;
             }
-            bin_op::&lt;i32, i32&gt;(|a, b| a % b, a, b).map(Lit::Int)
+            bin_op::&lt;i32, i32&gt;(|a, b| a - b * (a <span class="kw">as </span>f32 / b <span class="kw">as </span>f32).floor() <span class="kw">as </span>i32, a, b)
+                .map(Lit::Int)
         }
         Expr::DivEqUndefZero(<span class="kw">_</span>, a, b, c) =&gt; {
-            <span class="kw">let </span>a = unwrap_atom::&lt;i32&gt;(a)<span class="question-mark">?</span>;
+            <span class="comment">// div always rounds down
+            </span><span class="kw">let </span>a = unwrap_atom::&lt;i32&gt;(a)<span class="question-mark">?</span>;
             <span class="kw">let </span>b = unwrap_atom::&lt;i32&gt;(b)<span class="question-mark">?</span>;
             <span class="kw">let </span>c = unwrap_atom::&lt;i32&gt;(c)<span class="question-mark">?</span>;
 
@@ -276,16 +318,56 @@
                 <span class="kw">return </span><span class="prelude-val">None</span>;
             }
 
-            <span class="prelude-val">Some</span>(Lit::Bool(a / b == c))
+            <span class="kw">let </span>a = a <span class="kw">as </span>f32;
+            <span class="kw">let </span>b = b <span class="kw">as </span>f32;
+            <span class="kw">let </span>div: i32 = (a / b).floor() <span class="kw">as </span>i32;
+            <span class="prelude-val">Some</span>(Lit::Bool(div == c))
         }
         Expr::Bubble(<span class="kw">_</span>, a, b) =&gt; bin_op::&lt;bool, bool&gt;(|a, b| a &amp;&amp; b, a, b).map(Lit::Bool),
 
         Expr::Reify(<span class="kw">_</span>, a, b) =&gt; bin_op::&lt;bool, bool&gt;(|a, b| a == b, a, b).map(Lit::Bool),
-        <span class="kw">_ </span>=&gt; {
-            <span class="macro">warn!</span>(%expr,<span class="string">"Unimplemented constant eval"</span>);
-            <span class="prelude-val">None
-        </span>}
-    }
+        Expr::SumEq(<span class="kw">_</span>, exprs, a) =&gt; {
+            flat_op::&lt;i32, bool&gt;(|e, a| e.iter().sum::&lt;i32&gt;() == a, exprs, a).map(Lit::Bool)
+        }
+        Expr::ModuloEqUndefZero(<span class="kw">_</span>, a, b, c) =&gt; {
+            <span class="comment">// From Savile Row. Same semantics as division.
+            //
+            //   a - (b * floor(a/b))
+            //
+            // We don't use % as it has the same semantics as /. We don't use / as we want to round
+            // down instead, not towards zero.
+            </span><span class="kw">let </span>a = unwrap_atom::&lt;i32&gt;(a)<span class="question-mark">?</span>;
+            <span class="kw">let </span>b = unwrap_atom::&lt;i32&gt;(b)<span class="question-mark">?</span>;
+            <span class="kw">let </span>c = unwrap_atom::&lt;i32&gt;(c)<span class="question-mark">?</span>;
+
+            <span class="kw">if </span>b == <span class="number">0 </span>{
+                <span class="kw">return </span><span class="prelude-val">None</span>;
+            }
+
+            <span class="kw">let </span>modulo = a - b * (a <span class="kw">as </span>f32 / b <span class="kw">as </span>f32).floor() <span class="kw">as </span>i32;
+            <span class="prelude-val">Some</span>(Lit::Bool(modulo == c))
+        }
+        Expr::AllDiff(<span class="kw">_</span>, es) =&gt; {
+            <span class="kw">let </span><span class="kw-2">mut </span>lits: HashSet&lt;Lit&gt; = HashSet::new();
+            <span class="kw">for </span>expr <span class="kw">in </span>es {
+                <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Literal(x)) = expr <span class="kw">else </span>{
+                    <span class="kw">return </span><span class="prelude-val">None</span>;
+                };
+                <span class="kw">if </span>lits.contains(x) {
+                    <span class="kw">return </span><span class="prelude-val">Some</span>(Lit::Bool(<span class="bool-val">false</span>));
+                } <span class="kw">else </span>{
+                    lits.insert(x.clone());
+                }
+            }
+            <span class="prelude-val">Some</span>(Lit::Bool(<span class="bool-val">true</span>))
+        }
+        Expr::WatchedLiteral(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>,
+        Expr::AuxDeclaration(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>,
+        <span class="comment">// _ =&gt; {
+        //     warn!(%expr,"Unimplemented constant eval");
+        //     None
+        // }
+    </span>}
 }
 
 <span class="kw">fn </span>un_op&lt;T, A&gt;(f: <span class="kw">fn</span>(T) -&gt; A, a: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;A&gt;

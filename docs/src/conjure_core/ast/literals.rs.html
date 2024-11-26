@@ -58,7 +58,7 @@
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 <span class="kw">use </span>uniplate::derive::Uniplate;
 
-<span class="attr">#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, Uniplate)]
+<span class="attr">#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, Uniplate, Hash)]
 #[uniplate()]
 
 </span><span class="doccomment">/// A literal value, equivalent to constants in Conjure.
