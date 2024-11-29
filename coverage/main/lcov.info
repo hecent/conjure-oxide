@@ -1,9 +1,9 @@
 TN:
 SF:crates/tree_morph/src/helpers.rs
-FN:13,tree_morph::helpers::select_first::<_, _, _>::{closure#0}
 FN:5,tree_morph::helpers::select_first::<_, _, _>
-FNDA:0,tree_morph::helpers::select_first::<_, _, _>::{closure#0}
+FN:13,tree_morph::helpers::select_first::<_, _, _>::{closure#0}
 FNDA:0,tree_morph::helpers::select_first::<_, _, _>
+FNDA:0,tree_morph::helpers::select_first::<_, _, _>::{closure#0}
 FNF:2
 FNH:0
 BRF:0
@@ -22,118 +22,118 @@ LF:10
 LH:0
 end_of_record
 SF:solvers/minion/src/run.rs
-FN:208,minion_rs::run::convert_model_to_raw
 FN:390,minion_rs::run::constraint_add_args
-FN:644,minion_rs::run::read_var::{closure#0}
-FN:647,minion_rs::run::read_var::{closure#1}
-FN:300,minion_rs::run::get_constraint_type
-FN:225,minion_rs::run::convert_model_to_raw::{closure#0}
-FN:611,minion_rs::run::read_list
-FN:620,minion_rs::run::read_list::{closure#1}
-FN:721,minion_rs::run::read_constant_list::{closure#0}
-FN:274,minion_rs::run::convert_model_to_raw::{closure#2}
-FN:763,minion_rs::run::read_constraint_list::{closure#0}
-FN:664,minion_rs::run::read_2_vars
-FN:672,minion_rs::run::read_2_vars::{closure#0}
-FN:684,minion_rs::run::read_2_vars::{closure#1}
-FN:616,minion_rs::run::read_list::{closure#0}
-FN:748,minion_rs::run::read_constraint::{closure#0}
-FN:225,minion_rs::run::convert_model_to_raw::{closure#0}
-FN:684,minion_rs::run::read_2_vars::{closure#1}
-FN:748,minion_rs::run::read_constraint::{closure#0}
-FN:166,minion_rs::run::run_minion
-FN:208,minion_rs::run::convert_model_to_raw
-FN:664,minion_rs::run::read_2_vars
-FN:717,minion_rs::run::read_constant_list
-FN:644,minion_rs::run::read_var::{closure#0}
-FN:721,minion_rs::run::read_constant_list::{closure#0}
-FN:289,minion_rs::run::convert_model_to_raw::{closure#3}
-FN:763,minion_rs::run::read_constraint_list::{closure#0}
-FN:768,minion_rs::run::read_constraint_list::{closure#1}
-FN:166,minion_rs::run::run_minion
-FN:289,minion_rs::run::convert_model_to_raw::{closure#3}
-FN:672,minion_rs::run::read_2_vars::{closure#0}
-FN:701,minion_rs::run::read_constant
 FN:742,minion_rs::run::read_constraint
-FN:717,minion_rs::run::read_constant_list
+FN:664,minion_rs::run::read_2_vars
+FN:684,minion_rs::run::read_2_vars::{closure#1}
+FN:721,minion_rs::run::read_constant_list::{closure#0}
+FN:616,minion_rs::run::read_list::{closure#0}
 FN:768,minion_rs::run::read_constraint_list::{closure#1}
+FN:225,minion_rs::run::convert_model_to_raw::{closure#0}
+FN:717,minion_rs::run::read_constant_list
+FN:758,minion_rs::run::read_constraint_list
+FN:208,minion_rs::run::convert_model_to_raw
+FN:748,minion_rs::run::read_constraint::{closure#0}
+FN:763,minion_rs::run::read_constraint_list::{closure#0}
 FN:701,minion_rs::run::read_constant
+FN:289,minion_rs::run::convert_model_to_raw::{closure#3}
+FN:644,minion_rs::run::read_var::{closure#0}
+FN:300,minion_rs::run::get_constraint_type
+FN:701,minion_rs::run::read_constant
+FN:763,minion_rs::run::read_constraint_list::{closure#0}
+FN:616,minion_rs::run::read_list::{closure#0}
 FN:620,minion_rs::run::read_list::{closure#1}
+FN:274,minion_rs::run::convert_model_to_raw::{closure#2}
+FN:684,minion_rs::run::read_2_vars::{closure#1}
+FN:611,minion_rs::run::read_list
+FN:639,minion_rs::run::read_var
+FN:208,minion_rs::run::convert_model_to_raw
+FN:233,minion_rs::run::convert_model_to_raw::{closure#1}
+FN:742,minion_rs::run::read_constraint
+FN:644,minion_rs::run::read_var::{closure#0}
+FN:639,minion_rs::run::read_var
+FN:611,minion_rs::run::read_list
+FN:721,minion_rs::run::read_constant_list::{closure#0}
+FN:717,minion_rs::run::read_constant_list
+FN:620,minion_rs::run::read_list::{closure#1}
+FN:166,minion_rs::run::run_minion
 FN:45,rust_out::main::_doctest_main_solvers_minion_src_run_rs_32_0::callback
-FN:742,minion_rs::run::read_constraint
-FN:758,minion_rs::run::read_constraint_list
-FN:172,minion_rs::run::run_minion::{closure#0}
-FN:172,minion_rs::run::run_minion::{closure#0}
-FN:33,rust_out::main::_doctest_main_solvers_minion_src_run_rs_32_0
-FN:611,minion_rs::run::read_list
+FN:672,minion_rs::run::read_2_vars::{closure#0}
+FN:233,minion_rs::run::convert_model_to_raw::{closure#1}
 FN:274,minion_rs::run::convert_model_to_raw::{closure#2}
-FN:123,run_callback
-FN:300,minion_rs::run::get_constraint_type
-FN:758,minion_rs::run::read_constraint_list
-FN:233,minion_rs::run::convert_model_to_raw::{closure#1}
+FN:672,minion_rs::run::read_2_vars::{closure#0}
+FN:664,minion_rs::run::read_2_vars
+FN:748,minion_rs::run::read_constraint::{closure#0}
+FN:33,rust_out::main::_doctest_main_solvers_minion_src_run_rs_32_0
+FN:166,minion_rs::run::run_minion
 FN:390,minion_rs::run::constraint_add_args
-FN:639,minion_rs::run::read_var
 FN:647,minion_rs::run::read_var::{closure#1}
+FN:123,run_callback
+FN:758,minion_rs::run::read_constraint_list
+FN:647,minion_rs::run::read_var::{closure#1}
+FN:300,minion_rs::run::get_constraint_type
+FN:768,minion_rs::run::read_constraint_list::{closure#1}
+FN:172,minion_rs::run::run_minion::{closure#0}
 FN:33,rust_out::main
-FN:233,minion_rs::run::convert_model_to_raw::{closure#1}
-FN:639,minion_rs::run::read_var
-FN:616,minion_rs::run::read_list::{closure#0}
-FNDA:0,minion_rs::run::convert_model_to_raw
+FN:289,minion_rs::run::convert_model_to_raw::{closure#3}
+FN:225,minion_rs::run::convert_model_to_raw::{closure#0}
+FN:172,minion_rs::run::run_minion::{closure#0}
 FNDA:0,minion_rs::run::constraint_add_args
-FNDA:0,minion_rs::run::read_var::{closure#0}
-FNDA:0,minion_rs::run::read_var::{closure#1}
-FNDA:0,minion_rs::run::get_constraint_type
-FNDA:1,minion_rs::run::convert_model_to_raw::{closure#0}
-FNDA:1,minion_rs::run::read_list
-FNDA:0,minion_rs::run::read_list::{closure#1}
-FNDA:1,minion_rs::run::read_constant_list::{closure#0}
-FNDA:1,minion_rs::run::convert_model_to_raw::{closure#2}
-FNDA:1,minion_rs::run::read_constraint_list::{closure#0}
-FNDA:0,minion_rs::run::read_2_vars
-FNDA:0,minion_rs::run::read_2_vars::{closure#0}
-FNDA:0,minion_rs::run::read_2_vars::{closure#1}
-FNDA:1,minion_rs::run::read_list::{closure#0}
-FNDA:1,minion_rs::run::read_constraint::{closure#0}
-FNDA:0,minion_rs::run::convert_model_to_raw::{closure#0}
-FNDA:0,minion_rs::run::read_2_vars::{closure#1}
-FNDA:0,minion_rs::run::read_constraint::{closure#0}
-FNDA:0,minion_rs::run::run_minion
-FNDA:1,minion_rs::run::convert_model_to_raw
-FNDA:1,minion_rs::run::read_2_vars
-FNDA:1,minion_rs::run::read_constant_list
-FNDA:1,minion_rs::run::read_var::{closure#0}
-FNDA:0,minion_rs::run::read_constant_list::{closure#0}
-FNDA:1,minion_rs::run::convert_model_to_raw::{closure#3}
-FNDA:0,minion_rs::run::read_constraint_list::{closure#0}
-FNDA:1,minion_rs::run::read_constraint_list::{closure#1}
-FNDA:1,minion_rs::run::run_minion
-FNDA:0,minion_rs::run::convert_model_to_raw::{closure#3}
-FNDA:0,minion_rs::run::read_2_vars::{closure#0}
-FNDA:1,minion_rs::run::read_constant
-FNDA:1,minion_rs::run::read_constraint
-FNDA:0,minion_rs::run::read_constant_list
-FNDA:0,minion_rs::run::read_constraint_list::{closure#1}
-FNDA:0,minion_rs::run::read_constant
-FNDA:0,minion_rs::run::read_list::{closure#1}
-FNDA:1,rust_out::main::_doctest_main_solvers_minion_src_run_rs_32_0::callback
 FNDA:0,minion_rs::run::read_constraint
-FNDA:0,minion_rs::run::read_constraint_list
-FNDA:0,minion_rs::run::run_minion::{closure#0}
-FNDA:1,minion_rs::run::run_minion::{closure#0}
-FNDA:1,rust_out::main::_doctest_main_solvers_minion_src_run_rs_32_0
-FNDA:0,minion_rs::run::read_list
-FNDA:0,minion_rs::run::convert_model_to_raw::{closure#2}
-FNDA:1,run_callback
-FNDA:1,minion_rs::run::get_constraint_type
+FNDA:1,minion_rs::run::read_2_vars
+FNDA:0,minion_rs::run::read_2_vars::{closure#1}
+FNDA:1,minion_rs::run::read_constant_list::{closure#0}
+FNDA:1,minion_rs::run::read_list::{closure#0}
+FNDA:1,minion_rs::run::read_constraint_list::{closure#1}
+FNDA:0,minion_rs::run::convert_model_to_raw::{closure#0}
+FNDA:1,minion_rs::run::read_constant_list
 FNDA:1,minion_rs::run::read_constraint_list
-FNDA:0,minion_rs::run::convert_model_to_raw::{closure#1}
-FNDA:1,minion_rs::run::constraint_add_args
-FNDA:1,minion_rs::run::read_var
-FNDA:0,minion_rs::run::read_var::{closure#1}
-FNDA:1,rust_out::main
-FNDA:0,minion_rs::run::convert_model_to_raw::{closure#1}
-FNDA:0,minion_rs::run::read_var
+FNDA:1,minion_rs::run::convert_model_to_raw
+FNDA:1,minion_rs::run::read_constraint::{closure#0}
+FNDA:1,minion_rs::run::read_constraint_list::{closure#0}
+FNDA:1,minion_rs::run::read_constant
+FNDA:0,minion_rs::run::convert_model_to_raw::{closure#3}
+FNDA:0,minion_rs::run::read_var::{closure#0}
+FNDA:0,minion_rs::run::get_constraint_type
+FNDA:0,minion_rs::run::read_constant
+FNDA:0,minion_rs::run::read_constraint_list::{closure#0}
 FNDA:0,minion_rs::run::read_list::{closure#0}
+FNDA:0,minion_rs::run::read_list::{closure#1}
+FNDA:1,minion_rs::run::convert_model_to_raw::{closure#2}
+FNDA:0,minion_rs::run::read_2_vars::{closure#1}
+FNDA:1,minion_rs::run::read_list
+FNDA:1,minion_rs::run::read_var
+FNDA:0,minion_rs::run::convert_model_to_raw
+FNDA:0,minion_rs::run::convert_model_to_raw::{closure#1}
+FNDA:1,minion_rs::run::read_constraint
+FNDA:1,minion_rs::run::read_var::{closure#0}
+FNDA:0,minion_rs::run::read_var
+FNDA:0,minion_rs::run::read_list
+FNDA:0,minion_rs::run::read_constant_list::{closure#0}
+FNDA:0,minion_rs::run::read_constant_list
+FNDA:0,minion_rs::run::read_list::{closure#1}
+FNDA:1,minion_rs::run::run_minion
+FNDA:1,rust_out::main::_doctest_main_solvers_minion_src_run_rs_32_0::callback
+FNDA:0,minion_rs::run::read_2_vars::{closure#0}
+FNDA:0,minion_rs::run::convert_model_to_raw::{closure#1}
+FNDA:0,minion_rs::run::convert_model_to_raw::{closure#2}
+FNDA:0,minion_rs::run::read_2_vars::{closure#0}
+FNDA:0,minion_rs::run::read_2_vars
+FNDA:0,minion_rs::run::read_constraint::{closure#0}
+FNDA:1,rust_out::main::_doctest_main_solvers_minion_src_run_rs_32_0
+FNDA:0,minion_rs::run::run_minion
+FNDA:1,minion_rs::run::constraint_add_args
+FNDA:0,minion_rs::run::read_var::{closure#1}
+FNDA:1,run_callback
+FNDA:0,minion_rs::run::read_constraint_list
+FNDA:0,minion_rs::run::read_var::{closure#1}
+FNDA:1,minion_rs::run::get_constraint_type
+FNDA:0,minion_rs::run::read_constraint_list::{closure#1}
+FNDA:0,minion_rs::run::run_minion::{closure#0}
+FNDA:1,rust_out::main
+FNDA:1,minion_rs::run::convert_model_to_raw::{closure#3}
+FNDA:1,minion_rs::run::convert_model_to_raw::{closure#0}
+FNDA:1,minion_rs::run::run_minion::{closure#0}
 FNF:56
 FNH:25
 BRF:0
@@ -726,37 +726,37 @@ LH:6
 end_of_record
 SF:crates/enum_compatability_macro/src/lib.rs
 FN:118,rust_out::main::_doctest_main_crates_enum_compatability_macro_src_lib_rs_117_0
+FN:38,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut
 FN:131,enum_compatability_macro::document_compatibility
-FN:66,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut::{closure#0}
+FN:181,enum_compatability_macro::document_compatibility::{closure#0}
 FN:131,enum_compatability_macro::document_compatibility
 FN:104,rust_out::main::_doctest_main_crates_enum_compatability_macro_src_lib_rs_103_0
 FN:66,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut::{closure#0}
-FN:181,enum_compatability_macro::document_compatibility::{closure#0}
 FN:38,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut
 FN:181,enum_compatability_macro::document_compatibility::{closure#0}
 FN:181,enum_compatability_macro::document_compatibility::{closure#0}
 FN:38,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut
-FN:131,enum_compatability_macro::document_compatibility
+FN:66,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut::{closure#0}
 FN:75,rust_out::main::_doctest_main_crates_enum_compatability_macro_src_lib_rs_74_0
 FN:75,rust_out::main
 FN:66,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut::{closure#0}
-FN:38,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut
+FN:131,enum_compatability_macro::document_compatibility
 FNDA:1,rust_out::main::_doctest_main_crates_enum_compatability_macro_src_lib_rs_117_0
-FNDA:0,enum_compatability_macro::document_compatibility
-FNDA:0,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut::{closure#0}
+FNDA:1,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut
 FNDA:1,enum_compatability_macro::document_compatibility
+FNDA:0,enum_compatability_macro::document_compatibility::{closure#0}
+FNDA:0,enum_compatability_macro::document_compatibility
 FNDA:1,rust_out::main::_doctest_main_crates_enum_compatability_macro_src_lib_rs_103_0
 FNDA:0,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut::{closure#0}
-FNDA:0,enum_compatability_macro::document_compatibility::{closure#0}
 FNDA:0,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut
-FNDA:1,enum_compatability_macro::document_compatibility::{closure#0}
 FNDA:0,enum_compatability_macro::document_compatibility::{closure#0}
-FNDA:1,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut
-FNDA:0,enum_compatability_macro::document_compatibility
+FNDA:1,enum_compatability_macro::document_compatibility::{closure#0}
+FNDA:0,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut
+FNDA:0,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut::{closure#0}
 FNDA:1,rust_out::main::_doctest_main_crates_enum_compatability_macro_src_lib_rs_74_0
 FNDA:1,rust_out::main
 FNDA:1,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut::{closure#0}
-FNDA:0,<enum_compatability_macro::RemoveCompatibleAttrs as syn::gen::visit_mut::VisitMut>::visit_variant_mut
+FNDA:0,enum_compatability_macro::document_compatibility
 FNF:16
 FNH:8
 BRF:0
@@ -848,16 +848,16 @@ LF:83
 LH:83
 end_of_record
 SF:crates/tree_morph/src/commands.rs
-FN:24,<tree_morph::commands::Commands<_, _>>::new
 FN:32,<tree_morph::commands::Commands<_, _>>::transform
 FN:43,<tree_morph::commands::Commands<_, _>>::clear
-FN:48,<tree_morph::commands::Commands<_, _>>::apply
 FN:38,<tree_morph::commands::Commands<_, _>>::mut_meta
-FNDA:0,<tree_morph::commands::Commands<_, _>>::new
+FN:24,<tree_morph::commands::Commands<_, _>>::new
+FN:48,<tree_morph::commands::Commands<_, _>>::apply
 FNDA:0,<tree_morph::commands::Commands<_, _>>::transform
 FNDA:0,<tree_morph::commands::Commands<_, _>>::clear
-FNDA:0,<tree_morph::commands::Commands<_, _>>::apply
 FNDA:0,<tree_morph::commands::Commands<_, _>>::mut_meta
+FNDA:0,<tree_morph::commands::Commands<_, _>>::new
+FNDA:0,<tree_morph::commands::Commands<_, _>>::apply
 FNF:5
 FNH:0
 BRF:0
@@ -889,8 +889,8 @@ end_of_record
 SF:solvers/minion/src/wrappers.rs
 FN:9,minion_rs::wrappers::get_from_table
 FN:9,minion_rs::wrappers::get_from_table
-FNDA:0,minion_rs::wrappers::get_from_table
 FNDA:1,minion_rs::wrappers::get_from_table
+FNDA:0,minion_rs::wrappers::get_from_table
 FNF:2
 FNH:1
 BRF:0
@@ -915,22 +915,22 @@ LF:16
 LH:14
 end_of_record
 SF:solvers/minion/src/scoped_ptr.rs
-FN:17,<minion_rs::scoped_ptr::Scoped<_>>::new
-FN:24,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_ConstraintBlob> as core::ops::drop::Drop>::drop
-FN:17,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_ConstraintBlob>>::new
-FN:24,<minion_rs::scoped_ptr::Scoped<[u64; 3]> as core::ops::drop::Drop>::drop
-FN:24,<minion_rs::scoped_ptr::Scoped<_> as core::ops::drop::Drop>::drop
-FN:17,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_SearchOrder>>::new
 FN:17,<minion_rs::scoped_ptr::Scoped<[u64; 3]>>::new
+FN:24,<minion_rs::scoped_ptr::Scoped<[u64; 3]> as core::ops::drop::Drop>::drop
+FN:17,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_ConstraintBlob>>::new
+FN:24,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_ConstraintBlob> as core::ops::drop::Drop>::drop
+FN:17,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_SearchOrder>>::new
 FN:24,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_SearchOrder> as core::ops::drop::Drop>::drop
-FNDA:0,<minion_rs::scoped_ptr::Scoped<_>>::new
-FNDA:1,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_ConstraintBlob> as core::ops::drop::Drop>::drop
-FNDA:1,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_ConstraintBlob>>::new
-FNDA:1,<minion_rs::scoped_ptr::Scoped<[u64; 3]> as core::ops::drop::Drop>::drop
-FNDA:0,<minion_rs::scoped_ptr::Scoped<_> as core::ops::drop::Drop>::drop
-FNDA:1,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_SearchOrder>>::new
+FN:17,<minion_rs::scoped_ptr::Scoped<_>>::new
+FN:24,<minion_rs::scoped_ptr::Scoped<_> as core::ops::drop::Drop>::drop
 FNDA:1,<minion_rs::scoped_ptr::Scoped<[u64; 3]>>::new
+FNDA:1,<minion_rs::scoped_ptr::Scoped<[u64; 3]> as core::ops::drop::Drop>::drop
+FNDA:1,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_ConstraintBlob>>::new
+FNDA:1,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_ConstraintBlob> as core::ops::drop::Drop>::drop
+FNDA:1,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_SearchOrder>>::new
 FNDA:1,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_SearchOrder> as core::ops::drop::Drop>::drop
+FNDA:0,<minion_rs::scoped_ptr::Scoped<_>>::new
+FNDA:0,<minion_rs::scoped_ptr::Scoped<_> as core::ops::drop::Drop>::drop
 FNF:8
 FNH:6
 BRF:0
@@ -1091,22 +1091,22 @@ LF:27
 LH:27
 end_of_record
 SF:crates/tree_morph/src/reduce.rs
-FN:102,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#0}
+FN:98,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}
 FN:34,tree_morph::reduce::reduce::<_, _, _>
 FN:101,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}
 FN:91,tree_morph::reduce::reduce_with_rules::<_, _, _, _>
-FN:106,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#1}
-FN:98,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}
-FN:103,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#1}
 FN:47,tree_morph::reduce::reduce_iteration::<_, _, _>
-FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#0}
+FN:106,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#1}
+FN:103,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#1}
+FN:102,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#0}
+FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}
 FNDA:0,tree_morph::reduce::reduce::<_, _, _>
 FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}
 FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>
-FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#1}
-FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}
-FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#1}
 FNDA:0,tree_morph::reduce::reduce_iteration::<_, _, _>
+FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#1}
+FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#1}
+FNDA:0,tree_morph::reduce::reduce_with_rules::<_, _, _, _>::{closure#0}::{closure#0}::{closure#0}
 FNF:8
 FNH:0
 BRF:0
@@ -1174,11 +1174,42 @@ DA:115,0
 LF:60
 LH:0
 end_of_record
+SF:crates/tree-sitter-essence/bindings/rust/lib.rs
+FN:7,rust_out::main
+FN:47,tree_sitter_essence::tests::test_can_load_grammar
+FN:7,rust_out::main::_doctest_main_crates_tree_sitter_essence_bindings_rust_lib_rs_6_0
+FNDA:1,rust_out::main
+FNDA:1,tree_sitter_essence::tests::test_can_load_grammar
+FNDA:1,rust_out::main::_doctest_main_crates_tree_sitter_essence_bindings_rust_lib_rs_6_0
+FNF:3
+FNH:3
+BRF:0
+BRH:0
+DA:7,1
+DA:8,1
+DA:9,1
+DA:10,1
+DA:11,1
+DA:12,1
+DA:13,1
+DA:14,1
+DA:15,1
+DA:16,1
+DA:17,1
+DA:47,1
+DA:48,1
+DA:49,1
+DA:50,1
+DA:51,1
+DA:52,1
+LF:17
+LH:17
+end_of_record
 SF:solvers/minion/src/ffi.rs
-FN:26,minion_rs::ffi::tests::xyz_raw
 FN:16,hello_from_rust
-FNDA:1,minion_rs::ffi::tests::xyz_raw
+FN:26,minion_rs::ffi::tests::xyz_raw
 FNDA:1,hello_from_rust
+FNDA:1,minion_rs::ffi::tests::xyz_raw
 FNF:2
 FNH:2
 BRF:0
@@ -1289,58 +1320,58 @@ LF:8
 LH:0
 end_of_record
 SF:crates/conjure_macros/src/lib.rs
-FN:47,conjure_macros::register_rule
+FN:35,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
+FN:19,<conjure_macros::RuleSetAndPriority as syn::parse::Parse>::parse
 FN:155,conjure_macros::register_rule_set
-FN:82,conjure_macros::parse_parenthesized::<syn::lit::LitStr>
+FN:57,conjure_macros::register_rule::{closure#0}
 FN:82,conjure_macros::parse_parenthesized::<_>
-FN:35,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
-FN:35,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
-FN:107,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
-FN:82,conjure_macros::parse_parenthesized::<syn::path::Path>
 FN:57,conjure_macros::register_rule::{closure#0}
 FN:19,<conjure_macros::RuleSetAndPriority as syn::parse::Parse>::parse
-FN:57,conjure_macros::register_rule::{closure#0}
 FN:47,conjure_macros::register_rule
+FN:107,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
+FN:57,conjure_macros::register_rule::{closure#0}
 FN:151,rust_out::main::_doctest_main_crates_conjure_macros_src_lib_rs_151_0
-FN:57,conjure_macros::register_rule::{closure#0}
-FN:107,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
-FN:82,conjure_macros::parse_parenthesized::<syn::lit::LitStr>
-FN:19,<conjure_macros::RuleSetAndPriority as syn::parse::Parse>::parse
-FN:107,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
-FN:82,conjure_macros::parse_parenthesized::<syn::path::Path>
 FN:47,conjure_macros::register_rule
+FN:35,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
+FN:107,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
+FN:47,conjure_macros::register_rule
+FN:82,conjure_macros::parse_parenthesized::<syn::lit::LitStr>
+FN:35,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
+FN:19,<conjure_macros::RuleSetAndPriority as syn::parse::Parse>::parse
 FN:155,conjure_macros::register_rule_set
 FN:155,conjure_macros::register_rule_set
+FN:82,conjure_macros::parse_parenthesized::<syn::path::Path>
+FN:82,conjure_macros::parse_parenthesized::<syn::lit::LitStr>
 FN:151,rust_out::main
 FN:148,rust_out::main::_doctest_main_crates_conjure_macros_src_lib_rs_148_0
-FN:19,<conjure_macros::RuleSetAndPriority as syn::parse::Parse>::parse
-FN:35,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
-FNDA:0,conjure_macros::register_rule
-FNDA:1,conjure_macros::register_rule_set
-FNDA:0,conjure_macros::parse_parenthesized::<syn::lit::LitStr>
-FNDA:0,conjure_macros::parse_parenthesized::<_>
+FN:82,conjure_macros::parse_parenthesized::<syn::path::Path>
+FN:107,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
 FNDA:0,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
-FNDA:1,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
-FNDA:0,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
-FNDA:0,conjure_macros::parse_parenthesized::<syn::path::Path>
-FNDA:0,conjure_macros::register_rule::{closure#0}
 FNDA:0,<conjure_macros::RuleSetAndPriority as syn::parse::Parse>::parse
-FNDA:1,conjure_macros::register_rule::{closure#0}
-FNDA:0,conjure_macros::register_rule
-FNDA:1,rust_out::main::_doctest_main_crates_conjure_macros_src_lib_rs_151_0
+FNDA:0,conjure_macros::register_rule_set
 FNDA:0,conjure_macros::register_rule::{closure#0}
+FNDA:0,conjure_macros::parse_parenthesized::<_>
+FNDA:1,conjure_macros::register_rule::{closure#0}
+FNDA:0,<conjure_macros::RuleSetAndPriority as syn::parse::Parse>::parse
+FNDA:0,conjure_macros::register_rule
 FNDA:0,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
-FNDA:1,conjure_macros::parse_parenthesized::<syn::lit::LitStr>
-FNDA:1,<conjure_macros::RuleSetAndPriority as syn::parse::Parse>::parse
-FNDA:1,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
-FNDA:1,conjure_macros::parse_parenthesized::<syn::path::Path>
+FNDA:0,conjure_macros::register_rule::{closure#0}
+FNDA:1,rust_out::main::_doctest_main_crates_conjure_macros_src_lib_rs_151_0
 FNDA:1,conjure_macros::register_rule
+FNDA:0,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
+FNDA:1,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
+FNDA:0,conjure_macros::register_rule
+FNDA:0,conjure_macros::parse_parenthesized::<syn::lit::LitStr>
+FNDA:1,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
+FNDA:1,<conjure_macros::RuleSetAndPriority as syn::parse::Parse>::parse
 FNDA:0,conjure_macros::register_rule_set
-FNDA:0,conjure_macros::register_rule_set
+FNDA:1,conjure_macros::register_rule_set
+FNDA:1,conjure_macros::parse_parenthesized::<syn::path::Path>
+FNDA:1,conjure_macros::parse_parenthesized::<syn::lit::LitStr>
 FNDA:1,rust_out::main
 FNDA:1,rust_out::main::_doctest_main_crates_conjure_macros_src_lib_rs_148_0
-FNDA:0,<conjure_macros::RuleSetAndPriority as syn::parse::Parse>::parse
-FNDA:0,<conjure_macros::RegisterRuleArgs as syn::parse::Parse>::parse
+FNDA:0,conjure_macros::parse_parenthesized::<syn::path::Path>
+FNDA:0,<conjure_macros::RuleSetArgs as syn::parse::Parse>::parse
 FNF:26
 FNH:11
 BRF:0
@@ -1467,34 +1498,34 @@ LF:118
 LH:112
 end_of_record
 SF:solvers/minion/src/ast.rs
-FN:163,<minion_rs::ast::SymbolTable>::new
-FN:19,<minion_rs::ast::Model>::new
+FN:196,<minion_rs::ast::SymbolTable>::get_variable_order
+FN:28,<minion_rs::ast::Model as core::default::Default>::default
 FN:175,<minion_rs::ast::SymbolTable>::add_var
-FN:191,<minion_rs::ast::SymbolTable>::get_vartype
+FN:200,<minion_rs::ast::SymbolTable>::contains
+FN:19,<minion_rs::ast::Model>::new
 FN:19,<minion_rs::ast::Model>::new
 FN:163,<minion_rs::ast::SymbolTable>::new
 FN:200,<minion_rs::ast::SymbolTable>::contains
+FN:163,<minion_rs::ast::SymbolTable>::new
 FN:28,<minion_rs::ast::Model as core::default::Default>::default
-FN:175,<minion_rs::ast::SymbolTable>::add_var
-FN:196,<minion_rs::ast::SymbolTable>::get_variable_order
-FN:28,<minion_rs::ast::Model as core::default::Default>::default
-FN:200,<minion_rs::ast::SymbolTable>::contains
 FN:191,<minion_rs::ast::SymbolTable>::get_vartype
 FN:196,<minion_rs::ast::SymbolTable>::get_variable_order
-FNDA:0,<minion_rs::ast::SymbolTable>::new
-FNDA:0,<minion_rs::ast::Model>::new
-FNDA:0,<minion_rs::ast::SymbolTable>::add_var
-FNDA:1,<minion_rs::ast::SymbolTable>::get_vartype
-FNDA:1,<minion_rs::ast::Model>::new
-FNDA:1,<minion_rs::ast::SymbolTable>::new
-FNDA:0,<minion_rs::ast::SymbolTable>::contains
-FNDA:0,<minion_rs::ast::Model as core::default::Default>::default
-FNDA:1,<minion_rs::ast::SymbolTable>::add_var
+FN:175,<minion_rs::ast::SymbolTable>::add_var
+FN:191,<minion_rs::ast::SymbolTable>::get_vartype
 FNDA:1,<minion_rs::ast::SymbolTable>::get_variable_order
 FNDA:0,<minion_rs::ast::Model as core::default::Default>::default
+FNDA:0,<minion_rs::ast::SymbolTable>::add_var
 FNDA:0,<minion_rs::ast::SymbolTable>::contains
+FNDA:1,<minion_rs::ast::Model>::new
+FNDA:0,<minion_rs::ast::Model>::new
+FNDA:1,<minion_rs::ast::SymbolTable>::new
+FNDA:0,<minion_rs::ast::SymbolTable>::contains
+FNDA:0,<minion_rs::ast::SymbolTable>::new
+FNDA:0,<minion_rs::ast::Model as core::default::Default>::default
 FNDA:0,<minion_rs::ast::SymbolTable>::get_vartype
 FNDA:0,<minion_rs::ast::SymbolTable>::get_variable_order
+FNDA:1,<minion_rs::ast::SymbolTable>::add_var
+FNDA:1,<minion_rs::ast::SymbolTable>::get_vartype
 FNF:14
 FNH:5
 BRF:0
