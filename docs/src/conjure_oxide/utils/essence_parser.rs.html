@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `conjure_oxide/src/utils/essence_parser.rs`."><title>essence_parser.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-dbdb5eec.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="conjure_oxide" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (7442931d4 2024-11-30)" data-channel="nightly" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">conjure_oxide/utils/</div>essence_parser.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `conjure_oxide/src/utils/essence_parser.rs`."><title>essence_parser.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-dbdb5eec.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="conjure_oxide" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (d49be02cf 2024-12-02)" data-channel="nightly" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">conjure_oxide/utils/</div>essence_parser.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
 <a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
@@ -337,36 +337,7 @@
 <a href="#336" id="336">336</a>
 <a href="#337" id="337">337</a>
 <a href="#338" id="338">338</a>
-<a href="#339" id="339">339</a>
-<a href="#340" id="340">340</a>
-<a href="#341" id="341">341</a>
-<a href="#342" id="342">342</a>
-<a href="#343" id="343">343</a>
-<a href="#344" id="344">344</a>
-<a href="#345" id="345">345</a>
-<a href="#346" id="346">346</a>
-<a href="#347" id="347">347</a>
-<a href="#348" id="348">348</a>
-<a href="#349" id="349">349</a>
-<a href="#350" id="350">350</a>
-<a href="#351" id="351">351</a>
-<a href="#352" id="352">352</a>
-<a href="#353" id="353">353</a>
-<a href="#354" id="354">354</a>
-<a href="#355" id="355">355</a>
-<a href="#356" id="356">356</a>
-<a href="#357" id="357">357</a>
-<a href="#358" id="358">358</a>
-<a href="#359" id="359">359</a>
-<a href="#360" id="360">360</a>
-<a href="#361" id="361">361</a>
-<a href="#362" id="362">362</a>
-<a href="#363" id="363">363</a>
-<a href="#364" id="364">364</a>
-<a href="#365" id="365">365</a>
-<a href="#366" id="366">366</a>
-<a href="#367" id="367">367</a>
-<a href="#368" id="368">368</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::error::Error;
+<a href="#339" id="339">339</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::error::Error;
 <span class="kw">use </span>std::fs;
 <span class="kw">use </span>std::sync::{Arc, RwLock};
 <span class="kw">use </span>tree_sitter::{Node, Parser, Tree};
@@ -427,7 +398,7 @@
             }
         }
     }
-    <span class="kw">return </span><span class="prelude-val">Ok</span>(model);
+    <span class="prelude-val">Ok</span>(model)
 }
 
 <span class="kw">fn </span>get_tree(path: <span class="kw-2">&amp;</span>str, filename: <span class="kw-2">&amp;</span>str, extension: <span class="kw-2">&amp;</span>str) -&gt; (Tree, String) {
@@ -435,12 +406,12 @@
         .expect(<span class="string">"Failed to read the source code file"</span>);
     <span class="kw">let </span><span class="kw-2">mut </span>parser = Parser::new();
     parser.set_language(<span class="kw-2">&amp;</span>LANGUAGE.into()).unwrap();
-    <span class="kw">return </span>(
+    (
         parser
             .parse(source_code.clone(), <span class="prelude-val">None</span>)
             .expect(<span class="string">"Failed to parse"</span>),
         source_code,
-    );
+    )
 }
 
 <span class="kw">fn </span>parse_find_statement(
@@ -471,14 +442,14 @@
             symbol_table.insert(Name::UserName(String::from(name)), decision_variable);
         }
     }
-    <span class="kw">return </span>symbol_table;
+    symbol_table
 }
 
 <span class="kw">fn </span>parse_domain(domain: Node, source_code: <span class="kw-2">&amp;</span>str) -&gt; Domain {
     <span class="kw">let </span>domain = domain.child(<span class="number">0</span>).expect(<span class="string">"No domain"</span>);
     <span class="kw">match </span>domain.kind() {
-        <span class="string">"bool_domain" </span>=&gt; <span class="kw">return </span>Domain::BoolDomain,
-        <span class="string">"int_domain" </span>=&gt; <span class="kw">return </span>parse_int_domain(domain, source_code),
+        <span class="string">"bool_domain" </span>=&gt; Domain::BoolDomain,
+        <span class="string">"int_domain" </span>=&gt; parse_int_domain(domain, source_code),
         <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"Not bool or int domain"</span>),
     }
 }
@@ -486,7 +457,7 @@
 <span class="kw">fn </span>parse_int_domain(int_domain: Node, source_code: <span class="kw-2">&amp;</span>str) -&gt; Domain {
     <span class="comment">//TODO implement functionality for non-simple ints
     </span><span class="kw">if </span>int_domain.child_count() == <span class="number">1 </span>{
-        <span class="kw">return </span>Domain::IntDomain(<span class="macro">vec!</span>[Range::Bounded(std::i32::MIN, std::i32::MAX)]);
+        Domain::IntDomain(<span class="macro">vec!</span>[Range::Bounded(std::i32::MIN, std::i32::MAX)])
     } <span class="kw">else </span>{
         <span class="kw">let </span><span class="kw-2">mut </span>ranges: Vec&lt;Range&lt;i32&gt;&gt; = Vec::new();
         <span class="kw">let </span>range_list = int_domain
@@ -507,7 +478,7 @@
                     <span class="kw">match </span>range_component.kind() {
                         <span class="string">"expression" </span>=&gt; {
                             lower_bound = <span class="prelude-val">Some</span>(
-                                <span class="kw-2">*&amp;</span>source_code
+                                source_code
                                     [range_component.start_byte()..range_component.end_byte()]
                                     .parse::&lt;i32&gt;()
                                     .unwrap(),
@@ -515,7 +486,7 @@
 
                             <span class="kw">if let </span><span class="prelude-val">Some</span>(range_component) = range_component.next_named_sibling() {
                                 upper_bound = <span class="prelude-val">Some</span>(
-                                    <span class="kw-2">*&amp;</span>source_code
+                                    source_code
                                         [range_component.start_byte()..range_component.end_byte()]
                                         .parse::&lt;i32&gt;()
                                         .unwrap(),
@@ -530,7 +501,7 @@
                                 .next_sibling()
                                 .expect(<span class="string">"Error with integer range"</span>);
                             upper_bound = <span class="prelude-val">Some</span>(
-                                <span class="kw-2">*&amp;</span>source_code
+                                source_code
                                     [range_component.start_byte()..range_component.end_byte()]
                                     .parse::&lt;i32&gt;()
                                     .unwrap(),
@@ -549,7 +520,7 @@
                 <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"unsupported int range type"</span>),
             }
         }
-        <span class="kw">return </span>Domain::IntDomain(ranges);
+        Domain::IntDomain(ranges)
     }
 }
 
@@ -559,21 +530,21 @@
             <span class="kw">let </span>child = constraint
                 .child(<span class="number">0</span>)
                 .expect(<span class="string">"Error: mission node in constraint statement"</span>);
-            <span class="kw">return </span>parse_constraint(child, source_code);
+            parse_constraint(child, source_code)
         }
         <span class="string">"or_expr" </span>=&gt; {
             <span class="kw">let </span><span class="kw-2">mut </span>expr_vec = Vec::new();
             <span class="kw">for </span>expr <span class="kw">in </span>named_children(<span class="kw-2">&amp;</span>constraint) {
                 expr_vec.push(parse_constraint(expr, source_code));
             }
-            <span class="kw">return </span>Expression::Or(Metadata::new(), expr_vec);
+            Expression::Or(Metadata::new(), expr_vec)
         }
         <span class="string">"and_expr" </span>=&gt; {
             <span class="kw">let </span><span class="kw-2">mut </span>vec_exprs = Vec::new();
             <span class="kw">for </span>expr <span class="kw">in </span>named_children(<span class="kw-2">&amp;</span>constraint) {
                 vec_exprs.push(parse_constraint(expr, source_code));
             }
-            <span class="kw">return </span>Expression::And(Metadata::new(), vec_exprs);
+            Expression::And(Metadata::new(), vec_exprs)
         }
         <span class="string">"comparison" </span>=&gt; {
             <span class="kw">let </span>expr1_node = constraint
@@ -590,24 +561,12 @@
             <span class="kw">let </span>expr2 = parse_constraint(expr2_node, source_code);
 
             <span class="kw">match </span>op_type {
-                <span class="string">"=" </span>=&gt; {
-                    <span class="kw">return </span>Expression::Eq(Metadata::new(), Box::new(expr1), Box::new(expr2));
-                }
-                <span class="string">"!=" </span>=&gt; {
-                    <span class="kw">return </span>Expression::Neq(Metadata::new(), Box::new(expr1), Box::new(expr2));
-                }
-                <span class="string">"&lt;=" </span>=&gt; {
-                    <span class="kw">return </span>Expression::Leq(Metadata::new(), Box::new(expr1), Box::new(expr2));
-                }
-                <span class="string">"&gt;=" </span>=&gt; {
-                    <span class="kw">return </span>Expression::Geq(Metadata::new(), Box::new(expr1), Box::new(expr2));
-                }
-                <span class="string">"&lt;" </span>=&gt; {
-                    <span class="kw">return </span>Expression::Lt(Metadata::new(), Box::new(expr1), Box::new(expr2));
-                }
-                <span class="string">"&gt;" </span>=&gt; {
-                    <span class="kw">return </span>Expression::Gt(Metadata::new(), Box::new(expr1), Box::new(expr2));
-                }
+                <span class="string">"=" </span>=&gt; Expression::Eq(Metadata::new(), Box::new(expr1), Box::new(expr2)),
+                <span class="string">"!=" </span>=&gt; Expression::Neq(Metadata::new(), Box::new(expr1), Box::new(expr2)),
+                <span class="string">"&lt;=" </span>=&gt; Expression::Leq(Metadata::new(), Box::new(expr1), Box::new(expr2)),
+                <span class="string">"&gt;=" </span>=&gt; Expression::Geq(Metadata::new(), Box::new(expr1), Box::new(expr2)),
+                <span class="string">"&lt;" </span>=&gt; Expression::Lt(Metadata::new(), Box::new(expr1), Box::new(expr2)),
+                <span class="string">"&gt;" </span>=&gt; Expression::Gt(Metadata::new(), Box::new(expr1), Box::new(expr2)),
                 <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"Not a supported comp_op"</span>),
             }
         }
@@ -622,9 +581,7 @@
             <span class="kw">let </span>expr2 = parse_constraint(expr2_node, source_code);
 
             <span class="kw">match </span>op_type {
-                <span class="string">"+" </span>=&gt; {
-                    <span class="kw">return </span>Expression::Sum(Metadata::new(), <span class="macro">vec!</span>[expr1, expr2]);
-                }
+                <span class="string">"+" </span>=&gt; Expression::Sum(Metadata::new(), <span class="macro">vec!</span>[expr1, expr2]),
                 <span class="string">"-" </span>=&gt; {
                     <span class="macro">panic!</span>(<span class="string">"Subtraction expressions not supported yet"</span>)
                 }
@@ -633,19 +590,11 @@
                 }
                 <span class="string">"/" </span>=&gt; {
                     <span class="comment">//TODO: add checks for if division is safe or not
-                    </span><span class="kw">return </span>Expression::UnsafeDiv(
-                        Metadata::new(),
-                        Box::new(expr1),
-                        Box::new(expr2),
-                    );
+                    </span>Expression::UnsafeDiv(Metadata::new(), Box::new(expr1), Box::new(expr2))
                 }
                 <span class="string">"%" </span>=&gt; {
                     <span class="comment">//TODO: add checks for if mod is safe or not
-                    </span><span class="kw">return </span>Expression::UnsafeMod(
-                        Metadata::new(),
-                        Box::new(expr1),
-                        Box::new(expr2),
-                    );
+                    </span>Expression::UnsafeMod(Metadata::new(), Box::new(expr1), Box::new(expr2))
                 }
                 <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"Not a supported math_op"</span>),
             }
@@ -655,42 +604,42 @@
                 .child(<span class="number">1</span>)
                 .expect(<span class="string">"Error: no node after 'not' node"</span>);
             <span class="kw">let </span>expr = parse_constraint(constraint, source_code);
-            <span class="kw">return </span>Expression::Not(Metadata::new(), Box::new(expr));
+            Expression::Not(Metadata::new(), Box::new(expr))
         }
         <span class="string">"sub_expr" </span>=&gt; {
             <span class="macro">println!</span>(<span class="string">"sub"</span>);
             <span class="kw">let </span>expr = constraint
                 .named_child(<span class="number">0</span>)
                 .expect(<span class="string">"Error with sub expression"</span>);
-            <span class="kw">return </span>parse_constraint(expr, source_code);
+            parse_constraint(expr, source_code)
         }
         <span class="string">"min" </span>=&gt; {
             <span class="kw">let </span><span class="kw-2">mut </span>term_list = Vec::new();
             <span class="kw">for </span>term <span class="kw">in </span>named_children(<span class="kw-2">&amp;</span>constraint) {
                 term_list.push(parse_constraint(term, source_code));
             }
-            <span class="kw">return </span>Expression::Min(Metadata::new(), term_list);
+            Expression::Min(Metadata::new(), term_list)
         }
         <span class="string">"max" </span>=&gt; {
             <span class="kw">let </span><span class="kw-2">mut </span>term_list = Vec::new();
             <span class="kw">for </span>term <span class="kw">in </span>named_children(<span class="kw-2">&amp;</span>constraint) {
                 term_list.push(parse_constraint(term, source_code));
             }
-            <span class="kw">return </span>Expression::Max(Metadata::new(), term_list);
+            Expression::Max(Metadata::new(), term_list)
         }
         <span class="string">"sum" </span>=&gt; {
             <span class="kw">let </span><span class="kw-2">mut </span>term_list = Vec::new();
             <span class="kw">for </span>term <span class="kw">in </span>named_children(<span class="kw-2">&amp;</span>constraint) {
                 term_list.push(parse_constraint(term, source_code));
             }
-            <span class="kw">return </span>Expression::Sum(Metadata::new(), term_list);
+            Expression::Sum(Metadata::new(), term_list)
         }
         <span class="string">"all_diff" </span>=&gt; {
             <span class="kw">let </span><span class="kw-2">mut </span>term_list = Vec::new();
             <span class="kw">for </span>term <span class="kw">in </span>named_children(<span class="kw-2">&amp;</span>constraint) {
                 term_list.push(parse_constraint(term, source_code));
             }
-            <span class="kw">return </span>Expression::AllDiff(Metadata::new(), term_list);
+            Expression::AllDiff(Metadata::new(), term_list)
         }
         <span class="string">"constant" </span>=&gt; {
             <span class="kw">let </span>child = constraint.child(<span class="number">0</span>).expect(<span class="string">"Error with constant"</span>);
@@ -699,30 +648,23 @@
                     <span class="kw">let </span>constant_value = <span class="kw-2">&amp;</span>source_code[child.start_byte()..child.end_byte()]
                         .parse::&lt;i32&gt;()
                         .unwrap();
-                    <span class="kw">return </span>Expression::Atomic(
+                    Expression::Atomic(
                         Metadata::new(),
                         Atom::Literal(Literal::Int(<span class="kw-2">*</span>constant_value)),
-                    );
+                    )
                 }
-                <span class="string">"TRUE" </span>=&gt; {
-                    <span class="kw">return </span>Expression::Atomic(Metadata::new(), Atom::Literal(Literal::Bool(<span class="bool-val">true</span>)));
-                }
-                <span class="string">"FALSE" </span>=&gt; {
-                    <span class="kw">return </span>Expression::Atomic(
-                        Metadata::new(),
-                        Atom::Literal(Literal::Bool(<span class="bool-val">false</span>)),
-                    );
-                }
+                <span class="string">"TRUE" </span>=&gt; Expression::Atomic(Metadata::new(), Atom::Literal(Literal::Bool(<span class="bool-val">true</span>))),
+                <span class="string">"FALSE" </span>=&gt; Expression::Atomic(Metadata::new(), Atom::Literal(Literal::Bool(<span class="bool-val">false</span>))),
                 <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"Error"</span>),
             }
         }
         <span class="string">"variable" </span>=&gt; {
             <span class="kw">let </span>child = constraint.child(<span class="number">0</span>).expect(<span class="string">"Error with varaible"</span>);
             <span class="kw">let </span>variable_name = String::from(<span class="kw-2">&amp;</span>source_code[child.start_byte()..child.end_byte()]);
-            <span class="kw">return </span>Expression::Atomic(
+            Expression::Atomic(
                 Metadata::new(),
                 Atom::Reference(Name::UserName(variable_name)),
-            );
+            )
         }
         <span class="kw">_ </span>=&gt; {
             <span class="kw">let </span>node_kind = constraint.kind();
