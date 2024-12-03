@@ -253,7 +253,7 @@
 <a href="#252" id="252">252</a>
 <a href="#253" id="253">253</a>
 <a href="#254" id="254">254</a>
-<a href="#255" id="255">255</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::{HashMap, HashSet};
+<a href="#255" id="255">255</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::{BTreeMap, HashMap, HashSet};
 <span class="kw">use </span>std::fmt::Debug;
 
 <span class="kw">use </span>std::fs::File;
@@ -403,7 +403,7 @@
 }
 
 <span class="kw">pub fn </span>save_minion_solutions_json(
-    solutions: <span class="kw-2">&amp;</span>Vec&lt;HashMap&lt;Name, Literal&gt;&gt;,
+    solutions: <span class="kw-2">&amp;</span>Vec&lt;BTreeMap&lt;Name, Literal&gt;&gt;,
     path: <span class="kw-2">&amp;</span>str,
     test_name: <span class="kw-2">&amp;</span>str,
     accept: bool,
