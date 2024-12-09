@@ -556,7 +556,17 @@
 <a href="#555" id="555">555</a>
 <a href="#556" id="556">556</a>
 <a href="#557" id="557">557</a>
-<a href="#558" id="558">558</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
+<a href="#558" id="558">558</a>
+<a href="#559" id="559">559</a>
+<a href="#560" id="560">560</a>
+<a href="#561" id="561">561</a>
+<a href="#562" id="562">562</a>
+<a href="#563" id="563">563</a>
+<a href="#564" id="564">564</a>
+<a href="#565" id="565">565</a>
+<a href="#566" id="566">566</a>
+<a href="#567" id="567">567</a>
+<a href="#568" id="568">568</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
@@ -867,26 +877,36 @@
 */
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4400</span>))]
 </span><span class="kw">fn </span>sum_eq_to_sumeq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">match </span>expr {
-        Eq(metadata, a, b) =&gt; {
-            <span class="kw">if let </span><span class="prelude-val">Ok</span>(exprs) = sum_to_vector(a) {
-                <span class="prelude-val">Ok</span>(Reduction::pure(SumEq(
-                    metadata.clone_dirty(),
-                    exprs,
-                    b.clone(),
-                )))
-            } <span class="kw">else if let </span><span class="prelude-val">Ok</span>(exprs) = sum_to_vector(b) {
-                <span class="prelude-val">Ok</span>(Reduction::pure(SumEq(
-                    metadata.clone_dirty(),
-                    exprs,
-                    a.clone(),
-                )))
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(RuleNotApplicable)
-            }
-        }
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
+    <span class="kw">fn </span>try_get_args(sum_expr: <span class="kw-2">&amp;</span>Expr, value: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;(Vec&lt;Expr&gt;, Expr)&gt; {
+        <span class="kw">let </span>Sum(<span class="kw">_</span>, xs) = sum_expr <span class="kw">else </span>{
+            <span class="kw">return </span><span class="prelude-val">None</span>;
+        };
+
+        <span class="prelude-val">Some</span>((xs.clone(), value.clone()))
     }
+
+    <span class="kw">let </span>(xs, value) = <span class="kw">match </span>expr {
+        Eq(<span class="kw">_</span>, a, b) =&gt; {
+            <span class="comment">// get arguments symmetrically
+            </span>try_get_args(a, b)
+                .or_else(|| try_get_args(b, a))
+                .ok_or(RuleNotApplicable)
+        }
+
+        AuxDeclaration(<span class="kw">_</span>, name, e) =&gt; {
+            <span class="kw">let </span>value = Atom::Reference(name.clone()).into();
+            <span class="kw">let </span>xs = <span class="kw">match </span><span class="kw-2">*</span>e.clone() {
+                Sum(<span class="kw">_</span>, xs) =&gt; <span class="prelude-val">Ok</span>(xs),
+                <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
+            }<span class="question-mark">?</span>;
+
+            <span class="prelude-val">Ok</span>((xs, value))
+        }
+
+        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
+    }<span class="question-mark">?</span>;
+
+    <span class="prelude-val">Ok</span>(Reduction::pure(SumEq(Metadata::new(), xs, Box::new(value))))
 }
 
 <span class="doccomment">/**
