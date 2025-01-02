@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `crates/conjure_core/src/rules/minion.rs`."><title>minion.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="conjure_core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (d117b7f21 2024-12-31)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">conjure_core/rules/</div>minion.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `crates/conjure_core/src/rules/minion.rs`."><title>minion.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="conjure_core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (45d11e51b 2025-01-01)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">conjure_core/rules/</div>minion.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
 <a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
@@ -690,7 +690,14 @@
 <a href="#689" id="689">689</a>
 <a href="#690" id="690">690</a>
 <a href="#691" id="691">691</a>
-<a href="#692" id="692">692</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
+<a href="#692" id="692">692</a>
+<a href="#693" id="693">693</a>
+<a href="#694" id="694">694</a>
+<a href="#695" id="695">695</a>
+<a href="#696" id="696">696</a>
+<a href="#697" id="697">697</a>
+<a href="#698" id="698">698</a>
+<a href="#699" id="699">699</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
@@ -728,13 +735,17 @@
     <span class="kw">match </span>expr.clone() {
         Expr::Eq(m, a, b) =&gt; {
             meta = m;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = a.as_atom() {
+
+            <span class="kw">let </span>a_atom: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Atom&gt; = (<span class="kw-2">&amp;</span>a).try_into().ok();
+            <span class="kw">let </span>b_atom: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Atom&gt; = (<span class="kw-2">&amp;</span>b).try_into().ok();
+
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = a_atom {
                 <span class="comment">// val = div
-                </span>val = f;
+                </span>val = f.clone();
                 div = <span class="kw-2">*</span>b;
-            } <span class="kw">else if let </span><span class="prelude-val">Some</span>(f) = b.as_atom() {
+            } <span class="kw">else if let </span><span class="prelude-val">Some</span>(f) = b_atom {
                 <span class="comment">// div = val
-                </span>val = f;
+                </span>val = f.clone();
                 div = <span class="kw-2">*</span>a;
             } <span class="kw">else </span>{
                 <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
@@ -755,13 +766,13 @@
     }
 
     <span class="kw">let </span>children = div.children();
-    <span class="kw">let </span>a = children[<span class="number">0</span>].as_atom().ok_or(RuleNotApplicable)<span class="question-mark">?</span>;
-    <span class="kw">let </span>b = children[<span class="number">1</span>].as_atom().ok_or(RuleNotApplicable)<span class="question-mark">?</span>;
+    <span class="kw">let </span>a: <span class="kw-2">&amp;</span>Atom = (<span class="kw-2">&amp;</span>children[<span class="number">0</span>]).try_into().or(<span class="prelude-val">Err</span>(RuleNotApplicable))<span class="question-mark">?</span>;
+    <span class="kw">let </span>b: <span class="kw-2">&amp;</span>Atom = (<span class="kw-2">&amp;</span>children[<span class="number">1</span>]).try_into().or(<span class="prelude-val">Err</span>(RuleNotApplicable))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(Reduction::pure(DivEqUndefZero(
         meta.clone_dirty(),
-        a,
-        b,
+        a.clone(),
+        b.clone(),
         val,
     )))
 }
@@ -776,13 +787,16 @@
     <span class="kw">match </span>expr.clone() {
         Expr::Eq(m, a, b) =&gt; {
             meta = m;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = a.as_atom() {
+            <span class="kw">let </span>a_atom: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Atom&gt; = (<span class="kw-2">&amp;</span>a).try_into().ok();
+            <span class="kw">let </span>b_atom: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Atom&gt; = (<span class="kw-2">&amp;</span>b).try_into().ok();
+
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = a_atom {
                 <span class="comment">// val = div
-                </span>val = f;
+                </span>val = f.clone();
                 div = <span class="kw-2">*</span>b;
-            } <span class="kw">else if let </span><span class="prelude-val">Some</span>(f) = b.as_atom() {
+            } <span class="kw">else if let </span><span class="prelude-val">Some</span>(f) = b_atom {
                 <span class="comment">// div = val
-                </span>val = f;
+                </span>val = f.clone();
                 div = <span class="kw-2">*</span>a;
             } <span class="kw">else </span>{
                 <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
@@ -803,13 +817,13 @@
     }
 
     <span class="kw">let </span>children = div.children();
-    <span class="kw">let </span>a = children[<span class="number">0</span>].as_atom().ok_or(RuleNotApplicable)<span class="question-mark">?</span>;
-    <span class="kw">let </span>b = children[<span class="number">1</span>].as_atom().ok_or(RuleNotApplicable)<span class="question-mark">?</span>;
+    <span class="kw">let </span>a: <span class="kw-2">&amp;</span>Atom = (<span class="kw-2">&amp;</span>children[<span class="number">0</span>]).try_into().or(<span class="prelude-val">Err</span>(RuleNotApplicable))<span class="question-mark">?</span>;
+    <span class="kw">let </span>b: <span class="kw-2">&amp;</span>Atom = (<span class="kw-2">&amp;</span>children[<span class="number">1</span>]).try_into().or(<span class="prelude-val">Err</span>(RuleNotApplicable))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(Reduction::pure(ModuloEqUndefZero(
         meta.clone_dirty(),
-        a,
-        b,
+        a.clone(),
+        b.clone(),
         val,
     )))
 }
@@ -828,14 +842,14 @@
     };
 
     <span class="kw">fn </span>try_get_atoms(a: <span class="kw-2">&amp;</span>Expr, b: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;(Atom, Atom)&gt; {
-        <span class="kw">let </span>a = a.as_atom()<span class="question-mark">?</span>;
+        <span class="kw">let </span>a: <span class="kw-2">&amp;</span>Atom = a.try_into().ok()<span class="question-mark">?</span>;
         <span class="kw">let </span>Neg(<span class="kw">_</span>, b) = b <span class="kw">else </span>{
             <span class="kw">return </span><span class="prelude-val">None</span>;
         };
 
-        <span class="kw">let </span>b = (<span class="kw-2">*</span>b).as_atom()<span class="question-mark">?</span>;
+        <span class="kw">let </span>b: <span class="kw-2">&amp;</span>Atom = b.try_into().ok()<span class="question-mark">?</span>;
 
-        <span class="prelude-val">Some</span>((a, b))
+        <span class="prelude-val">Some</span>((a.clone(), b.clone()))
     }
 
     <span class="kw">let </span>a = <span class="kw-2">*</span>a.clone();
@@ -870,7 +884,7 @@
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
-    <span class="kw">let </span><span class="prelude-val">Some</span>(b) = b.as_atom() <span class="kw">else </span>{
+    <span class="kw">let </span><span class="prelude-val">Ok</span>(b) = b.try_into() <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
