@@ -683,31 +683,13 @@
 <a href="#682" id="682">682</a>
 <a href="#683" id="683">683</a>
 <a href="#684" id="684">684</a>
-<a href="#685" id="685">685</a>
-<a href="#686" id="686">686</a>
-<a href="#687" id="687">687</a>
-<a href="#688" id="688">688</a>
-<a href="#689" id="689">689</a>
-<a href="#690" id="690">690</a>
-<a href="#691" id="691">691</a>
-<a href="#692" id="692">692</a>
-<a href="#693" id="693">693</a>
-<a href="#694" id="694">694</a>
-<a href="#695" id="695">695</a>
-<a href="#696" id="696">696</a>
-<a href="#697" id="697">697</a>
-<a href="#698" id="698">698</a>
-<a href="#699" id="699">699</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
+<a href="#685" id="685">685</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
-</span><span class="kw">use </span><span class="kw">crate</span>::ast::{
-    Atom::{<span class="self">self</span>, <span class="kw-2">*</span>},
-    Domain,
-    Expression::{<span class="self">self </span><span class="kw">as </span>Expr, <span class="kw-2">*</span>},
-    Literal::<span class="kw-2">*</span>,
-};
-<span class="kw">use </span>std::borrow::Borrow;
+</span><span class="kw">use </span>std::borrow::Borrow <span class="kw">as _</span>;
+
+<span class="kw">use </span><span class="kw">crate</span>::ast::{Atom, Domain, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit};
 
 <span class="kw">use </span><span class="kw">crate</span>::ast::Name;
 <span class="kw">use </span><span class="kw">crate</span>::metadata::Metadata;
@@ -721,7 +703,7 @@
 <span class="kw">use </span>uniplate::Uniplate;
 <span class="kw">use </span>ApplicationError::RuleNotApplicable;
 
-<span class="kw">use </span><span class="kw">super</span>::utils::{is_flat, to_aux_var};
+<span class="kw">use </span><span class="kw">super</span>::utils::{expressions_to_atoms, is_flat, to_aux_var};
 
 <span class="macro">register_rule_set!</span>(<span class="string">"Minion"</span>, <span class="number">100</span>, (<span class="string">"Base"</span>), (SolverFamily::Minion));
 
@@ -769,7 +751,7 @@
     <span class="kw">let </span>a: <span class="kw-2">&amp;</span>Atom = (<span class="kw-2">&amp;</span>children[<span class="number">0</span>]).try_into().or(<span class="prelude-val">Err</span>(RuleNotApplicable))<span class="question-mark">?</span>;
     <span class="kw">let </span>b: <span class="kw-2">&amp;</span>Atom = (<span class="kw-2">&amp;</span>children[<span class="number">1</span>]).try_into().or(<span class="prelude-val">Err</span>(RuleNotApplicable))<span class="question-mark">?</span>;
 
-    <span class="prelude-val">Ok</span>(Reduction::pure(DivEqUndefZero(
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::MinionDivEqUndefZero(
         meta.clone_dirty(),
         a.clone(),
         b.clone(),
@@ -820,7 +802,7 @@
     <span class="kw">let </span>a: <span class="kw-2">&amp;</span>Atom = (<span class="kw-2">&amp;</span>children[<span class="number">0</span>]).try_into().or(<span class="prelude-val">Err</span>(RuleNotApplicable))<span class="question-mark">?</span>;
     <span class="kw">let </span>b: <span class="kw-2">&amp;</span>Atom = (<span class="kw-2">&amp;</span>children[<span class="number">1</span>]).try_into().or(<span class="prelude-val">Err</span>(RuleNotApplicable))<span class="question-mark">?</span>;
 
-    <span class="prelude-val">Ok</span>(Reduction::pure(ModuloEqUndefZero(
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::MinionModuloEqUndefZero(
         meta.clone_dirty(),
         a.clone(),
         b.clone(),
@@ -837,13 +819,13 @@
 /// ```
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4400</span>))]
 </span><span class="kw">fn </span>introduce_minuseq_from_eq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">let </span>Eq(<span class="kw">_</span>, a, b) = expr <span class="kw">else </span>{
+    <span class="kw">let </span>Expr::Eq(<span class="kw">_</span>, a, b) = expr <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
     <span class="kw">fn </span>try_get_atoms(a: <span class="kw-2">&amp;</span>Expr, b: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;(Atom, Atom)&gt; {
         <span class="kw">let </span>a: <span class="kw-2">&amp;</span>Atom = a.try_into().ok()<span class="question-mark">?</span>;
-        <span class="kw">let </span>Neg(<span class="kw">_</span>, b) = b <span class="kw">else </span>{
+        <span class="kw">let </span>Expr::Neg(<span class="kw">_</span>, b) = b <span class="kw">else </span>{
             <span class="kw">return </span><span class="prelude-val">None</span>;
         };
 
@@ -860,7 +842,7 @@
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
-    <span class="prelude-val">Ok</span>(Reduction::pure(MinusEq(Metadata::new(), x, y)))
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatMinusEq(Metadata::new(), x, y)))
 }
 
 <span class="doccomment">/// Introduces a Minion `MinusEq` constraint from `x =aux -y`, where x and y are atoms.
@@ -874,13 +856,13 @@
 </span><span class="kw">fn </span>introduce_minuseq_from_aux_decl(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="comment">// a =aux -b
     //
-    </span><span class="kw">let </span>AuxDeclaration(<span class="kw">_</span>, a, b) = expr <span class="kw">else </span>{
+    </span><span class="kw">let </span>Expr::AuxDeclaration(<span class="kw">_</span>, a, b) = expr <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
     <span class="kw">let </span>a = Atom::Reference(a.clone());
 
-    <span class="kw">let </span>Neg(<span class="kw">_</span>, b) = (<span class="kw-2">**</span>b).clone() <span class="kw">else </span>{
+    <span class="kw">let </span>Expr::Neg(<span class="kw">_</span>, b) = (<span class="kw-2">**</span>b).clone() <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
@@ -888,7 +870,7 @@
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
-    <span class="prelude-val">Ok</span>(Reduction::pure(MinusEq(Metadata::new(), a, b)))
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatMinusEq(Metadata::new(), a, b)))
 }
 
 <span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4400</span>))]
@@ -928,7 +910,7 @@
 </span><span class="kw">fn </span>flatten_vecop(expr: <span class="kw-2">&amp;</span>Expr, model: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="kw">if </span>!<span class="macro">matches!</span>(
         expr,
-        Expr::Sum(<span class="kw">_</span>, <span class="kw">_</span>) | Expr::SumGeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) | Expr::SumLeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
+        Expr::Sum(<span class="kw">_</span>, <span class="kw">_</span>) | Expr::FlatSumGeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) | Expr::FlatSumLeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
     ) {
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     }
@@ -989,15 +971,6 @@
     <span class="prelude-val">Ok</span>(Reduction::new(expr, new_tops, model.variables))
 }
 
-<span class="kw">fn </span>is_nested_sum(exprs: <span class="kw-2">&amp;</span>Vec&lt;Expr&gt;) -&gt; bool {
-    <span class="kw">for </span>e <span class="kw">in </span>exprs {
-        <span class="kw">if let </span>Sum(<span class="kw">_</span>, <span class="kw">_</span>) = e {
-            <span class="kw">return </span><span class="bool-val">true</span>;
-        }
-    }
-    <span class="bool-val">false
-</span>}
-
 <span class="doccomment">/// Flattens `a=-e`, where e is a non-atomic expression.
 ///
 /// ```text
@@ -1012,11 +985,11 @@
     // parses arguments a = -e, where a is an atom and e is a non-atomic expression
     // (when e is an atom, flattening is done, so introduce_minus_eq should be applied instead)
     </span><span class="kw">fn </span>try_get_args(name: <span class="kw-2">&amp;</span>Expr, negated_expr: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;(Name, Expr)&gt; {
-        <span class="kw">let </span>Atomic(<span class="kw">_</span>, Atom::Reference(name)) = name <span class="kw">else </span>{
+        <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Reference(name)) = name <span class="kw">else </span>{
             <span class="kw">return </span><span class="prelude-val">None</span>;
         };
 
-        <span class="kw">let </span>Neg(<span class="kw">_</span>, e) = negated_expr <span class="kw">else </span>{
+        <span class="kw">let </span>Expr::Neg(<span class="kw">_</span>, e) = negated_expr <span class="kw">else </span>{
             <span class="kw">return </span><span class="prelude-val">None</span>;
         };
 
@@ -1025,12 +998,12 @@
 
     <span class="kw">let </span>(name, e) = <span class="kw">match </span>expr {
         <span class="comment">// parse arguments symmetrically
-        </span>Eq(<span class="kw">_</span>, a, b) =&gt; try_get_args(a.borrow(), b.borrow())
+        </span>Expr::Eq(<span class="kw">_</span>, a, b) =&gt; try_get_args(a.borrow(), b.borrow())
             .or_else(|| try_get_args(b.borrow(), a.borrow()))
             .ok_or(RuleNotApplicable),
 
-        AuxDeclaration(<span class="kw">_</span>, name, e) =&gt; <span class="kw">match </span>e.borrow() {
-            Neg(<span class="kw">_</span>, e) =&gt; <span class="prelude-val">Some</span>((name.clone(), (<span class="kw-2">*</span>e.clone()))),
+        Expr::AuxDeclaration(<span class="kw">_</span>, name, e) =&gt; <span class="kw">match </span>e.borrow() {
+            Expr::Neg(<span class="kw">_</span>, e) =&gt; <span class="prelude-val">Some</span>((name.clone(), (<span class="kw-2">*</span>e.clone()))),
             <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
         }
         .ok_or(RuleNotApplicable),
@@ -1040,7 +1013,7 @@
 
     <span class="kw">let </span>aux_var_out = to_aux_var(<span class="kw-2">&amp;</span>e, m).ok_or(RuleNotApplicable)<span class="question-mark">?</span>;
 
-    <span class="kw">let </span>new_expr = MinusEq(
+    <span class="kw">let </span>new_expr = Expr::FlatMinusEq(
         Metadata::new(),
         Atom::Reference(name),
         aux_var_out.as_atom(),
@@ -1053,94 +1026,70 @@
     ))
 }
 
-<span class="doccomment">/**
- * Helper function to get the vector of expressions from a sum (or error if it's a nested sum - we need to flatten it first)
- */
-</span><span class="kw">fn </span>sum_to_vector(expr: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;Expr&gt;, ApplicationError&gt; {
-    <span class="kw">match </span>expr {
-        Sum(<span class="kw">_</span>, exprs) =&gt; {
-            <span class="kw">if </span>is_nested_sum(exprs) {
-                <span class="prelude-val">Err</span>(RuleNotApplicable)
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Ok</span>(exprs.clone())
-            }
-        }
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
-    }
+<span class="comment">// TODO: normalise equalities such that atoms are always on the LHS.
+// i.e. always have a = sum(x,y,z), not sum(x,y,z) = a
+
+</span><span class="doccomment">/// Converts a Geq to a SumGeq if the left hand side is a sum
+///
+/// ```text
+/// sum([a, b, c]) &gt;= d ~&gt; sumgeq([a, b, c], d)
+/// ```
+</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4400</span>))]
+</span><span class="kw">fn </span>introduce_sumgeq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
+    <span class="kw">let </span>Expr::Geq(meta, e1, e2) = expr.clone() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Sum(<span class="kw">_</span>, es) = <span class="kw-2">*</span>e1 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span><span class="prelude-val">Some</span>(atoms) = expressions_to_atoms(<span class="kw-2">&amp;</span>es) <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, rhs) = <span class="kw-2">*</span>e2 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatSumGeq(meta, atoms, rhs)))
 }
 
-<span class="comment">// /**
-//  * Convert an Eq to a conjunction of Geq and Leq:
-//  * ```text
-//  * a = b =&gt; a &gt;= b &amp;&amp; a &lt;= b
-//  * ```
-//  */
-// #[register_rule(("Minion", 100))]
-// fn eq_to_minion(expr: &amp;Expr, _: &amp;Model) -&gt; ApplicationResult {
-//     match expr {
-//         Expr::Eq(metadata, a, b) =&gt; Ok(Reduction::pure(Expr::And(
-//             metadata.clone_dirty(),
-//             vec![
-//                 Expr::Geq(metadata.clone_dirty(), a.clone(), b.clone()),
-//                 Expr::Leq(metadata.clone_dirty(), a.clone(), b.clone()),
-//             ],
-//         ))),
-//         _ =&gt; Err(ApplicationError::RuleNotApplicable),
-//     }
-// }
-
-</span><span class="doccomment">/**
- * Convert a Geq to a SumGeq if the left hand side is a sum:
- * ```text
- * sum([a, b, c]) &gt;= d =&gt; sum_geq([a, b, c], d)
- * ```
- */
+<span class="doccomment">/// Converts a Leq to a SumLeq if the left hand side is a sum
+///
+/// ```text
+/// sum([a, b, c]) &gt;= d ~&gt; sumgeq([a, b, c], d)
+/// ```
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4400</span>))]
-</span><span class="kw">fn </span>flatten_sum_geq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">match </span>expr {
-        Geq(metadata, a, b) =&gt; {
-            <span class="kw">let </span>exprs = sum_to_vector(a)<span class="question-mark">?</span>;
-            <span class="prelude-val">Ok</span>(Reduction::pure(SumGeq(
-                metadata.clone_dirty(),
-                exprs,
-                b.clone(),
-            )))
-        }
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
-    }
+</span><span class="kw">fn </span>introduce_sumleq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
+    <span class="kw">let </span>Expr::Leq(meta, e1, e2) = expr.clone() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Sum(<span class="kw">_</span>, es) = <span class="kw-2">*</span>e1 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span><span class="prelude-val">Some</span>(atoms) = expressions_to_atoms(<span class="kw-2">&amp;</span>es) <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, rhs) = <span class="kw-2">*</span>e2 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatSumLeq(meta, atoms, rhs)))
 }
 
-<span class="doccomment">/**
- * Convert a Leq to a SumLeq if the left hand side is a sum:
- * ```text
- * sum([a, b, c]) &lt;= d =&gt; sum_leq([a, b, c], d)
- * ```
- */
-</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4400</span>))]
-</span><span class="kw">fn </span>sum_leq_to_sumleq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">match </span>expr {
-        Leq(metadata, a, b) =&gt; {
-            <span class="kw">let </span>exprs = sum_to_vector(a)<span class="question-mark">?</span>;
-            <span class="prelude-val">Ok</span>(Reduction::pure(SumLeq(
-                metadata.clone_dirty(),
-                exprs,
-                b.clone(),
-            )))
-        }
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
-    }
-}
+<span class="doccomment">/// Converts a 'Eq(Sum([...]))' to a SumEq
+/// ```text
+/// eq(sum([a, b]), c) =&gt; sumeq([a, b], c)
+/// ```
 
-<span class="doccomment">/**
- * Convert a 'Eq(Sum([...]))' to a SumEq
- * ```text
- * eq(sum([a, b]), c) =&gt; sumeq([a, b], c)
- * ```
-*/
-</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4400</span>))]
+</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4200</span>))]
 </span><span class="kw">fn </span>sum_eq_to_sumeq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="kw">fn </span>try_get_args(sum_expr: <span class="kw-2">&amp;</span>Expr, value: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;(Vec&lt;Expr&gt;, Expr)&gt; {
-        <span class="kw">let </span>Sum(<span class="kw">_</span>, xs) = sum_expr <span class="kw">else </span>{
+        <span class="kw">let </span>Expr::Sum(<span class="kw">_</span>, xs) = sum_expr <span class="kw">else </span>{
             <span class="kw">return </span><span class="prelude-val">None</span>;
         };
 
@@ -1148,17 +1097,17 @@
     }
 
     <span class="kw">let </span>(xs, value) = <span class="kw">match </span>expr {
-        Eq(<span class="kw">_</span>, a, b) =&gt; {
+        Expr::Eq(<span class="kw">_</span>, a, b) =&gt; {
             <span class="comment">// get arguments symmetrically
             </span>try_get_args(a, b)
                 .or_else(|| try_get_args(b, a))
                 .ok_or(RuleNotApplicable)
         }
 
-        AuxDeclaration(<span class="kw">_</span>, name, e) =&gt; {
+        Expr::AuxDeclaration(<span class="kw">_</span>, name, e) =&gt; {
             <span class="kw">let </span>value = Atom::Reference(name.clone()).into();
             <span class="kw">let </span>xs = <span class="kw">match </span><span class="kw-2">*</span>e.clone() {
-                Sum(<span class="kw">_</span>, xs) =&gt; <span class="prelude-val">Ok</span>(xs),
+                Expr::Sum(<span class="kw">_</span>, xs) =&gt; <span class="prelude-val">Ok</span>(xs),
                 <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
             }<span class="question-mark">?</span>;
 
@@ -1168,165 +1117,188 @@
         <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
     }<span class="question-mark">?</span>;
 
-    <span class="prelude-val">Ok</span>(Reduction::pure(SumEq(Metadata::new(), xs, Box::new(value))))
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::SumEq(
+        Metadata::new(),
+        xs,
+        Box::new(value),
+    )))
 }
 
-<span class="doccomment">/**
- * Convert a `SumEq` to an `And(SumGeq, SumLeq)`
- * This is a workaround for Minion not having support for a flat "equals" operation on sums
- * ```text
- * sumeq([a, b], c) -&gt; watched_and({
- *   sumleq([a, b], c),
- *   sumgeq([a, b], c)
- * })
- * ```
- * I. e.
- * ```text
- * ((a + b) &gt;= c) &amp;&amp; ((a + b) &lt;= c)
- * a + b = c
- * ```
- */
+<span class="doccomment">/// Converts a `SumEq` to an `And(SumGeq, SumLeq)`
+///
+/// This is a workaround for Minion not having support for a flat "equals" operation on sums
+///
+/// ```text
+/// sumeq([a, b], c) -&gt; watched_and({
+///   sumleq([a, b], c),
+///   sumgeq([a, b], c)
+/// })
+/// ```
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4400</span>))]
 </span><span class="kw">fn </span>sumeq_to_minion(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">match </span>expr {
-        SumEq(_metadata, exprs, eq_to) =&gt; <span class="prelude-val">Ok</span>(Reduction::pure(And(
-            Metadata::new(),
-            <span class="macro">vec!</span>[
-                SumGeq(Metadata::new(), exprs.clone(), Box::from(<span class="kw-2">*</span>eq_to.clone())),
-                SumLeq(Metadata::new(), exprs.clone(), Box::from(<span class="kw-2">*</span>eq_to.clone())),
-            ],
-        ))),
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
-    }
+    <span class="kw">let </span>Expr::SumEq(<span class="kw">_</span>, exprs, eq_to) = expr.clone() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span><span class="prelude-val">Some</span>(atoms) = expressions_to_atoms(<span class="kw-2">&amp;</span>exprs) <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, eq_to_atom) = <span class="kw-2">*</span>eq_to <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::And(
+        Metadata::new(),
+        <span class="macro">vec!</span>[
+            Expr::FlatSumLeq(Metadata::new(), atoms.clone(), eq_to_atom.clone()),
+            Expr::FlatSumGeq(Metadata::new(), atoms, eq_to_atom),
+        ],
+    )))
 }
 
 <span class="doccomment">/**
-* Convert a Lt to an Ineq:
+* Convert a Lt to an Ineq
 
 * ```text
-* a &lt; b ~&gt; a &lt;= b -1 ~&gt; ineq(a,b,-1)
+* x &lt; y ~&gt; x &lt;= y -1 ~&gt; ineq(x,y,-1)
 * ```
 */
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
 </span><span class="kw">fn </span>lt_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">match </span>expr {
-        Lt(metadata, a, b) =&gt; <span class="prelude-val">Ok</span>(Reduction::pure(Ineq(
-            metadata.clone_dirty(),
-            a.clone(),
-            b.clone(),
-            Box::new(Atomic(Metadata::new(), Literal(Int(-<span class="number">1</span>)))),
-        ))),
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
-    }
-}
-
-<span class="doccomment">/**
-* Convert a Gt to an Ineq:
-*
-* ```text
-* a &gt; b ~&gt; b &lt;= a -1 ~&gt; ineq(b,a,-1)
-* ```
-*/
-</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
-</span><span class="kw">fn </span>gt_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">match </span>expr {
-        Gt(metadata, a, b) =&gt; <span class="prelude-val">Ok</span>(Reduction::pure(Ineq(
-            metadata.clone_dirty(),
-            b.clone(),
-            a.clone(),
-            Box::new(Atomic(Metadata::new(), Literal(Int(-<span class="number">1</span>)))),
-        ))),
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
-    }
-}
-
-<span class="doccomment">/**
-* Convert a Geq to an Ineq:
-*
-* ```text
-* a &gt;= b ~&gt; b &lt;= a + 0 ~&gt; ineq(b,a,0)
-* ```
-*/
-</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
-</span><span class="kw">fn </span>geq_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">match </span>expr {
-        Geq(metadata, a, b) =&gt; <span class="prelude-val">Ok</span>(Reduction::pure(Ineq(
-            metadata.clone_dirty(),
-            b.clone(),
-            a.clone(),
-            Box::new(Atomic(Metadata::new(), Literal(Int(<span class="number">0</span>)))),
-        ))),
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
-    }
-}
-
-<span class="doccomment">/**
-* Convert a Leq to an Ineq:
-*
-* ```text
-* a &lt;= b ~&gt; a &lt;= b + 0 ~&gt; ineq(a,b,0)
-* ```
-*/
-</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
-</span><span class="kw">fn </span>leq_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">match </span>expr {
-        Leq(metadata, a, b) =&gt; <span class="prelude-val">Ok</span>(Reduction::pure(Ineq(
-            metadata.clone_dirty(),
-            a.clone(),
-            b.clone(),
-            Box::new(Atomic(Metadata::new(), Literal(Int(<span class="number">0</span>)))),
-        ))),
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
-    }
-}
-
-<span class="doccomment">/// ```text
-/// x &lt;= y + k ~&gt; ineq(x,y,k)
-/// ```
-
-</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>,<span class="number">4400</span>))]
-</span><span class="kw">fn </span>x_leq_y_plus_k_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">let </span>Leq(<span class="kw">_</span>, x, b) = expr <span class="kw">else </span>{
+    <span class="kw">let </span>Expr::Lt(meta, e1, e2) = expr.clone() <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
-    <span class="kw">let </span>x @ Atomic(<span class="kw">_</span>, Reference(<span class="kw">_</span>)) = <span class="kw-2">*</span>x.to_owned() <span class="kw">else </span>{
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, x) = <span class="kw-2">*</span>e1 <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
-    <span class="kw">let </span>Sum(<span class="kw">_</span>, c) = <span class="kw-2">*</span>b.to_owned() <span class="kw">else </span>{
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, y) = <span class="kw-2">*</span>e2 <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
-    <span class="kw">let </span>[<span class="kw-2">ref </span>y @ Atomic(<span class="kw">_</span>, Reference(<span class="kw">_</span>)), <span class="kw-2">ref </span>k @ Atomic(<span class="kw">_</span>, Literal(<span class="kw">_</span>))] = c[..] <span class="kw">else </span>{
-        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
-    };
-
-    <span class="prelude-val">Ok</span>(Reduction::pure(Ineq(
-        expr.get_meta().clone_dirty(),
-        Box::new(x),
-        Box::new(y.clone()),
-        Box::new(k.clone()),
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatIneq(
+        meta.clone_dirty(),
+        x,
+        y,
+        Lit::Int(-<span class="number">1</span>),
     )))
 }
 
-<span class="comment">// #[register_rule(("Minion", 99))]
-// fn eq_to_leq_geq(expr: &amp;Expr, _: &amp;Model) -&gt; ApplicationResult {
-//     match expr {
-//         Eq(metadata, a, b) =&gt; {
-//             return Ok(Reduction::pure(Expr::And(
-//                 metadata.clone(),
-//                 vec![
-//                     Expr::Leq(metadata.clone(), a.clone(), b.clone()),
-//                     Expr::Geq(metadata.clone(), a.clone(), b.clone()),
-//                 ],
-//             )));
-//         }
-//         _ =&gt; Err(RuleNotApplicable),
-//     }
-// }
+<span class="doccomment">/// Converts a Gt to an Ineq
+///
+/// ```text
+/// x &gt; y ~&gt; y &lt;= x -1 ~&gt; ineq(y,x,-1)
+/// ```
+</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
+</span><span class="kw">fn </span>gt_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
+    <span class="kw">let </span>Expr::Gt(meta, e1, e2) = expr.clone() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
 
-</span><span class="doccomment">/// Flattening rule for not(bool_lit)
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, x) = <span class="kw-2">*</span>e1 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, y) = <span class="kw-2">*</span>e2 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatIneq(
+        meta.clone_dirty(),
+        y,
+        x,
+        Lit::Int(-<span class="number">1</span>),
+    )))
+}
+
+<span class="doccomment">/// Converts a Geq to an Ineq
+///
+/// ```text
+/// x &gt;= y ~&gt; y &lt;= x + 0 ~&gt; ineq(y,x,0)
+/// ```
+</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
+</span><span class="kw">fn </span>geq_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
+    <span class="kw">let </span>Expr::Geq(meta, e1, e2) = expr.clone() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, x) = <span class="kw-2">*</span>e1 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, y) = <span class="kw-2">*</span>e2 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatIneq(
+        meta.clone_dirty(),
+        y,
+        x,
+        Lit::Int(<span class="number">0</span>),
+    )))
+}
+
+<span class="doccomment">/// Converts a Leq to an Ineq
+///
+/// ```text
+/// x &lt;= y ~&gt; x &lt;= y + 0 ~&gt; ineq(x,y,0)
+/// ```
+</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
+</span><span class="kw">fn </span>leq_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
+    <span class="kw">let </span>Expr::Leq(meta, e1, e2) = expr.clone() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, x) = <span class="kw-2">*</span>e1 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, y) = <span class="kw-2">*</span>e2 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatIneq(
+        meta.clone_dirty(),
+        x,
+        y,
+        Lit::Int(<span class="number">0</span>),
+    )))
+}
+
+<span class="comment">// TODO: add this rule for geq
+
+</span><span class="doccomment">/// ```text
+/// x &lt;= y + k ~&gt; ineq(x,y,k)
+/// ```
+</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>,<span class="number">4400</span>))]
+</span><span class="kw">fn </span>x_leq_y_plus_k_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
+    <span class="kw">let </span>Expr::Leq(meta, e1, e2) = expr.clone() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, x) = <span class="kw-2">*</span>e1 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Sum(<span class="kw">_</span>, sum_exprs) = <span class="kw-2">*</span>e2 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>[Expr::Atomic(<span class="kw">_</span>, y), Expr::Atomic(<span class="kw">_</span>, Atom::Literal(k))] = sum_exprs.as_slice() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatIneq(
+        meta.clone_dirty(),
+        x,
+        y.clone(),
+        k.clone(),
+    )))
+}
+
+<span class="doccomment">/// Flattening rule for not(bool_lit)
 ///
 /// For some boolean variable x:
 /// ```text
@@ -1346,16 +1318,16 @@
 </span><span class="kw">fn </span>not_literal_to_wliteral(expr: <span class="kw-2">&amp;</span>Expr, mdl: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="kw">use </span>Domain::BoolDomain;
     <span class="kw">match </span>expr {
-        Not(m, expr) =&gt; {
-            <span class="kw">if let </span>Atomic(<span class="kw">_</span>, Reference(name)) = (<span class="kw-2">**</span>expr).clone() {
+        Expr::Not(m, expr) =&gt; {
+            <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Reference(name)) = (<span class="kw-2">**</span>expr).clone() {
                 <span class="kw">if </span>mdl
                     .get_domain(<span class="kw-2">&amp;</span>name)
                     .is_some_and(|x| <span class="macro">matches!</span>(x, BoolDomain))
                 {
-                    <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(WatchedLiteral(
+                    <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatWatchedLiteral(
                         m.clone_dirty(),
                         name.clone(),
-                        Bool(<span class="bool-val">false</span>),
+                        Lit::Bool(<span class="bool-val">false</span>),
                     )));
                 }
             }
@@ -1376,11 +1348,11 @@
 
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4090</span>))]
 </span><span class="kw">fn </span>not_constraint_to_reify(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">if </span>!<span class="macro">matches!</span>(expr, Not(<span class="kw">_</span>,c) <span class="kw">if </span>!<span class="macro">matches!</span>(<span class="kw-2">**</span>c, Atomic(<span class="kw">_</span>,<span class="kw">_</span>))) {
+    <span class="kw">if </span>!<span class="macro">matches!</span>(expr, Expr::Not(<span class="kw">_</span>,c) <span class="kw">if </span>!<span class="macro">matches!</span>(<span class="kw-2">**</span>c, Expr::Atomic(<span class="kw">_</span>,<span class="kw">_</span>))) {
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     }
 
-    <span class="kw">let </span>Not(m, e) = expr <span class="kw">else </span>{
+    <span class="kw">let </span>Expr::Not(m, e) = expr <span class="kw">else </span>{
         <span class="macro">unreachable!</span>();
     };
 
@@ -1390,10 +1362,10 @@
         }
     };
 
-    <span class="prelude-val">Ok</span>(Reduction::pure(Reify(
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::MinionReify(
         m.clone(),
         e.clone(),
-        Box::new(Atomic(Metadata::new(), Literal(Bool(<span class="bool-val">false</span>)))),
+        Atom::Literal(Lit::Bool(<span class="bool-val">false</span>)),
     )))
 }
 </code></pre></div></section></main></body></html>

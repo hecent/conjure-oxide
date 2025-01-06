@@ -11,13 +11,13 @@
 <a href="#10" id="10">10</a>
 <a href="#11" id="11">11</a></pre></div><pre class="rust"><code><span class="doccomment">//! Solver adaptors.
 
-</span><span class="attr">#[doc(inline)]
-</span><span class="kw">pub use </span>kissat::Kissat;
-<span class="attr">#[doc(inline)]
-</span><span class="kw">pub use </span>minion::Minion;
-
+</span><span class="kw">mod </span>kissat;
+<span class="kw">mod </span>minion;
 <span class="kw">mod </span>sat_common;
 
-<span class="kw">mod </span>kissat;
-<span class="kw">mod </span>minion;
+<span class="attr">#[doc(inline)]
+</span><span class="kw">pub use </span>kissat::Kissat;
+
+<span class="attr">#[doc(inline)]
+</span><span class="kw">pub use </span>minion::Minion;
 </code></pre></div></section></main></body></html>
