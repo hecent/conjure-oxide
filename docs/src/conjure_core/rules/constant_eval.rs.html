@@ -272,7 +272,8 @@
 <a href="#271" id="271">271</a>
 <a href="#272" id="272">272</a>
 <a href="#273" id="273">273</a>
-<a href="#274" id="274">274</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashSet;
+<a href="#274" id="274">274</a>
+<a href="#275" id="275">275</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashSet;
 
 <span class="kw">use </span>conjure_core::ast::{Atom, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit};
 <span class="kw">use </span>conjure_core::metadata::Metadata;
@@ -388,9 +389,6 @@
 
             <span class="prelude-val">Some</span>(Lit::Bool(b == result))
         }
-        Expr::SumEq(<span class="kw">_</span>, exprs, a) =&gt; {
-            flat_op::&lt;i32, bool&gt;(|e, a| e.iter().sum::&lt;i32&gt;() == a, exprs, a).map(Lit::Bool)
-        }
         Expr::MinionModuloEqUndefZero(<span class="kw">_</span>, a, b, c) =&gt; {
             <span class="comment">// From Savile Row. Same semantics as division.
             //
@@ -444,11 +442,14 @@
             <span class="kw">let </span>a: i32 = a.try_into().ok()<span class="question-mark">?</span>;
             <span class="kw">let </span>b: i32 = b.try_into().ok()<span class="question-mark">?</span>;
             <span class="prelude-val">Some</span>(Lit::Bool(a == -b))
-        } <span class="comment">// _ =&gt; {
-          //     warn!(%expr,"Unimplemented constant eval");
-          //     None
-          // }
-    </span>}
+        }
+        Expr::FlatProductEq(<span class="kw">_</span>, a, b, c) =&gt; {
+            <span class="kw">let </span>a: i32 = a.try_into().ok()<span class="question-mark">?</span>;
+            <span class="kw">let </span>b: i32 = b.try_into().ok()<span class="question-mark">?</span>;
+            <span class="kw">let </span>c: i32 = c.try_into().ok()<span class="question-mark">?</span>;
+            <span class="prelude-val">Some</span>(Lit::Bool(a * b == c))
+        }
+    }
 }
 
 <span class="kw">fn </span>un_op&lt;T, A&gt;(f: <span class="kw">fn</span>(T) -&gt; A, a: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;A&gt;
@@ -495,7 +496,8 @@
     f(a)
 }
 
-<span class="kw">fn </span>flat_op&lt;T, A&gt;(f: <span class="kw">fn</span>(Vec&lt;T&gt;, T) -&gt; A, a: <span class="kw-2">&amp;</span>[Expr], b: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;A&gt;
+<span class="attr">#[allow(dead_code)]
+</span><span class="kw">fn </span>flat_op&lt;T, A&gt;(f: <span class="kw">fn</span>(Vec&lt;T&gt;, T) -&gt; A, a: <span class="kw-2">&amp;</span>[Expr], b: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Option</span>&lt;A&gt;
 <span class="kw">where
     </span>T: TryFrom&lt;Lit&gt;,
 {

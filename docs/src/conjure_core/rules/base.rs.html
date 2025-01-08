@@ -139,7 +139,8 @@
 <a href="#138" id="138">138</a>
 <a href="#139" id="139">139</a>
 <a href="#140" id="140">140</a>
-<a href="#141" id="141">141</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Atom, DecisionVariable, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit, SymbolTable};
+<a href="#141" id="141">141</a>
+<a href="#142" id="142">142</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Atom, DecisionVariable, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit, SymbolTable};
 <span class="kw">use </span>conjure_core::metadata::Metadata;
 <span class="kw">use </span>conjure_core::rule_engine::{
     register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
@@ -173,6 +174,7 @@
             | FlatMinusEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | FlatSumGeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | FlatSumLeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
+            | FlatProductEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | FlatWatchedLiteral(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | MinionDivEqUndefZero(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | MinionModuloEqUndefZero(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
@@ -199,7 +201,7 @@
  * min([a, b]) ~&gt; c ; c &lt;= a &amp; c &lt;= b &amp; (c = a | c = b)
  * ```
  */
-</span><span class="attr">#[register_rule((<span class="string">"Base"</span>, <span class="number">2000</span>))]
+</span><span class="attr">#[register_rule((<span class="string">"Base"</span>, <span class="number">6000</span>))]
 </span><span class="kw">fn </span>min_to_var(expr: <span class="kw-2">&amp;</span>Expr, mdl: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="kw">match </span>expr {
         Min(<span class="kw">_</span>, exprs) =&gt; {
@@ -243,7 +245,7 @@
  * max([a, b]) ~&gt; c ; c &gt;= a &amp; c &gt;= b &amp; (c = a | c = b)
  * ```
  */
-</span><span class="attr">#[register_rule((<span class="string">"Base"</span>, <span class="number">100</span>))]
+</span><span class="attr">#[register_rule((<span class="string">"Base"</span>, <span class="number">6000</span>))]
 </span><span class="kw">fn </span>max_to_var(expr: <span class="kw-2">&amp;</span>Expr, mdl: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="kw">match </span>expr {
         Max(<span class="kw">_</span>, exprs) =&gt; {

@@ -666,7 +666,9 @@
 <a href="#665" id="665">665</a>
 <a href="#666" id="666">666</a>
 <a href="#667" id="667">667</a>
-<a href="#668" id="668">668</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
+<a href="#668" id="668">668</a>
+<a href="#669" id="669">669</a>
+<a href="#670" id="670">670</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
 <span class="kw">use </span>std::sync::Arc;
 
 <span class="kw">use </span>serde::{Deserialize, Serialize};
@@ -769,15 +771,6 @@
     </span><span class="attr">#[compatible(JsonInput)]
     </span>Minus(Metadata, Box&lt;Expression&gt;, Box&lt;Expression&gt;),
 
-    <span class="comment">/* Flattened SumEq.
-     *
-     * Note: this is an intermediary step that's used in the process of converting from conjure model to minion.
-     * This is NOT a valid expression in either Essence or minion.
-     *
-     * ToDo: This is a stop gap solution. Eventually it may be better to have multiple constraints instead? (gs248)
-     */
-    </span>SumEq(Metadata, Vec&lt;Expression&gt;, Box&lt;Expression&gt;),
-
     <span class="doccomment">/// Ensures that sum(vec) &gt;= x.
     ///
     /// Low-level Minion constraint.
@@ -832,6 +825,16 @@
     /// + [Minion documentation](https://minion-solver.readthedocs.io/en/stable/usage/constraints.html#minuseq)
     </span><span class="attr">#[compatible(Minion)]
     </span>FlatMinusEq(Metadata, Atom, Atom),
+
+    <span class="doccomment">/// Ensures that x*y=z.
+    ///
+    /// Low-level Minion constraint.
+    ///
+    /// # See also
+    ///
+    /// + [Minion documentation](https://minion-solver.readthedocs.io/en/stable/usage/constraints.html#product)
+    </span><span class="attr">#[compatible(Minion)]
+    </span>FlatProductEq(Metadata, Atom, Atom, Atom),
 
     <span class="doccomment">/// Ensures that floor(x/y)=z. Always true when y=0.
     ///
@@ -981,7 +984,6 @@
             Expression::Leq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
             Expression::Gt(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
             Expression::Lt(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
-            Expression::SumEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
             Expression::FlatSumGeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
             Expression::FlatSumLeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
             Expression::MinionDivEqUndefZero(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
@@ -1009,6 +1011,7 @@
                 </span>.apply_i32(|x, y| <span class="prelude-val">Some</span>(x - y), <span class="kw-2">&amp;</span>b.domain_of(vars)<span class="question-mark">?</span>),
 
             Expression::FlatMinusEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
+            Expression::FlatProductEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
             <span class="comment">// #[allow(unreachable_patterns)]
             // _ =&gt; bug!("Cannot calculate domain of {:?}", self),
         </span>};
@@ -1070,7 +1073,6 @@
             Expression::Lt(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::SafeDiv(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Int),
             Expression::UnsafeDiv(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Int),
-            Expression::SumEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::FlatSumGeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::FlatSumLeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::MinionDivEqUndefZero(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
@@ -1086,6 +1088,7 @@
             Expression::Neg(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Int),
             Expression::Minus(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Int),
             Expression::FlatMinusEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
+            Expression::FlatProductEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
         }
     }
 
@@ -1173,14 +1176,6 @@
             Expression::Lt(<span class="kw">_</span>, box1, box2) =&gt; {
                 <span class="macro">write!</span>(f, <span class="string">"({} &lt; {})"</span>, box1.clone(), box2.clone())
             }
-            Expression::SumEq(<span class="kw">_</span>, expressions, expr_box) =&gt; {
-                <span class="macro">write!</span>(
-                    f,
-                    <span class="string">"SumEq({}, {})"</span>,
-                    pretty_vec(expressions),
-                    expr_box.clone()
-                )
-            }
             Expression::FlatSumGeq(<span class="kw">_</span>, box1, box2) =&gt; {
                 <span class="macro">write!</span>(f, <span class="string">"SumGeq({}, {})"</span>, pretty_vec(box1), box2.clone())
             }
@@ -1248,6 +1243,15 @@
             }
             Expression::FlatMinusEq(<span class="kw">_</span>, a, b) =&gt; {
                 <span class="macro">write!</span>(f, <span class="string">"MinusEq({},{})"</span>, a.clone(), b.clone())
+            }
+            Expression::FlatProductEq(<span class="kw">_</span>, a, b, c) =&gt; {
+                <span class="macro">write!</span>(
+                    f,
+                    <span class="string">"FlatProductEq({},{},{})"</span>,
+                    a.clone(),
+                    b.clone(),
+                    c.clone()
+                )
             }
         }
     }
