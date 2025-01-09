@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `crates/conjure_core/src/rules/minion.rs`."><title>minion.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="conjure_core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (ad211ced8 2025-01-07)" data-channel="nightly" data-search-js="search-75f5ac3e.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">conjure_core/rules/</div>minion.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `crates/conjure_core/src/rules/minion.rs`."><title>minion.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="conjure_core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (a580b5c37 2025-01-08)" data-channel="nightly" data-search-js="search-75f5ac3e.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">conjure_core/rules/</div>minion.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
 <a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
@@ -708,34 +708,7 @@
 <a href="#707" id="707">707</a>
 <a href="#708" id="708">708</a>
 <a href="#709" id="709">709</a>
-<a href="#710" id="710">710</a>
-<a href="#711" id="711">711</a>
-<a href="#712" id="712">712</a>
-<a href="#713" id="713">713</a>
-<a href="#714" id="714">714</a>
-<a href="#715" id="715">715</a>
-<a href="#716" id="716">716</a>
-<a href="#717" id="717">717</a>
-<a href="#718" id="718">718</a>
-<a href="#719" id="719">719</a>
-<a href="#720" id="720">720</a>
-<a href="#721" id="721">721</a>
-<a href="#722" id="722">722</a>
-<a href="#723" id="723">723</a>
-<a href="#724" id="724">724</a>
-<a href="#725" id="725">725</a>
-<a href="#726" id="726">726</a>
-<a href="#727" id="727">727</a>
-<a href="#728" id="728">728</a>
-<a href="#729" id="729">729</a>
-<a href="#730" id="730">730</a>
-<a href="#731" id="731">731</a>
-<a href="#732" id="732">732</a>
-<a href="#733" id="733">733</a>
-<a href="#734" id="734">734</a>
-<a href="#735" id="735">735</a>
-<a href="#736" id="736">736</a>
-<a href="#737" id="737">737</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
+<a href="#710" id="710">710</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
@@ -854,6 +827,7 @@
         model.variables,
     ))
 }
+
 <span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4200</span>))]
 </span><span class="kw">fn </span>introduce_diveq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="comment">// div = val
@@ -1029,8 +1003,6 @@
             | Expr::SafeMod(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | Expr::Leq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | Expr::Geq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
-            | Expr::Lt(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
-            | Expr::Gt(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
     ) {
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     }
@@ -1231,62 +1203,6 @@
     <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatSumLeq(meta, atoms, rhs)))
 }
 
-<span class="doccomment">/**
-* Convert a Lt to an Ineq
-
-* ```text
-* x &lt; y ~&gt; x &lt;= y -1 ~&gt; ineq(x,y,-1)
-* ```
-*/
-</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
-</span><span class="kw">fn </span>lt_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">let </span>Expr::Lt(meta, e1, e2) = expr.clone() <span class="kw">else </span>{
-        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
-    };
-
-    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, x) = <span class="kw-2">*</span>e1 <span class="kw">else </span>{
-        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
-    };
-
-    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, y) = <span class="kw-2">*</span>e2 <span class="kw">else </span>{
-        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
-    };
-
-    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatIneq(
-        meta.clone_dirty(),
-        x,
-        y,
-        Lit::Int(-<span class="number">1</span>),
-    )))
-}
-
-<span class="doccomment">/// Converts a Gt to an Ineq
-///
-/// ```text
-/// x &gt; y ~&gt; y &lt;= x -1 ~&gt; ineq(y,x,-1)
-/// ```
-</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
-</span><span class="kw">fn </span>gt_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
-    <span class="kw">let </span>Expr::Gt(meta, e1, e2) = expr.clone() <span class="kw">else </span>{
-        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
-    };
-
-    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, x) = <span class="kw-2">*</span>e1 <span class="kw">else </span>{
-        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
-    };
-
-    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, y) = <span class="kw-2">*</span>e2 <span class="kw">else </span>{
-        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
-    };
-
-    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatIneq(
-        meta.clone_dirty(),
-        y,
-        x,
-        Lit::Int(-<span class="number">1</span>),
-    )))
-}
-
 <span class="doccomment">/// Converts a Geq to an Ineq
 ///
 /// ```text
@@ -1346,9 +1262,39 @@
 </span><span class="doccomment">/// ```text
 /// x &lt;= y + k ~&gt; ineq(x,y,k)
 /// ```
-</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>,<span class="number">4400</span>))]
+</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>,<span class="number">4500</span>))]
 </span><span class="kw">fn </span>x_leq_y_plus_k_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="kw">let </span>Expr::Leq(meta, e1, e2) = expr.clone() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Atomic(<span class="kw">_</span>, x) = <span class="kw-2">*</span>e1 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Sum(<span class="kw">_</span>, sum_exprs) = <span class="kw-2">*</span>e2 <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>[Expr::Atomic(<span class="kw">_</span>, y), Expr::Atomic(<span class="kw">_</span>, Atom::Literal(k))] = sum_exprs.as_slice() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatIneq(
+        meta.clone_dirty(),
+        x,
+        y.clone(),
+        k.clone(),
+    )))
+}
+
+<span class="doccomment">/// ```text
+/// y + k &gt;= x ~&gt; ineq(x,y,k)
+/// ```
+</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>,<span class="number">4500</span>))]
+</span><span class="kw">fn </span>y_plus_k_geq_x_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
+    <span class="comment">// impl same as x_leq_y_plus_k but with lhs and rhs flipped
+    </span><span class="kw">let </span>Expr::Geq(meta, e2, e1) = expr.clone() <span class="kw">else </span>{
         <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
     };
 
