@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `crates/conjure_core/src/rules/minion.rs`."><title>minion.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="conjure_core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (a580b5c37 2025-01-08)" data-channel="nightly" data-search-js="search-75f5ac3e.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">conjure_core/rules/</div>minion.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `crates/conjure_core/src/rules/minion.rs`."><title>minion.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="conjure_core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (824759493 2025-01-09)" data-channel="nightly" data-search-js="search-75f5ac3e.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">conjure_core/rules/</div>minion.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
 <a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
@@ -716,7 +716,191 @@
 <a href="#715" id="715">715</a>
 <a href="#716" id="716">716</a>
 <a href="#717" id="717">717</a>
-<a href="#718" id="718">718</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
+<a href="#718" id="718">718</a>
+<a href="#719" id="719">719</a>
+<a href="#720" id="720">720</a>
+<a href="#721" id="721">721</a>
+<a href="#722" id="722">722</a>
+<a href="#723" id="723">723</a>
+<a href="#724" id="724">724</a>
+<a href="#725" id="725">725</a>
+<a href="#726" id="726">726</a>
+<a href="#727" id="727">727</a>
+<a href="#728" id="728">728</a>
+<a href="#729" id="729">729</a>
+<a href="#730" id="730">730</a>
+<a href="#731" id="731">731</a>
+<a href="#732" id="732">732</a>
+<a href="#733" id="733">733</a>
+<a href="#734" id="734">734</a>
+<a href="#735" id="735">735</a>
+<a href="#736" id="736">736</a>
+<a href="#737" id="737">737</a>
+<a href="#738" id="738">738</a>
+<a href="#739" id="739">739</a>
+<a href="#740" id="740">740</a>
+<a href="#741" id="741">741</a>
+<a href="#742" id="742">742</a>
+<a href="#743" id="743">743</a>
+<a href="#744" id="744">744</a>
+<a href="#745" id="745">745</a>
+<a href="#746" id="746">746</a>
+<a href="#747" id="747">747</a>
+<a href="#748" id="748">748</a>
+<a href="#749" id="749">749</a>
+<a href="#750" id="750">750</a>
+<a href="#751" id="751">751</a>
+<a href="#752" id="752">752</a>
+<a href="#753" id="753">753</a>
+<a href="#754" id="754">754</a>
+<a href="#755" id="755">755</a>
+<a href="#756" id="756">756</a>
+<a href="#757" id="757">757</a>
+<a href="#758" id="758">758</a>
+<a href="#759" id="759">759</a>
+<a href="#760" id="760">760</a>
+<a href="#761" id="761">761</a>
+<a href="#762" id="762">762</a>
+<a href="#763" id="763">763</a>
+<a href="#764" id="764">764</a>
+<a href="#765" id="765">765</a>
+<a href="#766" id="766">766</a>
+<a href="#767" id="767">767</a>
+<a href="#768" id="768">768</a>
+<a href="#769" id="769">769</a>
+<a href="#770" id="770">770</a>
+<a href="#771" id="771">771</a>
+<a href="#772" id="772">772</a>
+<a href="#773" id="773">773</a>
+<a href="#774" id="774">774</a>
+<a href="#775" id="775">775</a>
+<a href="#776" id="776">776</a>
+<a href="#777" id="777">777</a>
+<a href="#778" id="778">778</a>
+<a href="#779" id="779">779</a>
+<a href="#780" id="780">780</a>
+<a href="#781" id="781">781</a>
+<a href="#782" id="782">782</a>
+<a href="#783" id="783">783</a>
+<a href="#784" id="784">784</a>
+<a href="#785" id="785">785</a>
+<a href="#786" id="786">786</a>
+<a href="#787" id="787">787</a>
+<a href="#788" id="788">788</a>
+<a href="#789" id="789">789</a>
+<a href="#790" id="790">790</a>
+<a href="#791" id="791">791</a>
+<a href="#792" id="792">792</a>
+<a href="#793" id="793">793</a>
+<a href="#794" id="794">794</a>
+<a href="#795" id="795">795</a>
+<a href="#796" id="796">796</a>
+<a href="#797" id="797">797</a>
+<a href="#798" id="798">798</a>
+<a href="#799" id="799">799</a>
+<a href="#800" id="800">800</a>
+<a href="#801" id="801">801</a>
+<a href="#802" id="802">802</a>
+<a href="#803" id="803">803</a>
+<a href="#804" id="804">804</a>
+<a href="#805" id="805">805</a>
+<a href="#806" id="806">806</a>
+<a href="#807" id="807">807</a>
+<a href="#808" id="808">808</a>
+<a href="#809" id="809">809</a>
+<a href="#810" id="810">810</a>
+<a href="#811" id="811">811</a>
+<a href="#812" id="812">812</a>
+<a href="#813" id="813">813</a>
+<a href="#814" id="814">814</a>
+<a href="#815" id="815">815</a>
+<a href="#816" id="816">816</a>
+<a href="#817" id="817">817</a>
+<a href="#818" id="818">818</a>
+<a href="#819" id="819">819</a>
+<a href="#820" id="820">820</a>
+<a href="#821" id="821">821</a>
+<a href="#822" id="822">822</a>
+<a href="#823" id="823">823</a>
+<a href="#824" id="824">824</a>
+<a href="#825" id="825">825</a>
+<a href="#826" id="826">826</a>
+<a href="#827" id="827">827</a>
+<a href="#828" id="828">828</a>
+<a href="#829" id="829">829</a>
+<a href="#830" id="830">830</a>
+<a href="#831" id="831">831</a>
+<a href="#832" id="832">832</a>
+<a href="#833" id="833">833</a>
+<a href="#834" id="834">834</a>
+<a href="#835" id="835">835</a>
+<a href="#836" id="836">836</a>
+<a href="#837" id="837">837</a>
+<a href="#838" id="838">838</a>
+<a href="#839" id="839">839</a>
+<a href="#840" id="840">840</a>
+<a href="#841" id="841">841</a>
+<a href="#842" id="842">842</a>
+<a href="#843" id="843">843</a>
+<a href="#844" id="844">844</a>
+<a href="#845" id="845">845</a>
+<a href="#846" id="846">846</a>
+<a href="#847" id="847">847</a>
+<a href="#848" id="848">848</a>
+<a href="#849" id="849">849</a>
+<a href="#850" id="850">850</a>
+<a href="#851" id="851">851</a>
+<a href="#852" id="852">852</a>
+<a href="#853" id="853">853</a>
+<a href="#854" id="854">854</a>
+<a href="#855" id="855">855</a>
+<a href="#856" id="856">856</a>
+<a href="#857" id="857">857</a>
+<a href="#858" id="858">858</a>
+<a href="#859" id="859">859</a>
+<a href="#860" id="860">860</a>
+<a href="#861" id="861">861</a>
+<a href="#862" id="862">862</a>
+<a href="#863" id="863">863</a>
+<a href="#864" id="864">864</a>
+<a href="#865" id="865">865</a>
+<a href="#866" id="866">866</a>
+<a href="#867" id="867">867</a>
+<a href="#868" id="868">868</a>
+<a href="#869" id="869">869</a>
+<a href="#870" id="870">870</a>
+<a href="#871" id="871">871</a>
+<a href="#872" id="872">872</a>
+<a href="#873" id="873">873</a>
+<a href="#874" id="874">874</a>
+<a href="#875" id="875">875</a>
+<a href="#876" id="876">876</a>
+<a href="#877" id="877">877</a>
+<a href="#878" id="878">878</a>
+<a href="#879" id="879">879</a>
+<a href="#880" id="880">880</a>
+<a href="#881" id="881">881</a>
+<a href="#882" id="882">882</a>
+<a href="#883" id="883">883</a>
+<a href="#884" id="884">884</a>
+<a href="#885" id="885">885</a>
+<a href="#886" id="886">886</a>
+<a href="#887" id="887">887</a>
+<a href="#888" id="888">888</a>
+<a href="#889" id="889">889</a>
+<a href="#890" id="890">890</a>
+<a href="#891" id="891">891</a>
+<a href="#892" id="892">892</a>
+<a href="#893" id="893">893</a>
+<a href="#894" id="894">894</a>
+<a href="#895" id="895">895</a>
+<a href="#896" id="896">896</a>
+<a href="#897" id="897">897</a>
+<a href="#898" id="898">898</a>
+<a href="#899" id="899">899</a>
+<a href="#900" id="900">900</a>
+<a href="#901" id="901">901</a>
+<a href="#902" id="902">902</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
@@ -734,7 +918,7 @@
 <span class="kw">use </span><span class="kw">crate</span>::solver::SolverFamily;
 <span class="kw">use </span><span class="kw">crate</span>::Model;
 <span class="kw">use </span>uniplate::Uniplate;
-<span class="kw">use </span>ApplicationError::RuleNotApplicable;
+<span class="kw">use </span>ApplicationError::<span class="kw-2">*</span>;
 
 <span class="kw">use </span><span class="kw">super</span>::utils::{expressions_to_atoms, is_flat, to_aux_var};
 
@@ -834,6 +1018,190 @@
         new_tops,
         model.variables,
     ))
+}
+
+<span class="doccomment">/// Introduces `FlatWeightedSumLeq` / `FlatWeightedSumGeq` constraints.
+///
+/// # Details
+/// This rule is a bit unusual compared to other introduction rules in that
+/// it does its own flattening.
+///
+/// For example, introduce_sumleq only accepts sums of atoms and relies on
+/// the generic flattening rules (flatten_binop / flatten_vecop) to run
+/// before it flattens the sum.
+///
+/// ```text
+/// a + (b*c) + (d*e) &lt;= 10
+///   ~~&gt; flatten_vecop
+/// a + __0 + __1 &lt;= 10
+///
+/// with new top level constraints
+///
+/// __0 =aux b*c
+/// __1 =aux d*e
+///
+/// ---
+///
+/// a + __0 + __1 &lt;= 10
+///   ~~&gt; introduce_sumleq
+/// flat_sumleq([a,__0,__1],10)
+///
+/// ...
+/// ```
+///
+/// However, weighted sums are expressed as sums of products, which are not
+/// flat. Flattening a weighted sum generically makes it indistinguishable
+/// from a sum:
+///
+///```text
+/// 1*a + 2*b + 3*c + d &lt;= 10
+///   ~~&gt; flatten_vecop
+/// __0 + __1 + __2 + d &lt;= 10
+///
+/// with new top level constraints
+///
+/// __0 =aux 1*a
+/// __1 =aux 2*b
+/// __2 =aux 3*c
+/// ```
+///
+/// Therefore, introduce_weightedsumleq_sumgeq does its own flattening, and
+/// has a higher priority than flatten_vecop to prevent weighted sums being
+/// generically flattened.
+///
+/// Having custom flattening semantics means that we can make more things
+/// weighted sums.
+///
+/// For example, consider `a + 2*b + 3*c*d + (e / f) + 5*(g/h) &lt;= 18`. This
+/// rule turns this into a single flat_weightedsumleq constraint:
+///
+///```text
+/// a + 2*b + 3*c*d + (e/f) + 5*(g/h) &lt;= 30
+///
+///   ~&gt; introduce_weightedsumleq_sumgeq
+///
+/// flat_weightedsumleq([1,2,3,1,5],[a,b,__0,__1,__2],30)
+///
+/// with new top level constraints
+///
+/// __0 = c*d
+/// __1 = e/f
+/// __2 = g/h
+/// ```
+///
+/// The rules to turn terms into coefficient variable pairs are the following:
+///
+/// 1. Non-weighted atom: `a ~&gt; (1,a)`
+/// 2. Other non-weighted term: `e ~&gt; (1,__0)`, with new constraint `__0 =aux e`
+/// 3. Weighted atom: `c*a ~&gt; (c,a)`
+/// 4. Weighted non-atom: `c*e ~&gt; (c,__0)` with new constraint` __0 =aux e`
+/// 5. Weighted product: `c*e*f ~&gt; (c,__0)` with new constraint `__0 =aux (e*f)`
+</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4500</span>))]
+</span><span class="kw">fn </span>introduce_weighted_sumleq_sumgeq(expr: <span class="kw-2">&amp;</span>Expr, model: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
+    <span class="comment">// assume sum on lhs of leq/geq, as in introduce_sumleq
+    // is_leq is true if leq, false if geq
+    </span><span class="kw">let </span>(sum_expr, total, is_leq) = <span class="kw">match </span>expr.clone() {
+        Expr::Leq(<span class="kw">_</span>, sum_expr, total) =&gt; (<span class="kw-2">*</span>sum_expr, <span class="kw-2">*</span>total, <span class="bool-val">true</span>),
+        Expr::Geq(<span class="kw">_</span>, sum_expr, total) =&gt; (<span class="kw-2">*</span>sum_expr, <span class="kw-2">*</span>total, <span class="bool-val">false</span>),
+        <span class="kw">_ </span>=&gt; {
+            <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+        }
+    };
+
+    <span class="kw">let </span>total: Atom = total.try_into().or(<span class="prelude-val">Err</span>(RuleNotApplicable))<span class="question-mark">?</span>;
+
+    <span class="kw">let </span>Expr::Sum(<span class="kw">_</span>, sum_exprs) = sum_expr.clone() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    };
+    <span class="kw">let </span><span class="kw-2">mut </span>new_top_exprs: Vec&lt;Expr&gt; = <span class="macro">vec!</span>[];
+    <span class="kw">let </span><span class="kw-2">mut </span>model = model.clone();
+
+    <span class="kw">let </span><span class="kw-2">mut </span>coefficients: Vec&lt;Lit&gt; = <span class="macro">vec!</span>[];
+    <span class="kw">let </span><span class="kw-2">mut </span>vars: Vec&lt;Atom&gt; = <span class="macro">vec!</span>[];
+
+    <span class="comment">// if all coefficients are 1, use normal sum rule instead
+    </span><span class="kw">let </span><span class="kw-2">mut </span>found_non_one_coeff = <span class="bool-val">false</span>;
+
+    <span class="comment">// for each sub-term, get the coefficient and the variable, flattening if necessary.
+    </span><span class="kw">for </span>expr <span class="kw">in </span>sum_exprs {
+        <span class="kw">let </span>(coeff, var): (Lit, Atom) = <span class="kw">match </span>expr {
+            <span class="comment">// atom: v ~&gt; 1*v
+            </span>Expr::Atomic(<span class="kw">_</span>, atom) =&gt; (Lit::Int(<span class="number">1</span>), atom),
+
+            <span class="comment">// assuming normalisation / partial eval, literal will be first term
+
+            // weighted sum term: c * e.
+            // e can either be an atom, the rest of the product to be flattened, or an other expression that needs
+            // flattening
+            </span>Expr::Product(<span class="kw">_</span>, factors)
+                <span class="kw">if </span>factors.len() &gt; <span class="number">1 </span>&amp;&amp; <span class="macro">matches!</span>(factors[<span class="number">0</span>], Expr::Atomic(<span class="kw">_</span>, Atom::Literal(<span class="kw">_</span>))) =&gt;
+            {
+                <span class="kw">match </span><span class="kw-2">&amp;</span>factors[..] {
+                    <span class="comment">// c * &lt;atom&gt;
+                    </span>[Expr::Atomic(<span class="kw">_</span>, Atom::Literal(c)), Expr::Atomic(<span class="kw">_</span>, atom)] =&gt; {
+                        (c.clone(), atom.clone())
+                    }
+
+                    <span class="comment">// c * &lt;some non-flat expression&gt;
+                    </span>[Expr::Atomic(<span class="kw">_</span>, Atom::Literal(c)), e1] =&gt; {
+                        <span class="attr">#[allow(clippy::unwrap_used)] </span><span class="comment">// aux var failing is a bug
+                        </span><span class="kw">let </span>aux_var_info = to_aux_var(e1, <span class="kw-2">&amp;</span>model).unwrap();
+
+                        model = aux_var_info.model();
+                        <span class="kw">let </span>var = aux_var_info.as_atom();
+                        new_top_exprs.push(aux_var_info.top_level_expr());
+                        (c.clone(), var)
+                    }
+
+                    <span class="comment">// c * a * b * c * ...
+                    </span>[Expr::Atomic(<span class="kw">_</span>, Atom::Literal(c)), <span class="kw-2">ref </span>rest @ ..] =&gt; {
+                        <span class="kw">let </span>e1 = Expr::Product(Metadata::new(), rest.to_vec());
+
+                        <span class="attr">#[allow(clippy::unwrap_used)] </span><span class="comment">// aux var failing is a bug
+                        </span><span class="kw">let </span>aux_var_info = to_aux_var(<span class="kw-2">&amp;</span>e1, <span class="kw-2">&amp;</span>model).unwrap();
+
+                        model = aux_var_info.model();
+                        <span class="kw">let </span>var = aux_var_info.as_atom();
+                        new_top_exprs.push(aux_var_info.top_level_expr());
+                        (c.clone(), var)
+                    }
+
+                    <span class="kw">_ </span>=&gt; <span class="macro">unreachable!</span>(),
+                }
+            }
+
+            <span class="comment">// flatten non-flat terms without coefficients: e1 ~&gt; (1,__0)
+            //
+            // includes products without coefficients.
+            </span>e =&gt; {
+                <span class="comment">//
+                </span><span class="kw">let </span>aux_var_info = to_aux_var(<span class="kw-2">&amp;</span>e, <span class="kw-2">&amp;</span>model).ok_or(RuleNotApplicable)<span class="question-mark">?</span>;
+
+                model = aux_var_info.model();
+                <span class="kw">let </span>var = aux_var_info.as_atom();
+                new_top_exprs.push(aux_var_info.top_level_expr());
+                (Lit::Int(<span class="number">1</span>), var)
+            }
+        };
+
+        <span class="kw">let </span>coeff_num: i32 = coeff.clone().try_into().or(<span class="prelude-val">Err</span>(RuleNotApplicable))<span class="question-mark">?</span>;
+        found_non_one_coeff |= coeff_num != <span class="number">1</span>;
+        coefficients.push(coeff);
+        vars.push(var);
+    }
+
+    <span class="comment">// the expr should use a regular sum instead if the coefficients are all 1.
+    </span><span class="kw">if </span>!found_non_one_coeff {
+        <span class="kw">return </span><span class="prelude-val">Err</span>(RuleNotApplicable);
+    }
+
+    <span class="kw">let </span>new_expr: Expr = <span class="kw">if </span>is_leq {
+        Expr::FlatWeightedSumLeq(Metadata::new(), coefficients, vars, total)
+    } <span class="kw">else </span>{
+        Expr::FlatWeightedSumGeq(Metadata::new(), coefficients, vars, total)
+    };
+
+    <span class="prelude-val">Ok</span>(Reduction::new(new_expr, new_top_exprs, model.variables))
 }
 
 <span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4200</span>))]
