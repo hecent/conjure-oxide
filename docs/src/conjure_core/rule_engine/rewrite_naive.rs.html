@@ -168,7 +168,9 @@
 <a href="#167" id="167">167</a>
 <a href="#168" id="168">168</a>
 <a href="#169" id="169">169</a>
-<a href="#170" id="170">170</a></pre></div><pre class="rust"><code><span class="kw">use super</span>::{RewriteError, RuleSet};
+<a href="#170" id="170">170</a>
+<a href="#171" id="171">171</a>
+<a href="#172" id="172">172</a></pre></div><pre class="rust"><code><span class="kw">use super</span>::{RewriteError, RuleSet};
 <span class="kw">use crate</span>::{
     ast::Expression <span class="kw">as </span>Expr,
     bug,
@@ -227,7 +229,9 @@
                             ));
                         }
                         <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; {
-                            <span class="macro">tracing::trace!</span>(
+                            <span class="comment">// when called a lot, this becomes very expensive!
+                            </span><span class="attr">#[cfg(debug_assertions)]
+                            </span><span class="macro">tracing::trace!</span>(
                                 <span class="string">"Rule attempted but not applied: {} (priority {}), to expression: {}"</span>,
                                 rule.name,
                                 priority,
