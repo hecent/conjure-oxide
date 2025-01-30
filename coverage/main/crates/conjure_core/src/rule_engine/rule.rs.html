@@ -1772,7 +1772,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        let initial_symbols_set: BTreeSet&lt;Name&gt; = initial_symbols.keys().cloned().collect();</pre>
+                <pre class="has-background-success-light py-0 px-2">        let initial_symbols_set: BTreeSet&lt;Name&gt; = initial_symbols.names().cloned().collect();</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -1788,7 +1788,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        let new_symbols_set: BTreeSet&lt;Name&gt; = self.symbols.keys().cloned().collect();</pre>
+                <pre class="has-background-success-light py-0 px-2">        let new_symbols_set: BTreeSet&lt;Name&gt; = self.symbols.names().cloned().collect();</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -2060,7 +2060,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">        for (var_name, initial_value) in initial_symbols {</pre>
+                <pre class="has-background-danger-light py-0 px-2">        for (var_name, initial_value) in initial_symbols.iter_var() {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -2076,7 +2076,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">            let Some(new_value) = self.symbols.get(var_name) else {</pre>
+                <pre class="has-background-danger-light py-0 px-2">            let Some(new_value) = self.symbols.get_var(var_name) else {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -2903,8 +2903,8 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="36380">
-                36380
+                role="cell" aria-label="36465">
+                36465
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
@@ -2919,8 +2919,8 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="36380">
-                36380
+                role="cell" aria-label="36465">
+                36465
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
@@ -2935,8 +2935,8 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="36380">
-                36380
+                role="cell" aria-label="36465">
+                36465
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
@@ -3031,8 +3031,8 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="516443">
-                516443
+                role="cell" aria-label="516273">
+                516273
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
@@ -3047,8 +3047,8 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="516443">
-                516443
+                role="cell" aria-label="516273">
+                516273
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
@@ -3063,8 +3063,8 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="516443">
-                516443
+                role="cell" aria-label="516273">
+                516273
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
@@ -3090,7 +3090,7 @@
 </div>
         <footer class="footer">
             <div class="content has-text-centered">
-                <p class="heading">Date: 2025-01-30 16:57</p>
+                <p class="heading">Date: 2025-01-30 22:17</p>
             </div>
         </footer>
     </body>

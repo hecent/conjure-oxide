@@ -5228,7 +5228,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    pub fn domain_of(&amp;self, vars: &amp;SymbolTable) -&gt; Option&lt;Domain&gt; {</pre>
+                <pre class="has-background-success-light py-0 px-2">    pub fn domain_of(&amp;self, syms: &amp;SymbolTable) -&gt; Option&lt;Domain&gt; {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5260,7 +5260,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Expression::Atomic(_, Atom::Reference(name)) =&gt; Some(vars.get(name)?.domain.clone()),</pre>
+                <pre class="has-background-success-light py-0 px-2">            Expression::Atomic(_, Atom::Reference(name)) =&gt; Some(syms.domain_of(name)?.clone()),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5340,7 +5340,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Expression::Sum(_, exprs) =&gt; expr_vec_to_domain_i32(exprs, |x, y| Some(x + y), vars),</pre>
+                <pre class="has-background-success-light py-0 px-2">            Expression::Sum(_, exprs) =&gt; expr_vec_to_domain_i32(exprs, |x, y| Some(x + y), syms),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5372,7 +5372,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                expr_vec_to_domain_i32(exprs, |x, y| Some(x * y), vars)</pre>
+                <pre class="has-background-success-light py-0 px-2">                expr_vec_to_domain_i32(exprs, |x, y| Some(x * y), syms)</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5420,7 +5420,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                expr_vec_to_domain_i32(exprs, |x, y| Some(if x &lt; y { x } else { y }), vars)</pre>
+                <pre class="has-background-success-light py-0 px-2">                expr_vec_to_domain_i32(exprs, |x, y| Some(if x &lt; y { x } else { y }), syms)</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5468,7 +5468,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                expr_vec_to_domain_i32(exprs, |x, y| Some(if x &gt; y { x } else { y }), vars)</pre>
+                <pre class="has-background-success-light py-0 px-2">                expr_vec_to_domain_i32(exprs, |x, y| Some(if x &gt; y { x } else { y }), syms)</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5500,7 +5500,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">            Expression::UnsafeDiv(_, a, b) =&gt; a.domain_of(vars)?.apply_i32(</pre>
+                <pre class="has-background-danger-light py-0 px-2">            Expression::UnsafeDiv(_, a, b) =&gt; a.domain_of(syms)?.apply_i32(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5660,7 +5660,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">                &amp;b.domain_of(vars)?,</pre>
+                <pre class="has-background-danger-light py-0 px-2">                &amp;b.domain_of(syms)?,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5740,7 +5740,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                let domain = a.domain_of(vars)?.apply_i32(</pre>
+                <pre class="has-background-success-light py-0 px-2">                let domain = a.domain_of(syms)?.apply_i32(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5868,7 +5868,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                    &amp;b.domain_of(vars)?,</pre>
+                <pre class="has-background-success-light py-0 px-2">                    &amp;b.domain_of(syms)?,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6076,7 +6076,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">            Expression::UnsafeMod(_, a, b) =&gt; a.domain_of(vars)?.apply_i32(</pre>
+                <pre class="has-background-danger-light py-0 px-2">            Expression::UnsafeMod(_, a, b) =&gt; a.domain_of(syms)?.apply_i32(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6108,7 +6108,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">                &amp;b.domain_of(vars)?,</pre>
+                <pre class="has-background-danger-light py-0 px-2">                &amp;b.domain_of(syms)?,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6172,7 +6172,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                let domain = a.domain_of(vars)?.apply_i32(</pre>
+                <pre class="has-background-success-light py-0 px-2">                let domain = a.domain_of(syms)?.apply_i32(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6204,7 +6204,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                    &amp;b.domain_of(vars)?,</pre>
+                <pre class="has-background-success-light py-0 px-2">                    &amp;b.domain_of(syms)?,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6444,7 +6444,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                a.domain_of(vars)?.apply_i32(</pre>
+                <pre class="has-background-success-light py-0 px-2">                a.domain_of(syms)?.apply_i32(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6572,7 +6572,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                    &amp;b.domain_of(vars)?,</pre>
+                <pre class="has-background-success-light py-0 px-2">                    &amp;b.domain_of(syms)?,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -7004,7 +7004,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                let Some(Domain::IntDomain(mut ranges)) = x.domain_of(vars) else {</pre>
+                <pre class="has-background-success-light py-0 px-2">                let Some(Domain::IntDomain(mut ranges)) = x.domain_of(syms) else {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -7228,7 +7228,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">                .domain_of(vars)?</pre>
+                <pre class="has-background-danger-light py-0 px-2">                .domain_of(syms)?</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -7244,7 +7244,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">                .apply_i32(|x, y| Some(x - y), &amp;b.domain_of(vars)?),</pre>
+                <pre class="has-background-danger-light py-0 px-2">                .apply_i32(|x, y| Some(x - y), &amp;b.domain_of(syms)?),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -7356,7 +7356,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                .domain_of(vars)?</pre>
+                <pre class="has-background-success-light py-0 px-2">                .domain_of(syms)?</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -7372,7 +7372,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                .apply_i32(|a, _| Some(a.abs()), &amp;a.domain_of(vars)?),</pre>
+                <pre class="has-background-success-light py-0 px-2">                .apply_i32(|a, _| Some(a.abs()), &amp;a.domain_of(syms)?),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -12908,7 +12908,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        vars.insert(</pre>
+                <pre class="has-background-success-light py-0 px-2">        vars.add_var(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -13228,7 +13228,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        vars.insert(</pre>
+                <pre class="has-background-success-light py-0 px-2">        vars.add_var(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -13468,7 +13468,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        vars.insert(</pre>
+                <pre class="has-background-success-light py-0 px-2">        vars.add_var(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -13634,7 +13634,7 @@
 </div>
         <footer class="footer">
             <div class="content has-text-centered">
-                <p class="heading">Date: 2025-01-30 16:57</p>
+                <p class="heading">Date: 2025-01-30 22:17</p>
             </div>
         </footer>
     </body>
