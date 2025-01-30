@@ -297,8 +297,8 @@
 
     <span class="doccomment">/// Gets symbols added by this reduction
     </span><span class="kw">pub fn </span>added_symbols(<span class="kw-2">&amp;</span><span class="self">self</span>, initial_symbols: <span class="kw-2">&amp;</span>SymbolTable) -&gt; BTreeSet&lt;Name&gt; {
-        <span class="kw">let </span>initial_symbols_set: BTreeSet&lt;Name&gt; = initial_symbols.keys().cloned().collect();
-        <span class="kw">let </span>new_symbols_set: BTreeSet&lt;Name&gt; = <span class="self">self</span>.symbols.keys().cloned().collect();
+        <span class="kw">let </span>initial_symbols_set: BTreeSet&lt;Name&gt; = initial_symbols.names().cloned().collect();
+        <span class="kw">let </span>new_symbols_set: BTreeSet&lt;Name&gt; = <span class="self">self</span>.symbols.names().cloned().collect();
 
         new_symbols_set
             .difference(<span class="kw-2">&amp;</span>initial_symbols_set)
@@ -315,8 +315,8 @@
     ) -&gt; Vec&lt;(Name, DecisionVariable, DecisionVariable)&gt; {
         <span class="kw">let </span><span class="kw-2">mut </span>changes: Vec&lt;(Name, DecisionVariable, DecisionVariable)&gt; = <span class="macro">vec!</span>[];
 
-        <span class="kw">for </span>(var_name, initial_value) <span class="kw">in </span>initial_symbols {
-            <span class="kw">let </span><span class="prelude-val">Some</span>(new_value) = <span class="self">self</span>.symbols.get(var_name) <span class="kw">else </span>{
+        <span class="kw">for </span>(var_name, initial_value) <span class="kw">in </span>initial_symbols.iter_var() {
+            <span class="kw">let </span><span class="prelude-val">Some</span>(new_value) = <span class="self">self</span>.symbols.get_var(var_name) <span class="kw">else </span>{
                 <span class="kw">continue</span>;
             };
 

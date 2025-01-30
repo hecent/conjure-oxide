@@ -86,7 +86,7 @@
 /// println!("Boolean Variable: {}", bool_var);
 /// println!("Integer Variable: {}", int_var);
 
-</span><span class="attr">#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+</span><span class="attr">#[derive(Clone, Debug, Eq, PartialEq, Hash, Serialize, Deserialize)]
 </span><span class="kw">pub struct </span>DecisionVariable {
     <span class="kw">pub </span>domain: Domain,
 }

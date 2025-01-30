@@ -162,7 +162,7 @@
 ///
 /// Returns None if the symbol is not in the symbol table
 </span><span class="kw">pub fn </span>pretty_variable_declaration(symbol_table: <span class="kw-2">&amp;</span>SymbolTable, var_name: <span class="kw-2">&amp;</span>Name) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
-    <span class="kw">let </span>var = symbol_table.get(var_name)<span class="question-mark">?</span>;
+    <span class="kw">let </span>var = symbol_table.get_var(var_name)<span class="question-mark">?</span>;
     <span class="kw">match </span><span class="kw-2">&amp;</span>var.domain {
         <span class="kw">super</span>::Domain::BoolDomain =&gt; <span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"{}: bool"</span>, var_name)),
         <span class="kw">super</span>::Domain::IntDomain(domain) =&gt; {

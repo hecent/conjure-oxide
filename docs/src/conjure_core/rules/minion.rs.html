@@ -992,7 +992,11 @@
 <a href="#991" id="991">991</a>
 <a href="#992" id="992">992</a>
 <a href="#993" id="993">993</a>
-<a href="#994" id="994">994</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
+<a href="#994" id="994">994</a>
+<a href="#995" id="995">995</a>
+<a href="#996" id="996">996</a>
+<a href="#997" id="997">997</a>
+<a href="#998" id="998">998</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
@@ -1092,7 +1096,7 @@
         <span class="comment">// TODO: find this domain without having to make unnecessary Expr and Metadata objects
         // Just using the domain of expr doesn't work
         </span><span class="kw">let </span>aux_domain = Expr::Product(Metadata::new(), <span class="macro">vec!</span>[y.clone().into(), next_factor])
-            .domain_of(<span class="kw-2">&amp;</span>model.variables)
+            .domain_of(<span class="kw-2">&amp;</span>model.symbols().clone())
             .ok_or(ApplicationError::DomainError)<span class="question-mark">?</span>;
 
         model.add_variable(aux_var.clone(), DecisionVariable { domain: aux_domain });
@@ -1107,7 +1111,7 @@
     <span class="prelude-val">Ok</span>(Reduction::new(
         Expr::FlatProductEq(Metadata::new(), x, y, val),
         new_tops,
-        model.variables,
+        model.symbols().clone(),
     ))
 }
 
@@ -1386,7 +1390,11 @@
         (EqualityKind::Geq, <span class="bool-val">false</span>) =&gt; Expr::FlatSumGeq(Metadata::new(), vars, total),
     };
 
-    <span class="prelude-val">Ok</span>(Reduction::new(new_expr, new_top_exprs, model.variables))
+    <span class="prelude-val">Ok</span>(Reduction::new(
+        new_expr,
+        new_top_exprs,
+        model.symbols().clone(),
+    ))
 }
 
 <span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4200</span>))]
@@ -1681,7 +1689,7 @@
     <span class="prelude-val">Ok</span>(Reduction::new(
         Expr::Imply(meta.clone(), Box::new(new_x), y.clone()),
         <span class="macro">vec!</span>[aux_var_info.top_level_expr()],
-        model.variables,
+        model.symbols().clone(),
     ))
 }
 
@@ -1724,7 +1732,7 @@
 
     <span class="kw">let </span>expr = expr.with_children(children);
 
-    <span class="prelude-val">Ok</span>(Reduction::new(expr, new_tops, model.variables))
+    <span class="prelude-val">Ok</span>(Reduction::new(expr, new_tops, model.symbols().clone()))
 }
 
 <span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4200</span>))]
@@ -1756,7 +1764,7 @@
 
     <span class="kw">let </span>expr = expr.with_children(children);
 
-    <span class="prelude-val">Ok</span>(Reduction::new(expr, new_tops, model.variables))
+    <span class="prelude-val">Ok</span>(Reduction::new(expr, new_tops, model.symbols().clone()))
 }
 
 <span class="doccomment">/// Converts a Geq to an Ineq

@@ -235,9 +235,9 @@
 
             <span class="kw">let </span><span class="kw-2">mut </span>new_vars = SymbolTable::new();
             <span class="kw">let </span>domain = expr
-                .domain_of(<span class="kw-2">&amp;</span>mdl.variables)
+                .domain_of(mdl.symbols())
                 .ok_or(ApplicationError::DomainError)<span class="question-mark">?</span>;
-            new_vars.insert(new_name.clone(), DecisionVariable::new(domain));
+            new_vars.add_var(new_name.clone(), DecisionVariable::new(domain));
 
             <span class="prelude-val">Ok</span>(Reduction::new(
                 Atomic(Metadata::new(), Reference(new_name)),
@@ -279,9 +279,9 @@
 
             <span class="kw">let </span><span class="kw-2">mut </span>new_vars = SymbolTable::new();
             <span class="kw">let </span>domain = expr
-                .domain_of(<span class="kw-2">&amp;</span>mdl.variables)
+                .domain_of(mdl.symbols())
                 .ok_or(ApplicationError::DomainError)<span class="question-mark">?</span>;
-            new_vars.insert(new_name.clone(), DecisionVariable::new(domain));
+            new_vars.add_var(new_name.clone(), DecisionVariable::new(domain));
 
             <span class="prelude-val">Ok</span>(Reduction::new(
                 Atomic(Metadata::new(), Reference(new_name)),
