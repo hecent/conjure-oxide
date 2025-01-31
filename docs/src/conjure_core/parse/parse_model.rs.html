@@ -521,7 +521,45 @@
 <a href="#520" id="520">520</a>
 <a href="#521" id="521">521</a>
 <a href="#522" id="522">522</a>
-<a href="#523" id="523">523</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashMap;
+<a href="#523" id="523">523</a>
+<a href="#524" id="524">524</a>
+<a href="#525" id="525">525</a>
+<a href="#526" id="526">526</a>
+<a href="#527" id="527">527</a>
+<a href="#528" id="528">528</a>
+<a href="#529" id="529">529</a>
+<a href="#530" id="530">530</a>
+<a href="#531" id="531">531</a>
+<a href="#532" id="532">532</a>
+<a href="#533" id="533">533</a>
+<a href="#534" id="534">534</a>
+<a href="#535" id="535">535</a>
+<a href="#536" id="536">536</a>
+<a href="#537" id="537">537</a>
+<a href="#538" id="538">538</a>
+<a href="#539" id="539">539</a>
+<a href="#540" id="540">540</a>
+<a href="#541" id="541">541</a>
+<a href="#542" id="542">542</a>
+<a href="#543" id="543">543</a>
+<a href="#544" id="544">544</a>
+<a href="#545" id="545">545</a>
+<a href="#546" id="546">546</a>
+<a href="#547" id="547">547</a>
+<a href="#548" id="548">548</a>
+<a href="#549" id="549">549</a>
+<a href="#550" id="550">550</a>
+<a href="#551" id="551">551</a>
+<a href="#552" id="552">552</a>
+<a href="#553" id="553">553</a>
+<a href="#554" id="554">554</a>
+<a href="#555" id="555">555</a>
+<a href="#556" id="556">556</a>
+<a href="#557" id="557">557</a>
+<a href="#558" id="558">558</a>
+<a href="#559" id="559">559</a>
+<a href="#560" id="560">560</a>
+<a href="#561" id="561">561</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashMap;
 <span class="kw">use </span>std::sync::{Arc, RwLock};
 
 <span class="kw">use </span>serde_json::Value;
@@ -637,6 +675,19 @@
     <span class="kw">let </span>domain = <span class="kw">match </span>domain.<span class="number">0</span>.as_str() {
         <span class="string">"DomainInt" </span>=&gt; <span class="prelude-val">Ok</span>(parse_int_domain(domain.<span class="number">1</span>)<span class="question-mark">?</span>),
         <span class="string">"DomainBool" </span>=&gt; <span class="prelude-val">Ok</span>(Domain::BoolDomain),
+        <span class="string">"DomainReference" </span>=&gt; <span class="prelude-val">Ok</span>(Domain::DomainReference(Name::UserName(
+            domain
+                .<span class="number">1
+                </span>.as_array()
+                .ok_or(Error::Parse(<span class="string">"DomainReference is not an array"</span>.into()))<span class="question-mark">?</span>[<span class="number">0</span>]
+                .as_object()
+                .ok_or(Error::Parse(<span class="string">"DomainReference[0] is not an object"</span>.into()))<span class="question-mark">?</span>[<span class="string">"Name"</span>]
+                .as_str()
+                .ok_or(Error::Parse(
+                    <span class="string">"DomainReference[0].Name is not a string"</span>.into(),
+                ))<span class="question-mark">?
+                </span>.into(),
+        ))),
         <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(Error::Parse(
             <span class="string">"FindOrGiven[2] is an unknown object"</span>.to_owned(), <span class="comment">// consider covered
         </span>)),
@@ -660,15 +711,40 @@
         .ok_or(Error::Parse(<span class="string">"Letting[0].Name is not a string"</span>.to_owned()))<span class="question-mark">?</span>;
     <span class="kw">let </span>name = Name::UserName(name.to_owned());
 
-    <span class="comment">// just value lettings for now
-    </span><span class="kw">let </span>value = parse_expression(<span class="kw-2">&amp;</span>arr[<span class="number">1</span>])
-        .ok_or(Error::Parse(<span class="string">"Letting[1] is not a valid expression"</span>.into()))<span class="question-mark">?</span>;
+    <span class="comment">// value letting
+    </span><span class="kw">if let </span><span class="prelude-val">Some</span>(value) = parse_expression(<span class="kw-2">&amp;</span>arr[<span class="number">1</span>]) {
+        symtab
+            .add_value_letting(name.clone(), value)
+            .ok_or(Error::Parse(<span class="macro">format!</span>(
+                <span class="string">"Could not add {name} to symbol table as it already exists"
+            </span>)))
+    } <span class="kw">else </span>{
+        <span class="comment">// domain letting
+        </span><span class="kw">let </span>domain = <span class="kw-2">&amp;</span>arr[<span class="number">1</span>]
+            .as_object()
+            .ok_or(Error::Parse(<span class="string">"Letting[1] is not an object"</span>.to_owned()))<span class="question-mark">?</span>[<span class="string">"Domain"</span>]
+            .as_object()
+            .ok_or(Error::Parse(
+                <span class="string">"Letting[1].Domain is not an object"</span>.to_owned(),
+            ))<span class="question-mark">?
+            </span>.iter()
+            .next()
+            .ok_or(Error::Parse(
+                <span class="string">"Letting[1].Domain is an empty object"</span>.to_owned(),
+            ))<span class="question-mark">?</span>;
 
-    symtab
-        .add_value_letting(name.clone(), value)
-        .ok_or(Error::Parse(<span class="macro">format!</span>(
-            <span class="string">"Could not add {name} to symbol table as it already exists"
-        </span>)))
+        <span class="kw">let </span>domain = <span class="kw">match </span>domain.<span class="number">0</span>.as_str() {
+            <span class="string">"DomainInt" </span>=&gt; <span class="prelude-val">Ok</span>(parse_int_domain(domain.<span class="number">1</span>)<span class="question-mark">?</span>),
+            <span class="string">"DomainBool" </span>=&gt; <span class="prelude-val">Ok</span>(Domain::BoolDomain),
+            <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(Error::Parse(<span class="string">"Letting[1] is an unknown object"</span>.to_owned())),
+        }<span class="question-mark">?</span>;
+
+        symtab
+            .add_domain_letting(name.clone(), domain)
+            .ok_or(Error::Parse(<span class="macro">format!</span>(
+                <span class="string">"Could not add {name} to symbol table as it already exists"
+            </span>)))
+    }
 }
 
 <span class="kw">fn </span>parse_int_domain(v: <span class="kw-2">&amp;</span>JsonValue) -&gt; <span class="prelude-ty">Result</span>&lt;Domain&gt; {
@@ -911,7 +987,7 @@
         Value::Object(constant) <span class="kw">if </span>constant.contains_key(<span class="string">"ConstantBool"</span>) =&gt; {
             parse_constant(constant)
         }
-        otherwise =&gt; <span class="macro">bug!</span>(<span class="string">"Unhandled Expression {:#?}"</span>, otherwise),
+        <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
     }
 }
 

@@ -58,7 +58,8 @@
 <a href="#57" id="57">57</a>
 <a href="#58" id="58">58</a>
 <a href="#59" id="59">59</a>
-<a href="#60" id="60">60</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::Display;
+<a href="#60" id="60">60</a>
+<a href="#61" id="61">61</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::Display;
 
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 
@@ -115,6 +116,7 @@
                 }
                 <span class="prelude-val">Ok</span>(())
             }
+            Domain::DomainReference(name) =&gt; <span class="macro">write!</span>(f, <span class="string">"{}"</span>, name),
         }
     }
 }

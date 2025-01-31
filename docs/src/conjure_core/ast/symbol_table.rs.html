@@ -324,7 +324,78 @@
 <a href="#323" id="323">323</a>
 <a href="#324" id="324">324</a>
 <a href="#325" id="325">325</a>
-<a href="#326" id="326">326</a></pre></div><pre class="rust"><code><span class="doccomment">//! The symbol table.
+<a href="#326" id="326">326</a>
+<a href="#327" id="327">327</a>
+<a href="#328" id="328">328</a>
+<a href="#329" id="329">329</a>
+<a href="#330" id="330">330</a>
+<a href="#331" id="331">331</a>
+<a href="#332" id="332">332</a>
+<a href="#333" id="333">333</a>
+<a href="#334" id="334">334</a>
+<a href="#335" id="335">335</a>
+<a href="#336" id="336">336</a>
+<a href="#337" id="337">337</a>
+<a href="#338" id="338">338</a>
+<a href="#339" id="339">339</a>
+<a href="#340" id="340">340</a>
+<a href="#341" id="341">341</a>
+<a href="#342" id="342">342</a>
+<a href="#343" id="343">343</a>
+<a href="#344" id="344">344</a>
+<a href="#345" id="345">345</a>
+<a href="#346" id="346">346</a>
+<a href="#347" id="347">347</a>
+<a href="#348" id="348">348</a>
+<a href="#349" id="349">349</a>
+<a href="#350" id="350">350</a>
+<a href="#351" id="351">351</a>
+<a href="#352" id="352">352</a>
+<a href="#353" id="353">353</a>
+<a href="#354" id="354">354</a>
+<a href="#355" id="355">355</a>
+<a href="#356" id="356">356</a>
+<a href="#357" id="357">357</a>
+<a href="#358" id="358">358</a>
+<a href="#359" id="359">359</a>
+<a href="#360" id="360">360</a>
+<a href="#361" id="361">361</a>
+<a href="#362" id="362">362</a>
+<a href="#363" id="363">363</a>
+<a href="#364" id="364">364</a>
+<a href="#365" id="365">365</a>
+<a href="#366" id="366">366</a>
+<a href="#367" id="367">367</a>
+<a href="#368" id="368">368</a>
+<a href="#369" id="369">369</a>
+<a href="#370" id="370">370</a>
+<a href="#371" id="371">371</a>
+<a href="#372" id="372">372</a>
+<a href="#373" id="373">373</a>
+<a href="#374" id="374">374</a>
+<a href="#375" id="375">375</a>
+<a href="#376" id="376">376</a>
+<a href="#377" id="377">377</a>
+<a href="#378" id="378">378</a>
+<a href="#379" id="379">379</a>
+<a href="#380" id="380">380</a>
+<a href="#381" id="381">381</a>
+<a href="#382" id="382">382</a>
+<a href="#383" id="383">383</a>
+<a href="#384" id="384">384</a>
+<a href="#385" id="385">385</a>
+<a href="#386" id="386">386</a>
+<a href="#387" id="387">387</a>
+<a href="#388" id="388">388</a>
+<a href="#389" id="389">389</a>
+<a href="#390" id="390">390</a>
+<a href="#391" id="391">391</a>
+<a href="#392" id="392">392</a>
+<a href="#393" id="393">393</a>
+<a href="#394" id="394">394</a>
+<a href="#395" id="395">395</a>
+<a href="#396" id="396">396</a>
+<a href="#397" id="397">397</a></pre></div><pre class="rust"><code><span class="doccomment">//! The symbol table.
 //!
 //! See the item documentation for [`SymbolTable`] for more details.
 </span><span class="kw">use </span>std::collections::BTreeSet;
@@ -411,6 +482,7 @@
 </span><span class="kw">enum </span>SymbolKind {
     DecisionVariable(DecisionVariable),
     ValueLetting(Expression),
+    DomainLetting(Domain),
 }
 
 <span class="kw">impl </span>SymbolTable {
@@ -538,6 +610,47 @@
         </span>}
     }
 
+    <span class="doccomment">/// Returns an iterator over the names and definitions of all domain lettings in the symbol
+    /// table.
+    </span><span class="kw">pub fn </span>iter_domain_letting(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = (<span class="kw-2">&amp;</span>Name, <span class="kw-2">&amp;</span>Domain)&gt; {
+        <span class="self">self</span>.table.iter().filter_map(|(n, s)| {
+            <span class="kw">if let </span>SymbolKind::DomainLetting(domain) = s {
+                <span class="prelude-val">Some</span>((n, domain))
+            } <span class="kw">else </span>{
+                <span class="prelude-val">None
+            </span>}
+        })
+    }
+
+    <span class="doccomment">/// Returns a reference to the domain letting with the given name.
+    ///
+    /// Returns `None` if:
+    ///
+    /// + There is no domain letting with that name.
+    ///
+    /// + The object with that name is not a domain letting.
+    </span><span class="kw">pub fn </span>get_domain_letting(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>Name) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Domain&gt; {
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(SymbolKind::DomainLetting(domain)) = <span class="self">self</span>.table.get(name) {
+            <span class="prelude-val">Some</span>(domain)
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
+    }
+
+    <span class="doccomment">/// Returns a mutable reference to the domain letting with the given name.
+    ///
+    /// Returns `None` if:
+    ///
+    /// + There is no domain letting with that name.
+    ///
+    /// + The object with that name is not a domain letting.
+    </span><span class="kw">pub fn </span>get_domain_letting_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>Name) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;mut </span>Domain&gt; {
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(SymbolKind::DomainLetting(domain)) = <span class="self">self</span>.table.get_mut(name) {
+            <span class="prelude-val">Some</span>(domain)
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
+    }
     <span class="comment">/********************************/
     /*        mutate entries        */
     /********************************/
@@ -584,6 +697,27 @@
         <span class="prelude-val">Some</span>(())
     }
 
+    <span class="doccomment">/// Adds a domain letting to the symbol table as `name`.
+    ///
+    /// Returns `None` if there is a domain letting or other object with that name in the symbol
+    /// table.
+    </span><span class="kw">pub fn </span>add_domain_letting(<span class="kw-2">&amp;mut </span><span class="self">self</span>, name: Name, domain: Domain) -&gt; <span class="prelude-ty">Option</span>&lt;()&gt; {
+        <span class="kw">if let </span>std::collections::btree_map::Entry::Vacant(e) = <span class="self">self</span>.table.entry(name) {
+            e.insert(SymbolKind::DomainLetting(domain));
+            <span class="prelude-val">Some</span>(())
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
+    }
+
+    <span class="doccomment">/// Updates a domain letting to the symbol table as `name`, or adds it.
+    ///
+    /// Returns `None` if `name` refers to an object that is not a domain letting.
+    </span><span class="kw">pub fn </span>update_add_domain_letting(<span class="kw-2">&amp;mut </span><span class="self">self</span>, name: Name, domain: Domain) -&gt; <span class="prelude-ty">Option</span>&lt;()&gt; {
+        <span class="self">self</span>.table.insert(name, SymbolKind::DomainLetting(domain));
+        <span class="prelude-val">Some</span>(())
+    }
+
     <span class="doccomment">/// Extends the symbol table with the given symbol table, updating the gensym counter if
     /// necessary.
     </span><span class="kw">pub fn </span>extend(<span class="kw-2">&amp;mut </span><span class="self">self</span>, other: SymbolTable) {
@@ -615,6 +749,7 @@
         <span class="kw">match </span><span class="self">self</span>.table.get(name)<span class="question-mark">? </span>{
             SymbolKind::DecisionVariable(var) =&gt; <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>var.domain),
             SymbolKind::ValueLetting(<span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>,
+            SymbolKind::DomainLetting(domain) =&gt; <span class="prelude-val">Some</span>(domain),
         }
     }
 
@@ -623,6 +758,7 @@
         <span class="kw">match </span><span class="self">self</span>.table.get_mut(name)<span class="question-mark">? </span>{
             SymbolKind::DecisionVariable(var) =&gt; <span class="prelude-val">Some</span>(<span class="kw-2">&amp;mut </span>var.domain),
             SymbolKind::ValueLetting(<span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>,
+            SymbolKind::DomainLetting(domain) =&gt; <span class="prelude-val">Some</span>(domain),
         }
     }
 
@@ -632,8 +768,14 @@
             SymbolKind::DecisionVariable(var) =&gt; <span class="kw">match </span>var.domain {
                 Domain::BoolDomain =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
                 Domain::IntDomain(<span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Int),
+                Domain::DomainReference(<span class="kw-2">ref </span>n) =&gt; <span class="self">self</span>.type_of(n),
             },
             SymbolKind::ValueLetting(expr) =&gt; expr.return_type(),
+            SymbolKind::DomainLetting(domain) =&gt; <span class="kw">match </span>domain {
+                Domain::BoolDomain =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
+                Domain::IntDomain(<span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Int),
+                Domain::DomainReference(<span class="kw-2">ref </span>n) =&gt; <span class="self">self</span>.type_of(n),
+            },
         }
     }
 

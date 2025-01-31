@@ -104,7 +104,8 @@
 <a href="#103" id="103">103</a>
 <a href="#104" id="104">104</a>
 <a href="#105" id="105">105</a>
-<a href="#106" id="106">106</a></pre></div><pre class="rust"><code><span class="doccomment">//! Functions for pretty printing Conjure models.
+<a href="#106" id="106">106</a>
+<a href="#107" id="107">107</a></pre></div><pre class="rust"><code><span class="doccomment">//! Functions for pretty printing Conjure models.
 //!
 //! Most things can be pretty printed using `Display`; however some, notably collections
 //! can not, for example, Vec&lt;Expression&gt;
@@ -177,24 +178,8 @@
 /// Returns None if the symbol is not in the symbol table, or if it is not a variable.
 </span><span class="kw">pub fn </span>pretty_variable_declaration(symbol_table: <span class="kw-2">&amp;</span>SymbolTable, var_name: <span class="kw-2">&amp;</span>Name) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
     <span class="kw">let </span>var = symbol_table.get_var(var_name)<span class="question-mark">?</span>;
-    <span class="kw">match </span><span class="kw-2">&amp;</span>var.domain {
-        <span class="kw">super</span>::Domain::BoolDomain =&gt; <span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"{}: bool"</span>, var_name)),
-        <span class="kw">super</span>::Domain::IntDomain(domain) =&gt; {
-            <span class="kw">let </span><span class="kw-2">mut </span>domain_ranges: Vec&lt;String&gt; = <span class="macro">vec!</span>[];
-            <span class="kw">for </span>range <span class="kw">in </span>domain {
-                domain_ranges.push(<span class="kw">match </span>range {
-                    <span class="kw">super</span>::Range::Single(a) =&gt; a.to_string(),
-                    <span class="kw">super</span>::Range::Bounded(a, b) =&gt; <span class="macro">format!</span>(<span class="string">"{}..{}"</span>, a, b),
-                });
-            }
-
-            <span class="kw">if </span>domain_ranges.is_empty() {
-                <span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"{}: int"</span>, var_name))
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"{}: int({})"</span>, var_name, domain_ranges.join(<span class="string">","</span>)))
-            }
-        }
-    }
+    <span class="kw">let </span>domain = <span class="kw-2">&amp;</span>var.domain;
+    <span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"{var_name}: {domain}"</span>))
 }
 
 <span class="doccomment">/// Pretty prints, in essence syntax, the declaration for the given value letting.
@@ -209,5 +194,22 @@
 </span><span class="kw">pub fn </span>pretty_value_letting_declaration(symbol_table: <span class="kw-2">&amp;</span>SymbolTable, name: <span class="kw-2">&amp;</span>Name) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
     <span class="kw">let </span>letting = symbol_table.get_value_letting(name)<span class="question-mark">?</span>;
     <span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"letting {name} be {letting}"</span>))
+}
+
+<span class="doccomment">/// Pretty prints, in essence syntax, the declaration for the given domain letting.
+///
+/// E.g.
+///
+/// ```text
+/// letting A be domain bool
+/// ```
+///
+/// Returns None if the symbol is not in the symbol table, or if it is not a domain letting.
+</span><span class="kw">pub fn </span>pretty_domain_letting_declaration(
+    symbol_table: <span class="kw-2">&amp;</span>SymbolTable,
+    name: <span class="kw-2">&amp;</span>Name,
+) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
+    <span class="kw">let </span>letting = symbol_table.get_domain_letting(name)<span class="question-mark">?</span>;
+    <span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"letting {name} be domain {letting}"</span>))
 }
 </code></pre></div></section></main></body></html>
