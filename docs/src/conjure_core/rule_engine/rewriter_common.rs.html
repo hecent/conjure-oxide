@@ -111,9 +111,16 @@
 <a href="#110" id="110">110</a>
 <a href="#111" id="111">111</a>
 <a href="#112" id="112">112</a>
-<a href="#113" id="113">113</a></pre></div><pre class="rust"><code><span class="doccomment">//! Common utilities and types for rewriters.
-
-</span><span class="kw">use super</span>::{resolve_rules::ResolveRulesError, Reduction, Rule};
+<a href="#113" id="113">113</a>
+<a href="#114" id="114">114</a>
+<a href="#115" id="115">115</a>
+<a href="#116" id="116">116</a>
+<a href="#117" id="117">117</a>
+<a href="#118" id="118">118</a></pre></div><pre class="rust"><code><span class="doccomment">//! Common utilities and types for rewriters.
+</span><span class="kw">use super</span>::{
+    resolve_rules::{ResolveRulesError, RuleData},
+    Reduction,
+};
 <span class="kw">use crate</span>::{
     ast::{
         pretty::{pretty_variable_declaration, pretty_vec},
@@ -130,7 +137,7 @@
 
 <span class="attr">#[derive(Debug, Clone)]
 </span><span class="kw">pub struct </span>RuleResult&lt;<span class="lifetime">'a</span>&gt; {
-    <span class="kw">pub </span>rule: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>Rule&lt;<span class="lifetime">'a</span>&gt;,
+    <span class="kw">pub </span>rule_data: RuleData&lt;<span class="lifetime">'a</span>&gt;,
     <span class="kw">pub </span>reduction: Reduction,
 }
 
@@ -142,7 +149,7 @@
     initial_model: <span class="kw-2">&amp;</span>Model,
 ) {
     <span class="kw">let </span>red = <span class="kw-2">&amp;</span>result.reduction;
-    <span class="kw">let </span>rule = result.rule;
+    <span class="kw">let </span>rule = result.rule_data.rule;
     <span class="kw">let </span>new_top_string = pretty_vec(<span class="kw-2">&amp;</span>red.new_top);
 
     <span class="macro">info!</span>(
@@ -203,10 +210,13 @@
         target: <span class="string">"rule_engine"</span>,
         <span class="string">"{}"</span>,
     <span class="macro">json!</span>({
-        <span class="string">"rule_name"</span>: result.rule.name,
-        <span class="string">"rule_set"</span>: result.rule.rule_sets,
+        <span class="string">"rule_name"</span>: result.rule_data.rule.name,
+        <span class="string">"rule_priority"</span>: result.rule_data.priority,
+        <span class="string">"rule_set"</span>: {
+            <span class="string">"name"</span>: result.rule_data.rule_set.name,
+        },
         <span class="string">"initial_expression"</span>: serde_json::to_value(initial_expression).unwrap(),
-        <span class="string">"transformed _expression"</span>: serde_json::to_value(<span class="kw-2">&amp;</span>red.new_expression).unwrap()
+        <span class="string">"transformed_expression"</span>: serde_json::to_value(<span class="kw-2">&amp;</span>red.new_expression).unwrap()
     })
 
     )

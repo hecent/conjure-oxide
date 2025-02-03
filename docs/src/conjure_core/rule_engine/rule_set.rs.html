@@ -190,7 +190,7 @@
 
 <span class="kw">use </span>log::warn;
 
-<span class="kw">use </span><span class="kw">crate</span>::rule_engine::{get_rule_set_by_name, get_rules, Rule};
+<span class="kw">use </span><span class="kw">crate</span>::rule_engine::{get_all_rules, get_rule_set_by_name, Rule};
 <span class="kw">use </span><span class="kw">crate</span>::solver::SolverFamily;
 
 <span class="doccomment">/// A structure representing a set of rules with a name, priority, and dependencies.
@@ -287,7 +287,7 @@
     </span><span class="kw">fn </span>resolve_rules(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">'a </span>Rule&lt;<span class="lifetime">'a</span>&gt;, u16&gt; {
         <span class="kw">let </span><span class="kw-2">mut </span>rules = HashMap::new();
 
-        <span class="kw">for </span>rule <span class="kw">in </span>get_rules() {
+        <span class="kw">for </span>rule <span class="kw">in </span>get_all_rules() {
             <span class="kw">let </span><span class="kw-2">mut </span>found = <span class="bool-val">false</span>;
             <span class="kw">let </span><span class="kw-2">mut </span>priority: u16 = <span class="number">0</span>;
 
