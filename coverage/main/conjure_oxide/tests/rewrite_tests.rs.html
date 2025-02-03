@@ -92,7 +92,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">use conjure_core::rules::eval_constant;</pre>
+                <pre class="has-background-white py-0 px-2">use conjure_core::solver::SolverFamily;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -108,7 +108,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">use conjure_core::solver::SolverFamily;</pre>
+                <pre class="has-background-white py-0 px-2">use conjure_core::{rule_engine::get_all_rules, rules::eval_constant};</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -156,7 +156,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">    get_rule_by_name, get_rules,</pre>
+                <pre class="has-background-white py-0 px-2">    get_rule_by_name,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -364,7 +364,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    let rules = get_rules();</pre>
+                <pre class="has-background-success-light py-0 px-2">    let rules = get_all_rules();</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -3612,7 +3612,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    println!(&quot;Rules: {:?}&quot;, get_rules());</pre>
+                <pre class="has-background-success-light py-0 px-2">    println!(&quot;Rules: {:?}&quot;, get_all_rules());</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -9724,7 +9724,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    println!(&quot;Rules: {:?}&quot;, get_rules());</pre>
+                <pre class="has-background-success-light py-0 px-2">    println!(&quot;Rules: {:?}&quot;, get_all_rules());</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -11356,7 +11356,7 @@
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    let rules = get_rules();</pre>
+                <pre class="has-background-success-light py-0 px-2">    let rules = get_all_rules();</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -15266,7 +15266,7 @@
 </div>
         <footer class="footer">
             <div class="content has-text-centered">
-                <p class="heading">Date: 2025-02-03 14:13</p>
+                <p class="heading">Date: 2025-02-03 16:26</p>
             </div>
         </footer>
     </body>

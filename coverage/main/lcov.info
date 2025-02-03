@@ -328,10 +328,10 @@ LF:0
 LH:0
 end_of_record
 SF:crates/conjure_core/src/rule_engine/rewriter_common.rs
-FN:110,<conjure_core::rule_engine::rewriter_common::RewriteError as core::convert::From<conjure_core::rule_engine::resolve_rules::ResolveRulesError>>::from
-FN:26,conjure_core::rule_engine::rewriter_common::log_rule_application
-FN:26,conjure_core::rule_engine::rewriter_common::log_rule_application
-FN:110,<conjure_core::rule_engine::rewriter_common::RewriteError as core::convert::From<conjure_core::rule_engine::resolve_rules::ResolveRulesError>>::from
+FN:115,<conjure_core::rule_engine::rewriter_common::RewriteError as core::convert::From<conjure_core::rule_engine::resolve_rules::ResolveRulesError>>::from
+FN:28,conjure_core::rule_engine::rewriter_common::log_rule_application
+FN:28,conjure_core::rule_engine::rewriter_common::log_rule_application
+FN:115,<conjure_core::rule_engine::rewriter_common::RewriteError as core::convert::From<conjure_core::rule_engine::resolve_rules::ResolveRulesError>>::from
 FNDA:0,<conjure_core::rule_engine::rewriter_common::RewriteError as core::convert::From<conjure_core::rule_engine::resolve_rules::ResolveRulesError>>::from
 FNDA:0,conjure_core::rule_engine::rewriter_common::log_rule_application
 FNDA:1,conjure_core::rule_engine::rewriter_common::log_rule_application
@@ -340,8 +340,6 @@ FNF:4
 FNH:1
 BRF:0
 BRH:0
-DA:26,12189
-DA:27,12189
 DA:28,12189
 DA:29,12189
 DA:30,12189
@@ -350,44 +348,49 @@ DA:32,12189
 DA:33,12189
 DA:34,12189
 DA:35,12189
-DA:37,0
-DA:45,12189
-DA:46,11050
-DA:48,1139
-DA:50,2703
-DA:51,1564
-DA:52,1564
-DA:54,1139
-DA:55,1139
+DA:36,12189
+DA:37,12189
+DA:39,0
+DA:47,12189
+DA:48,11050
+DA:50,1139
+DA:52,2703
+DA:53,1564
+DA:54,1564
 DA:56,1139
-DA:61,12189
-DA:62,12189
+DA:57,1139
+DA:58,1139
+DA:63,12189
 DA:64,12189
-DA:65,1241
-DA:66,1241
+DA:66,12189
 DA:67,1241
 DA:68,1241
 DA:69,1241
 DA:70,1241
-DA:71,12189
-DA:72,11067
-DA:74,1122
-DA:78,12189
-DA:80,12121
-DA:89,12189
-DA:91,12121
-DA:92,12121
+DA:71,1241
+DA:72,1241
+DA:73,12189
+DA:74,11067
+DA:76,1122
+DA:80,12189
+DA:82,12121
+DA:91,12189
 DA:93,12121
 DA:94,12121
 DA:95,12121
 DA:96,12121
 DA:97,12121
-DA:100,12189
-DA:110,0
-DA:111,0
-DA:112,0
-LF:46
-LH:42
+DA:98,12121
+DA:99,12121
+DA:100,12121
+DA:101,12121
+DA:102,12121
+DA:105,12189
+DA:115,0
+DA:116,0
+DA:117,0
+LF:49
+LH:45
 end_of_record
 SF:crates/tree_morph/tests/rule_groups.rs
 FN:70,rule_groups::test_a_to_b_first
@@ -1372,11 +1375,11 @@ DA:61,102
 DA:65,0
 DA:66,0
 DA:67,0
-DA:71,44999
-DA:72,44999
-DA:73,41157
+DA:71,45016
+DA:72,45016
+DA:73,41174
 DA:74,3842
-DA:76,44999
+DA:76,45016
 LF:31
 LH:22
 end_of_record
@@ -1802,76 +1805,76 @@ LF:16
 LH:16
 end_of_record
 SF:conjure_oxide/src/main.rs
-FN:105,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#7}
-FN:43,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#1}
-FN:344,conjure_oxide::tests::test_get_example_model_success
-FN:105,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#7}
-FN:56,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#0}
-FN:60,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#2}
-FN:43,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#1}
-FN:103,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#4}
-FN:67,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#3}
-FN:56,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#0}
-FN:56,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#0}
-FN:64,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#1}
-FN:87,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#5}
-FN:77,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#4}
-FN:64,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#1}
-FN:77,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#4}
-FN:94,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#6}
-FN:103,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#4}
-FN:115,conjure_oxide::main
-FN:36,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#0}
-FN:75,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#2}
-FN:75,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#2}
-FN:103,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#4}
-FN:77,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#4}
-FN:36,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#0}
-FN:115,conjure_oxide::main
-FN:87,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#5}
-FN:94,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#6}
-FN:36,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#0}
-FN:93,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#3}
-FN:350,conjure_oxide::tests::test_get_example_model_by_filepath
-FN:111,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#8}
-FN:87,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#5}
-FN:111,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#8}
-FN:75,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#2}
-FN:111,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#8}
-FN:103,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#4}
-FN:56,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#0}
-FN:241,conjure_oxide::main::{closure#1}
-FN:362,conjure_oxide::tests::test_get_example_model_fail_empty_filepath
-FN:64,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#1}
-FN:227,conjure_oxide::main::{closure#7}
-FN:93,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#3}
-FN:67,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#3}
-FN:75,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#2}
-FN:67,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#3}
-FN:210,conjure_oxide::main::{closure#0}
-FN:77,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#4}
-FN:356,conjure_oxide::tests::test_get_example_model_fail_empty_filename
-FN:36,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#0}
-FN:105,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#7}
-FN:64,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#1}
-FN:60,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#2}
-FN:210,conjure_oxide::main::{closure#0}
-FN:43,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#1}
-FN:241,conjure_oxide::main::{closure#1}
-FN:111,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#8}
-FN:94,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#6}
-FN:306,conjure_oxide::run_solver
-FN:43,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#1}
-FN:306,conjure_oxide::run_solver
-FN:105,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#7}
-FN:67,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#3}
-FN:94,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#6}
-FN:87,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#5}
-FN:60,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#2}
-FN:93,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#3}
-FN:93,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#3}
-FN:227,conjure_oxide::main::{closure#7}
-FN:60,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#2}
+FN:103,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#7}
+FN:41,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#1}
+FN:339,conjure_oxide::tests::test_get_example_model_success
+FN:103,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#7}
+FN:54,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#0}
+FN:58,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#2}
+FN:41,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#1}
+FN:101,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#4}
+FN:65,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#3}
+FN:54,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#0}
+FN:54,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#0}
+FN:62,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#1}
+FN:85,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#5}
+FN:75,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#4}
+FN:62,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#1}
+FN:75,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#4}
+FN:92,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#6}
+FN:101,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#4}
+FN:113,conjure_oxide::main
+FN:34,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#0}
+FN:73,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#2}
+FN:73,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#2}
+FN:101,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#4}
+FN:75,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#4}
+FN:34,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#0}
+FN:113,conjure_oxide::main
+FN:85,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#5}
+FN:92,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#6}
+FN:34,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#0}
+FN:91,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#3}
+FN:345,conjure_oxide::tests::test_get_example_model_by_filepath
+FN:109,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#8}
+FN:85,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#5}
+FN:109,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#8}
+FN:73,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#2}
+FN:109,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#8}
+FN:101,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#4}
+FN:54,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#0}
+FN:236,conjure_oxide::main::{closure#1}
+FN:357,conjure_oxide::tests::test_get_example_model_fail_empty_filepath
+FN:62,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#1}
+FN:223,conjure_oxide::main::{closure#7}
+FN:91,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args::{closure#3}
+FN:65,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#3}
+FN:73,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#2}
+FN:65,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#3}
+FN:208,conjure_oxide::main::{closure#0}
+FN:75,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#4}
+FN:351,conjure_oxide::tests::test_get_example_model_fail_empty_filename
+FN:34,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#0}
+FN:103,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#7}
+FN:62,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#1}
+FN:58,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#2}
+FN:208,conjure_oxide::main::{closure#0}
+FN:41,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#1}
+FN:236,conjure_oxide::main::{closure#1}
+FN:109,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#8}
+FN:92,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#6}
+FN:301,conjure_oxide::run_solver
+FN:41,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#1}
+FN:301,conjure_oxide::run_solver
+FN:103,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#7}
+FN:65,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#3}
+FN:92,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#6}
+FN:85,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#5}
+FN:58,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#2}
+FN:91,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#3}
+FN:91,<conjure_oxide::Cli as clap_builder::derive::Args>::augment_args_for_update::{closure#3}
+FN:223,conjure_oxide::main::{closure#7}
+FN:58,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::from_arg_matches_mut::{closure#2}
 FNDA:0,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#7}
 FNDA:0,<conjure_oxide::Cli as clap_builder::derive::FromArgMatches>::update_from_arg_matches_mut::{closure#1}
 FNDA:1,conjure_oxide::tests::test_get_example_model_success
@@ -1946,20 +1949,22 @@ FNF:70
 FNH:4
 BRF:0
 BRH:0
-DA:36,0
-DA:43,0
-DA:56,0
-DA:60,0
-DA:64,0
-DA:67,0
+DA:34,0
+DA:41,0
+DA:54,0
+DA:58,0
+DA:62,0
+DA:65,0
+DA:73,0
 DA:75,0
-DA:77,0
-DA:87,0
-DA:93,0
-DA:94,0
+DA:85,0
+DA:91,0
+DA:92,0
+DA:101,0
 DA:103,0
-DA:105,0
-DA:111,0
+DA:109,0
+DA:113,0
+DA:114,0
 DA:115,0
 DA:116,0
 DA:117,0
@@ -1971,16 +1976,16 @@ DA:122,0
 DA:123,0
 DA:124,0
 DA:125,0
-DA:126,0
-DA:127,0
+DA:135,0
+DA:136,0
 DA:137,0
 DA:138,0
-DA:139,0
 DA:140,0
+DA:141,0
 DA:142,0
 DA:143,0
-DA:144,0
-DA:145,0
+DA:147,0
+DA:148,0
 DA:149,0
 DA:150,0
 DA:151,0
@@ -1989,29 +1994,29 @@ DA:153,0
 DA:154,0
 DA:155,0
 DA:156,0
-DA:157,0
 DA:158,0
-DA:160,0
+DA:159,0
 DA:161,0
-DA:163,0
+DA:164,0
+DA:165,0
 DA:166,0
-DA:167,0
 DA:168,0
+DA:169,0
 DA:170,0
 DA:171,0
 DA:172,0
 DA:173,0
 DA:174,0
 DA:175,0
-DA:176,0
 DA:177,0
+DA:178,0
 DA:179,0
 DA:180,0
 DA:181,0
 DA:182,0
 DA:183,0
-DA:184,0
-DA:185,0
+DA:187,0
+DA:188,0
 DA:189,0
 DA:190,0
 DA:191,0
@@ -2020,92 +2025,90 @@ DA:193,0
 DA:194,0
 DA:195,0
 DA:196,0
-DA:197,0
 DA:198,0
+DA:199,0
 DA:200,0
 DA:201,0
 DA:202,0
-DA:203,0
-DA:204,0
+DA:206,0
+DA:207,0
 DA:208,0
 DA:209,0
 DA:210,0
 DA:211,0
 DA:212,0
 DA:213,0
-DA:214,0
 DA:215,0
-DA:217,0
-DA:221,0
+DA:219,0
+DA:220,0
 DA:222,0
 DA:223,0
-DA:224,0
-DA:225,0
 DA:226,0
 DA:227,0
 DA:228,0
 DA:229,0
-DA:231,0
-DA:232,0
-DA:233,0
-DA:234,0
+DA:235,0
+DA:236,0
+DA:238,0
+DA:239,0
 DA:240,0
 DA:241,0
+DA:242,0
 DA:243,0
-DA:244,0
 DA:245,0
 DA:246,0
 DA:247,0
 DA:248,0
 DA:250,0
-DA:251,0
 DA:252,0
 DA:253,0
+DA:254,0
 DA:255,0
+DA:256,0
 DA:257,0
 DA:258,0
 DA:259,0
 DA:260,0
 DA:261,0
 DA:262,0
-DA:263,0
 DA:264,0
-DA:265,0
-DA:266,0
 DA:267,0
 DA:269,0
-DA:272,0
+DA:271,0
+DA:273,0
 DA:274,0
-DA:276,0
+DA:275,0
+DA:277,0
 DA:278,0
-DA:279,0
-DA:280,0
-DA:282,0
+DA:281,0
 DA:283,0
+DA:284,0
+DA:285,0
 DA:286,0
-DA:288,0
-DA:289,0
 DA:290,0
-DA:291,0
+DA:292,0
+DA:293,0
+DA:294,0
 DA:295,0
+DA:296,0
 DA:297,0
 DA:298,0
-DA:299,0
-DA:300,0
 DA:301,0
 DA:302,0
 DA:303,0
+DA:304,0
+DA:305,0
 DA:306,0
 DA:307,0
 DA:308,0
 DA:309,0
-DA:310,0
-DA:311,0
-DA:312,0
 DA:313,0
 DA:314,0
+DA:316,0
+DA:317,0
 DA:318,0
 DA:319,0
+DA:320,0
 DA:321,0
 DA:322,0
 DA:323,0
@@ -2113,30 +2116,25 @@ DA:324,0
 DA:325,0
 DA:326,0
 DA:327,0
-DA:328,0
-DA:329,0
-DA:330,0
 DA:331,0
 DA:332,0
-DA:336,0
-DA:337,0
-DA:344,1
+DA:339,1
+DA:340,1
+DA:341,1
+DA:342,1
 DA:345,1
 DA:346,1
 DA:347,1
-DA:350,1
+DA:348,1
 DA:351,1
 DA:352,1
 DA:353,1
-DA:356,1
+DA:354,1
 DA:357,1
 DA:358,1
 DA:359,1
-DA:362,1
-DA:363,1
-DA:364,1
-DA:365,1
-LF:190
+DA:360,1
+LF:185
 LH:16
 end_of_record
 SF:crates/tree_morph/tests/lambda_calc.rs
@@ -2348,8 +2346,8 @@ FNF:12
 FNH:5
 BRF:0
 BRH:0
-DA:7,252180
-DA:8,252180
+DA:7,247902
+DA:8,247902
 DA:9,0
 DA:10,0
 DA:11,0
@@ -2364,8 +2362,8 @@ DA:20,72
 DA:21,72
 DA:22,0
 DA:24,0
-DA:26,252108
-DA:28,252180
+DA:26,247830
+DA:28,247902
 DA:32,0
 DA:33,0
 DA:34,0
@@ -2374,32 +2372,32 @@ DA:36,0
 DA:37,0
 DA:39,0
 DA:41,0
-DA:48,1263300
-DA:49,1263300
-DA:50,446388
-DA:51,446388
-DA:52,446388
-DA:53,861366
-DA:54,861366
+DA:48,1254744
+DA:49,1254744
+DA:50,454944
+DA:51,454944
+DA:52,454944
+DA:53,878478
+DA:54,878478
 DA:55,0
-DA:57,861366
-DA:59,861366
-DA:60,446388
-DA:61,446388
-DA:62,720708
-DA:63,446388
-DA:65,163836
-DA:66,163836
-DA:67,163836
-DA:68,394194
-DA:69,163836
-DA:70,163836
-DA:71,163836
-DA:72,68160
-DA:73,95676
-DA:75,163836
+DA:57,878478
+DA:59,878478
+DA:60,454944
+DA:61,454944
+DA:62,733542
+DA:63,454944
+DA:65,146724
+DA:66,146724
+DA:67,146724
+DA:68,368526
+DA:69,146724
+DA:70,146724
+DA:71,146724
+DA:72,59604
+DA:73,87120
+DA:75,146724
 DA:77,653076
-DA:79,1263300
+DA:79,1254744
 LF:52
 LH:34
 end_of_record
@@ -2470,16 +2468,16 @@ LF:50
 LH:18
 end_of_record
 SF:crates/conjure_core/src/rule_engine/rewrite_naive.rs
-FN:134,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::model::Model>>>::{closure#0}
-FN:50,conjure_core::rule_engine::rewrite_naive::try_rewrite_model
-FN:19,conjure_core::rule_engine::rewrite_naive::rewrite_naive
-FN:124,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<_>
-FN:25,conjure_core::rule_engine::rewrite_naive::rewrite_naive::{closure#0}
-FN:19,conjure_core::rule_engine::rewrite_naive::rewrite_naive
-FN:25,conjure_core::rule_engine::rewrite_naive::rewrite_naive::{closure#0}
-FN:124,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::model::Model>>>
-FN:50,conjure_core::rule_engine::rewrite_naive::try_rewrite_model
-FN:134,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<_>::{closure#0}
+FN:126,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::model::Model>>>::{closure#0}
+FN:41,conjure_core::rule_engine::rewrite_naive::try_rewrite_model
+FN:18,conjure_core::rule_engine::rewrite_naive::rewrite_naive
+FN:116,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<_>
+FN:24,conjure_core::rule_engine::rewrite_naive::rewrite_naive::{closure#0}
+FN:18,conjure_core::rule_engine::rewrite_naive::rewrite_naive
+FN:24,conjure_core::rule_engine::rewrite_naive::rewrite_naive::{closure#0}
+FN:116,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::model::Model>>>
+FN:41,conjure_core::rule_engine::rewrite_naive::try_rewrite_model
+FN:126,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<_>::{closure#0}
 FNDA:0,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::model::Model>>>::{closure#0}
 FNDA:0,conjure_core::rule_engine::rewrite_naive::try_rewrite_model
 FNDA:0,conjure_core::rule_engine::rewrite_naive::rewrite_naive
@@ -2494,82 +2492,82 @@ FNF:10
 FNH:3
 BRF:0
 BRH:0
+DA:18,1496
 DA:19,1496
 DA:20,1496
 DA:21,1496
 DA:22,1496
 DA:23,1496
-DA:24,1496
+DA:25,1496
 DA:26,1496
 DA:27,1496
 DA:28,1496
-DA:29,82280
-DA:30,80784
-DA:31,80784
-DA:32,1496
-DA:33,1496
-DA:34,1496
-DA:38,13617
-DA:39,13617
-DA:40,13617
+DA:32,13617
+DA:33,12121
+DA:35,1496
+DA:36,1496
 DA:41,13617
 DA:42,13617
-DA:44,1496
-DA:45,1496
-DA:50,13617
-DA:51,13617
-DA:52,13617
-DA:53,13617
-DA:54,13617
-DA:56,13617
-DA:59,98175
-DA:62,3069384
-DA:64,3069384
-DA:65,3069384
-DA:66,14678514
-DA:67,11609130
+DA:43,13617
+DA:44,13617
+DA:45,13617
+DA:47,13617
+DA:50,98175
+DA:53,3069384
+DA:55,3069384
+DA:56,3069384
+DA:57,14678514
+DA:58,11609130
+DA:59,12121
+DA:60,12121
+DA:61,12121
+DA:62,12121
+DA:63,12121
+DA:64,12121
+DA:65,12121
+DA:66,12121
+DA:67,12121
 DA:68,12121
 DA:69,12121
 DA:70,12121
-DA:71,12121
-DA:72,12121
-DA:73,12121
-DA:74,12121
-DA:75,12121
-DA:76,12121
-DA:77,12121
-DA:78,12121
-DA:79,12121
-DA:83,11597009
-DA:84,0
-DA:94,3069384
-DA:95,12121
-DA:96,3057263
-DA:100,13617
-DA:101,13617
-DA:102,1496
+DA:74,11597009
+DA:75,0
+DA:86,3069384
+DA:87,12121
+DA:88,3057263
+DA:92,13617
+DA:93,13617
+DA:94,1496
+DA:96,12121
+DA:97,12121
+DA:98,12121
+DA:99,12121
+DA:102,12121
+DA:103,12121
 DA:104,12121
 DA:105,12121
 DA:106,12121
 DA:107,12121
+DA:108,12121
+DA:109,12121
 DA:110,12121
 DA:111,12121
 DA:112,12121
-DA:113,12121
-DA:114,12121
-DA:115,12121
+DA:113,13617
 DA:116,12121
 DA:117,12121
 DA:118,12121
 DA:119,12121
 DA:120,12121
-DA:121,13617
-DA:124,12121
-DA:125,12121
-DA:126,12121
-DA:127,12121
-DA:128,12121
-DA:129,12121
+DA:121,12121
+DA:122,0
+DA:123,0
+DA:124,0
+DA:125,0
+DA:126,0
+DA:127,0
+DA:128,0
+DA:129,0
 DA:130,0
 DA:131,0
 DA:132,0
@@ -2583,14 +2581,9 @@ DA:139,0
 DA:140,0
 DA:141,0
 DA:142,0
-DA:143,0
-DA:144,0
-DA:145,0
-DA:146,0
-DA:147,0
-DA:150,12121
-LF:95
-LH:76
+DA:145,12121
+LF:90
+LH:68
 end_of_record
 SF:crates/conjure_core/src/ast/atom.rs
 FN:57,<conjure_core::ast::atom::Atom as core::convert::TryFrom<conjure_core::ast::expressions::Expression>>::try_from
@@ -2665,11 +2658,11 @@ FNF:34
 FNH:9
 BRF:0
 BRH:0
-DA:22,116892
-DA:23,116892
-DA:24,41293
-DA:25,75599
-DA:27,116892
+DA:22,116943
+DA:23,116943
+DA:24,41310
+DA:25,75633
+DA:27,116943
 DA:31,0
 DA:32,0
 DA:33,0
@@ -3624,9 +3617,9 @@ DA:142,68
 DA:143,68
 DA:148,204
 DA:149,204
-DA:153,3128
-DA:154,3128
-DA:155,3128
+DA:153,3162
+DA:154,3162
+DA:155,3162
 DA:161,22763
 DA:162,22763
 DA:163,22763
@@ -3887,12 +3880,12 @@ DA:170,18938
 DA:174,0
 DA:175,0
 DA:176,0
-DA:180,37570
-DA:181,37570
-DA:182,37570
-DA:188,552109
-DA:189,552109
-DA:190,552109
+DA:180,68
+DA:181,68
+DA:182,68
+DA:188,5083
+DA:189,5083
+DA:190,5083
 LF:80
 LH:46
 end_of_record
@@ -3967,112 +3960,141 @@ LF:16
 LH:16
 end_of_record
 SF:crates/conjure_core/src/rule_engine/resolve_rules.rs
-FN:46,conjure_core::rule_engine::resolve_rules::rule_sets_by_names
-FN:71,conjure_core::rule_engine::resolve_rules::resolve_rule_sets
-FN:71,conjure_core::rule_engine::resolve_rules::resolve_rule_sets
-FN:46,conjure_core::rule_engine::resolve_rules::rule_sets_by_names
-FN:149,conjure_core::rule_engine::resolve_rules::get_rules_vec
-FN:16,<conjure_core::rule_engine::resolve_rules::ResolveRulesError as core::fmt::Display>::fmt
-FN:30,conjure_core::rule_engine::resolve_rules::get_rule_set
-FN:30,conjure_core::rule_engine::resolve_rules::get_rule_set
-FN:91,conjure_core::rule_engine::resolve_rules::get_rule_priorities
-FN:16,<conjure_core::rule_engine::resolve_rules::ResolveRulesError as core::fmt::Display>::fmt
-FN:91,conjure_core::rule_engine::resolve_rules::get_rule_priorities
-FN:127,conjure_core::rule_engine::resolve_rules::rule_cmp
-FN:151,conjure_core::rule_engine::resolve_rules::get_rules_vec::{closure#0}
-FN:149,conjure_core::rule_engine::resolve_rules::get_rules_vec
-FN:151,conjure_core::rule_engine::resolve_rules::get_rules_vec::{closure#0}
-FN:127,conjure_core::rule_engine::resolve_rules::rule_cmp
+FN:93,conjure_core::rule_engine::resolve_rules::rule_sets_by_names
+FN:148,conjure_core::rule_engine::resolve_rules::get_rules_grouped::{closure#0}
+FN:165,conjure_core::rule_engine::resolve_rules::resolve_rule_sets
+FN:165,conjure_core::rule_engine::resolve_rules::resolve_rule_sets
+FN:93,conjure_core::rule_engine::resolve_rules::rule_sets_by_names
+FN:115,conjure_core::rule_engine::resolve_rules::get_rules
+FN:48,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::Ord>::cmp
+FN:42,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::PartialOrd>::partial_cmp
+FN:19,<conjure_core::rule_engine::resolve_rules::RuleData as core::fmt::Display>::fmt
+FN:63,<conjure_core::rule_engine::resolve_rules::ResolveRulesError as core::fmt::Display>::fmt
+FN:48,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::Ord>::cmp
+FN:142,conjure_core::rule_engine::resolve_rules::get_rules_grouped
+FN:77,conjure_core::rule_engine::resolve_rules::get_rule_set
+FN:77,conjure_core::rule_engine::resolve_rules::get_rule_set
+FN:151,conjure_core::rule_engine::resolve_rules::get_rules_grouped::{closure#1}
+FN:19,<conjure_core::rule_engine::resolve_rules::RuleData as core::fmt::Display>::fmt
+FN:142,conjure_core::rule_engine::resolve_rules::get_rules_grouped
+FN:148,conjure_core::rule_engine::resolve_rules::get_rules_grouped::{closure#0}
+FN:33,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::PartialEq>::eq
+FN:33,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::PartialEq>::eq
+FN:151,conjure_core::rule_engine::resolve_rules::get_rules_grouped::{closure#1}
+FN:42,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::PartialOrd>::partial_cmp
+FN:115,conjure_core::rule_engine::resolve_rules::get_rules
+FN:63,<conjure_core::rule_engine::resolve_rules::ResolveRulesError as core::fmt::Display>::fmt
 FNDA:1,conjure_core::rule_engine::resolve_rules::rule_sets_by_names
-FNDA:0,conjure_core::rule_engine::resolve_rules::resolve_rule_sets
+FNDA:0,conjure_core::rule_engine::resolve_rules::get_rules_grouped::{closure#0}
 FNDA:1,conjure_core::rule_engine::resolve_rules::resolve_rule_sets
+FNDA:0,conjure_core::rule_engine::resolve_rules::resolve_rule_sets
 FNDA:0,conjure_core::rule_engine::resolve_rules::rule_sets_by_names
-FNDA:0,conjure_core::rule_engine::resolve_rules::get_rules_vec
+FNDA:1,conjure_core::rule_engine::resolve_rules::get_rules
+FNDA:1,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::Ord>::cmp
+FNDA:0,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::PartialOrd>::partial_cmp
+FNDA:0,<conjure_core::rule_engine::resolve_rules::RuleData as core::fmt::Display>::fmt
 FNDA:0,<conjure_core::rule_engine::resolve_rules::ResolveRulesError as core::fmt::Display>::fmt
+FNDA:0,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::Ord>::cmp
+FNDA:0,conjure_core::rule_engine::resolve_rules::get_rules_grouped
 FNDA:1,conjure_core::rule_engine::resolve_rules::get_rule_set
 FNDA:0,conjure_core::rule_engine::resolve_rules::get_rule_set
-FNDA:0,conjure_core::rule_engine::resolve_rules::get_rule_priorities
+FNDA:0,conjure_core::rule_engine::resolve_rules::get_rules_grouped::{closure#1}
+FNDA:0,<conjure_core::rule_engine::resolve_rules::RuleData as core::fmt::Display>::fmt
+FNDA:1,conjure_core::rule_engine::resolve_rules::get_rules_grouped
+FNDA:1,conjure_core::rule_engine::resolve_rules::get_rules_grouped::{closure#0}
+FNDA:0,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::PartialEq>::eq
+FNDA:0,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::PartialEq>::eq
+FNDA:1,conjure_core::rule_engine::resolve_rules::get_rules_grouped::{closure#1}
+FNDA:0,<conjure_core::rule_engine::resolve_rules::RuleData as core::cmp::PartialOrd>::partial_cmp
+FNDA:0,conjure_core::rule_engine::resolve_rules::get_rules
 FNDA:0,<conjure_core::rule_engine::resolve_rules::ResolveRulesError as core::fmt::Display>::fmt
-FNDA:1,conjure_core::rule_engine::resolve_rules::get_rule_priorities
-FNDA:1,conjure_core::rule_engine::resolve_rules::rule_cmp
-FNDA:0,conjure_core::rule_engine::resolve_rules::get_rules_vec::{closure#0}
-FNDA:1,conjure_core::rule_engine::resolve_rules::get_rules_vec
-FNDA:1,conjure_core::rule_engine::resolve_rules::get_rules_vec::{closure#0}
-FNDA:0,conjure_core::rule_engine::resolve_rules::rule_cmp
-FNF:16
-FNH:7
+FNF:24
+FNH:8
 BRF:0
 BRH:0
-DA:16,0
-DA:17,0
-DA:18,0
 DA:19,0
 DA:20,0
-DA:30,4539
-DA:31,4539
-DA:32,4539
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
 DA:33,0
-DA:35,4539
-DA:46,1547
-DA:47,1547
-DA:48,1547
-DA:49,1547
-DA:51,6086
-DA:52,4539
-DA:53,4539
-DA:54,4539
-DA:55,4539
-DA:58,1547
-DA:59,1547
-DA:71,1547
-DA:72,1547
-DA:73,1547
-DA:74,1547
-DA:75,1547
-DA:77,1547
-DA:78,1547
-DA:79,1547
-DA:81,1547
-DA:82,1547
-DA:83,1547
-DA:91,1530
-DA:92,1530
-DA:93,1530
-DA:94,1530
-DA:96,7616
-DA:97,82450
-DA:98,82450
-DA:99,0
-DA:100,82450
-DA:101,82450
-DA:102,82450
-DA:106,1530
-DA:107,83980
-DA:108,82450
-DA:109,82450
-DA:111,1530
-DA:112,1530
-DA:127,8959
-DA:128,8959
-DA:129,8959
-DA:130,8959
-DA:131,8959
-DA:132,8959
-DA:133,8959
-DA:134,8959
-DA:135,8959
-DA:136,2924
-DA:137,6035
-DA:138,6035
-DA:139,6035
-DA:140,8959
-DA:149,34
-DA:150,34
-DA:151,8959
-DA:152,34
-DA:153,34
-LF:68
-LH:61
+DA:34,0
+DA:35,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:48,522427
+DA:49,522427
+DA:50,150297
+DA:51,372130
+DA:53,522427
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:77,4539
+DA:78,4539
+DA:79,4539
+DA:80,0
+DA:82,4539
+DA:93,1547
+DA:94,1547
+DA:95,1547
+DA:96,1547
+DA:98,6086
+DA:99,4539
+DA:100,4539
+DA:101,4539
+DA:102,4539
+DA:105,1547
+DA:106,1547
+DA:115,1530
+DA:116,1530
+DA:117,1530
+DA:118,1530
+DA:119,1530
+DA:120,1530
+DA:122,7616
+DA:123,82450
+DA:124,82450
+DA:125,82450
+DA:126,82450
+DA:127,82450
+DA:128,82450
+DA:129,82450
+DA:132,1530
+DA:133,1530
+DA:142,1496
+DA:143,1496
+DA:144,1496
+DA:145,1496
+DA:146,1496
+DA:147,1496
+DA:148,80784
+DA:149,1496
+DA:150,1496
+DA:151,20944
+DA:152,1496
+DA:153,1496
+DA:154,1496
+DA:165,1547
+DA:166,1547
+DA:167,1547
+DA:168,1547
+DA:169,1547
+DA:170,1547
+DA:171,1547
+DA:173,1547
+DA:174,1547
+DA:175,1547
+DA:177,1547
+DA:178,1547
+DA:179,1547
+LF:81
+LH:62
 end_of_record
 SF:crates/conjure_core/src/ast/pretty.rs
 FN:55,conjure_core::ast::pretty::pretty_vec::<conjure_core::ast::atom::Atom>
@@ -4142,13 +4164,13 @@ DA:41,0
 DA:42,0
 DA:43,0
 DA:44,0
-DA:55,36108
-DA:56,50524
-DA:57,36108
-DA:58,36108
-DA:59,36108
-DA:60,36108
-DA:61,36108
+DA:55,36125
+DA:56,50558
+DA:57,36125
+DA:58,36125
+DA:59,36125
+DA:60,36125
+DA:61,36125
 DA:72,10438
 DA:73,10438
 DA:74,10438
@@ -4229,16 +4251,16 @@ BRH:0
 DA:21,51
 DA:23,51
 DA:24,51
-DA:27,160174
-DA:28,160174
-DA:29,160174
-DA:30,139298
-DA:31,139298
-DA:32,139298
+DA:27,160293
+DA:28,160293
+DA:29,160293
+DA:30,139417
+DA:31,139417
+DA:32,139417
 DA:33,3162
 DA:35,34
 DA:36,34
-DA:37,160140
+DA:37,160259
 DA:43,51
 DA:44,17
 DA:45,17
@@ -4713,16 +4735,16 @@ DA:396,15827
 DA:397,15827
 DA:398,15827
 DA:399,15827
-DA:400,59075
+DA:400,59840
 DA:401,15827
 DA:402,15827
 DA:404,34
 DA:405,15827
-DA:406,59075
+DA:406,59840
 DA:407,4148
 DA:409,8092
 DA:410,1139
-DA:412,6987
+DA:412,7633
 DA:413,1972
 DA:417,8568
 DA:418,5185
@@ -6445,11 +6467,11 @@ FNF:73
 FNH:29
 BRF:0
 BRH:0
-DA:32,530009
-DA:33,530009
-DA:34,373422
+DA:32,530043
+DA:33,530043
+DA:34,373456
 DA:35,156587
-DA:37,530009
+DA:37,530043
 DA:77,0
 DA:97,17432
 DA:98,17432
@@ -10128,70 +10150,70 @@ LF:195
 LH:136
 end_of_record
 SF:crates/conjure_core/src/rule_engine/mod.rs
-FN:200,conjure_core::rule_engine::get_rule_set_by_name::{closure#0}
-FN:176,conjure_core::rule_engine::get_rule_sets
-FN:210,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_209_0
-FN:121,conjure_core::rule_engine::get_rules
-FN:222,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}
-FN:176,conjure_core::rule_engine::get_rule_sets
-FN:112,rust_out::main
+FN:162,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_161_0
+FN:188,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_187_0
+FN:203,conjure_core::rule_engine::get_rule_set_by_name::{closure#0}
+FN:166,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_161_0::CONJURE_GEN_RULE_SET_MYRULESET::__typecheck::{closure#0}::{closure#0}
+FN:225,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}
+FN:213,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_212_0
+FN:179,conjure_core::rule_engine::get_all_rule_sets
+FN:121,conjure_core::rule_engine::get_all_rules
+FN:188,rust_out::main
 FN:40,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_33_0::CONJURE_GEN_RULE_IDENTITY::__typecheck::{closure#0}::{closure#0}
-FN:197,conjure_core::rule_engine::get_rule_set_by_name
-FN:150,conjure_core::rule_engine::get_rule_by_name::{closure#0}
-FN:222,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}
-FN:226,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}::{closure#0}
-FN:164,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_158_0::CONJURE_GEN_RULE_SET_ANOTHERRULESET::__typecheck::{closure#0}::{closure#0}
+FN:200,conjure_core::rule_engine::get_rule_set_by_name
+FN:152,conjure_core::rule_engine::get_rule_by_name::{closure#0}
+FN:225,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}
+FN:229,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}::{closure#0}
+FN:179,conjure_core::rule_engine::get_all_rule_sets
 FN:149,conjure_core::rule_engine::get_rule_by_name
 FN:107,rust_out::CONJURE_GEN_RULE_IDENTITY::__typecheck::{closure#0}::{closure#0}
 FN:108,rust_out::identity
-FN:185,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_184_0
-FN:163,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_158_0::CONJURE_GEN_RULE_SET_MYRULESET::__typecheck::{closure#0}::{closure#0}
+FN:192,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_187_0::CONJURE_GEN_RULE_SET_MYRULESET::__typecheck::{closure#0}::{closure#0}
+FN:200,conjure_core::rule_engine::get_rule_set_by_name
 FN:149,conjure_core::rule_engine::get_rule_by_name
-FN:197,conjure_core::rule_engine::get_rule_set_by_name
-FN:189,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_184_0::CONJURE_GEN_RULE_SET_MYRULESET::__typecheck::{closure#0}::{closure#0}
-FN:226,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}::{closure#0}
-FN:121,conjure_core::rule_engine::get_rules
-FN:217,conjure_core::rule_engine::get_rule_sets_for_solver_family
-FN:159,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_158_0
+FN:229,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}::{closure#0}
+FN:220,conjure_core::rule_engine::get_rule_sets_for_solver_family
+FN:121,conjure_core::rule_engine::get_all_rules
+FN:152,conjure_core::rule_engine::get_rule_by_name::{closure#0}
+FN:220,conjure_core::rule_engine::get_rule_sets_for_solver_family
 FN:41,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_33_0::identity
-FN:150,conjure_core::rule_engine::get_rule_by_name::{closure#0}
-FN:217,conjure_core::rule_engine::get_rule_sets_for_solver_family
 FN:34,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_33_0
 FN:60,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_59_0
 FN:63,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_59_0::CONJURE_GEN_RULE_SET_MYRULESET::__typecheck::{closure#0}::{closure#0}
-FN:200,conjure_core::rule_engine::get_rule_set_by_name::{closure#0}
+FN:203,conjure_core::rule_engine::get_rule_set_by_name::{closure#0}
+FN:167,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_161_0::CONJURE_GEN_RULE_SET_ANOTHERRULESET::__typecheck::{closure#0}::{closure#0}
+FNDA:1,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_161_0
+FNDA:1,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_187_0
 FNDA:1,conjure_core::rule_engine::get_rule_set_by_name::{closure#0}
-FNDA:0,conjure_core::rule_engine::get_rule_sets
-FNDA:1,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_209_0
-FNDA:0,conjure_core::rule_engine::get_rules
+FNDA:0,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_161_0::CONJURE_GEN_RULE_SET_MYRULESET::__typecheck::{closure#0}::{closure#0}
 FNDA:1,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}
-FNDA:1,conjure_core::rule_engine::get_rule_sets
+FNDA:1,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_212_0
+FNDA:1,conjure_core::rule_engine::get_all_rule_sets
+FNDA:1,conjure_core::rule_engine::get_all_rules
 FNDA:1,rust_out::main
 FNDA:0,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_33_0::CONJURE_GEN_RULE_IDENTITY::__typecheck::{closure#0}::{closure#0}
 FNDA:1,conjure_core::rule_engine::get_rule_set_by_name
 FNDA:0,conjure_core::rule_engine::get_rule_by_name::{closure#0}
 FNDA:0,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}
 FNDA:1,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}::{closure#0}
-FNDA:0,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_158_0::CONJURE_GEN_RULE_SET_ANOTHERRULESET::__typecheck::{closure#0}::{closure#0}
+FNDA:0,conjure_core::rule_engine::get_all_rule_sets
 FNDA:0,conjure_core::rule_engine::get_rule_by_name
 FNDA:0,rust_out::CONJURE_GEN_RULE_IDENTITY::__typecheck::{closure#0}::{closure#0}
 FNDA:0,rust_out::identity
-FNDA:1,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_184_0
-FNDA:0,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_158_0::CONJURE_GEN_RULE_SET_MYRULESET::__typecheck::{closure#0}::{closure#0}
-FNDA:1,conjure_core::rule_engine::get_rule_by_name
+FNDA:0,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_187_0::CONJURE_GEN_RULE_SET_MYRULESET::__typecheck::{closure#0}::{closure#0}
 FNDA:0,conjure_core::rule_engine::get_rule_set_by_name
-FNDA:0,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_184_0::CONJURE_GEN_RULE_SET_MYRULESET::__typecheck::{closure#0}::{closure#0}
+FNDA:1,conjure_core::rule_engine::get_rule_by_name
 FNDA:0,conjure_core::rule_engine::get_rule_sets_for_solver_family::{closure#0}::{closure#0}
-FNDA:1,conjure_core::rule_engine::get_rules
 FNDA:0,conjure_core::rule_engine::get_rule_sets_for_solver_family
-FNDA:1,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_158_0
-FNDA:0,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_33_0::identity
+FNDA:0,conjure_core::rule_engine::get_all_rules
 FNDA:1,conjure_core::rule_engine::get_rule_by_name::{closure#0}
 FNDA:1,conjure_core::rule_engine::get_rule_sets_for_solver_family
+FNDA:0,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_33_0::identity
 FNDA:1,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_33_0
 FNDA:1,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_59_0
 FNDA:0,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_59_0::CONJURE_GEN_RULE_SET_MYRULESET::__typecheck::{closure#0}::{closure#0}
 FNDA:0,conjure_core::rule_engine::get_rule_set_by_name::{closure#0}
+FNDA:0,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_mod_rs_161_0::CONJURE_GEN_RULE_SET_ANOTHERRULESET::__typecheck::{closure#0}::{closure#0}
 FNF:32
 FNH:15
 BRF:0
@@ -10223,45 +10245,48 @@ DA:141,1
 DA:142,1
 DA:143,1
 DA:149,289
-DA:150,5593
+DA:150,289
 DA:151,289
-DA:159,1
-DA:164,0
-DA:166,1
-DA:167,1
-DA:176,6205
-DA:177,6205
-DA:178,6205
-DA:185,1
-DA:189,0
-DA:191,1
-DA:192,1
-DA:197,4624
-DA:198,4624
-DA:199,4624
-DA:200,16915
+DA:152,5593
+DA:153,289
+DA:154,289
+DA:162,1
+DA:167,0
+DA:169,1
+DA:170,1
+DA:179,6205
+DA:180,6205
+DA:181,6205
+DA:188,1
+DA:192,0
+DA:194,1
+DA:195,1
+DA:200,4624
 DA:201,4624
 DA:202,4624
-DA:210,1
-DA:214,1
-DA:215,1
-DA:216,1
-DA:217,1473
-DA:218,1564
-DA:219,1564
-DA:220,1564
+DA:203,16915
+DA:204,4624
+DA:205,4624
+DA:213,1
+DA:217,1
+DA:218,1
+DA:219,1
+DA:220,1473
 DA:221,1564
-DA:222,7820
-DA:223,7820
-DA:224,7820
+DA:222,1564
+DA:223,1564
+DA:224,1564
 DA:225,7820
 DA:226,7820
 DA:227,7820
-DA:228,1564
-DA:229,1564
-DA:230,1564
-LF:64
-LH:49
+DA:228,7820
+DA:229,7820
+DA:230,7820
+DA:231,1564
+DA:232,1564
+DA:233,1564
+LF:67
+LH:52
 end_of_record
 SF:conjure_oxide/src/defaults.rs
 FN:2,conjure_oxide::defaults::get_default_rule_sets
@@ -10358,218 +10383,201 @@ LF:61
 LH:61
 end_of_record
 SF:crates/conjure_core/src/rule_engine/rewrite.rs
-FN:234,conjure_core::rule_engine::rewrite::rewrite_iteration::{closure#0}
-FN:202,conjure_core::rule_engine::rewrite::rewrite_iteration
-FN:234,conjure_core::rule_engine::rewrite::rewrite_iteration::{closure#0}
-FN:87,conjure_core::rule_engine::rewrite::rewrite_model
-FN:380,conjure_core::rule_engine::rewrite::check_priority
-FN:23,conjure_core::rule_engine::rewrite::optimizations_enabled
-FN:288,conjure_core::rule_engine::rewrite::apply_all_rules
-FN:358,conjure_core::rule_engine::rewrite::choose_rewrite::{closure#0}
-FN:137,conjure_core::rule_engine::rewrite::is_vec_bool
-FN:140,conjure_core::rule_engine::rewrite::is_vec_bool::{closure#0}
-FN:404,conjure_core::rule_engine::rewrite::check_priority::{closure#1}
-FN:351,conjure_core::rule_engine::rewrite::choose_rewrite
-FN:140,conjure_core::rule_engine::rewrite::is_vec_bool::{closure#0}
-FN:386,conjure_core::rule_engine::rewrite::check_priority::{closure#0}
-FN:404,conjure_core::rule_engine::rewrite::check_priority::{closure#1}
-FN:87,conjure_core::rule_engine::rewrite::rewrite_model
-FN:386,conjure_core::rule_engine::rewrite::check_priority::{closure#0}
-FN:358,conjure_core::rule_engine::rewrite::choose_rewrite::{closure#0}
-FN:137,conjure_core::rule_engine::rewrite::is_vec_bool
-FN:380,conjure_core::rule_engine::rewrite::check_priority
-FN:351,conjure_core::rule_engine::rewrite::choose_rewrite
-FN:288,conjure_core::rule_engine::rewrite::apply_all_rules
-FN:23,conjure_core::rule_engine::rewrite::optimizations_enabled
-FN:202,conjure_core::rule_engine::rewrite::rewrite_iteration
+FN:237,conjure_core::rule_engine::rewrite::rewrite_iteration::{closure#0}
+FN:205,conjure_core::rule_engine::rewrite::rewrite_iteration
+FN:237,conjure_core::rule_engine::rewrite::rewrite_iteration::{closure#0}
+FN:102,conjure_core::rule_engine::rewrite::rewrite_model
+FN:16,conjure_core::rule_engine::rewrite::optimizations_enabled
+FN:276,conjure_core::rule_engine::rewrite::apply_all_rules
+FN:341,conjure_core::rule_engine::rewrite::choose_rewrite::{closure#0}
+FN:146,conjure_core::rule_engine::rewrite::is_vec_bool
+FN:149,conjure_core::rule_engine::rewrite::is_vec_bool::{closure#0}
+FN:334,conjure_core::rule_engine::rewrite::choose_rewrite
+FN:149,conjure_core::rule_engine::rewrite::is_vec_bool::{closure#0}
+FN:102,conjure_core::rule_engine::rewrite::rewrite_model
+FN:146,conjure_core::rule_engine::rewrite::is_vec_bool
+FN:341,conjure_core::rule_engine::rewrite::choose_rewrite::{closure#0}
+FN:16,conjure_core::rule_engine::rewrite::optimizations_enabled
+FN:334,conjure_core::rule_engine::rewrite::choose_rewrite
+FN:276,conjure_core::rule_engine::rewrite::apply_all_rules
+FN:205,conjure_core::rule_engine::rewrite::rewrite_iteration
 FNDA:0,conjure_core::rule_engine::rewrite::rewrite_iteration::{closure#0}
 FNDA:0,conjure_core::rule_engine::rewrite::rewrite_iteration
 FNDA:0,conjure_core::rule_engine::rewrite::rewrite_iteration::{closure#0}
 FNDA:1,conjure_core::rule_engine::rewrite::rewrite_model
-FNDA:1,conjure_core::rule_engine::rewrite::check_priority
 FNDA:1,conjure_core::rule_engine::rewrite::optimizations_enabled
 FNDA:1,conjure_core::rule_engine::rewrite::apply_all_rules
 FNDA:1,conjure_core::rule_engine::rewrite::choose_rewrite::{closure#0}
 FNDA:1,conjure_core::rule_engine::rewrite::is_vec_bool
 FNDA:0,conjure_core::rule_engine::rewrite::is_vec_bool::{closure#0}
-FNDA:0,conjure_core::rule_engine::rewrite::check_priority::{closure#1}
 FNDA:0,conjure_core::rule_engine::rewrite::choose_rewrite
 FNDA:0,conjure_core::rule_engine::rewrite::is_vec_bool::{closure#0}
-FNDA:1,conjure_core::rule_engine::rewrite::check_priority::{closure#0}
-FNDA:1,conjure_core::rule_engine::rewrite::check_priority::{closure#1}
 FNDA:0,conjure_core::rule_engine::rewrite::rewrite_model
-FNDA:0,conjure_core::rule_engine::rewrite::check_priority::{closure#0}
-FNDA:0,conjure_core::rule_engine::rewrite::choose_rewrite::{closure#0}
 FNDA:0,conjure_core::rule_engine::rewrite::is_vec_bool
-FNDA:0,conjure_core::rule_engine::rewrite::check_priority
+FNDA:0,conjure_core::rule_engine::rewrite::choose_rewrite::{closure#0}
+FNDA:0,conjure_core::rule_engine::rewrite::optimizations_enabled
 FNDA:1,conjure_core::rule_engine::rewrite::choose_rewrite
 FNDA:0,conjure_core::rule_engine::rewrite::apply_all_rules
-FNDA:0,conjure_core::rule_engine::rewrite::optimizations_enabled
 FNDA:1,conjure_core::rule_engine::rewrite::rewrite_iteration
-FNF:24
-FNH:10
+FNF:18
+FNH:7
 BRF:0
 BRH:0
-DA:23,68
-DA:24,68
-DA:25,0
-DA:26,68
-DA:28,68
-DA:87,34
-DA:88,34
-DA:89,34
-DA:90,34
-DA:91,34
-DA:92,34
-DA:93,34
-DA:94,34
-DA:95,34
-DA:96,34
-DA:97,34
-DA:98,34
-DA:99,34
-DA:100,34
-DA:101,34
+DA:16,68
+DA:17,68
+DA:18,0
+DA:19,68
+DA:21,68
 DA:102,34
 DA:103,34
 DA:104,34
 DA:105,34
 DA:106,34
 DA:107,34
-DA:108,68
-DA:109,102
-DA:110,102
-DA:111,102
-DA:112,102
-DA:113,102
-DA:114,102
-DA:115,102
-DA:116,68
-DA:117,68
-DA:118,68
-DA:122,34
-DA:125,34
-DA:126,34
-DA:127,34
-DA:128,34
-DA:137,68
-DA:138,68
-DA:139,68
-DA:140,68
-DA:141,68
-DA:202,306
-DA:203,306
-DA:204,306
+DA:108,34
+DA:109,34
+DA:110,34
+DA:111,34
+DA:112,34
+DA:113,34
+DA:114,34
+DA:115,34
+DA:116,34
+DA:117,34
+DA:118,34
+DA:119,34
+DA:120,34
+DA:121,34
+DA:122,68
+DA:123,102
+DA:124,102
+DA:125,102
+DA:126,102
+DA:127,102
+DA:128,102
+DA:129,102
+DA:130,68
+DA:131,68
+DA:132,68
+DA:136,34
+DA:139,34
+DA:140,34
+DA:141,34
+DA:142,34
+DA:146,68
+DA:147,68
+DA:148,68
+DA:149,68
+DA:150,68
 DA:205,306
 DA:206,306
 DA:207,306
 DA:208,306
 DA:209,306
-DA:211,0
+DA:210,306
+DA:211,306
 DA:212,306
-DA:213,306
-DA:214,306
+DA:214,0
 DA:215,306
 DA:216,306
 DA:217,306
 DA:218,306
-DA:220,68
-DA:221,68
-DA:222,238
-DA:223,238
-DA:224,238
+DA:219,306
+DA:220,306
+DA:221,306
+DA:223,68
+DA:224,68
 DA:225,238
-DA:226,204
-DA:227,51
-DA:228,51
-DA:229,51
-DA:230,153
-DA:233,187
-DA:234,0
-DA:235,0
-DA:236,0
-DA:237,187
-DA:238,187
-DA:239,306
-DA:288,306
-DA:289,306
-DA:290,306
-DA:291,306
-DA:292,306
-DA:293,306
-DA:294,306
-DA:295,15300
-DA:296,14994
+DA:226,238
+DA:227,238
+DA:228,238
+DA:229,204
+DA:230,51
+DA:231,51
+DA:232,51
+DA:233,153
+DA:236,187
+DA:237,0
+DA:238,0
+DA:239,0
+DA:240,187
+DA:241,187
+DA:242,306
+DA:276,306
+DA:277,306
+DA:278,306
+DA:279,306
+DA:280,306
+DA:281,306
+DA:282,306
+DA:283,15300
+DA:284,14994
+DA:285,85
+DA:286,85
+DA:287,85
+DA:288,85
+DA:289,85
+DA:290,85
+DA:291,85
+DA:292,85
+DA:293,85
+DA:294,85
+DA:295,85
+DA:296,85
 DA:297,85
-DA:298,85
-DA:299,85
-DA:300,85
-DA:301,85
-DA:302,85
-DA:303,85
-DA:304,85
-DA:305,85
-DA:306,85
-DA:307,85
-DA:308,85
-DA:309,85
-DA:311,14909
-DA:312,0
-DA:317,14909
-DA:318,14909
-DA:319,14909
-DA:323,306
-DA:324,306
-DA:351,306
-DA:352,306
-DA:353,306
-DA:354,306
-DA:355,306
-DA:356,306
-DA:357,17
-DA:358,34
-DA:359,17
-DA:360,17
-DA:361,289
-DA:363,306
-DA:364,238
-DA:365,68
-DA:366,68
-DA:367,68
-DA:368,68
-DA:369,306
-DA:380,17
-DA:381,17
-DA:382,17
-DA:383,17
-DA:384,17
-DA:385,17
-DA:386,34
-DA:387,17
-DA:388,17
-DA:389,17
-DA:392,51
-DA:393,34
-DA:394,34
-DA:395,34
-DA:396,34
-DA:397,34
-DA:398,34
-DA:402,17
-DA:403,17
-DA:404,34
-DA:405,17
-DA:406,17
-DA:407,17
-DA:409,0
-DA:410,0
-DA:411,0
-DA:412,0
-DA:417,17
-DA:418,0
-DA:420,17
-LF:158
-LH:147
+DA:299,14909
+DA:300,0
+DA:305,14909
+DA:306,14909
+DA:307,14909
+DA:311,306
+DA:312,306
+DA:334,306
+DA:335,306
+DA:336,306
+DA:337,306
+DA:338,306
+DA:339,306
+DA:340,68
+DA:341,85
+DA:342,85
+DA:343,85
+DA:345,0
+DA:346,0
+DA:347,0
+DA:348,0
+DA:349,0
+DA:350,0
+DA:351,0
+DA:352,0
+DA:353,0
+DA:354,0
+DA:356,85
+DA:357,85
+DA:358,85
+DA:359,85
+DA:362,68
+DA:364,17
+DA:365,17
+DA:366,17
+DA:367,17
+DA:368,51
+DA:369,34
+DA:370,34
+DA:371,34
+DA:372,34
+DA:373,34
+DA:374,34
+DA:375,34
+DA:376,17
+DA:377,51
+DA:379,68
+DA:380,238
+DA:381,238
+DA:382,238
+DA:383,306
+LF:153
+LH:137
 end_of_record
 SF:crates/conjure_core/src/ast/expressions.rs
 FN:345,<conjure_core::ast::expressions::Expression>::domain_of::{closure#4}
@@ -10941,12 +10949,12 @@ DA:599,102
 DA:603,272
 DA:604,272
 DA:605,272
-DA:609,186320
-DA:610,186320
-DA:611,97019
+DA:609,186405
+DA:610,186405
+DA:611,97070
 DA:612,1530
-DA:613,5287
-DA:614,5287
+DA:613,5304
+DA:614,5304
 DA:616,3570
 DA:617,3570
 DA:619,238
@@ -10967,8 +10975,8 @@ DA:640,9350
 DA:641,9350
 DA:643,1530
 DA:644,1530
-DA:646,3179
-DA:647,3179
+DA:646,3196
+DA:647,3196
 DA:649,68
 DA:650,68
 DA:652,850
@@ -11058,7 +11066,7 @@ DA:760,170
 DA:761,170
 DA:763,170
 DA:764,170
-DA:767,186320
+DA:767,186405
 DA:777,1
 DA:778,1
 DA:779,1
