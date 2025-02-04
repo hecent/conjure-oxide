@@ -356,8 +356,8 @@
 ) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;BTreeMap&lt;Name, Literal&gt;&gt;, EssenceParseError&gt; {
     <span class="comment">// this is ran in parallel, and we have no guarantee by rust that invocations to this function
     // don't share the same tmp dir.
-    </span><span class="kw">let </span><span class="kw-2">mut </span>rng = rand::thread_rng();
-    <span class="kw">let </span>rand: i8 = rng.gen();
+    </span><span class="kw">let </span><span class="kw-2">mut </span>rng = rand::rng();
+    <span class="kw">let </span>rand: i8 = rng.random();
 
     <span class="kw">let </span><span class="kw-2">mut </span>tmp_dir = std::env::temp_dir();
     tmp_dir.push(Path::new(<span class="kw-2">&amp;</span>rand.to_string()));
