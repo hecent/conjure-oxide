@@ -145,7 +145,8 @@
 <a href="#144" id="144">144</a>
 <a href="#145" id="145">145</a>
 <a href="#146" id="146">146</a>
-<a href="#147" id="147">147</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Atom, DecisionVariable, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit, SymbolTable};
+<a href="#147" id="147">147</a>
+<a href="#148" id="148">148</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Atom, DecisionVariable, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit, SymbolTable};
 <span class="kw">use </span>conjure_core::metadata::Metadata;
 <span class="kw">use </span>conjure_core::rule_engine::{
     register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
@@ -175,6 +176,7 @@
     </span><span class="kw">if </span><span class="macro">matches!</span>(
         expr,
         Atomic(<span class="kw">_</span>, <span class="kw">_</span>)
+            | Root(<span class="kw">_</span>, <span class="kw">_</span>)
             | FlatIneq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | FlatMinusEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | FlatSumGeq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)

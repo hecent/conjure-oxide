@@ -366,7 +366,7 @@
                         constraint_vec.push(parse_constraint(constraint, <span class="kw-2">&amp;</span>source_code));
                     }
                 }
-                model.constraints.extend(constraint_vec);
+                model.add_constraints(constraint_vec);
             }
             <span class="string">"e_prime_label" </span>=&gt; {}
             <span class="kw">_ </span>=&gt; {

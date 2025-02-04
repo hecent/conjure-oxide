@@ -292,7 +292,7 @@
     <span class="doccomment">/// Applies side-effects (e.g. symbol table updates)
     </span><span class="kw">pub fn </span>apply(<span class="self">self</span>, model: <span class="kw-2">&amp;mut </span>Model) {
         model.extend_sym_table(<span class="self">self</span>.symbols); <span class="comment">// Add new assignments to the symbol table
-        </span>model.constraints.extend(<span class="self">self</span>.new_top.clone());
+        </span>model.add_constraints(<span class="self">self</span>.new_top.clone());
     }
 
     <span class="doccomment">/// Gets symbols added by this reduction

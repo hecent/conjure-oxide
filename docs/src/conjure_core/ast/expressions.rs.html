@@ -848,7 +848,15 @@
 <a href="#847" id="847">847</a>
 <a href="#848" id="848">848</a>
 <a href="#849" id="849">849</a>
-<a href="#850" id="850">850</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::VecDeque;
+<a href="#850" id="850">850</a>
+<a href="#851" id="851">851</a>
+<a href="#852" id="852">852</a>
+<a href="#853" id="853">853</a>
+<a href="#854" id="854">854</a>
+<a href="#855" id="855">855</a>
+<a href="#856" id="856">856</a>
+<a href="#857" id="857">857</a>
+<a href="#858" id="858">858</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::VecDeque;
 <span class="kw">use </span>std::fmt::{Display, Formatter};
 <span class="kw">use </span>std::sync::Arc;
 
@@ -859,7 +867,7 @@
 <span class="kw">use </span>uniplate::{Biplate, Uniplate <span class="kw">as _</span>};
 
 <span class="kw">use </span><span class="kw">crate</span>::ast::literals::Literal;
-<span class="kw">use </span><span class="kw">crate</span>::ast::pretty::pretty_vec;
+<span class="kw">use </span><span class="kw">crate</span>::ast::pretty::{pretty_expressions_as_top_level, pretty_vec};
 <span class="kw">use </span><span class="kw">crate</span>::ast::symbol_table::{Name, SymbolTable};
 <span class="kw">use </span><span class="kw">crate</span>::ast::Atom;
 <span class="kw">use </span><span class="kw">crate</span>::ast::ReturnType;
@@ -880,6 +888,9 @@
 #[biplate(to=Name)]
 #[biplate(to=Vec&lt;Expression&gt;)]
 </span><span class="kw">pub enum </span>Expression {
+    <span class="doccomment">/// The top of the model
+    </span>Root(Metadata, Vec&lt;Expression&gt;),
+
     <span class="doccomment">/// An expression representing "A is valid as long as B is true"
     /// Turns into a conjunction when it reaches a boolean context
     </span>Bubble(Metadata, Box&lt;Expression&gt;, Box&lt;Expression&gt;),
@@ -1260,6 +1271,7 @@
                 )
             }
 
+            Expression::Root(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>,
             Expression::Bubble(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>,
             Expression::AuxDeclaration(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
             Expression::And(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(Domain::BoolDomain),
@@ -1352,6 +1364,7 @@
 
     <span class="kw">pub fn </span>return_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;ReturnType&gt; {
         <span class="kw">match </span><span class="self">self </span>{
+            Expression::Root(<span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::Atomic(<span class="kw">_</span>, Atom::Literal(Literal::Int(<span class="kw">_</span>))) =&gt; <span class="prelude-val">Some</span>(ReturnType::Int),
             Expression::Atomic(<span class="kw">_</span>, Atom::Literal(Literal::Bool(<span class="kw">_</span>))) =&gt; <span class="prelude-val">Some</span>(ReturnType::Bool),
             Expression::Atomic(<span class="kw">_</span>, Atom::Reference(<span class="kw">_</span>)) =&gt; <span class="prelude-val">None</span>,
@@ -1458,6 +1471,9 @@
     <span class="comment">// TODO: (flm8) this will change once we implement a parser (two-way conversion)
     </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; std::fmt::Result {
         <span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self </span>{
+            Expression::Root(<span class="kw">_</span>, exprs) =&gt; {
+                <span class="macro">write!</span>(f, <span class="string">"{}"</span>, pretty_expressions_as_top_level(exprs))
+            }
             Expression::Atomic(<span class="kw">_</span>, atom) =&gt; atom.fmt(f),
             Expression::Abs(<span class="kw">_</span>, a) =&gt; <span class="macro">write!</span>(f, <span class="string">"|{}|"</span>, a),
             Expression::Sum(<span class="kw">_</span>, expressions) =&gt; {
