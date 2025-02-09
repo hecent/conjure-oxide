@@ -902,11 +902,11 @@ DA:35,0
 DA:42,0
 DA:43,0
 DA:44,0
-DA:48,525062
-DA:49,525062
-DA:50,159239
-DA:51,365823
-DA:53,525062
+DA:48,522206
+DA:49,522206
+DA:50,159834
+DA:51,362372
+DA:53,522206
 DA:63,0
 DA:64,0
 DA:65,0
@@ -1914,32 +1914,32 @@ LF:49
 LH:45
 end_of_record
 SF:crates/conjure_core/src/rule_engine/rule.rs
-FN:108,<conjure_core::rule_engine::rule::Reduction>::added_symbols
-FN:75,<conjure_core::rule_engine::rule::Reduction>::pure
-FN:171,<conjure_core::rule_engine::rule::Rule>::apply
-FN:191,<conjure_core::rule_engine::rule::Rule as core::hash::Hash>::hash::<_>
-FN:93,<conjure_core::rule_engine::rule::Reduction>::with_top
-FN:191,<conjure_core::rule_engine::rule::Rule as core::hash::Hash>::hash::<std::hash::random::DefaultHasher>
-FN:102,<conjure_core::rule_engine::rule::Reduction>::apply
-FN:84,<conjure_core::rule_engine::rule::Reduction>::with_symbols
-FN:177,<conjure_core::rule_engine::rule::Rule as core::fmt::Display>::fmt
-FN:66,<conjure_core::rule_engine::rule::Reduction>::new
-FN:159,<conjure_core::rule_engine::rule::Rule>::new
-FN:121,<conjure_core::rule_engine::rule::Reduction>::changed_symbols
-FN:47,rust_out::main
-FN:177,<conjure_core::rule_engine::rule::Rule as core::fmt::Display>::fmt
-FN:66,<conjure_core::rule_engine::rule::Reduction>::new
-FN:93,<conjure_core::rule_engine::rule::Reduction>::with_top
-FN:183,<conjure_core::rule_engine::rule::Rule as core::cmp::PartialEq>::eq
-FN:75,<conjure_core::rule_engine::rule::Reduction>::pure
-FN:102,<conjure_core::rule_engine::rule::Reduction>::apply
-FN:47,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_rule_rs_46_0
-FN:84,<conjure_core::rule_engine::rule::Reduction>::with_symbols
-FN:183,<conjure_core::rule_engine::rule::Rule as core::cmp::PartialEq>::eq
-FN:159,<conjure_core::rule_engine::rule::Rule>::new
-FN:121,<conjure_core::rule_engine::rule::Reduction>::changed_symbols
-FN:171,<conjure_core::rule_engine::rule::Rule>::apply
-FN:108,<conjure_core::rule_engine::rule::Reduction>::added_symbols
+FN:107,<conjure_core::rule_engine::rule::Reduction>::added_symbols
+FN:74,<conjure_core::rule_engine::rule::Reduction>::pure
+FN:170,<conjure_core::rule_engine::rule::Rule>::apply
+FN:190,<conjure_core::rule_engine::rule::Rule as core::hash::Hash>::hash::<_>
+FN:92,<conjure_core::rule_engine::rule::Reduction>::with_top
+FN:190,<conjure_core::rule_engine::rule::Rule as core::hash::Hash>::hash::<std::hash::random::DefaultHasher>
+FN:101,<conjure_core::rule_engine::rule::Reduction>::apply
+FN:83,<conjure_core::rule_engine::rule::Reduction>::with_symbols
+FN:176,<conjure_core::rule_engine::rule::Rule as core::fmt::Display>::fmt
+FN:65,<conjure_core::rule_engine::rule::Reduction>::new
+FN:158,<conjure_core::rule_engine::rule::Rule>::new
+FN:120,<conjure_core::rule_engine::rule::Reduction>::changed_symbols
+FN:46,rust_out::main
+FN:176,<conjure_core::rule_engine::rule::Rule as core::fmt::Display>::fmt
+FN:65,<conjure_core::rule_engine::rule::Reduction>::new
+FN:92,<conjure_core::rule_engine::rule::Reduction>::with_top
+FN:182,<conjure_core::rule_engine::rule::Rule as core::cmp::PartialEq>::eq
+FN:74,<conjure_core::rule_engine::rule::Reduction>::pure
+FN:101,<conjure_core::rule_engine::rule::Reduction>::apply
+FN:46,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_rule_rs_45_0
+FN:83,<conjure_core::rule_engine::rule::Reduction>::with_symbols
+FN:182,<conjure_core::rule_engine::rule::Rule as core::cmp::PartialEq>::eq
+FN:158,<conjure_core::rule_engine::rule::Rule>::new
+FN:120,<conjure_core::rule_engine::rule::Reduction>::changed_symbols
+FN:170,<conjure_core::rule_engine::rule::Rule>::apply
+FN:107,<conjure_core::rule_engine::rule::Reduction>::added_symbols
 FNDA:1,<conjure_core::rule_engine::rule::Reduction>::added_symbols
 FNDA:0,<conjure_core::rule_engine::rule::Reduction>::pure
 FNDA:0,<conjure_core::rule_engine::rule::Rule>::apply
@@ -1959,7 +1959,7 @@ FNDA:0,<conjure_core::rule_engine::rule::Reduction>::with_top
 FNDA:0,<conjure_core::rule_engine::rule::Rule as core::cmp::PartialEq>::eq
 FNDA:1,<conjure_core::rule_engine::rule::Reduction>::pure
 FNDA:0,<conjure_core::rule_engine::rule::Reduction>::apply
-FNDA:1,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_rule_rs_46_0
+FNDA:1,rust_out::main::_doctest_main_crates_conjure_core_src_rule_engine_rule_rs_45_0
 FNDA:0,<conjure_core::rule_engine::rule::Reduction>::with_symbols
 FNDA:1,<conjure_core::rule_engine::rule::Rule as core::cmp::PartialEq>::eq
 FNDA:0,<conjure_core::rule_engine::rule::Rule>::new
@@ -1970,41 +1970,42 @@ FNF:26
 FNH:10
 BRF:0
 BRH:0
+DA:46,1
 DA:47,1
 DA:48,1
-DA:49,1
+DA:65,1666
 DA:66,1666
 DA:67,1666
 DA:68,1666
 DA:69,1666
 DA:70,1666
 DA:71,1666
-DA:72,1666
+DA:74,10659
 DA:75,10659
 DA:76,10659
 DA:77,10659
 DA:78,10659
 DA:79,10659
 DA:80,10659
-DA:81,10659
+DA:83,17
 DA:84,17
 DA:85,17
 DA:86,17
 DA:87,17
 DA:88,17
 DA:89,17
-DA:90,17
+DA:92,0
 DA:93,0
 DA:94,0
 DA:95,0
 DA:96,0
 DA:97,0
 DA:98,0
-DA:99,0
+DA:101,12104
 DA:102,12104
 DA:103,12104
 DA:104,12104
-DA:105,12104
+DA:107,12104
 DA:108,12104
 DA:109,12104
 DA:110,12104
@@ -2013,20 +2014,20 @@ DA:112,12104
 DA:113,12104
 DA:114,12104
 DA:115,12104
-DA:116,12104
+DA:120,0
 DA:121,0
 DA:122,0
 DA:123,0
 DA:124,0
-DA:125,0
+DA:126,0
 DA:127,0
 DA:128,0
-DA:129,0
+DA:131,0
 DA:132,0
 DA:133,0
-DA:134,0
+DA:135,0
 DA:136,0
-DA:137,0
+DA:158,0
 DA:159,0
 DA:160,0
 DA:161,0
@@ -2037,19 +2038,18 @@ DA:165,0
 DA:166,0
 DA:167,0
 DA:168,0
-DA:169,0
+DA:170,6562
 DA:171,6562
 DA:172,6562
-DA:173,6562
+DA:176,0
 DA:177,0
 DA:178,0
-DA:179,0
-DA:183,187
-DA:184,187
-DA:185,187
-DA:191,6001
-DA:192,6001
-DA:193,6001
+DA:182,170
+DA:183,170
+DA:184,170
+DA:190,5134
+DA:191,5134
+DA:192,5134
 LF:80
 LH:46
 end_of_record
@@ -2113,14 +2113,14 @@ DA:55,0
 DA:56,0
 DA:60,6086
 DA:61,6086
-DA:63,187
-DA:64,187
-DA:65,187
-DA:66,187
-DA:67,187
-DA:68,187
-DA:69,187
-DA:71,5899
+DA:63,170
+DA:64,170
+DA:65,170
+DA:66,170
+DA:67,170
+DA:68,170
+DA:69,170
+DA:71,5916
 DA:73,6086
 DA:78,6086
 DA:79,6086
@@ -2138,22 +2138,22 @@ DA:96,1547
 DA:97,1547
 DA:98,1547
 DA:99,1547
-DA:102,187
-DA:103,187
-DA:105,10472
-DA:106,10285
-DA:107,10285
-DA:109,17476
-DA:110,10285
-DA:111,3094
-DA:112,3094
-DA:113,3094
-DA:114,7191
-DA:117,10285
-DA:118,3094
-DA:119,7191
-DA:122,187
-DA:123,187
+DA:102,170
+DA:103,170
+DA:105,9520
+DA:106,9350
+DA:107,9350
+DA:109,16065
+DA:110,9350
+DA:111,2635
+DA:112,2635
+DA:113,2635
+DA:114,6715
+DA:117,9350
+DA:118,2635
+DA:119,6715
+DA:122,170
+DA:123,170
 DA:127,204
 DA:128,204
 DA:130,272
@@ -2169,9 +2169,9 @@ DA:142,68
 DA:143,68
 DA:148,204
 DA:149,204
-DA:153,3128
-DA:154,3128
-DA:155,3128
+DA:153,3043
+DA:154,3043
+DA:155,3043
 DA:161,22763
 DA:162,22763
 DA:163,22763
@@ -2608,16 +2608,16 @@ DA:396,15827
 DA:397,15827
 DA:398,15827
 DA:399,15827
-DA:400,59007
+DA:400,59211
 DA:401,15827
 DA:402,15827
 DA:404,34
 DA:405,15827
-DA:406,59007
+DA:406,59211
 DA:407,4148
-DA:409,8245
+DA:409,8126
 DA:410,1139
-DA:412,7718
+DA:412,7956
 DA:413,1972
 DA:417,8568
 DA:418,5185
@@ -3291,23 +3291,23 @@ LH:107
 end_of_record
 SF:crates/conjure_core/src/rule_engine/rewrite_naive.rs
 FN:24,conjure_core::rule_engine::rewrite_naive::rewrite_naive::{closure#0}
+FN:126,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::ast::model::Model>>>::{closure#0}
 FN:116,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<_>
 FN:24,conjure_core::rule_engine::rewrite_naive::rewrite_naive::{closure#0}
 FN:18,conjure_core::rule_engine::rewrite_naive::rewrite_naive
-FN:126,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::model::Model>>>::{closure#0}
 FN:41,conjure_core::rule_engine::rewrite_naive::try_rewrite_model
 FN:126,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<_>::{closure#0}
-FN:116,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::model::Model>>>
+FN:116,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::ast::model::Model>>>
 FN:41,conjure_core::rule_engine::rewrite_naive::try_rewrite_model
 FN:18,conjure_core::rule_engine::rewrite_naive::rewrite_naive
 FNDA:0,conjure_core::rule_engine::rewrite_naive::rewrite_naive::{closure#0}
+FNDA:0,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::ast::model::Model>>>::{closure#0}
 FNDA:0,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<_>
 FNDA:0,conjure_core::rule_engine::rewrite_naive::rewrite_naive::{closure#0}
 FNDA:0,conjure_core::rule_engine::rewrite_naive::rewrite_naive
-FNDA:0,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::model::Model>>>::{closure#0}
 FNDA:0,conjure_core::rule_engine::rewrite_naive::try_rewrite_model
 FNDA:0,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<_>::{closure#0}
-FNDA:1,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::model::Model>>>
+FNDA:1,conjure_core::rule_engine::rewrite_naive::assert_no_multiple_equally_applicable_rules::<alloc::sync::Arc<dyn core::ops::function::Fn<(conjure_core::ast::expressions::Expression,), Output = conjure_core::ast::model::Model>>>
 FNDA:1,conjure_core::rule_engine::rewrite_naive::try_rewrite_model
 FNDA:1,conjure_core::rule_engine::rewrite_naive::rewrite_naive
 FNF:10
@@ -5019,166 +5019,6 @@ DA:341,3164
 LF:270
 LH:240
 end_of_record
-SF:crates/conjure_core/src/model.rs
-FN:76,<conjure_core::model::Model>::symbols_mut
-FN:66,<conjure_core::model::Model>::new_empty
-FN:80,<conjure_core::model::Model>::get_constraints_vec
-FN:71,<conjure_core::model::Model>::symbols
-FN:121,<conjure_core::model::Model as uniplate::traits::Uniplate>::uniplate::{closure#0}
-FN:71,<conjure_core::model::Model>::symbols
-FN:151,<conjure_core::model::Model as core::fmt::Display>::fmt
-FN:127,<conjure_core::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate
-FN:76,<conjure_core::model::Model>::symbols_mut
-FN:151,<conjure_core::model::Model as core::fmt::Display>::fmt
-FN:108,<conjure_core::model::Model>::add_constraints
-FN:127,<conjure_core::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate
-FN:96,<conjure_core::model::Model>::set_context
-FN:92,<conjure_core::model::Model>::set_constraints
-FN:92,<conjure_core::model::Model>::set_constraints
-FN:118,<conjure_core::model::Model as uniplate::traits::Uniplate>::uniplate
-FN:100,<conjure_core::model::Model>::add_constraint
-FN:96,<conjure_core::model::Model>::set_context
-FN:54,<conjure_core::model::Model>::new
-FN:54,<conjure_core::model::Model>::new
-FN:134,<conjure_core::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate::{closure#0}
-FN:66,<conjure_core::model::Model>::new_empty
-FN:121,<conjure_core::model::Model as uniplate::traits::Uniplate>::uniplate::{closure#0}
-FN:108,<conjure_core::model::Model>::add_constraints
-FN:100,<conjure_core::model::Model>::add_constraint
-FN:134,<conjure_core::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate::{closure#0}
-FN:80,<conjure_core::model::Model>::get_constraints_vec
-FN:118,<conjure_core::model::Model as uniplate::traits::Uniplate>::uniplate
-FNDA:0,<conjure_core::model::Model>::symbols_mut
-FNDA:0,<conjure_core::model::Model>::new_empty
-FNDA:1,<conjure_core::model::Model>::get_constraints_vec
-FNDA:0,<conjure_core::model::Model>::symbols
-FNDA:0,<conjure_core::model::Model as uniplate::traits::Uniplate>::uniplate::{closure#0}
-FNDA:1,<conjure_core::model::Model>::symbols
-FNDA:1,<conjure_core::model::Model as core::fmt::Display>::fmt
-FNDA:1,<conjure_core::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate
-FNDA:1,<conjure_core::model::Model>::symbols_mut
-FNDA:0,<conjure_core::model::Model as core::fmt::Display>::fmt
-FNDA:0,<conjure_core::model::Model>::add_constraints
-FNDA:0,<conjure_core::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate
-FNDA:0,<conjure_core::model::Model>::set_context
-FNDA:1,<conjure_core::model::Model>::set_constraints
-FNDA:0,<conjure_core::model::Model>::set_constraints
-FNDA:0,<conjure_core::model::Model as uniplate::traits::Uniplate>::uniplate
-FNDA:0,<conjure_core::model::Model>::add_constraint
-FNDA:0,<conjure_core::model::Model>::set_context
-FNDA:0,<conjure_core::model::Model>::new
-FNDA:1,<conjure_core::model::Model>::new
-FNDA:1,<conjure_core::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate::{closure#0}
-FNDA:1,<conjure_core::model::Model>::new_empty
-FNDA:0,<conjure_core::model::Model as uniplate::traits::Uniplate>::uniplate::{closure#0}
-FNDA:1,<conjure_core::model::Model>::add_constraints
-FNDA:0,<conjure_core::model::Model>::add_constraint
-FNDA:0,<conjure_core::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate::{closure#0}
-FNDA:0,<conjure_core::model::Model>::get_constraints_vec
-FNDA:0,<conjure_core::model::Model as uniplate::traits::Uniplate>::uniplate
-FNF:28
-FNH:10
-BRF:0
-BRH:0
-DA:54,2720
-DA:55,2720
-DA:56,2720
-DA:57,2720
-DA:58,2720
-DA:59,2720
-DA:60,2720
-DA:61,2720
-DA:62,2720
-DA:63,2720
-DA:64,2720
-DA:66,2652
-DA:67,2652
-DA:68,2652
-DA:71,12318574
-DA:72,12318574
-DA:73,12318574
-DA:76,19227
-DA:77,19227
-DA:78,19227
-DA:80,19363
-DA:81,19363
-DA:82,19363
-DA:83,0
-DA:85,0
-DA:86,0
-DA:87,0
-DA:90,19363
-DA:92,14773
-DA:93,14773
-DA:94,14773
-DA:96,0
-DA:97,0
-DA:98,0
-DA:100,0
-DA:101,0
-DA:102,0
-DA:103,0
-DA:104,0
-DA:105,0
-DA:106,0
-DA:108,14773
-DA:109,14773
-DA:110,14773
-DA:111,14773
-DA:112,14773
-DA:118,0
-DA:119,0
-DA:120,0
-DA:121,0
-DA:122,0
-DA:127,100385
-DA:128,100385
-DA:129,100385
-DA:130,100385
-DA:131,100385
-DA:132,100385
-DA:133,100385
-DA:134,100385
-DA:135,12104
-DA:136,0
-DA:139,12104
-DA:140,12104
-DA:141,12104
-DA:142,12104
-DA:143,100385
-DA:144,100385
-DA:145,100385
-DA:146,100385
-DA:151,2992
-DA:152,2992
-DA:153,136
-DA:154,136
-DA:155,136
-DA:156,136
-DA:157,136
-DA:159,2992
-DA:160,68
-DA:161,68
-DA:162,68
-DA:163,68
-DA:164,68
-DA:167,9214
-DA:168,9214
-DA:169,9214
-DA:170,9214
-DA:171,9214
-DA:172,9214
-DA:175,2992
-DA:177,2992
-DA:178,2992
-DA:179,2992
-DA:180,2992
-DA:181,2992
-DA:183,2992
-DA:184,2992
-LF:96
-LH:76
-end_of_record
 SF:solvers/minion/src/scoped_ptr.rs
 FN:24,<minion_rs::scoped_ptr::Scoped<_> as core::ops::drop::Drop>::drop
 FN:24,<minion_rs::scoped_ptr::Scoped<minion_rs::ffi::ProbSpec_ConstraintBlob> as core::ops::drop::Drop>::drop
@@ -5233,16 +5073,16 @@ BRH:0
 DA:21,51
 DA:23,51
 DA:24,51
-DA:27,158134
-DA:28,158134
-DA:29,158134
-DA:30,137547
-DA:31,137547
-DA:32,137547
+DA:27,158168
+DA:28,158168
+DA:29,158168
+DA:30,137581
+DA:31,137581
+DA:32,137581
 DA:33,3162
 DA:35,34
 DA:36,34
-DA:37,158100
+DA:37,158134
 DA:43,51
 DA:44,17
 DA:45,17
@@ -7932,9 +7772,9 @@ DA:110,0
 DA:112,1
 DA:113,1
 DA:114,1
-DA:121,561
-DA:122,561
-DA:123,561
+DA:121,544
+DA:122,544
+DA:123,544
 DA:136,0
 DA:137,0
 DA:138,0
@@ -10861,6 +10701,166 @@ DA:45,287878
 DA:47,291839
 LF:16
 LH:16
+end_of_record
+SF:crates/conjure_core/src/ast/model.rs
+FN:71,<conjure_core::ast::model::Model>::symbols
+FN:96,<conjure_core::ast::model::Model>::set_context
+FN:92,<conjure_core::ast::model::Model>::set_constraints
+FN:71,<conjure_core::ast::model::Model>::symbols
+FN:92,<conjure_core::ast::model::Model>::set_constraints
+FN:134,<conjure_core::ast::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate::{closure#0}
+FN:66,<conjure_core::ast::model::Model>::new_empty
+FN:80,<conjure_core::ast::model::Model>::get_constraints_vec
+FN:80,<conjure_core::ast::model::Model>::get_constraints_vec
+FN:118,<conjure_core::ast::model::Model as uniplate::traits::Uniplate>::uniplate
+FN:134,<conjure_core::ast::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate::{closure#0}
+FN:76,<conjure_core::ast::model::Model>::symbols_mut
+FN:100,<conjure_core::ast::model::Model>::add_constraint
+FN:151,<conjure_core::ast::model::Model as core::fmt::Display>::fmt
+FN:118,<conjure_core::ast::model::Model as uniplate::traits::Uniplate>::uniplate
+FN:54,<conjure_core::ast::model::Model>::new
+FN:100,<conjure_core::ast::model::Model>::add_constraint
+FN:54,<conjure_core::ast::model::Model>::new
+FN:121,<conjure_core::ast::model::Model as uniplate::traits::Uniplate>::uniplate::{closure#0}
+FN:121,<conjure_core::ast::model::Model as uniplate::traits::Uniplate>::uniplate::{closure#0}
+FN:66,<conjure_core::ast::model::Model>::new_empty
+FN:127,<conjure_core::ast::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate
+FN:127,<conjure_core::ast::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate
+FN:96,<conjure_core::ast::model::Model>::set_context
+FN:151,<conjure_core::ast::model::Model as core::fmt::Display>::fmt
+FN:76,<conjure_core::ast::model::Model>::symbols_mut
+FN:108,<conjure_core::ast::model::Model>::add_constraints
+FN:108,<conjure_core::ast::model::Model>::add_constraints
+FNDA:1,<conjure_core::ast::model::Model>::symbols
+FNDA:0,<conjure_core::ast::model::Model>::set_context
+FNDA:0,<conjure_core::ast::model::Model>::set_constraints
+FNDA:0,<conjure_core::ast::model::Model>::symbols
+FNDA:1,<conjure_core::ast::model::Model>::set_constraints
+FNDA:1,<conjure_core::ast::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate::{closure#0}
+FNDA:1,<conjure_core::ast::model::Model>::new_empty
+FNDA:1,<conjure_core::ast::model::Model>::get_constraints_vec
+FNDA:0,<conjure_core::ast::model::Model>::get_constraints_vec
+FNDA:0,<conjure_core::ast::model::Model as uniplate::traits::Uniplate>::uniplate
+FNDA:0,<conjure_core::ast::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate::{closure#0}
+FNDA:1,<conjure_core::ast::model::Model>::symbols_mut
+FNDA:0,<conjure_core::ast::model::Model>::add_constraint
+FNDA:1,<conjure_core::ast::model::Model as core::fmt::Display>::fmt
+FNDA:0,<conjure_core::ast::model::Model as uniplate::traits::Uniplate>::uniplate
+FNDA:1,<conjure_core::ast::model::Model>::new
+FNDA:0,<conjure_core::ast::model::Model>::add_constraint
+FNDA:0,<conjure_core::ast::model::Model>::new
+FNDA:0,<conjure_core::ast::model::Model as uniplate::traits::Uniplate>::uniplate::{closure#0}
+FNDA:0,<conjure_core::ast::model::Model as uniplate::traits::Uniplate>::uniplate::{closure#0}
+FNDA:0,<conjure_core::ast::model::Model>::new_empty
+FNDA:0,<conjure_core::ast::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate
+FNDA:1,<conjure_core::ast::model::Model as uniplate::traits::Biplate<conjure_core::ast::expressions::Expression>>::biplate
+FNDA:0,<conjure_core::ast::model::Model>::set_context
+FNDA:0,<conjure_core::ast::model::Model as core::fmt::Display>::fmt
+FNDA:0,<conjure_core::ast::model::Model>::symbols_mut
+FNDA:1,<conjure_core::ast::model::Model>::add_constraints
+FNDA:0,<conjure_core::ast::model::Model>::add_constraints
+FNF:28
+FNH:10
+BRF:0
+BRH:0
+DA:54,2720
+DA:55,2720
+DA:56,2720
+DA:57,2720
+DA:58,2720
+DA:59,2720
+DA:60,2720
+DA:61,2720
+DA:62,2720
+DA:63,2720
+DA:64,2720
+DA:66,2652
+DA:67,2652
+DA:68,2652
+DA:71,12318574
+DA:72,12318574
+DA:73,12318574
+DA:76,19227
+DA:77,19227
+DA:78,19227
+DA:80,19363
+DA:81,19363
+DA:82,19363
+DA:83,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:90,19363
+DA:92,14773
+DA:93,14773
+DA:94,14773
+DA:96,0
+DA:97,0
+DA:98,0
+DA:100,0
+DA:101,0
+DA:102,0
+DA:103,0
+DA:104,0
+DA:105,0
+DA:106,0
+DA:108,14773
+DA:109,14773
+DA:110,14773
+DA:111,14773
+DA:112,14773
+DA:118,0
+DA:119,0
+DA:120,0
+DA:121,0
+DA:122,0
+DA:127,100385
+DA:128,100385
+DA:129,100385
+DA:130,100385
+DA:131,100385
+DA:132,100385
+DA:133,100385
+DA:134,100385
+DA:135,12104
+DA:136,0
+DA:139,12104
+DA:140,12104
+DA:141,12104
+DA:142,12104
+DA:143,100385
+DA:144,100385
+DA:145,100385
+DA:146,100385
+DA:151,2992
+DA:152,2992
+DA:153,136
+DA:154,136
+DA:155,136
+DA:156,136
+DA:157,136
+DA:159,2992
+DA:160,68
+DA:161,68
+DA:162,68
+DA:163,68
+DA:164,68
+DA:167,9214
+DA:168,9214
+DA:169,9214
+DA:170,9214
+DA:171,9214
+DA:172,9214
+DA:175,2992
+DA:177,2992
+DA:178,2992
+DA:179,2992
+DA:180,2992
+DA:181,2992
+DA:183,2992
+DA:184,2992
+LF:96
+LH:76
 end_of_record
 SF:crates/conjure_core/src/stats/mod.rs
 FN:28,<conjure_core::stats::Stats>::add_rewriter_run
