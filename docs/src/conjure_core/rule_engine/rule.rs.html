@@ -191,15 +191,13 @@
 <a href="#190" id="190">190</a>
 <a href="#191" id="191">191</a>
 <a href="#192" id="192">192</a>
-<a href="#193" id="193">193</a>
-<a href="#194" id="194">194</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::BTreeSet;
+<a href="#193" id="193">193</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::BTreeSet;
 <span class="kw">use </span>std::fmt::{<span class="self">self</span>, Display, Formatter};
 <span class="kw">use </span>std::hash::Hash;
 
 <span class="kw">use </span>thiserror::Error;
 
-<span class="kw">use </span><span class="kw">crate</span>::ast::{DecisionVariable, Expression, Name, SymbolTable};
-<span class="kw">use </span><span class="kw">crate</span>::model::Model;
+<span class="kw">use </span><span class="kw">crate</span>::ast::{DecisionVariable, Expression, Model, Name, SymbolTable};
 
 <span class="attr">#[derive(Debug, Error)]
 </span><span class="kw">pub enum </span>ApplicationError {
