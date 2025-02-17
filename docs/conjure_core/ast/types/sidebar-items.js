@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["ReturnType"]};
+window.SIDEBAR_ITEMS = {"enum":["ReturnType"],"trait":["Typeable"]};

@@ -3,10 +3,10 @@
 <a href=#3 id=3 data-nosnippet>3</a>/************************************************************************/
 <a href=#4 id=4 data-nosnippet>4</a>
 <a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>std::convert::TryInto;
-<a href=#6 id=6 data-nosnippet>6</a>
-<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><span class="kw">crate</span>::ast::{
-<a href=#8 id=8 data-nosnippet>8</a>    Atom, DecisionVariable, Domain, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit, ReturnType, SymbolTable,
-<a href=#9 id=9 data-nosnippet>9</a>};
+<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span>std::rc::Rc;
+<a href=#7 id=7 data-nosnippet>7</a>
+<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><span class="kw">crate</span>::ast::declaration::Declaration;
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span><span class="kw">crate</span>::ast::{Atom, Domain, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit, ReturnType, SymbolTable};
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span><span class="kw">crate</span>::metadata::Metadata;
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><span class="kw">crate</span>::rule_engine::{
@@ -102,7 +102,7 @@
 <a href=#102 id=102 data-nosnippet>102</a>            .domain_of(<span class="kw-2">&amp;</span>symbols)
 <a href=#103 id=103 data-nosnippet>103</a>            .ok_or(ApplicationError::DomainError)<span class="question-mark">?</span>;
 <a href=#104 id=104 data-nosnippet>104</a>
-<a href=#105 id=105 data-nosnippet>105</a>        symbols.add_var(aux_var.clone(), DecisionVariable { domain: aux_domain });
+<a href=#105 id=105 data-nosnippet>105</a>        symbols.insert(Rc::new(Declaration::new_var(aux_var.clone(), aux_domain)));
 <a href=#106 id=106 data-nosnippet>106</a>
 <a href=#107 id=107 data-nosnippet>107</a>        <span class="kw">let </span>new_top_expr =
 <a href=#108 id=108 data-nosnippet>108</a>            Expr::FlatProductEq(Metadata::new(), y, next_factor_atom, aux_var.clone().into());
@@ -912,7 +912,7 @@
 <a href=#912 id=912 data-nosnippet>912</a>        Expr::Not(m, expr) =&gt; {
 <a href=#913 id=913 data-nosnippet>913</a>            <span class="kw">if let </span>Expr::Atomic(<span class="kw">_</span>, Atom::Reference(name)) = (<span class="kw-2">**</span>expr).clone() {
 <a href=#914 id=914 data-nosnippet>914</a>                <span class="kw">if </span>symbols
-<a href=#915 id=915 data-nosnippet>915</a>                    .domain_of(<span class="kw-2">&amp;</span>name)
+<a href=#915 id=915 data-nosnippet>915</a>                    .domain(<span class="kw-2">&amp;</span>name)
 <a href=#916 id=916 data-nosnippet>916</a>                    .is_some_and(|x| <span class="macro">matches!</span>(x, BoolDomain))
 <a href=#917 id=917 data-nosnippet>917</a>                {
 <a href=#918 id=918 data-nosnippet>918</a>                    <span class="kw">return </span><span class="prelude-val">Ok</span>(Reduction::pure(Expr::FlatWatchedLiteral(

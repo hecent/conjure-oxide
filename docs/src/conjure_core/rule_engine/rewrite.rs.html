@@ -281,7 +281,7 @@
 <a href=#281 id=281 data-nosnippet>281</a>) -&gt; Vec&lt;RuleResult&lt;<span class="lifetime">'a</span>&gt;&gt; {
 <a href=#282 id=282 data-nosnippet>282</a>    <span class="kw">let </span><span class="kw-2">mut </span>results = Vec::new();
 <a href=#283 id=283 data-nosnippet>283</a>    <span class="kw">for </span>rule_data <span class="kw">in </span>rules {
-<a href=#284 id=284 data-nosnippet>284</a>        <span class="kw">match </span>rule_data.rule.apply(expression, model.symbols()) {
+<a href=#284 id=284 data-nosnippet>284</a>        <span class="kw">match </span>rule_data.rule.apply(expression, <span class="kw-2">&amp;</span>model.symbols()) {
 <a href=#285 id=285 data-nosnippet>285</a>            <span class="prelude-val">Ok</span>(red) =&gt; {
 <a href=#286 id=286 data-nosnippet>286</a>                stats.rewriter_rule_application_attempts =
 <a href=#287 id=287 data-nosnippet>287</a>                    <span class="prelude-val">Some</span>(stats.rewriter_rule_application_attempts.unwrap() + <span class="number">1</span>);
