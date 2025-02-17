@@ -55,7 +55,7 @@
 <a href=#55 id=55 data-nosnippet>55</a>            </span><span class="kw">let </span>expr = expr.clone();
 <a href=#56 id=56 data-nosnippet>56</a>            <span class="kw">let </span>ctx = ctx.clone();
 <a href=#57 id=57 data-nosnippet>57</a>            <span class="kw">for </span>rd <span class="kw">in </span>rules {
-<a href=#58 id=58 data-nosnippet>58</a>                <span class="kw">match </span>(rd.rule.application)(<span class="kw-2">&amp;</span>expr, <span class="kw-2">&amp;</span>model.symbols()) {
+<a href=#58 id=58 data-nosnippet>58</a>                <span class="kw">match </span>(rd.rule.application)(<span class="kw-2">&amp;</span>expr, <span class="kw-2">&amp;</span>model.as_submodel().symbols()) {
 <a href=#59 id=59 data-nosnippet>59</a>                    <span class="prelude-val">Ok</span>(red) =&gt; {
 <a href=#60 id=60 data-nosnippet>60</a>                        <span class="comment">// Collect applicable rules
 <a href=#61 id=61 data-nosnippet>61</a>                        </span>results.push((

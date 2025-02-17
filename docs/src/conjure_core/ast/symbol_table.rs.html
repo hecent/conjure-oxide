@@ -20,7 +20,7 @@
 <a href=#20 id=20 data-nosnippet>20</a><span class="kw">use </span>uniplate::{Biplate, Uniplate};
 <a href=#21 id=21 data-nosnippet>21</a>
 <a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span><span class="kw">super</span>::name::Name;
-<a href=#23 id=23 data-nosnippet>23</a><span class="kw">use super</span>::{Domain, Expression, ReturnType};
+<a href=#23 id=23 data-nosnippet>23</a><span class="kw">use super</span>::{Domain, Expression, ReturnType, SubModel};
 <a href=#24 id=24 data-nosnippet>24</a><span class="kw">use </span>derivative::Derivative;
 <a href=#25 id=25 data-nosnippet>25</a>
 <a href=#26 id=26 data-nosnippet>26</a><span class="comment">// Count symbol tables per thread / model.
@@ -109,16 +109,16 @@
 <a href=#109 id=109 data-nosnippet>109</a>        }
 <a href=#110 id=110 data-nosnippet>110</a>    }
 <a href=#111 id=111 data-nosnippet>111</a>
-<a href=#112 id=112 data-nosnippet>112</a>    <span class="comment">// Looks up the declaration with the given name in the current scope only.
-<a href=#113 id=113 data-nosnippet>113</a>    //
-<a href=#114 id=114 data-nosnippet>114</a>    // Returns `None` if there is no declaration with that name in the current scope.
+<a href=#112 id=112 data-nosnippet>112</a>    <span class="doccomment">/// Looks up the declaration with the given name in the current scope only.
+<a href=#113 id=113 data-nosnippet>113</a>    ///
+<a href=#114 id=114 data-nosnippet>114</a>    /// Returns `None` if there is no declaration with that name in the current scope.
 <a href=#115 id=115 data-nosnippet>115</a>    </span><span class="kw">pub fn </span>lookup_local(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>Name) -&gt; <span class="prelude-ty">Option</span>&lt;Rc&lt;Declaration&gt;&gt; {
 <a href=#116 id=116 data-nosnippet>116</a>        <span class="self">self</span>.table.get(name).cloned()
 <a href=#117 id=117 data-nosnippet>117</a>    }
 <a href=#118 id=118 data-nosnippet>118</a>
-<a href=#119 id=119 data-nosnippet>119</a>    <span class="comment">// Looks up the declaration with the given name, checking all enclosing scopes.
-<a href=#120 id=120 data-nosnippet>120</a>    //
-<a href=#121 id=121 data-nosnippet>121</a>    // Returns `None` if there is no declaration with that name in scope.
+<a href=#119 id=119 data-nosnippet>119</a>    <span class="doccomment">/// Looks up the declaration with the given name, checking all enclosing scopes.
+<a href=#120 id=120 data-nosnippet>120</a>    ///
+<a href=#121 id=121 data-nosnippet>121</a>    /// Returns `None` if there is no declaration with that name in scope.
 <a href=#122 id=122 data-nosnippet>122</a>    </span><span class="kw">pub fn </span>lookup(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>Name) -&gt; <span class="prelude-ty">Option</span>&lt;Rc&lt;Declaration&gt;&gt; {
 <a href=#123 id=123 data-nosnippet>123</a>        <span class="self">self</span>.lookup_local(name).or_else(|| {
 <a href=#124 id=124 data-nosnippet>124</a>            <span class="self">self</span>.parent
@@ -127,9 +127,9 @@
 <a href=#127 id=127 data-nosnippet>127</a>        })
 <a href=#128 id=128 data-nosnippet>128</a>    }
 <a href=#129 id=129 data-nosnippet>129</a>
-<a href=#130 id=130 data-nosnippet>130</a>    <span class="comment">// Inserts a declaration into the symbol table.
-<a href=#131 id=131 data-nosnippet>131</a>    //
-<a href=#132 id=132 data-nosnippet>132</a>    // Returns `None` if there is already a symbol with this name in the local scope.
+<a href=#130 id=130 data-nosnippet>130</a>    <span class="doccomment">/// Inserts a declaration into the symbol table.
+<a href=#131 id=131 data-nosnippet>131</a>    ///
+<a href=#132 id=132 data-nosnippet>132</a>    /// Returns `None` if there is already a symbol with this name in the local scope.
 <a href=#133 id=133 data-nosnippet>133</a>    </span><span class="kw">pub fn </span>insert(<span class="kw-2">&amp;mut </span><span class="self">self</span>, declaration: Rc&lt;Declaration&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;()&gt; {
 <a href=#134 id=134 data-nosnippet>134</a>        <span class="kw">let </span>name = declaration.name().clone();
 <a href=#135 id=135 data-nosnippet>135</a>        <span class="kw">if let </span>Entry::Vacant(e) = <span class="self">self</span>.table.entry(name) {
@@ -140,7 +140,7 @@
 <a href=#140 id=140 data-nosnippet>140</a>        </span>}
 <a href=#141 id=141 data-nosnippet>141</a>    }
 <a href=#142 id=142 data-nosnippet>142</a>
-<a href=#143 id=143 data-nosnippet>143</a>    <span class="comment">// Updates or adds a declaration in the immediate local scope.
+<a href=#143 id=143 data-nosnippet>143</a>    <span class="doccomment">/// Updates or adds a declaration in the immediate local scope.
 <a href=#144 id=144 data-nosnippet>144</a>    </span><span class="kw">pub fn </span>update_insert(<span class="kw-2">&amp;mut </span><span class="self">self</span>, declaration: Rc&lt;Declaration&gt;) {
 <a href=#145 id=145 data-nosnippet>145</a>        <span class="kw">let </span>name = declaration.name().clone();
 <a href=#146 id=146 data-nosnippet>146</a>        <span class="self">self</span>.table.insert(name, declaration);
@@ -156,7 +156,7 @@
 <a href=#156 id=156 data-nosnippet>156</a>        <span class="self">self</span>.lookup_local(name).and_then(|x| x.return_type())
 <a href=#157 id=157 data-nosnippet>157</a>    }
 <a href=#158 id=158 data-nosnippet>158</a>
-<a href=#159 id=159 data-nosnippet>159</a>    <span class="comment">// Looks up the domain of name if it has one and is in scope.
+<a href=#159 id=159 data-nosnippet>159</a>    <span class="doccomment">/// Looks up the domain of name if it has one and is in scope.
 <a href=#160 id=160 data-nosnippet>160</a>    </span><span class="kw">pub fn </span>domain(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>Name) -&gt; <span class="prelude-ty">Option</span>&lt;Domain&gt; {
 <a href=#161 id=161 data-nosnippet>161</a>        <span class="comment">// TODO: do not clone here: in the future, we might want to wrap all domains in Rc's to get
 <a href=#162 id=162 data-nosnippet>162</a>        // clone-on-write behaviour (saving memory in scenarios such as matrix decomposition where
@@ -334,4 +334,20 @@
 <a href=#334 id=334 data-nosnippet>334</a>
 <a href=#335 id=335 data-nosnippet>335</a>        (tree, ctx)
 <a href=#336 id=336 data-nosnippet>336</a>    }
-<a href=#337 id=337 data-nosnippet>337</a>}</code></pre></div></section></main></body></html>
+<a href=#337 id=337 data-nosnippet>337</a>}
+<a href=#338 id=338 data-nosnippet>338</a>
+<a href=#339 id=339 data-nosnippet>339</a><span class="kw">impl </span>Biplate&lt;SubModel&gt; <span class="kw">for </span>SymbolTable {
+<a href=#340 id=340 data-nosnippet>340</a>    <span class="comment">// walk into expressions
+<a href=#341 id=341 data-nosnippet>341</a>    </span><span class="kw">fn </span>biplate(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (Tree&lt;SubModel&gt;, Box&lt;<span class="kw">dyn </span>Fn(Tree&lt;SubModel&gt;) -&gt; <span class="self">Self</span>&gt;) {
+<a href=#342 id=342 data-nosnippet>342</a>        <span class="kw">let </span>(exprs, exprs_ctx) = &lt;SymbolTable <span class="kw">as </span>Biplate&lt;Expression&gt;&gt;::biplate(<span class="self">self</span>);
+<a href=#343 id=343 data-nosnippet>343</a>        <span class="kw">let </span>(submodel_tree, submodel_ctx) =
+<a href=#344 id=344 data-nosnippet>344</a>            &lt;VecDeque&lt;Expression&gt; <span class="kw">as </span>Biplate&lt;SubModel&gt;&gt;::biplate(<span class="kw-2">&amp;</span>exprs.into_iter().collect());
+<a href=#345 id=345 data-nosnippet>345</a>
+<a href=#346 id=346 data-nosnippet>346</a>        <span class="kw">let </span>ctx = Box::new(<span class="kw">move </span>|x| {
+<a href=#347 id=347 data-nosnippet>347</a>            exprs_ctx(Tree::Many(
+<a href=#348 id=348 data-nosnippet>348</a>                submodel_ctx(x).into_iter().map(Tree::One).collect(),
+<a href=#349 id=349 data-nosnippet>349</a>            ))
+<a href=#350 id=350 data-nosnippet>350</a>        });
+<a href=#351 id=351 data-nosnippet>351</a>        (submodel_tree, ctx)
+<a href=#352 id=352 data-nosnippet>352</a>    }
+<a href=#353 id=353 data-nosnippet>353</a>}</code></pre></div></section></main></body></html>
