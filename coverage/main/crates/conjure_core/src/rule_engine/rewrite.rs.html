@@ -2140,7 +2140,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">            step.apply(&amp;mut new_model); &#x2F;&#x2F; Apply side-effects (e.g., symbol table updates)</pre>
+                <pre class="has-background-danger-light py-0 px-2">            step.apply(new_model.as_submodel_mut()); &#x2F;&#x2F; Apply side-effects (e.g., symbol table updates)</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -3596,7 +3596,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">        log_rule_application(&amp;result, &amp;expression, model);</pre>
+                <pre class="has-background-danger-light py-0 px-2">        log_rule_application(&amp;result, &amp;expression, model.as_submodel());</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -6210,7 +6210,7 @@
 </div>
         <footer class="footer">
             <div class="content has-text-centered">
-                <p class="heading">Date: 2025-02-17 14:56</p>
+                <p class="heading">Date: 2025-02-18 11:12</p>
             </div>
         </footer>
     </body>
