@@ -9,26 +9,30 @@
 <a href=#9 id=9 data-nosnippet>9</a>/// ```
 <a href=#10 id=10 data-nosnippet>10</a></span><span class="attr">#[macro_export]
 <a href=#11 id=11 data-nosnippet>11</a></span><span class="macro">macro_rules!</span> bug {
-<a href=#12 id=12 data-nosnippet>12</a>    (<span class="macro-nonterminal">$msg</span>:expr $(, <span class="macro-nonterminal">$arg</span>:tt)<span class="kw-2">*</span>) =&gt; {{
-<a href=#13 id=13 data-nosnippet>13</a>        <span class="kw">let </span>formatted_msg = <span class="macro">format!</span>(<span class="macro-nonterminal">$msg</span>, $(<span class="macro-nonterminal">$arg</span>)<span class="kw-2">*</span>);
-<a href=#14 id=14 data-nosnippet>14</a>        <span class="kw">let </span>full_message = <span class="macro">format!</span>(
-<a href=#15 id=15 data-nosnippet>15</a>            <span class="string">r#"
-<a href=#16 id=16 data-nosnippet>16</a>This should never happen, sorry!
-<a href=#17 id=17 data-nosnippet>17</a>
-<a href=#18 id=18 data-nosnippet>18</a>However, it did happen, so it must be a bug. Please report it to us!
-<a href=#19 id=19 data-nosnippet>19</a>
-<a href=#20 id=20 data-nosnippet>20</a>Conjure Oxide is actively developed and maintained. We will get back to you as soon as possible.
+<a href=#12 id=12 data-nosnippet>12</a>    (<span class="macro-nonterminal">$msg</span>:expr)=&gt; {
+<a href=#13 id=13 data-nosnippet>13</a>        <span class="macro-nonterminal">$</span><span class="macro">crate::bug!</span>(<span class="macro-nonterminal">$msg</span>,)
+<a href=#14 id=14 data-nosnippet>14</a>    };
+<a href=#15 id=15 data-nosnippet>15</a>
+<a href=#16 id=16 data-nosnippet>16</a>    (<span class="macro-nonterminal">$msg</span>:expr, $(<span class="macro-nonterminal">$arg</span>:tt)<span class="kw-2">*</span>) =&gt; {{
+<a href=#17 id=17 data-nosnippet>17</a>        <span class="kw">let </span>formatted_msg = <span class="macro">format!</span>(<span class="macro-nonterminal">$msg</span>, $(<span class="macro-nonterminal">$arg</span>)<span class="kw-2">*</span>);
+<a href=#18 id=18 data-nosnippet>18</a>        <span class="kw">let </span>full_message = <span class="macro">format!</span>(
+<a href=#19 id=19 data-nosnippet>19</a>            <span class="string">r#"
+<a href=#20 id=20 data-nosnippet>20</a>This should never happen, sorry!
 <a href=#21 id=21 data-nosnippet>21</a>
-<a href=#22 id=22 data-nosnippet>22</a>You can help us by providing a minimal failing example.
+<a href=#22 id=22 data-nosnippet>22</a>However, it did happen, so it must be a bug. Please report it to us!
 <a href=#23 id=23 data-nosnippet>23</a>
-<a href=#24 id=24 data-nosnippet>24</a>Issue tracker: http://github.com/conjure-cp/conjure-oxide/issues
+<a href=#24 id=24 data-nosnippet>24</a>Conjure Oxide is actively developed and maintained. We will get back to you as soon as possible.
 <a href=#25 id=25 data-nosnippet>25</a>
-<a href=#26 id=26 data-nosnippet>26</a>version: {}
-<a href=#27 id=27 data-nosnippet>27</a>location: {}:{}:{}
-<a href=#28 id=28 data-nosnippet>28</a>
-<a href=#29 id=29 data-nosnippet>29</a>{}
-<a href=#30 id=30 data-nosnippet>30</a>"#</span>, <span class="macro">git_version::git_version!</span>(),<span class="macro">file!</span>(),<span class="macro">module_path!</span>(),<span class="macro">line!</span>(), <span class="kw-2">&amp;</span>formatted_msg);
-<a href=#31 id=31 data-nosnippet>31</a>
-<a href=#32 id=32 data-nosnippet>32</a>        <span class="macro">panic!</span>(<span class="string">"{}"</span>, full_message);
-<a href=#33 id=33 data-nosnippet>33</a>    }};
-<a href=#34 id=34 data-nosnippet>34</a>}</code></pre></div></section></main></body></html>
+<a href=#26 id=26 data-nosnippet>26</a>You can help us by providing a minimal failing example.
+<a href=#27 id=27 data-nosnippet>27</a>
+<a href=#28 id=28 data-nosnippet>28</a>Issue tracker: http://github.com/conjure-cp/conjure-oxide/issues
+<a href=#29 id=29 data-nosnippet>29</a>
+<a href=#30 id=30 data-nosnippet>30</a>version: {}
+<a href=#31 id=31 data-nosnippet>31</a>location: {}:{}:{}
+<a href=#32 id=32 data-nosnippet>32</a>
+<a href=#33 id=33 data-nosnippet>33</a>{}
+<a href=#34 id=34 data-nosnippet>34</a>"#</span>, <span class="macro">git_version::git_version!</span>(),<span class="macro">file!</span>(),<span class="macro">module_path!</span>(),<span class="macro">line!</span>(), <span class="kw-2">&amp;</span>formatted_msg);
+<a href=#35 id=35 data-nosnippet>35</a>
+<a href=#36 id=36 data-nosnippet>36</a>        <span class="macro">panic!</span>(<span class="string">"{}"</span>, full_message);
+<a href=#37 id=37 data-nosnippet>37</a>    }};
+<a href=#38 id=38 data-nosnippet>38</a>}</code></pre></div></section></main></body></html>
