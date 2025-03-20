@@ -275,7 +275,16 @@ fn integration_test_inner(
 
     // Stage 2a: Rewrite the model using the rule engine (run unless explicitly disabled)
     let rewritten_model = if config.apply_rewrite_rules {
-        let rule_sets = resolve_rule_sets(SolverFamily::Minion, DEFAULT_RULE_SETS)?;
+        let target_rule_family;
+
+        if config.solve_with_minion {
+            target_rule_family = SolverFamily::Minion;
+        } else if config.solve_with_sat {
+            target_rule_family = SolverFamily::SAT;
+        } else {
+            panic!("No solver chosen");
+        }
+        let rule_sets = resolve_rule_sets(target_rule_family, DEFAULT_RULE_SETS)?;
         let mut model = parsed_model.expect("Model must be parsed in 1a");
 
         let rewritten = if config.enable_naive_impl {
