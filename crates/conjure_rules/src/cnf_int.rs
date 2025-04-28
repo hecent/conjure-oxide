@@ -37,24 +37,17 @@ fn integer_decision_representation(expr: &Expr, symbols: &SymbolTable) -> Applic
         .get_or_add_representation(name, &["int_to_atom"])
         .ok_or(RuleNotApplicable)?;
 
-    let bits = representation[0]
-        .clone()
-        .expression_down(&symbols)?
-        .into_iter()
-        .map(|(_, expr)| expr.clone())
-        .collect();
-
-    let cnf_int = Expr::CnfInt(Metadata::new(), Box::new(into_matrix_expr!(bits)));
+    let repr = representation[0].clone().expression_down(&symbols)?;
 
     if !repr_exists {
         // add domain ranges as constraints if this is the first time the representation is added
         Ok(Reduction::new(
-            cnf_int.clone(),
-            vec![int_domain_to_expr(cnf_int.clone(), ranges)], // contains domain rules
+            repr.clone(),
+            vec![int_domain_to_expr(repr.clone(), ranges)], // contains domain rules
             symbols,
         ))
     } else {
-        Ok(Reduction::with_symbols(cnf_int.clone(), symbols))
+        Ok(Reduction::with_symbols(repr.clone(), symbols))
     }
 }
 
@@ -78,6 +71,43 @@ fn literal_cnf_int(expr: &Expr, _: &SymbolTable) -> ApplicationResult {
         Metadata::new(),
         Box::new(into_matrix_expr!(binary_encoding)),
     )))
+}
+
+fn int_to_matrix(value: i32) -> Expr {
+    let mut binary_encoding = vec![];
+
+    for _ in 0..32 {
+        binary_encoding.push(Expr::Atomic(
+            Metadata::new(),
+            Atom::Literal(Literal::Bool((value & 1) != 0)),
+        ));
+        value >>= 1;
+    }
+
+    into_matrix_expr!(binary_encoding)
+}
+
+// this function validates the operands for a operation
+// it checks that at least one argument is an integer representation variable, and any other variables are integer literals
+// it returns a tuple containing both operands as
+fn validate_integer_operands(operands: &[Expr]) -> ApplicationResult {
+    let contains_int_repr = false;
+
+    let mut output = vec![];
+
+    for e in operands {
+        match e {
+            Expr::Atomic(_, Atom::Literal(Literal::Int(value))) => {
+                output.push(int_to_matrix(value))
+            }
+            Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs)))
+                if reprs.first().map_or(false, |r| r.as_str() == "int_to_atom") =>
+            {
+                output.push(int_to_matrix(value))
+            }
+            _ => Err(RuleNotApplicable),
+        }
+    }
 }
 
 // This function takes a target expression and a vector of ranges and creates an expression representing the ranges with the target expression as the subject
@@ -186,19 +216,27 @@ fn cnf_int_ineq(expr: &Expr, _: &SymbolTable) -> ApplicationResult {
 /// ```
 #[register_rule(("CNF", 4100))]
 fn cnf_int_eq(expr: &Expr, _: &SymbolTable) -> ApplicationResult {
-    let Expr::Eq(_, x, y) = expr else {
+    let Expr::Eq(_, left, right) = expr else {
         return Err(RuleNotApplicable);
     };
 
-    let Expr::CnfInt(_, x) = x.as_ref() else {
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs))) = &**left else {
         return Err(RuleNotApplicable);
     };
 
-    let Expr::CnfInt(_, y) = y.as_ref() else {
+    let Expr::Atomic(_, Atom::Literal(Literal::Int(mut value))) = expr else {
         return Err(RuleNotApplicable);
     };
 
-    let Some(x_bits) = x.as_ref().clone().unwrap_list() else {
+    if reprs.first().is_none_or(|x| x.as_str() != "int_to_atom") {
+        return Err(RuleNotApplicable);
+    }
+
+    let Expr::CnfInt(_, y) = right.as_ref() else {
+        return Err(RuleNotApplicable);
+    };
+
+    let Some(x_bits) = left.as_ref().clone().unwrap_list() else {
         return Err(RuleNotApplicable);
     };
 
@@ -255,12 +293,15 @@ fn cnf_int_neq(expr: &Expr, _: &SymbolTable) -> ApplicationResult {
     let output = x_bits
         .iter()
         .zip(y_bits.iter())
-        .map(|(x_i, y_i)| {Expr::Not(Metadata::new(),
-            Box::new(Expr::Iff(
+        .map(|(x_i, y_i)| {
+            Expr::Not(
                 Metadata::new(),
-                Box::new(x_i.clone()),
-                Box::new(y_i.clone()),
-            )))
+                Box::new(Expr::Iff(
+                    Metadata::new(),
+                    Box::new(x_i.clone()),
+                    Box::new(y_i.clone()),
+                )),
+            )
         })
         .collect();
 
@@ -322,7 +363,7 @@ fn inequality_boolean(a: Vec<Expr>, b: Vec<Expr>, inclusive: bool) -> Expr {
     output
 }
 
-
+/*
 /// Converts sum of CnfInts to a single CnfInt
 ///
 /// ```text
@@ -430,3 +471,4 @@ fn cnf_int_safemod(expr: &Expr, _: &SymbolTable) -> ApplicationResult {}
 fn cnf_int_safepow(expr: &Expr, _: &SymbolTable) -> ApplicationResult {
     // use 'Exponentiation by squaring'
 }
+*/

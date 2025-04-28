@@ -107,7 +107,7 @@ impl Representation for IntToAtom {
         &self,
         _: &SymbolTable,
     ) -> Result<std::collections::BTreeMap<Name, Expression>, ApplicationError> {
-        Ok(self
+        Ok(Box::new(into_matrix_expr!(self
             .names()
             .map(|name| {
                 (
@@ -115,7 +115,7 @@ impl Representation for IntToAtom {
                     Expression::Atomic(Metadata::new(), Atom::Reference(name)),
                 )
             })
-            .collect())
+            .collect())))
     }
 
     fn declaration_down(&self) -> Result<Vec<Declaration>, ApplicationError> {
