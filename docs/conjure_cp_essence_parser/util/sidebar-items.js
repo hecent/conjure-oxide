@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["get_metavars","get_tree","named_children","query_toplevel"]};

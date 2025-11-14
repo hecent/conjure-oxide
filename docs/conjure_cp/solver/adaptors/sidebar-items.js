@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["minion","rustsat"],"struct":["Minion","Sat"]};
+window.SIDEBAR_ITEMS = {"mod":["minion","rustsat","smt"],"struct":["Minion","Sat","Smt"]};
