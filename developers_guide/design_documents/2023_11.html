@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - Conjure Oxide</title>
+        <title>2023‐11: High Level Plan - Conjure Oxide</title>
 
 
         <!-- Custom HTML head -->
@@ -12,21 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,13 +35,13 @@
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "";
+            const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "coal";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "../../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="../../toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -108,7 +108,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -143,7 +143,7 @@
                     <h1 class="menu-title">Conjure Oxide</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -178,28 +178,103 @@
                 <div id="content" class="content">
                     <main>
                         
-                        <h1 id="conjure-oxide"><a class="header" href="#conjure-oxide">Conjure Oxide</a></h1>
-<p>Welcome to the documentation of Conjure Oxide, a next generation constraints
-modelling tool written in Rust. It supports models written in the Essence and
-Essence Prime constraints modelling languages.</p>
-<p>Conjure Oxide is in the early stages of development, so most Essence language
-features are not supported yet. However, it does currently support most of
-Essence Prime.</p>
-<p>This site contains the user documentation for Conjure Oxide; other useful links can be found on the <a href="./documentation/links.html">useful links</a> page.</p>
-<h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
-<p>The project is primarily developed by students and staff at the University of
-St Andrews, but we also welcome outside contributors; for more information see the
-<a href="./developers_guide/contributors-guide/index.html">contributor's guide</a>.</p>
-<!-- original link: https://github.com/conjure-cp/conjure-oxide/blob/main/CONTRIBUTING.md -->
-<h2 id="licence"><a class="header" href="#licence">Licence</a></h2>
-<p>The Conjure Oxide source and documentation are released under the <a href="https://github.com/conjure-cp/conjure-oxide/blob/main/LICENSE">Mozilla Public Licence v2.0</a>.</p>
+                        <!-- maturity: draft
+authors: Niklas Dewally, Hanaa Khan
+created: 08-12-23
+---- -->
+<!-- TODO: highlight essence syntax -->
+<!-- TODO: put stuff from 'improve this page', and to make complete documentation for all the crates (they all point back to the regular docs, idk if they'll need more specificity), into the 'things you could do' page -->
+<h1 id="202311-high-level-plan"><a class="header" href="#202311-high-level-plan">2023‐11: High Level Plan</a></h1>
+<p><em>This page is a summary of discussions about the architecture of the project circa November 2023.</em></p>
+<p>In brief:</p>
+<img src="./handDrawnDiagram.jpeg" width="300">
+<h2 id="conjure-oxide"><a class="header" href="#conjure-oxide">Conjure Oxide</a></h2>
+<h3 id="model-rewriting-engine"><a class="header" href="#model-rewriting-engine">Model Rewriting Engine</a></h3>
+<p>The purpose of the model rewriting engine is to turn a high level constraints model into one that can be run by various solvers.
+It incrementally rewrites a given model by applying a series of rules.</p>
+<p>Rules have the type:</p>
+<pre><code class="language-rs">rule :: fn(Expr) -&gt; Result&lt;Expr,Error&gt;
+</code></pre>
+<p>The use of <code>Result</code> here allows for the type checking of the Model at each stage (amongst other things).</p>
+<p>A sketch of a rewriting algorithm is below. As we are using a <code>Result</code> type, backtracks occur when an <code>Err</code> is returned.</p>
+<pre><code>fn apply(rules,x) {
+  new_rules = getApplicable(rules)
+
+  if shouldStop(x) {
+    return Ok(x)
+  }
+ 
+ // Recursive case - multiple rules
+  while len(rules') &gt; 0 {
+   rule = select(new_rules)
+   new_rules.remove(rule)
+   res = apply(rules,rule(x))
+
+   if res is Ok, return Ok
+  }
+
+  // No rules - base case
+  if (compatibleWithSolver(x)) {
+    return Ok(x)
+  }
+
+  return Err()
+}
+</code></pre>
+<p>This is, in effect, a recursive tree search algorithm. The behaviour of the search can be changed by changing the following functions:</p>
+<ul>
+<li>getApplicable: <code>fn(Vec&lt;Rule&gt;) -&gt; Vec&lt;Rule&gt;</code></li>
+<li>select: <code>fn(Vec&lt;Rule&gt;) -&gt; Vec&lt;Rule&gt;</code></li>
+<li>shouldStop: <code>fn(x) -&gt; bool</code></li>
+</ul>
+<hr />
+<p>The following functions are also important to implement the rewriting engine:</p>
+<pre><code class="language-haskell">domainOf:: Expr -&gt; Domain
+typeOf:: Expr -&gt; Type
+typeOfDomain:: Domain -&gt; Type
+categoryOf:: Expr -&gt; Category
+
+data Category = Decision | Unknown | Quantified
+</code></pre>
+<h3 id="solver-adaptors"><a class="header" href="#solver-adaptors">Solver Adaptors</a></h3>
+<p>Once we have a Model object that only uses constraints supported by a particular solver, we are able to translate it to a form the solver understands.</p>
+<p>The solver adaptor layer translates a Model into solver specific data-structures, and then runs the solvers.</p>
+<p>If the given Model isn't compatible with the solver, the use of a <code>Result</code> type here could allow a type error to be thrown.</p>
+<h2 id="other-crates-inside-this-repository"><a class="header" href="#other-crates-inside-this-repository">Other crates inside this repository</a></h2>
+<p>This repository contains the code for Conjure Oxide as well as the code for some of its dependencies and related works.</p>
+<p>Currently, these are just Rust crates that provide low level bindings to various solvers.</p>
+<!-- TODO: is this still the case? should rewrite slightly if not -->
+<p>There should be a strict separation of concerns between each crate and Conjure Oxide. In particular, each crate in this project should be considered a separate piece of work that could be independently published and used. Therefore:</p>
+<ul>
+<li>The crate should have its own complete documentation and examples.</li>
+<li>The public API should be safe and make sense outside the context of Conjure Oxide.</li>
+</ul>
+<h3 id="solver-crates"><a class="header" href="#solver-crates">Solver Crates</a></h3>
+<p>Each solver crate should have a API that matches the data structures
+used by the solver itself.</p>
+<p>Eventually, there will be a way to generically call solvers using common
+functions and data structures. However, this is to be defined entirely in Conjure Oxide
+and should not affect how the solver crates are written. See <a href="#solver-adaptors">Solver Adaptors</a>.</p>
+<!-- ## Improve this page
+
+---
+
+- [ ] Add details about solution returning.
+- [ ] Typeset the diagram using graphviz.
+- [ ] Add solutions returning to the diagram.
+- [ ] What specific error type do rules use? -->
+<hr />
+<p><em>This section had been taken from the '2023‐11: High Level Plan' page of the conjure-oxide wiki</em></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../developers_guide/design_documents/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next prefetch" href="getting_started/installation/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../developers_guide/design_documents/2024_03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -209,8 +284,11 @@ St Andrews, but we also welcome outside contributors; for more information see t
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../developers_guide/design_documents/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next prefetch" href="getting_started/installation/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../developers_guide/design_documents/2024_03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -225,13 +303,13 @@ St Andrews, but we also welcome outside contributors; for more information see t
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
 
